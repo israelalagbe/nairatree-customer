@@ -6,7 +6,10 @@ import Home from "../pages/Home";
 export function Routes() {
   return (
     <BrowserRouter>
-      <Route path="/" exact><Home /></Route>
+    <Switch>
+    <Route path="/" exact><Home /></Route>
+    </Switch>
+      
     </BrowserRouter>
   );
 }
