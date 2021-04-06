@@ -17,10 +17,13 @@ import {
   InputGroupAddon,
   InputGroupText,
   Input,
-  Button
+  Button,
 } from "reactstrap";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import SearchIcon from "@material-ui/icons/Search";
+import AccountCircle from "@material-ui/icons/AccountCircleOutlined";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingCartOutlined";
+
+import Badge from "@material-ui/core/Badge";
 
 import logo from "../../img/logo.svg";
 import search from "../../img/search.svg";
@@ -37,7 +40,7 @@ export default function Header() {
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink href="/components/">New Deals</NavLink>
             </NavItem>
@@ -45,7 +48,7 @@ export default function Header() {
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>
                 Best Brands
-                <ExpandMoreIcon className="ml-1 arrow-down-icon" />
+                <ExpandMoreIcon fontSize='small' className="ml-1 arrow-down-icon" />
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>Optddion 1</DropdownItem>
@@ -54,25 +57,39 @@ export default function Header() {
                 <DropdownItem>Reset</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <NavItem>
+            <NavItem className="mr-6">
               <NavLink href="/components/">FAQ</NavLink>
             </NavItem>
-            <div className="form-group">
-              <select className="form-control">
+            <div className="form-group category-form">
+              <select className="form-control category">
                 <option>Categories</option>
               </select>
             </div>
-            <div className="form-group search-form ml-2">
+            <div className="form-group search-form ml-lg-2">
               <InputGroup>
                 <Input placeholder="Search Items..." />
-                <InputGroupAddon addonType="append" className='search-btn'>
-                  <InputGroupText><img src={search} alt='Search'/></InputGroupText>
+                <InputGroupAddon addonType="append" className="search-btn">
+                  <InputGroupText>
+                    <img src={search} alt="Search" />
+                  </InputGroupText>
                 </InputGroupAddon>
               </InputGroup>
             </div>
           </Nav>
 
-          <NavbarText>Simple Text</NavbarText>
+          <div className="nav-items-space-placeholder"></div>
+          <div className="account-dropdown-nav">
+            
+            <AccountCircle fontSize='small' />
+            <span className="ml-3 text">Account </span>
+            <ExpandMoreIcon fontSize='small' className="ml-1 arrow-down-icon" />
+          </div>
+          <div className="cart-nav">
+            <Badge badgeContent={4} color="error" fontSize='small'>
+              <ShoppingBasketIcon fontSize='small' />
+            </Badge>
+            <span className="ml-3 text">Cart</span>
+          </div>
         </Collapse>
       </Navbar>
     </div>
