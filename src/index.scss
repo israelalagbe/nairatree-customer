@@ -1,0 +1,47 @@
+@import './config/variables.scss';
+
+@font-face {
+  font-family: $font-italic;
+  src: url('./fonts/Montserrat-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: $font-light;
+  src: url('./fonts/Montserrat-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: $font-regular;
+  src: url('./fonts/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: $font-medium;
+  src: url('./fonts/Montserrat-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: $font-semi-bold;
+  src: url('./fonts/Montserrat-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: $font-bold;
+  src: url('./fonts/Montserrat-Bold.ttf') format('truetype');
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body, html, #root{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+

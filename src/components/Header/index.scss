@@ -1,0 +1,32 @@
+@import '/src/config/variables.scss';
+
+.home-header{
+
+    .navbar{
+        background: #242C49;
+
+        .logo{
+            height: 18px;
+            margin-top: -5px;
+        }
+        .navbar-toggler{
+            padding: 0px;
+            border: none;
+            .navbar-toggler-icon{
+                width: 60px;
+                height: 40px;
+                background-image: url(../../img/harmbugger.svg);
+            }
+            
+            
+        }
+
+        .nav-link{
+            font-size: 0.9rem;
+            font-family: $font-light;
+            color: white;
+        }
+        
+    }
+
+}
