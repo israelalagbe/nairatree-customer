@@ -1,5 +1,6 @@
 .registration-decision-page {
   padding: 2rem 4rem;
+  min-height: 100%;
   .first {
     .go-back {
       padding: 3rem 5rem;
@@ -42,16 +43,6 @@
           }
         }
       }
-    }
-  }
-  .bottom {
-    display: flex;
-    padding: 10rem;
-    .copyright {
-      width: 50%;
-    }
-    .footer {
-      width: 50%;
     }
   }
 }

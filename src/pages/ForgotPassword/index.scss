@@ -1,5 +1,27 @@
 .forgot-password-page {
-  .bottom {
-    display: flex;
+  padding: 2rem 4rem;
+  .forgot {
+    text-align: center;
+    margin-top: 2rem;
+    form {
+      h4 {
+        margin-bottom: 2rem;
+      }
+      .form-group {
+        width: 20%;
+      }
+      .app-button {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        .forgot-button {
+          width: 20%;
+          background-color: #008952;
+          border: none;
+          height: 40px;
+          border-radius: 3px;
+          color: white;
+        }
+      }
+    }
   }
 }

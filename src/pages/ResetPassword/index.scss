@@ -1,5 +1,29 @@
 .reset-password-page {
-  .bottom {
-    display: flex;
+  padding: 2rem 4rem;
+  .go-back {
+    padding: 3rem 5rem;
+    color: #bdbdbd;
+  }
+  form {
+    text-align: center;
+    margin-top: 2rem;
+    h4 {
+      margin-bottom: 2rem;
+    }
+    .form-group {
+      width: 20%;
+    }
+    .app-button {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      .reset-button {
+        width: 20%;
+        background-color: #008952;
+        border: none;
+        height: 40px;
+        border-radius: 3px;
+        color: white;
+      }
+    }
   }
 }
