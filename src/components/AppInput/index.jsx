@@ -1,17 +1,28 @@
 import React from "react";
-import { InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Input,
+  Row,
+  Col,
+} from "reactstrap";
 import "./index.scss";
 
 function AppInput({ img, inputText }) {
   return (
-    <InputGroup>
-      <InputGroupAddon addonType="prepend">
-        <InputGroupText>
-          <img src={img} alt="icon" />
-        </InputGroupText>
-      </InputGroupAddon>
-      <Input placeholder={inputText} />
-    </InputGroup>
+    <Row>
+      <Col>
+        <InputGroup>
+          <InputGroupAddon addonType="prepend">
+            <InputGroupText>
+              {img ? <img src={img} alt="icon" /> : ""}
+            </InputGroupText>
+          </InputGroupAddon>
+          <Input placeholder={inputText} />
+        </InputGroup>
+      </Col>
+    </Row>
   );
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { Form, FormGroup, Input } from "reactstrap";
+import { Form } from "reactstrap";
+import AppInput from "../../components/AppInput";
 import { Link } from "react-router-dom";
 import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
@@ -15,19 +16,13 @@ function ForgotPassword() {
       <AppLogo />
       <div className="go-back">
         <ArrowBackIcon />
-        Login
+        <p>Login</p>
       </div>
       <div className="forgot">
         <Form>
           <h4>Please enter your email</h4>
-          <FormGroup>
-            <Input
-              type="email"
-              name="email"
-              id="exampleEmail"
-              placeholder="yourname@email.com"
-            />
-          </FormGroup>
+          <AppInput inputText="yourname@email.com" />
+
           <div>
             <img src={error} alt="error" />
             Email does not exist, Give it another shot!

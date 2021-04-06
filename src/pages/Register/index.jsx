@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FormGroup, Label, Input } from "reactstrap";
+import { Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import "./index.scss";
 import AppLogo from "../../components/AppLogo";
@@ -28,6 +28,15 @@ function Register() {
               <h4>Create an account</h4>
               <AppInput img={avatar} inputText="Name" />
               <AppInput img={mail} inputText="Email" />
+              <Row>
+                <Col md="4" lg="4"></Col>
+                <Col md="6" lg="4">
+                  <AppInput img={mail} inputText="Email" />
+                </Col>
+                <Col sm="4">
+                  <AppInput img={mail} inputText="Email" />
+                </Col>
+              </Row>
               <AppInput img={lock} inputText="Password" />
               <AppInput img={lock} inputText="Confirm Password" />
               <FormGroup check>
@@ -58,9 +67,8 @@ function Register() {
           <br />
           products from popular stores
         </h4>
-        <div className="girl-img">
-          <img src={girl} alt="girl" />
-        </div>
+
+        <img src={girl} alt="girl" />
       </div>
     </div>
   );

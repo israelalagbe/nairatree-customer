@@ -1,10 +1,11 @@
 import React from "react";
 import "./index.scss";
+import logo from "../../img/logo.svg";
 
 function AppLogo() {
   return (
-    <div className="auth-header">
-      <div>Naira Tree</div>
+    <div className="app-logo">
+      <img src={logo} alt="logo" />
     </div>
   );
 }

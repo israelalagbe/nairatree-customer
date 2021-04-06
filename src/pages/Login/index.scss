@@ -9,6 +9,7 @@
     .inner {
       min-height: 80vh;
       .go-back {
+        display: flex;
         padding: 3rem 5rem 2rem 5rem;
         color: #bdbdbd;
       }
