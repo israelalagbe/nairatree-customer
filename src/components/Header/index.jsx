@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import "./index.scss";
 import {
     Collapse,
     Navbar,
@@ -15,16 +15,18 @@ import {
     NavbarText
   } from 'reactstrap';
   
-import "./index.scss";
+import logo from '../../img/logo.svg';
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
   return (
-    <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+    <div className='home-header'>
+      <Navbar  dark expand="md">
+        <NavbarBrand href="/">
+            <img src={logo} alt="NairaTree" className='logo'/>
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
