@@ -22,10 +22,48 @@
         }
 
         .nav-link{
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-family: $font-light;
             color: white;
         }
+        .arrow-down-icon{
+            margin-top: -3px;
+        }
+        .form-group{
+            margin-bottom: 0px;
+            input,select{
+                font-size: 0.8rem;
+                font-family: $font-light;
+                color: black;
+                border-radius: .10rem;
+                background: white;
+                border-color: white;
+            }
+            .input-group-text{
+                // padding: .375rem .400rem;
+                background: #F3CA3E;
+                border-color: #F3CA3E;
+                color: #242C49;
+                font-weight: bolder;
+                border-radius: .10rem;
+            }
+
+            .search-btn{
+                cursor: pointer;
+            }
+            .search-btn:active{
+                opacity: 0.9;
+            }
+
+            &.search-form{
+                width: 20rem;
+            }
+
+        }
+
+        
+        
+        
         
     }
 
