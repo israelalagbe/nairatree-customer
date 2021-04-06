@@ -1,0 +1,106 @@
+.registration-decision-page {
+  padding: 2rem 4rem;
+  .first {
+    .go-back {
+      padding: 3rem 5rem;
+      color: #bdbdbd;
+    }
+    .how-do {
+      text-align: center;
+      margin-top: 5rem;
+      .tap {
+        margin-top: 5rem;
+        margin-bottom: 3rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .first {
+          height: 50px;
+          width: 350px;
+          background-color: #242c49;
+          border-radius: 3px;
+          margin-right: 2rem;
+          a {
+            text-decoration: none;
+            color: white;
+          }
+        }
+        .second {
+          height: 50px;
+          width: 350px;
+          background-color: red;
+          border-radius: 3px;
+          a {
+            text-decoration: none;
+            color: #333333;
+          }
+        }
+        p {
+          a {
+            text-decoration: none;
+            color: #333333;
+          }
+        }
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    padding: 10rem;
+    .copyright {
+      width: 50%;
+    }
+    .footer {
+      width: 50%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1289px) {
+  .registration-decision-page {
+    .bottom {
+      padding: 2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 823px) {
+  .registration-decision-page {
+    padding: 1rem;
+    .first {
+      .go-back {
+        padding: 1rem;
+      }
+    }
+    .bottom {
+      padding: 1rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 631px) {
+  .registration-decision-page {
+    .first {
+      .how-do {
+        .tap {
+          flex-direction: column;
+          align-items: center;
+          .first {
+            margin-right: 0rem;
+            margin-bottom: 2rem;
+          }
+        }
+      }
+    }
+    .bottom {
+      flex-direction: column;
+      text-align: center;
+      .copyright {
+        width: 100%;
+      }
+      .footer {
+        width: 100%;
+      }
+    }
+  }
+}
