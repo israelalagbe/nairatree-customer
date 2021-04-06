@@ -28,23 +28,18 @@ function Login() {
               <AppInput img={avatar} inputText="Name" />
               <AppInput img={lock} inputText="Password" />
               <div className="app-button">
-                <AppButton
-                  buttonText="Login to naira tree"
-                  classname="login-button"
-                />
+                <AppButton buttonText="Login to naira tree" classname="login-button" />
               </div>
             </Form>
             <div className="new-forgot">
               <p>
-                I'm new to NairaTree,
-                <Link to="/register">Create an account.</Link>
+                I'm new to NairaTree,&nbsp;<Link to="/register">Create an account.</Link>
               </p>
               <p>
                 I already forgot my password,
                 <Link to="/reset-password"> Let me reset.</Link>
               </p>
             </div>
-            
           </div>
         </div>
         <Copyright />
