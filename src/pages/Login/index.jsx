@@ -44,10 +44,11 @@ function Login() {
                 <Link to="/reset-password"> Let me reset.</Link>
               </p>
             </div>
-            <Copyright />
-            <Footer />
+            
           </div>
         </div>
+        <Copyright />
+        <Footer />
       </div>
       <div className="second">
         <h4>
