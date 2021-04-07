@@ -4,7 +4,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Link } from "react-router-dom";
 import "./index.scss";
 import AppLogo from "../../components/AppLogo";
-import AppInput from "../../components/AppInput";
+import AuthInput from "../../components/AuthInput";
 import AppButton from "../../components/AppButton";
 import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
@@ -25,8 +25,9 @@ function Login() {
           <div className="inner-2">
             <Form>
               <h4>Login</h4>
-              <AppInput img={avatar} inputText="Name" />
-              <AppInput img={lock} inputText="Password" />
+              <AuthInput img={avatar} inputText="Name" />
+              <br />
+              <AuthInput img={lock} inputText="Password" />
               <div className="app-button">
                 <AppButton
                   buttonText="Login to naira tree"
