@@ -24,14 +24,14 @@ function RegistrationDecision() {
             <div className="first">
               <AppButton
                 buttonText="I want to shop and buy"
-                className="buyButton"
+                classname="buyButton"
                 onClick={() => history.push("/")}
               />
             </div>
             <div className="second">
               <AppButton
                 buttonText="I want to become a vendor"
-                className="buyButton"
+                classname="buyButton"
                 onClick={() => history.push("/vendor")}
               />
             </div>

@@ -2,21 +2,37 @@ import React from "react";
 import Header from "../../components/Header";
 import { Row, Col } from "reactstrap";
 import SearchInputs from "../../components/SearchInputs";
+import ProductItem from "../../components/ProductItem";
+import "./index.scss";
 
 function ProductSearch() {
   return (
-    <div>
+    <div className="product-search">
       <Header />
-      <div>
-        <Row>
-          <Col xs="4">
-            <SearchInputs />
-          </Col>
-          <Col xs="8">
-            <p>127 Search result for "IPHONE 12"</p>
-          </Col>
-        </Row>
-      </div>
+
+      <Row>
+        <Col xs="4">
+          <SearchInputs />
+        </Col>
+        <Col xs="8">
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+        </Col>
+      </Row>
     </div>
   );
 }

@@ -55,8 +55,10 @@ function Register() {
               I have an account already,<Link to="/"> Login Here</Link>
             </p>
 
-            <Copyright />
-            <Footer />
+            <div className="bottom">
+              <Copyright />
+              <Footer />
+            </div>
           </div>
         </div>
       </div>

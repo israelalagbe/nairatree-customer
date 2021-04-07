@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FormGroup, Label, Input } from "reactstrap";
+import { Form } from "reactstrap";
 import AppCheck from "../AppCheck";
 
 function SearchInputs() {
@@ -7,7 +7,7 @@ function SearchInputs() {
     <div>
       <div>
         <p>Category </p>
-        <h5>Phones and accessories</h5>
+        <p>Phones and accessories</p>
       </div>
       <Form>
         <div>
