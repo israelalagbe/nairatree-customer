@@ -26,7 +26,7 @@ function Login() {
             <Form>
               <h4>Login</h4>
               <AuthInput img={avatar} inputText="Name" />
-              <br />
+              
               <AuthInput img={lock} inputText="Password" />
               <div className="app-button">
                 <AppButton
