@@ -1,0 +1,19 @@
+.details {
+  .details-main {
+    display: flex;
+    .main-1 {
+      .big {
+        img {
+          height: 328px;
+          width: 280px;
+        }
+      }
+      .small {
+        img {
+          height: 33px;
+          width: 33px;
+        }
+      }
+    }
+  }
+}
