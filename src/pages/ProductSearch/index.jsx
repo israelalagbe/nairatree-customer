@@ -11,26 +11,15 @@ function ProductSearch() {
       <Header />
 
       <Row>
-        <Col xs="4">
+        <Col md="3">
           <SearchInputs />
         </Col>
-        <Col xs="8">
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
+        <Col md="9">
+          <section className='product-list'>
+            {(new Array(10).fill(null)).map(()=> <ProductItem />)}
+          </section>
+          
+          
         </Col>
       </Row>
     </div>
