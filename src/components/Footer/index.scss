@@ -1,7 +1,10 @@
+@import "/src//config/variables.scss";
+
 .footer {
   display: flex;
   justify-content: space-evenly;
   a {
+    font-family: $font-roboto-regular;
     color: #8898aa;
     text-decoration: none;
   }

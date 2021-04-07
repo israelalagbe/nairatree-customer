@@ -13,7 +13,7 @@ function RegistrationDecision() {
       <div className="first">
         <div className="go-back">
           <ArrowBackIcon />
-          Market
+          <Link to="/"> Market</Link>
         </div>
         <div className="how-do">
           <h4>How do you want to register?</h4>

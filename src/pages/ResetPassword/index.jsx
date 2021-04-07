@@ -1,6 +1,8 @@
 import React from "react";
 import "./index.scss";
-import { Form, FormGroup, Input } from "reactstrap";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { Form } from "reactstrap";
+import AppInput from "../../components/AppInput";
 import AppButton from "../../components/AppButton";
 import AppLogo from "../../components/AppLogo";
 import Copyright from "../../components/Copyright";
@@ -12,23 +14,12 @@ function ResetPassword() {
       <AppLogo />
       <Form>
         <h4>Reset Password</h4>
-        <FormGroup>
-          <Input
-            type="email"
-            name="email"
-            id="exampleEmail"
-            placeholder="New Password"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            type="email"
-            name="email"
-            id="exampleEmail"
-            placeholder="Confirm Password"
-          />
-        </FormGroup>
-        <AppButton buttonText="Reset Password" classname="reset-button" />
+        <AppInput inputText="New Password" />
+        <AppInput inputText="Confirm Password" />
+
+        <div className="app-button">
+          <AppButton buttonText="Reset Password" classname="reset-button" />
+        </div>
       </Form>
       <div className="bottom">
         <Copyright />

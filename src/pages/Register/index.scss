@@ -1,48 +1,80 @@
+@import "/src/config/variables.scss";
+
 .register-page {
   display: flex;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  .app-logo {
+    img {
+      width: 20%;
+      height: 40%;
+    }
+  }
+
   .first {
-    min-height: 90%;
     background-color: white;
     width: 50%;
     padding: 2rem 4rem;
     .inner {
+      min-height: 90vh;
       .go-back {
+        display: flex;
         padding: 3rem 5rem 2rem 5rem;
-        color: #bdbdbd;
+        cursor: pointer;
+        svg {
+          height: 1rem;
+          width: 1rem;
+          margin-top: 2px;
+        }
+        a {
+          text-decoration: none;
+          font-family: $font-roboto-light;
+          color: #bdbdbd;
+          font-size: 15px;
+
+          margin-left: 3px;
+        }
       }
       .inner-2 {
         text-align: center;
         form {
-          padding-top: 4rem;
           h4 {
             padding-bottom: 1rem;
+            font-family: $font-roboto-bold;
+            font-size: 18px;
           }
-          .input-group {
-            margin-bottom: 1rem;
-          }
-
           .form-check {
             margin-top: 2rem;
             margin-bottom: 1rem;
-            a {
-              text-decoration: none;
+            label {
+              margin-top: 3px;
+              color: #525f7f;
+              font-family: $font-opensans-regular;
+              font-size: 14px;
+              a {
+                text-decoration: none;
+                margin-left: 3px;
+              }
             }
           }
           .app-button {
             margin-bottom: 2rem;
             .register-button {
-              width: 100%;
+              width: 360px;
               background-color: #008952;
               border: none;
               height: 40px;
               border-radius: 3px;
               color: white;
+              font-family: $font-roboto-regular;
+              font-size: 14px;
             }
           }
         }
         p {
+          color: #525f7f;
+          font-family: $font-opensans-regular;
+          font-size: 14px;
           a {
             text-decoration: none;
           }
@@ -51,15 +83,25 @@
     }
   }
   .second {
+    position: relative;
     background-color: #f3ca3e;
     width: 50%;
     text-align: center;
     padding-top: 6rem;
-    .girl-img {
-      position: relative;
-      img {
-        bottom: 0;
+    h4 {
+      color: #242c49;
+      font-family: $font-roboto-bold;
+      font-size: 30px;
+      span {
+        font-family: $font-roboto-light;
       }
+    }
+    img {
+      position: absolute;
+      bottom: 0;
+      left: calc(50% - 350px);
+      width: 700px;
+      max-height: 80%;
     }
   }
 }

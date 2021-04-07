@@ -1,5 +1,44 @@
+@import "/src/config/variables.scss";
+
 .reset-password-page {
+  padding: 2rem 4rem;
+  .go-back {
+    padding: 3rem 5rem;
+    color: #bdbdbd;
+  }
+  form {
+    text-align: center;
+    margin-top: 9rem;
+    h4 {
+      padding-bottom: 1rem;
+      font-family: $font-roboto-bold;
+      font-size: 18px;
+    }
+    .input-group {
+      width: 360px !important;
+    }
+    .app-button {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      .reset-button {
+        width: 360px;
+        background-color: #008952;
+        border: none;
+        height: 40px;
+        border-radius: 3px;
+        color: white;
+        font-family: $font-roboto-regular;
+        font-size: 14px;
+      }
+    }
+  }
   .bottom {
     display: flex;
+    .copyright {
+      width: 50%;
+    }
+    .footer {
+      width: 50%;
+    }
   }
 }

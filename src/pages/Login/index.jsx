@@ -20,7 +20,7 @@ function Login() {
         <div className="inner">
           <div className="go-back">
             <ArrowBackIcon />
-            Market
+            <Link to="/"> Market</Link>
           </div>
           <div className="inner-2">
             <Form>
@@ -28,12 +28,16 @@ function Login() {
               <AppInput img={avatar} inputText="Name" />
               <AppInput img={lock} inputText="Password" />
               <div className="app-button">
-                <AppButton buttonText="Login to naira tree" classname="login-button" />
+                <AppButton
+                  buttonText="Login to naira tree"
+                  classname="login-button"
+                />
               </div>
             </Form>
             <div className="new-forgot">
               <p>
-                I'm new to NairaTree,&nbsp;<Link to="/register">Create an account.</Link>
+                I'm new to NairaTree,&nbsp;
+                <Link to="/register">Create an account.</Link>
               </p>
               <p>
                 I already forgot my password,
@@ -42,6 +46,7 @@ function Login() {
             </div>
           </div>
         </div>
+
         <Copyright />
         <Footer />
       </div>
