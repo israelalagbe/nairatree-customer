@@ -7,7 +7,7 @@ import "./index.scss";
 
 function ProductSearch() {
   return (
-    <div className="product-search">
+    <div className="product-search-page">
       <Header />
 
       <Row>
