@@ -10,7 +10,7 @@ function CartSuccess() {
     <div>
       <Header />
 
-      <div>
+      <div className="cart">
         <h5>Item added to Cart</h5>
         <AppButton
           buttonText="VIEW CART AND CHECKOUT"
