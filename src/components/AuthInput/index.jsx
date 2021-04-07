@@ -4,13 +4,18 @@ import {
   InputGroupAddon,
   InputGroupText,
   Input,
-  Row,
-  Col,
 } from "reactstrap";
 import error from "../../img/error.png";
 import "./index.scss";
 
-function AuthInput({ img, inputText, errorDiv }) {
+/**
+ * 
+ * @param {object} props 
+ * @param {string} [props.img]
+ * @param {string} [props.inputText]
+ * @param {string} [props.errorMessage]
+ */
+function AuthInput({ img, inputText,  errorMessage }) {
   return (
     <div className="auth-input-component">
       
@@ -22,11 +27,11 @@ function AuthInput({ img, inputText, errorDiv }) {
           </InputGroupAddon>
           <Input placeholder={inputText} />
         </InputGroup>  
-        {errorDiv ? (
+        {errorMessage ? (
           <div className="error">
             <img src={error} alt="#" />
             &nbsp;
-            <p>{errorDiv}</p>
+            <p>{errorMessage}</p>
           </div>
         ) : (
           ""
