@@ -1,4 +1,4 @@
-@import '/src/config/variables.scss';
+@import "/src/config/variables.scss";
 
 .forgot-password-page {
   padding: 2rem 4rem;
@@ -14,12 +14,7 @@
       h4 {
         margin-bottom: 2rem;
       }
-      .input-group {
-        margin-bottom: 1rem;
-        width: 50%;
-        margin-left: auto;
-        margin-right: auto;
-      }
+
       .app-button {
         margin-top: 3rem;
         margin-bottom: 3rem;

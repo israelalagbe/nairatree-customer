@@ -21,28 +21,27 @@ function Register() {
         <div className="inner">
           <div className="go-back">
             <ArrowBackIcon />
-            Market
+            <Link to="/"> Market</Link>
           </div>
           <div className="inner-2">
             <Form>
               <h4>Create an account</h4>
               <AppInput img={avatar} inputText="Name" />
-              <AppInput img={mail} inputText="Email" />
-              <Row>
-                <Col md="4" lg="4"></Col>
-                <Col md="6" lg="4">
-                  <AppInput img={mail} inputText="Email" />
-                </Col>
-                <Col sm="4">
-                  <AppInput img={mail} inputText="Email" />
-                </Col>
-              </Row>
+              <AppInput
+                img={mail}
+                inputText="Email"
+                errorDiv="Enter correct email address"
+              />
               <AppInput img={lock} inputText="Password" />
-              <AppInput img={lock} inputText="Confirm Password" />
+              <AppInput
+                img={lock}
+                inputText="Confirm Password"
+                errorDiv="Enter the same password"
+              />
               <FormGroup check>
                 <Label check>
                   <Input type="checkbox" /> I agree with the
-                  <Link to="/">Privacy Policy</Link>
+                  <Link to="/privacy-policy">Privacy Policy</Link>
                 </Label>
               </FormGroup>
               <div className="app-button">
@@ -55,6 +54,7 @@ function Register() {
             <p>
               I have an account already,<Link to="/"> Login Here</Link>
             </p>
+
             <Copyright />
             <Footer />
           </div>

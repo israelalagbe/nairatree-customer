@@ -7,12 +7,14 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import error from "../../img/error.png";
 import "./index.scss";
 
-function AppInput({ img, inputText }) {
+function AppInput({ img, inputText, errorDiv }) {
   return (
-    <Row>
-      <Col>
+    <Row className="inputRow">
+      <Col md="3" />
+      <Col md="6">
         <InputGroup>
           <InputGroupAddon addonType="prepend">
             <InputGroupText>
@@ -21,6 +23,16 @@ function AppInput({ img, inputText }) {
           </InputGroupAddon>
           <Input placeholder={inputText} />
         </InputGroup>
+      </Col>
+      <Col md="1">
+        {errorDiv ? (
+          <div className="error">
+            <img src={error} alt="#" />
+            <p>{errorDiv}</p>
+          </div>
+        ) : (
+          ""
+        )}
       </Col>
     </Row>
   );

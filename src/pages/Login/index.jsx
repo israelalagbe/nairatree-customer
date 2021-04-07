@@ -20,7 +20,7 @@ function Login() {
         <div className="inner">
           <div className="go-back">
             <ArrowBackIcon />
-            <p> Market</p>
+            <Link to="/"> Market</Link>
           </div>
           <div className="inner-2">
             <Form>
@@ -46,6 +46,7 @@ function Login() {
             </div>
           </div>
         </div>
+
         <Copyright />
         <Footer />
       </div>
