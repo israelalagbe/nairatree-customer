@@ -11,7 +11,6 @@ import productImageSample from "../../img/ProductSampleIMage.png";
 import formatMoney from "../../util/formatMoney";
 import { Link } from "react-router-dom";
 
-
 export default function Home() {
   return (
     <div className="home-page">
@@ -31,22 +30,17 @@ export default function Home() {
             </section>
             <section className="categories-list-card">
               {[1, 2, 3].map(() => (
-                <CategoryItem />
+                <CategoryItem  />
               ))}
             </section>
             <br />
-            <section className="product-list-container">
-              <div className='heading'>
-                  <span className='heading-text'>Popular Brands</span>
-                  <Link className='show-all'>Show all +</Link>
-              </div>
-              <div className="product-list-card">
-                
-                {[1, 2, 3].map(() => (
-                <ProductItem />
-              ))}
-              </div>
-            </section>
+            <ProductList allProductsLink="/products" title="Popular Brands" />
+            <br />
+            <ProductList allProductsLink="/products" title="Liquid Sales" />
+            <br />
+            <ProductList allProductsLink="/products" title="Cheapest this week" />
+            <br />
+            <ProductList allProductsLink="/products" title="Items you may like" />
           </div>
         </Col>
         <Col md={3}>
@@ -61,12 +55,36 @@ export default function Home() {
     </div>
   );
 }
-const ProductItem  = () => <div className="product-item pointer">
+
+/**
+ * 
+ * @param {object} props 
+ * @param {string} props.title
+ * @param {string} props.allProductsLink
+ */
+function ProductList({title, allProductsLink}) {
+  return (
+    <section className="product-list-container">
+      <div className="heading">
+        <span className="heading-text">{title}</span>
+        <Link to={allProductsLink} className="show-all">Show all +</Link>
+      </div>
+      <div className="product-list-card">
+        {[1, 2, 3, 4, 5].map(() => (
+          <ProductItem />
+        ))}
+      </div>
+    </section>
+  );
+}
+const ProductItem = () => (
+  <div className="product-item pointer">
     <img src={productImageSample} alt="" />
-    <span className='name'>Nikon D3200 FHS...</span>
-    <span className='store-name'>Veral Stores</span>
-    <span className='price'>{formatMoney(500700)}</span>
-</div>;
+    <span className="name">Nikon D3200 FHS...</span>
+    <span className="store-name">Veral Stores</span>
+    <span className="price">{formatMoney(500700)}</span>
+  </div>
+);
 
 function CategoryItem() {
   return (
