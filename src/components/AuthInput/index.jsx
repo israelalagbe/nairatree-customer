@@ -10,32 +10,30 @@ import {
 import error from "../../img/error.png";
 import "./index.scss";
 
-function AppInput({ img, inputText, errorDiv }) {
+function AuthInput({ img, inputText, errorDiv }) {
   return (
-    <Row className="inputRow">
-      <Col md="3" />
-      <Col md="6">
-        <InputGroup>
+    <div className="auth-input-component">
+      
+        <InputGroup size='lg'>
           <InputGroupAddon addonType="prepend">
             <InputGroupText>
               {img ? <img src={img} alt="icon" /> : ""}
             </InputGroupText>
           </InputGroupAddon>
           <Input placeholder={inputText} />
-        </InputGroup>
-      </Col>
-      <Col md="">
+        </InputGroup>  
         {errorDiv ? (
           <div className="error">
             <img src={error} alt="#" />
+            &nbsp;
             <p>{errorDiv}</p>
           </div>
         ) : (
           ""
         )}
-      </Col>
-    </Row>
+      
+    </div>
   );
 }
 
-export default AppInput;
+export default AuthInput;

@@ -1,7 +1,7 @@
 import React from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Form } from "reactstrap";
-import AppInput from "../../components/AppInput";
+import AuthInput from "../../components/AuthInput";
 import { Link } from "react-router-dom";
 import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
@@ -21,7 +21,7 @@ function ForgotPassword() {
       <div className="forgot">
         <Form>
           <h4>Please enter your email</h4>
-          <AppInput inputText="yourname@email.com" />
+          <AuthInput inputText="yourname@email.com" />
 
           <div className="errorDiv">
             <img src={error} alt="error" />
