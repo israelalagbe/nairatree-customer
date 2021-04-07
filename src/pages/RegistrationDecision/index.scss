@@ -42,10 +42,9 @@
           background-color: #242c49;
           border-radius: 10px;
           margin-right: 2rem;
-          a {
-            text-decoration: none;
-            color: white;
-            font-family: $font-regular;
+          button {
+            border: none;
+            background-color: none !important;
           }
         }
         .second {
@@ -53,8 +52,9 @@
           width: 350px;
           background-color: #fdfdfd;
           border-radius: 10px;
-          a {
-            text-decoration: none;
+          button {
+            border: none;
+
             color: #333333;
           }
         }
