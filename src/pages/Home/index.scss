@@ -1,33 +1,32 @@
-.home-page{
+@import "/src/config/variables.scss";
+
+.home-page {
     background: #DCDCDC;
-    height: 100%;
- 
+    min-height: 100%;
+    padding-bottom: 2rem;
 
-    header{
-        color: red;
-    }
 
-    .sidebar-promo{
+    .sidebar-promo {
         width: 70%;
 
-        img{
+        img {
             // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         }
     }
-    .products-content{
-        .banner-promo{
+
+    .products-content {
+        .banner-promo {
             width: 100%;
-            
         }
 
-        .banner-toggle{
-            align-self:  center;
+        .banner-toggle {
+            align-self: center;
             margin-top: 15px;
             margin-bottom: 15px;
             display: flex;
             justify-content: center;
-            
-            .ball{
+
+            .ball {
                 margin-right: 5px;
                 display: inline-block;
                 width: 8px;
@@ -35,11 +34,111 @@
                 background: #bdb9b9;
                 border-radius: 50%;
 
-                &.active{
+                &.active {
                     background: #868181;
                 }
             }
 
+        }
+
+        .categories-list-card {
+            height: 8rem;
+            background: white;
+            border-radius: 5px;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: row;
+            overflow: auto;
+
+            .category-item {
+                width: 8rem;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-right: 0.4rem;
+
+                img {
+                    border-radius: 50%;
+                    ;
+                }
+
+                span {
+                    font-family: $font-regular;
+                    font-size: small;
+                }
+            }
+        }
+
+        .product-list-container {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+
+            .heading{
+                padding: 0rem 1rem 2rem 0rem;
+                height: 1rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .show-all{
+                    font-family: $font-aller-regular;
+                    color: #698875;
+                    font-size: 0.7rem;
+                }
+                .heading-text{
+                    color:000000;
+                    font-family: $font-aller-regular;
+                }
+            }
+
+            .product-list-card {
+                height: 12rem;
+                
+                
+                
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                overflow-x: auto;
+
+                .product-item {
+                    height: 11rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 0.1rem;
+                    // background: red;
+
+                    img {
+                        width: 9rem;
+                        height: 7rem;
+                    }
+                    .name{
+                        font-family: $font-roboto-regular;
+                        color: #124F36;
+                    }
+                    .store-name{
+                        font-family: $font-roboto-regular;
+                        color: #828282;
+                        font-size: 0.4rem;
+                    }
+                    
+                    .price{
+                        font-family: $font-roboto-regular;
+                        color: #124F36;
+                        font-size: 0.8rem;
+                    }
+
+                    span {
+                        font-family: $font-regular;
+                        font-size: small;
+                    }
+                }
+            }
         }
 
     }

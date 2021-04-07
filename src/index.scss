@@ -212,6 +212,30 @@
   src: url("./fonts/Roboto-ThinItalic.ttf") format("truetype");
 }
 
+//Aller
+@font-face {
+  font-family: $font-aller-italic;
+  src: url("./fonts/Aller_It.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-aller-light;
+  src: url("./fonts/Aller_Lt.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-aller-regular;
+  src: url("./fonts/Aller_Rg.ttf") format("truetype");
+}
+
+
+@font-face {
+  font-family: $font-aller-bold;
+  src: url("./fonts/Aller_Bd.ttf") format("truetype");
+}
+
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -224,4 +248,5 @@ html,
   padding: 0;
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
 }

@@ -1,4 +1,6 @@
 /**
  * @param {number|string} value
  */
-export default (value, currency = '₦', toFixed=2) => currency + (String(value)).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+export default function formatMoney(value, currency = '₦', toFixed=2) {
+    return currency + (String(value)).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
