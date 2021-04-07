@@ -24,7 +24,7 @@ function AppInput({ img, inputText, errorDiv }) {
           <Input placeholder={inputText} />
         </InputGroup>
       </Col>
-      <Col md="1">
+      <Col md="">
         {errorDiv ? (
           <div className="error">
             <img src={error} alt="#" />

@@ -16,16 +16,16 @@ function ForgotPassword() {
       <AppLogo />
       <div className="go-back">
         <ArrowBackIcon />
-        <p>Login</p>
+        <Link to="/login"> Login</Link>
       </div>
       <div className="forgot">
         <Form>
           <h4>Please enter your email</h4>
           <AppInput inputText="yourname@email.com" />
 
-          <div>
+          <div className="errorDiv">
             <img src={error} alt="error" />
-            Email does not exist, Give it another shot!
+            <p> Email does not exist, Give it another shot!</p>
           </div>
           <div className="app-button">
             <AppButton buttonText="Reset Password" classname="forgot-button" />
