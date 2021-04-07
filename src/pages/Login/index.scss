@@ -12,6 +12,7 @@
   }
 
   .first {
+    overflow-y: scroll;
     background-color: white;
     width: 50%;
     padding: 2rem 4rem;
@@ -19,7 +20,9 @@
       min-height: 80vh;
       .go-back {
         display: flex;
-        padding: 3rem 5rem 2rem 5rem;
+        padding: 3rem 0;
+        margin: auto;
+        max-width: 23rem;
         cursor: pointer;
         svg {
           height: 1rem;
@@ -38,8 +41,8 @@
       .inner-2 {
         text-align: center;
         form {
-          margin-top: 2rem;
-          text-align: center;
+          margin: auto;
+          max-width: 23rem;
           h4 {
             padding-bottom: 1rem;
             font-family: $font-roboto-bold;
@@ -47,9 +50,9 @@
           }
           .app-button {
             margin-top: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             .login-button {
-              width: 360px;
+              width: 100%;
               background-color: #008952;
               border: none;
               height: 40px;

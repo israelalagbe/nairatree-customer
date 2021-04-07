@@ -3,7 +3,7 @@ import { Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import "./index.scss";
 import AppLogo from "../../components/AppLogo";
-import AppInput from "../../components/AppInput";
+import AuthInput from "../../components/AuthInput";
 import AppButton from "../../components/AppButton";
 import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
@@ -26,14 +26,14 @@ function Register() {
           <div className="inner-2">
             <Form>
               <h4>Create an account</h4>
-              <AppInput img={avatar} inputText="Name" />
-              <AppInput
+              <AuthInput img={avatar} inputText="Name" />
+              <AuthInput
                 img={mail}
                 inputText="Email"
                 errorDiv="Enter correct email address"
               />
-              <AppInput img={lock} inputText="Password" />
-              <AppInput
+              <AuthInput img={lock} inputText="Password" />
+              <AuthInput
                 img={lock}
                 inputText="Confirm Password"
                 errorDiv="Enter the same password"

@@ -4,7 +4,7 @@ import logo from "../../img/logo-coloured.svg";
 
 function AppLogo() {
   return (
-    <div className="app-logo">
+    <div className="app-auth-navbar">
       <img src={logo} alt="logo" />
     </div>
   );
