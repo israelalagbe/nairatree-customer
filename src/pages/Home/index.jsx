@@ -7,6 +7,10 @@ import promoImage2 from "../../img/promotion-image2.png";
 import bannerPromo from "../../img/banner-promo.png";
 
 import categoryIconSample from "../../img/category-sample-icon.png";
+import productImageSample from "../../img/ProductSampleIMage.png";
+import formatMoney from "../../util/formatMoney";
+import { Link } from "react-router-dom";
+
 
 export default function Home() {
   return (
@@ -26,19 +30,22 @@ export default function Home() {
               </div>
             </section>
             <section className="categories-list-card">
-                {[1,2,3,].map(()=> <CategoryItem />)}
+              {[1, 2, 3].map(() => (
+                <CategoryItem />
+              ))}
             </section>
-            <br/>
-            <section className='products-list-card'>
-
-            </section>
-            <br/>
-            <section className='products-list-card'>
-
-            </section>
-            <br/>
-            <section className='products-list-card'>
-
+            <br />
+            <section className="product-list-container">
+              <div className='heading'>
+                  <span className='heading-text'>Popular Brands</span>
+                  <Link className='show-all'>Show all +</Link>
+              </div>
+              <div className="product-list-card">
+                
+                {[1, 2, 3].map(() => (
+                <ProductItem />
+              ))}
+              </div>
             </section>
           </div>
         </Col>
@@ -54,6 +61,12 @@ export default function Home() {
     </div>
   );
 }
+const ProductItem  = () => <div className="product-item pointer">
+    <img src={productImageSample} alt="" />
+    <span className='name'>Nikon D3200 FHS...</span>
+    <span className='store-name'>Veral Stores</span>
+    <span className='price'>{formatMoney(500700)}</span>
+</div>;
 
 function CategoryItem() {
   return (
