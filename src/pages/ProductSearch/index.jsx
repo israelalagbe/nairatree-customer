@@ -12,31 +12,36 @@ function ProductSearch() {
     <div className="product-search-page">
       <Header />
 
-      <Row>
-        <Col md="3">
-          <div className="input-main">
-            <SearchInputs />
-          </div>
-        </Col>
-        <Col md="9">
-          <div className="main">
-            <div className="heading">
-              <span className="heading-text">
-                127 Search result for "IPHONE 12"
-              </span>
-              <Link to="/products" className="show-all">
-                View all +
-              </Link>
+      <div className="product-container">
+        <Row>
+          <Col md="2">
+            <div className="input-main">
+              <SearchInputs />
             </div>
-            <section className="product-list">
-              {new Array(10).fill(null).map(() => (
-                <ProductItem />
-              ))}
-            </section>
-          </div>
-          <AppPagination />
-        </Col>
-      </Row>
+          </Col>
+
+          <Col md="10">
+            <div className="main mr-4">
+              <div className="heading">
+                <span className="heading-text">
+                  127 Search result for "IPHONE 12"
+                </span>
+                <Link to="/products" className="view-all">
+                  VIEW ALL
+                </Link>
+              </div>
+              <section className="product-list">
+                {new Array(10).fill(null).map(() => (
+                  <ProductItem />
+                ))}
+              </section>
+            </div>
+            <div className="float-right">
+              <AppPagination />
+            </div>
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 }

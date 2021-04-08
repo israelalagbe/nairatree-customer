@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.scss";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Form } from "reactstrap";
 import AuthInput from "../../components/AuthInput";
 import AppButton from "../../components/AppButton";

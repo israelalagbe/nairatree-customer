@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import productImageSample from "../../img/ProductSampleIMage.png";
+import productImageSample from "../../img/ProductSampleImage.png";
 import formatMoney from "../../util/formatMoney";
 
 function ProductItem() {

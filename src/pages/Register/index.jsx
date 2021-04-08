@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
+import { Form, FormGroup, Label, Input } from "reactstrap";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import "./index.scss";
 import AppLogo from "../../components/AppLogo";
@@ -12,6 +12,7 @@ import avatar from "../../img/avatar.png";
 import mail from "../../img/mail.png";
 import lock from "../../img/lock.png";
 import { Link } from "react-router-dom";
+import PasswordStrength from "../../components/PasswordStrength";
 
 function Register() {
   return (
@@ -32,7 +33,10 @@ function Register() {
                 inputText="Email"
                 errorDiv="Enter correct email address"
               />
+
+              <PasswordStrength />
               <AuthInput img={lock} inputText="Password" />
+
               <AuthInput
                 img={lock}
                 inputText="Confirm Password"

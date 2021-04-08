@@ -2,24 +2,29 @@ import React from "react";
 import { Form } from "reactstrap";
 import AppCheck from "../AppCheck";
 import "./index.scss";
+import AppSlider from "../AppSlider";
 
 function SearchInputs() {
   return (
     <div className="search-inputs">
-      <div>
-        <p>Category </p>
-        <p>Phones and accessories</p>
+      <div className="first-part">
+        <h6 className="category">Category </h6>
+        <h6 className="category-2">Phones and accessories</h6>
       </div>
 
       <Form>
         <div className="main-inputs">
-          <h6>Price (#)</h6>
-          <div className="box">
-            <h6>100</h6>
-            <p>-</p>
-            <h6>100</h6>
+          <div className="price">
+            <h6>Price (#)</h6>
+            <AppSlider />
+            <div className="box">
+              <h6>100</h6>
+              <p>-</p>
+              <h6>100</h6>
+            </div>
           </div>
-          <div>
+
+          <div className="mt-4 category-check">
             <h6> Color</h6>
             <AppCheck checkText="Red" />
             <AppCheck checkText="Crimson" />
@@ -27,7 +32,7 @@ function SearchInputs() {
             <AppCheck checkText="Yellow" />
           </div>
 
-          <div>
+          <div className="mt-4 category-check">
             <h6> Condition</h6>
             <AppCheck checkText="New" />
             <AppCheck checkText="Refurbished" />
@@ -35,7 +40,7 @@ function SearchInputs() {
             <AppCheck checkText="Open Box" />
           </div>
 
-          <div>
+          <div className="mt-4 category-check">
             <h6> Brand</h6>
             <AppCheck checkText="Samsung" />
             <AppCheck checkText="Apple" />

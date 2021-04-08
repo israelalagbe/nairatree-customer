@@ -1,13 +1,63 @@
+@import "/src/config/variables.scss";
+
 .search-inputs {
+  .first-part {
+    background-color: #ffffff;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    .category {
+      color: #333333;
+      font-family: $font-barlow-regular;
+      font-size: 18px;
+    }
+    .category-2 {
+      color: #000000;
+      font-family: $font-roboto-regular;
+      font-size: 16px;
+    }
+  }
   .main-inputs {
-    .box {
-      display: flex;
-      justify-content: space-between;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 5px;
+    .price {
       h6 {
-        height: 28px;
-        width: 97px;
-        border: 2px solid #e0e0e0;
-        background-color: #f7f7f7;
+        color: #333333;
+        font-family: $font-barlow-regular;
+        font-size: 18px;
+      }
+      .makeStyles-root-1 {
+        width: 100%;
+        .MuiSlider-root {
+          color: #f3ca3e;
+        }
+      }
+      .box {
+        display: flex;
+        justify-content: space-between;
+        h6 {
+          height: 28px;
+          width: 97px;
+          border: 2px solid #e0e0e0;
+          border-radius: 5px;
+          background-color: #f7f7f7;
+          padding: 4px;
+        }
+      }
+    }
+    .category-check {
+      h6 {
+        color: #333333;
+        font-family: $font-barlow-regular;
+        font-size: 18px;
+      }
+      .form-check {
+        label {
+          color: #333333;
+          font-family: $font-roboto-regular;
+          font-size: 14px;
+        }
       }
     }
   }

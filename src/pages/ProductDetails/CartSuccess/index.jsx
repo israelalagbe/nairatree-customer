@@ -26,7 +26,9 @@ function CartSuccess() {
           />
         </div>
       </div>
-      <SingleProductDetails />
+      <div className="single">
+        <SingleProductDetails />
+      </div>
     </div>
   );
 }
