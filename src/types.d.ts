@@ -23,3 +23,11 @@ interface Category {
     id: string;
   }
   
+  interface Brand {
+    is_popular: boolean;
+    name: string;
+    image: string;
+    createdAt: string;
+    updatedAt: string;
+    id: string;
+  }

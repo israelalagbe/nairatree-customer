@@ -35,7 +35,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-  console.log(categories)
+ 
   useEffect(()=>{
     fetchCategories();
   }, [fetchCategories]);
@@ -93,7 +93,7 @@ export default function Header() {
             <ExpandMoreIcon fontSize='small' className="ml-1 arrow-down-icon" />
           </div>
           <div className="cart-nav">
-            <Badge badgeContent={4} color="error" fontSize='small'>
+            <Badge badgeContent={4} color="error" >
               <ShoppingBasketIcon fontSize='small' />
             </Badge>
             <span className="ml-3 text">Cart</span>

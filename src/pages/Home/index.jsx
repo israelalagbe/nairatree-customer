@@ -10,6 +10,7 @@ import productImageSample from "../../img/ProductSampleIMage.png";
 import formatMoney from "../../util/formatMoney";
 import { Link } from "react-router-dom";
 import { HomeCategoryListComponent } from "../../components/HomeCategoryListComponent";
+import { HomePopularBands } from "../../components/HomePopularBands";
 
 
 export default function Home() {
@@ -30,6 +31,8 @@ export default function Home() {
               </div>
             </section>
             <HomeCategoryListComponent />
+            <br />
+            <HomePopularBands />
             <br />
             <ProductList allProductsLink="/products" title="Popular Brands" />
             <br />
