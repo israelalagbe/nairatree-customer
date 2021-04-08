@@ -1,9 +1,9 @@
 import React from "react";
-import { Form, FormGroup, Label, Input } from "reactstrap";
+import { Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import "./index.scss";
 import AppLogo from "../../components/AppLogo";
-import AppInput from "../../components/AppInput";
+import AuthInput from "../../components/AuthInput";
 import AppButton from "../../components/AppButton";
 import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
@@ -21,19 +21,27 @@ function Register() {
         <div className="inner">
           <div className="go-back">
             <ArrowBackIcon />
-            Market
+            <Link to="/"> Market</Link>
           </div>
           <div className="inner-2">
             <Form>
               <h4>Create an account</h4>
-              <AppInput img={avatar} inputText="Name" />
-              <AppInput img={mail} inputText="Email" />
-              <AppInput img={lock} inputText="Password" />
-              <AppInput img={lock} inputText="Confirm Password" />
+              <AuthInput img={avatar} inputText="Name" />
+              <AuthInput
+                img={mail}
+                inputText="Email"
+                errorMessage="Enter correct email address"
+              />
+              <AuthInput img={lock} inputText="Password" />
+              <AuthInput
+                img={lock}
+                inputText="Confirm Password"
+                errorMessage="Enter the same password"
+              />
               <FormGroup check>
                 <Label check>
                   <Input type="checkbox" /> I agree with the
-                  <Link to="/">Privacy Policy</Link>
+                  <Link to="/privacy-policy">Privacy Policy</Link>
                 </Label>
               </FormGroup>
               <div className="app-button">
@@ -46,6 +54,7 @@ function Register() {
             <p>
               I have an account already,<Link to="/"> Login Here</Link>
             </p>
+
             <Copyright />
             <Footer />
           </div>
@@ -58,9 +67,8 @@ function Register() {
           <br />
           products from popular stores
         </h4>
-        <div className="girl-img">
-          <img src={girl} alt="girl" />
-        </div>
+
+        <img src={girl} alt="girl" />
       </div>
     </div>
   );

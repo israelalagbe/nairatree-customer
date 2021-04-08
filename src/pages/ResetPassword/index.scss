@@ -1,5 +1,80 @@
+@import "/src/config/variables.scss";
+
 .reset-password-page {
+  padding: 2rem 4rem;
+  .go-back {
+    padding: 3rem 5rem;
+    color: #bdbdbd;
+  }
+  form {
+    margin: auto;
+      max-width: 26rem;
+    text-align: center;
+    margin-top: 9rem;
+    h4 {
+      padding-bottom: 1rem;
+      font-family: $font-roboto-bold;
+      font-size: 18px;
+    }
+  
+    .app-button {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      .reset-button {
+        width: 100%;
+        background-color: #008952;
+        border: none;
+        height: 40px;
+        border-radius: 3px;
+        color: white;
+        font-family: $font-roboto-regular;
+        font-size: 14px;
+      }
+    }
+  }
   .bottom {
+    position: absolute;
+    bottom: 1rem;
     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    left: 0;
+    right:0;
+    .copyright {
+      width: 50%;
+      text-align: left;
+      padding-left: 2.4rem;
+      padding-bottom:1rem;
+    }
+    .footer {
+      justify-content: space-around;
+      width: 50%;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 844px) {
+  .reset-password-page {
+    padding: 2rem 2rem;
+    .go-back {
+      padding: 3rem 5rem 2rem 0rem;
+    }
+    .bottom {
+      display: block;
+      .copyright {
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer {
+        
+        width: 100%;
+        text-align: center;
+      }
+    }
   }
 }

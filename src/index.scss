@@ -1,0 +1,252 @@
+@import "./config/variables.scss";
+
+//Monteserrat
+@font-face {
+  font-family: $font-italic;
+  src: url("./fonts/Montserrat-Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-light;
+  src: url("./fonts/Montserrat-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-regular;
+  src: url("./fonts/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-medium;
+  src: url("./fonts/Montserrat-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-semi-bold;
+  src: url("./fonts/Montserrat-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-bold;
+  src: url("./fonts/Montserrat-Bold.ttf") format("truetype");
+}
+
+//Barlow
+@font-face {
+  font-family: $font-barlow-black;
+  src: url("./fonts/Barlow-Black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-barlow-blackitalic;
+  src: url("./fonts/Barlow-BlackItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-barlow-bold;
+  src: url("./fonts/Barlow-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-barlow-bolditalic;
+  src: url("./fonts/Barlow-BoldItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-barlow-extrabold;
+  src: url("./fonts/Barlow-ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-barlow-extrabolditalic;
+  src: url("./fonts/Barlow-ExtraBoldItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-barlow-extralight;
+  src: url("./fonts/Barlow-ExtraLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-barlow-extralightitalic;
+  src: url("./fonts/Barlow-ExtraLightItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-barlow-italic;
+  src: url("./fonts/Barlow-Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-barlow-light;
+  src: url("./fonts/Barlow-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-barlow-lightitalic;
+  src: url("./fonts/Barlow-LightItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-barlow-medium;
+  src: url("./fonts/Barlow-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-barlow-mediumitalic;
+  src: url("./fonts/Barlow-MediumItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-barlow-regular;
+  src: url("./fonts/Barlow-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-barlow-semibold;
+  src: url("./fonts/Barlow-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-barlow-semibolditalic;
+  src: url("./fonts/Barlow-SemiBoldItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-barlow-thin;
+  src: url("./fonts/Barlow-Thin.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-barlow-thinitalic;
+  src: url("./fonts/Barlow-ThinItalic.ttf") format("truetype");
+}
+
+//Open Sans
+
+@font-face {
+  font-family: $font-opensans-bold;
+  src: url("./fonts/OpenSans-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-opensans-bolditalic;
+  src: url("./fonts/OpenSans-BoldItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-opensans-extrabold;
+  src: url("./fonts/OpenSans-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-opensans-extrabolditalic;
+  src: url("./fonts/OpenSans-ExtraBoldItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-opensans-italic;
+  src: url("./fonts/OpenSans-Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-opensans-light;
+  src: url("./fonts/OpenSans-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-opensans-lightitalic;
+  src: url("./fonts/OpenSans-LightItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-opensans-regular;
+  src: url("./fonts/OpenSans-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-opensans-semibold;
+  src: url("./fonts/OpenSans-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-opensans-semibolditalic;
+  src: url("./fonts/OpenSans-SemiBoldItalic.ttf") format("truetype");
+}
+
+//Roboto
+
+@font-face {
+  font-family: $font-roboto-black;
+  src: url("./fonts/Roboto-Black.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-roboto-blackitalic;
+  src: url("./fonts/Roboto-BlackItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-roboto-bold;
+  src: url("./fonts/Roboto-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-roboto-bolditalic;
+  src: url("./fonts/Roboto-BoldItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-roboto-italic;
+  src: url("./fonts/Roboto-Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-roboto-light;
+  src: url("./fonts/Roboto-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-opensans-lightitalic;
+  src: url("./fonts/Roboto-LightItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-roboto-medium;
+  src: url("./fonts/Roboto-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-roboto-mediumitalic;
+  src: url("./fonts/Roboto-MediumItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-roboto-regular;
+  src: url("./fonts/Roboto-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-roboto-thin;
+  src: url("./fonts/Roboto-Thin.ttf") format("truetype");
+}
+@font-face {
+  font-family: $font-roboto-thinitalic;
+  src: url("./fonts/Roboto-ThinItalic.ttf") format("truetype");
+}
+
+//Aller
+@font-face {
+  font-family: $font-aller-italic;
+  src: url("./fonts/Aller_It.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-aller-light;
+  src: url("./fonts/Aller_Lt.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: $font-aller-regular;
+  src: url("./fonts/Aller_Rg.ttf") format("truetype");
+}
+
+
+@font-face {
+  font-family: $font-aller-bold;
+  src: url("./fonts/Aller_Bd.ttf") format("truetype");
+}
+
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}

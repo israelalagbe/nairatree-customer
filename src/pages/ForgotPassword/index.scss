@@ -1,5 +1,121 @@
+@import "/src/config/variables.scss";
+
 .forgot-password-page {
-  .bottom {
+  padding: 2rem 4rem;
+  min-height: 100%;
+  overflow-x: hidden;
+  
+  .go-back {
+
     display: flex;
+    padding: 3rem 5rem 2rem 6rem;
+    cursor: pointer;
+    svg {
+      height: 1rem;
+      width: 1rem;
+      margin-top: 2px;
+    }
+    a {
+      text-decoration: none;
+      font-family: $font-roboto-light;
+      color: #bdbdbd;
+      font-size: 15px;
+      margin-left: 3px;
+    }
+  }
+  .forgot {
+    text-align: center;
+    margin-top: 2rem;
+    form {
+      margin: auto;
+      max-width: 30rem;
+      h4 {
+        margin-bottom: 2rem;
+        color: #000000;
+        font-family: $font-regular;
+        font-size: 18px;
+      }
+
+      .errorDiv {
+        display: flex;
+        justify-content: center;
+        img {
+          width: 1rem;
+          height: 1rem;
+        }
+        p {
+          color: #e10000;
+          font-size: 11px;
+          font-family: $font-roboto-regular;
+          margin-left: 10px;
+        }
+      }
+
+      .app-button {
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+        .forgot-button {
+          width: 90%;
+          background-color: #008952;
+          border: none;
+          height: 40px;
+          border-radius: 3px;
+          color: white;
+          font-family: $font-roboto-regular;
+        }
+      }
+    }
+    p {
+      color: #525f7f;
+      font-family: $font-opensans-regular;
+      font-size: 14px;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+  .bottom {
+    position: absolute;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    left: 0;
+    right:0;
+    .copyright {
+      width: 50%;
+      text-align: left;
+      padding-left: 2.4rem;
+      padding-bottom:1rem;
+    }
+    .footer {
+      justify-content: space-around;
+      width: 50%;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+@media only screen and (max-width: 844px) {
+  .forgot-password-page {
+    padding: 2rem 2rem;
+    .go-back {
+      padding: 3rem 5rem 2rem 0rem;
+    }
+    .bottom {
+      display: block;
+      .copyright {
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer {
+        
+        width: 100%;
+        text-align: center;
+      }
+    }
   }
 }

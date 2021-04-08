@@ -1,3 +1,12 @@
-.copyright{
-    text-align: center;
+@import "/src//config/variables.scss";
+
+.copyright {
+  text-align: center;
+  p {
+    color: #525f7f;
+    font-family: $font-roboto-regular;
+    span {
+      color: #008952;
+    }
+  }
 }

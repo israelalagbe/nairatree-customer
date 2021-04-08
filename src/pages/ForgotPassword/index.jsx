@@ -1,6 +1,8 @@
 import React from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { Form, FormGroup, Input } from "reactstrap";
+import { Form } from "reactstrap";
+import AuthInput from "../../components/AuthInput";
+import { Link } from "react-router-dom";
 import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
 import AppLogo from "../../components/AppLogo";
@@ -12,27 +14,28 @@ function ForgotPassword() {
   return (
     <div className="forgot-password-page">
       <AppLogo />
-      <div>
+      <div className="go-back">
         <ArrowBackIcon />
-        Login
+        <Link to="/login"> Login</Link>
       </div>
-      <Form>
-        <h4>Please enter your email</h4>
-        <FormGroup>
-          <Input
-            type="email"
-            name="email"
-            id="exampleEmail"
-            placeholder="yourname@email.com"
-          />
-        </FormGroup>
-        <div>
-          <img src={error} alt="error" />
-          Email does not exist, Give it another shot!
-        </div>
-        <AppButton buttonText="Reset Password" classname="forgot-button" />
-      </Form>
-      <p>I can't remember my email, Create a new account</p>
+      <div className="forgot">
+        <Form>
+          <h4>Please enter your email</h4>
+          <AuthInput inputText="yourname@email.com" />
+
+          <div className="errorDiv">
+            <img src={error} alt="error" />
+            <p> Email does not exist, Give it another shot!</p>
+          </div>
+          <div className="app-button">
+            <AppButton buttonText="Reset Password" classname="forgot-button" />
+          </div>
+        </Form>
+        <p>
+          I can't remember my email,
+          <Link to="/register"> Create a new account</Link>
+        </p>
+      </div>
       <div className="bottom">
         <Copyright />
         <Footer />
