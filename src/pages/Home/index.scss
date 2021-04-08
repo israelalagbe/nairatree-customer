@@ -50,83 +50,61 @@
 
       .category-item {
         width: 8rem;
+        height: 8rem;
         height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         margin-right: 0.4rem;
+        white-space: nowrap;
 
         img {
+          width: 6rem;
+          height: 6rem;
           border-radius: 50%;
+          ;
         }
 
-        .categories-list-card {
-            height: 8rem;
-            background: white;
-            border-radius: 5px;
-            padding: 0.5rem;
-            display: flex;
-            flex-direction: row;
-            overflow: auto;
-
-            .category-item {
-                width: 8rem;
-                height: 8rem;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                margin-right: 0.4rem;
-                white-space: nowrap;
-                img {
-                    width: 6rem;
-                    height: 6rem;
-                    border-radius: 50%;
-                    ;
-                }
-
-                span {
-                    font-family: $font-medium;
-                    font-size: 0.7rem;
-                }
-            }
+        span {
+          font-family: $font-medium;
+          font-size: 0.7rem;
         }
       }
     }
+  }
 
-    .product-list-container {
-      background: white;
-      padding: 1rem;
-      border-radius: 5px;
+  .product-list-container {
+    background: white;
+    padding: 1rem;
+    border-radius: 5px;
 
-      .heading {
-        padding: 0rem 1rem 2rem 0rem;
-        height: 1rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+    .heading {
+      padding: 0rem 1rem 2rem 0rem;
+      height: 1rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
 
-        .show-all {
-          font-family: $font-aller-regular;
-          color: #698875;
-          font-size: 0.7rem;
-        }
-        .heading-text {
-          color: 000000;
-          font-family: $font-aller-regular;
-        }
+      .show-all {
+        font-family: $font-aller-regular;
+        color: #698875;
+        font-size: 0.7rem;
       }
 
-      .product-list-card {
-        height: 12rem;
-
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        overflow-x: auto;
+      .heading-text {
+        color: 000000;
+        font-family: $font-aller-regular;
       }
+    }
+
+    .product-list-card {
+      height: 12rem;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      overflow-x: auto;
     }
   }
 }
