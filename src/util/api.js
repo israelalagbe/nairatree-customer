@@ -19,9 +19,13 @@ function hideLoadingBar() {
 }
 const api = Axios.create({
   withCredentials: false,
+  headers: {
+    'Accept': 'application/json'
+  }
 });
 api.interceptors.request.use(function (config) {
   showLoadingBar()
+  
   return config;
 }, function (error) {
   hideLoadingBar()
@@ -31,6 +35,13 @@ api.interceptors.request.use(function (config) {
 
 api.interceptors.response.use(function (response) {
   hideLoadingBar();
+  if(response.data?.status=== 'error'){
+    return Promise.reject(new CustomHttpError(
+      response.data?.message, {
+        statusCode: 400,
+        responseText: response.data?.message
+      }));
+  }
   return response.data?.data ?? response.data;
 }, function (err) {
   hideLoadingBar();
@@ -43,9 +54,9 @@ api.interceptors.response.use(function (response) {
   }
   if (err.response.status === 401) {
     //
-    import('../store').then((module) => {
-      module.default.dispatch(logout());
-    });
+    // import('../store').then((module) => {
+    //   module.default.dispatch(logout());
+    // });
     return Promise.reject(new CustomHttpError('User session has expired!', {
       statusCode: err.response.status,
       responseText: 'User session has expired!'

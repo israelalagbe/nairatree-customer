@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.scss";
 import {
   Collapse,
@@ -27,11 +27,19 @@ import Badge from "@material-ui/core/Badge";
 
 import logo from "../../img/logo.svg";
 import search from "../../img/search.svg";
+import useCategoryStore from "../../stores/useCategoryStore";
 
 export default function Header() {
+  const { fetchCategories, categories } = useCategoryStore()
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  console.log(categories)
+  useEffect(()=>{
+    fetchCategories();
+  }, [fetchCategories]);
+
   return (
     <div className="home-header">
       <Navbar dark expand="md">

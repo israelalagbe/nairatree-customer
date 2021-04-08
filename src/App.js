@@ -1,12 +1,13 @@
 import React from 'react';
-import { Router, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer } from 'react-notifications';
 import { Routes } from "./routes";
 
 function App() {
   return (
     <>
+      <NotificationContainer />
       <Routes />
     </>
   );
