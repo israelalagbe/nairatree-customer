@@ -3,7 +3,7 @@ import { InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
 import error from "../../img/error.png";
 import "./index.scss";
 
-function AuthInput({ img, inputText, errorDiv }) {
+function AuthInput({ img, inputText, errorDiv, type, id, value, onChange }) {
   return (
     <div className="auth-input-component">
       <InputGroup size="lg">
@@ -12,7 +12,13 @@ function AuthInput({ img, inputText, errorDiv }) {
             {img ? <img src={img} alt="icon" /> : ""}
           </InputGroupText>
         </InputGroupAddon>
-        <Input placeholder={inputText} />
+        <Input
+          placeholder={inputText}
+          type={type}
+          id={id}
+          value={value}
+          onChange={onChange}
+        />
       </InputGroup>
       {errorDiv ? (
         <div className="error">

@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import zxcvbn from "zxcvbn";
-import FormField from "../FormField";
 import "./index.scss";
+import AuthInput from "../AuthInput";
+import lock from "../../img/lock.png";
 
 class PasswordStrength extends Component {
   constructor(props) {
@@ -72,10 +73,12 @@ class PasswordStrength extends Component {
     return (
       <div className="password-strength">
         <div className="position-relative">
-          <FormField
+          <AuthInput
+            img={lock}
+            inputText="Password"
             type="password"
             validator={this.validatePasswordStrong}
-            onStateChanged={this.stateChanged}
+            onChange={this.stateChanged}
             {...restProps}
           >
             <span className="d-block form-hint">
@@ -90,7 +93,7 @@ class PasswordStrength extends Component {
                 data-strength={strength}
               ></div>
             </div>
-          </FormField>
+          </AuthInput>
           <div className="position-absolute password-count mx-3">
             <span className={counterClass}>
               {passwordLength
