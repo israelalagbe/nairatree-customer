@@ -1,24 +1,21 @@
 import Axios from "axios";
-import {
-  showLoading,
-  hideLoading
-} from "react-redux-loading-bar";
+
 import {
   CustomHttpError
 } from "./Errors/CustomHttpError";
 import Notify from "./Notify";
-import { logout } from "../store/actions/loginAction";
+// import { logout } from "../store/actions/loginAction";
 
 function showLoadingBar() {
-  import('../store/index').then((store) => {
-    store.default.dispatch(showLoading());
-  });
+  // import('../store/index').then((store) => {
+  //   store.default.dispatch(showLoading());
+  // });
 }
 
 function hideLoadingBar() {
-  import('../store/index').then((store) => {
-    store.default.dispatch(hideLoading());
-  });
+  // import('../store/index').then((store) => {
+  //   store.default.dispatch(hideLoading());
+  // });
 }
 const api = Axios.create({
   withCredentials: false,
