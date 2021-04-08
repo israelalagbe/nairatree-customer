@@ -1,8 +1,11 @@
 import React from "react";
-import "./index.scss";
 
-function AppButton({ buttonText, classname }) {
-  return <button className={classname}>{buttonText}</button>;
+function AppButton({ buttonText, classname, onClick }) {
+  return (
+    <button className={classname} onClick={onClick}>
+      {buttonText}
+    </button>
+  );
 }
 
 export default AppButton;

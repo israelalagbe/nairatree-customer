@@ -8,7 +8,7 @@
   }
   form {
     margin: auto;
-      max-width: 26rem;
+    max-width: 26rem;
     text-align: center;
     margin-top: 9rem;
     h4 {
@@ -16,7 +16,7 @@
       font-family: $font-roboto-bold;
       font-size: 18px;
     }
-  
+
     .app-button {
       margin-top: 3rem;
       margin-bottom: 3rem;
@@ -40,12 +40,13 @@
     align-items: flex-start;
     width: 100%;
     left: 0;
-    right:0;
+    right: 0;
+    padding: 0 10rem;
     .copyright {
       width: 50%;
       text-align: left;
       padding-left: 2.4rem;
-      padding-bottom:1rem;
+      padding-bottom: 1rem;
     }
     .footer {
       justify-content: space-around;
@@ -56,6 +57,13 @@
   }
 }
 
+@media only screen and (max-width: 1289px) {
+  .reset-password-page {
+    .bottom {
+      padding: 0 !important;
+    }
+  }
+}
 
 @media only screen and (max-width: 844px) {
   .reset-password-page {
@@ -71,7 +79,6 @@
       }
 
       .footer {
-        
         width: 100%;
         text-align: center;
       }

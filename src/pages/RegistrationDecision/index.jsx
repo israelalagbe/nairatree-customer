@@ -4,9 +4,12 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import AppLogo from "../../components/AppLogo";
 import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
+import AppButton from "../../components/AppButton";
+import { useHistory } from "react-router-dom";
 import "./index.scss";
 
 function RegistrationDecision() {
+  const history = useHistory();
   return (
     <div className="registration-decision-page">
       <AppLogo />
@@ -19,10 +22,18 @@ function RegistrationDecision() {
           <h4>How do you want to register?</h4>
           <div className="tap">
             <div className="first">
-              <Link to="/login">I want to shop and buy</Link>
+              <AppButton
+                buttonText="I want to shop and buy"
+                classname="buyButton"
+                onClick={() => history.push("/")}
+              />
             </div>
             <div className="second">
-              <Link to="/login">I want to become a vendor</Link>
+              <AppButton
+                buttonText="I want to become a vendor"
+                classname="buyButton"
+                onClick={() => history.push("/vendor")}
+              />
             </div>
           </div>
           <p>

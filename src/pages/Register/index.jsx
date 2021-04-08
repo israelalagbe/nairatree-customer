@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
+import { Form, FormGroup, Label, Input } from "reactstrap";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import "./index.scss";
 import AppLogo from "../../components/AppLogo";
@@ -32,7 +32,9 @@ function Register() {
                 inputText="Email"
                 errorDiv="Enter correct email address"
               />
+
               <AuthInput img={lock} inputText="Password" />
+
               <AuthInput
                 img={lock}
                 inputText="Confirm Password"
@@ -55,8 +57,10 @@ function Register() {
               I have an account already,<Link to="/"> Login Here</Link>
             </p>
 
-            <Copyright />
-            <Footer />
+            <div className="bottom">
+              <Copyright />
+              <Footer />
+            </div>
           </div>
         </div>
       </div>
