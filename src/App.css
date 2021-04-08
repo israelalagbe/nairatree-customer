@@ -11,6 +11,6 @@
   cursor: pointer;
 }
 
-.pointer:active{
-    opacity: 0.9;
+.pointer:active {
+  opacity: 0.9;
 }

@@ -1,0 +1,16 @@
+.product-details {
+  background-color: #fcfcff;
+  .product-details-main {
+    padding: 1rem 3rem;
+    .makeStyles-root-1 {
+      display: flex;
+      img {
+        margin-top: 1.3rem;
+        margin-right: 1.3rem;
+      }
+    }
+    .details {
+      margin-top: 1rem;
+    }
+  }
+}

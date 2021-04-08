@@ -6,8 +6,7 @@ import promoImage1 from "../../img/promotion-image-1.png";
 import promoImage2 from "../../img/promotion-image2.png";
 import bannerPromo from "../../img/banner-promo.png";
 
-import productImageSample from "../../img/ProductSampleIMage.png";
-import formatMoney from "../../util/formatMoney";
+import ProductItem from "../../components/ProductItem";
 import { Link } from "react-router-dom";
 import { HomeCategoryListComponent } from "../../components/HomeCategoryListComponent";
 import { HomePopularBands } from "../../components/HomePopularBands";
@@ -23,7 +22,11 @@ export default function Home() {
         <Col md={8}>
           <div className="products-content">
             <section>
-              <img src={bannerPromo} alt="Banner Promotion" className="banner-promo" />
+              <img
+                src={bannerPromo}
+                alt="Banner Promotion"
+                className="banner-promo"
+              />
               <div className="banner-toggle">
                 <span className="ball"></span>
                 <span className="ball active"></span>
@@ -38,17 +41,31 @@ export default function Home() {
             <br />
             <ProductList allProductsLink="/products" title="Liquid Sales" />
             <br />
-            <ProductList allProductsLink="/products" title="Cheapest this week" />
+            <ProductList
+              allProductsLink="/products"
+              title="Cheapest this week"
+            />
             <br />
-            <ProductList allProductsLink="/products" title="Items you may like" />
+            <ProductList
+              allProductsLink="/products"
+              title="Items you may like"
+            />
           </div>
         </Col>
         <Col md={3}>
           <div className="sidebar-promo">
-            <img className="fill-container" src={promoImage1} alt="Promotion 1" />
+            <img
+              className="fill-container"
+              src={promoImage1}
+              alt="Promotion 1"
+            />
           </div>
           <div className="sidebar-promo mt-3">
-            <img className="fill-container" src={promoImage2} alt="Promotion 2" />
+            <img
+              className="fill-container"
+              src={promoImage2}
+              alt="Promotion 2"
+            />
           </div>
         </Col>
       </Row>
@@ -79,13 +96,5 @@ function ProductList({ title, allProductsLink }) {
     </section>
   );
 }
-const ProductItem = () => (
-  <div className="product-item pointer">
-    <img src={productImageSample} alt="" />
-    <span className="name">Nikon D3200 FHS...</span>
-    <span className="store-name">Veral Stores</span>
-    <span className="price">{formatMoney(500700)}</span>
-  </div>
-);
 
 

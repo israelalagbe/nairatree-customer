@@ -78,14 +78,14 @@
             }
           }
         }
-        // p {
-        //   color: #525f7f;
-        //   font-family: $font-opensans-regular;
-          
-        //   a {
-        //     text-decoration: none;
-        //   }
-        // }
+        p {
+          color: #525f7f;
+          font-family: $font-opensans-regular;
+          font-size: 14px;
+          a {
+            text-decoration: none;
+          }
+        }
       }
     }
   }
