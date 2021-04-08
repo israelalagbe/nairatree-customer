@@ -7,7 +7,7 @@ import delay from '../util/delay';
 import Notify from '../util/Notify';
 import reportError from '../util/reportError';
 
-
+import { devtools } from 'zustand/middleware'
 /**
  * @typedef {Object} InitialStateType
  * @prop {Brand[]} popularBrands
@@ -52,6 +52,6 @@ const useBrandStore = create(
       }
     },
   }))
-
+  
 
 export default useBrandStore;

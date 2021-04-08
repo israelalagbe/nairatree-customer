@@ -15,10 +15,10 @@ export const HomePopularBands = () => {
   return (
     <section className="home-popular-bands-component">
       <div className="heading">
-        <span className="heading-text">Popular Brand</span>
-        <Link to={'popular'} className="show-all">
+        <span className="heading-text">Popular Brands</span>
+        {/* <Link to={'popular'} className="show-all">
           Show all +
-        </Link>
+        </Link> */}
       </div>
       <div className="brands-list-card">
       <LoadingTrigger isLoading={popularBrandsLoading}>

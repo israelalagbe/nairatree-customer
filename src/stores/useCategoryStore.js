@@ -38,7 +38,6 @@ const useCategoryStore = create(
       if(!get().categories.length){
         set((state)=> ({...state, categoriesLoading: true}))
       }
-      await delay(3000)
       try{
         const categories = await getCategories();
         
