@@ -30,7 +30,7 @@ function Register() {
               <AuthInput
                 img={mail}
                 inputText="Email"
-                errorDiv="Enter correct email address"
+                errorMessage="Enter correct email address"
               />
 
               <AuthInput img={lock} inputText="Password" />
@@ -38,7 +38,7 @@ function Register() {
               <AuthInput
                 img={lock}
                 inputText="Confirm Password"
-                errorDiv="Enter the same password"
+                errorMessage="Enter the same password"
               />
               <FormGroup check>
                 <Label check>

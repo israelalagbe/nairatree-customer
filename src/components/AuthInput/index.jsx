@@ -3,7 +3,18 @@ import { InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
 import error from "../../img/error.png";
 import "./index.scss";
 
-function AuthInput({ img, inputText, errorDiv, type, id, value, onChange }) {
+/**
+ * 
+ * @param {object} props 
+ * @param {string} [props.img]
+ * @param {string} [props.inputText]
+ * @param {string} [props.errorMessage]
+ * @param {*} [props.type]
+ * @param {string} [props.id]
+ * @param {string} [props.value]
+ * @param {(any)=>any} [props.onChange]
+ */
+function AuthInput({ img, inputText, errorMessage, type, id, value, onChange }) {
   return (
     <div className="auth-input-component">
       <InputGroup size="lg">
@@ -20,11 +31,11 @@ function AuthInput({ img, inputText, errorDiv, type, id, value, onChange }) {
           onChange={onChange}
         />
       </InputGroup>
-      {errorDiv ? (
+      {errorMessage ? (
         <div className="error">
           <img src={error} alt="#" />
           &nbsp;
-          <p>{errorDiv}</p>
+          <p>{errorMessage}</p>
         </div>
       ) : (
         ""
