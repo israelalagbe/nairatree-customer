@@ -6,6 +6,10 @@ import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
 import Login from "../pages/Login";
 import RegistrationDecision from "../pages/RegistrationDecision";
+import ProductSearch from "../pages/ProductSearch";
+import CartSuccess from "../pages/ProductDetails/CartSuccess";
+import ProductDetails from "../pages/ProductDetails";
+import Cart from "../pages/Cart";
 
 export function Routes() {
   return (
@@ -27,6 +31,18 @@ export function Routes() {
       </Route>
       <Route path="/registration-decision" exact>
         <RegistrationDecision />
+      </Route>
+      <Route path="/product-search" exact>
+        <ProductSearch />
+      </Route>
+      <Route path="/cart-success" exact>
+        <CartSuccess />
+      </Route>
+      <Route path="/cart" exact>
+        <Cart />
+      </Route>
+      <Route path="/product-details" exact>
+        <ProductDetails />
       </Route>
     </BrowserRouter>
   );

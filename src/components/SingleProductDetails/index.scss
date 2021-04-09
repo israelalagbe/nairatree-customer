@@ -1,0 +1,13 @@
+@import "/src/config/variables.scss";
+
+.single-product-details {
+  h5 {
+    color: #333333;
+    font-family: $font-roboto-bold;
+    font-size: 15px;
+    padding-bottom: 5px;
+    span {
+      font-family: $font-roboto-regular;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import "/src/config/variables.scss";
+
+.product-tab {
+  background-color: white;
+  margin-top: 2rem;
+  padding: 2rem 1rem;
+  border-radius: 5px;
+  ul {
+    cursor: pointer;
+    li {
+      a {
+        color: #242c49 !important;
+        font-size: 15px;
+        font-family: $font-roboto-regular;
+        &.active {
+          color: red !important;
+        }
+      }
+    }
+  }
+  .tab-content {
+    margin-top: 2rem;
+  }
+}

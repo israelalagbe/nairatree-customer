@@ -12,19 +12,15 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText,
   InputGroup,
   InputGroupAddon,
   InputGroupText,
   Input,
-  Button,
 } from "reactstrap";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AccountCircle from "@material-ui/icons/AccountCircleOutlined";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingCartOutlined";
-
 import Badge from "@material-ui/core/Badge";
-
 import logo from "../../img/logo.svg";
 import search from "../../img/search.svg";
 import useCategoryStore from "../../stores/useCategoryStore";
@@ -56,7 +52,10 @@ export default function Header() {
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>
                 Best Brands
-                <ExpandMoreIcon fontSize='small' className="ml-1 arrow-down-icon" />
+                <ExpandMoreIcon
+                  fontSize="small"
+                  className="ml-1 arrow-down-icon"
+                />
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>Optddion 1</DropdownItem>
@@ -87,10 +86,9 @@ export default function Header() {
 
           <div className="nav-items-space-placeholder"></div>
           <div className="account-dropdown-nav">
-            
-            <AccountCircle fontSize='small' />
+            <AccountCircle fontSize="small" />
             <span className="ml-3 text">Account </span>
-            <ExpandMoreIcon fontSize='small' className="ml-1 arrow-down-icon" />
+            <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
           </div>
           <div className="cart-nav">
             <Badge badgeContent={4} color="error" >
