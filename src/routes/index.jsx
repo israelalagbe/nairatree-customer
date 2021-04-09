@@ -10,6 +10,8 @@ import ProductSearch from "../pages/ProductSearch";
 import CartSuccess from "../pages/ProductDetails/CartSuccess";
 import ProductDetails from "../pages/ProductDetails";
 import Cart from "../pages/Cart";
+import AddressInfo from "../pages/CheckoutPages/AddressInfo";
+import AddressDetails from "../pages/CheckoutPages/AddressDetails";
 
 export function Routes() {
   return (
@@ -43,6 +45,12 @@ export function Routes() {
       </Route>
       <Route path="/product-details" exact>
         <ProductDetails />
+      </Route>
+      <Route path="/address-information" exact>
+        <AddressInfo />
+      </Route>
+      <Route path="/address-details" exact>
+        <AddressDetails />
       </Route>
     </BrowserRouter>
   );
