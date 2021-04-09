@@ -105,6 +105,7 @@
       }
       .del-add {
         display: flex;
+        justify-content: flex-end;
         h6 {
           color: #4f4f4f;
           font-family: $font-roboto-regular;
