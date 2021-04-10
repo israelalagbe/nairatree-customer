@@ -87,6 +87,8 @@
 
 
         }
+
+        
         @media (max-width: 767px) {
             .form-group {
 
@@ -138,6 +140,7 @@
 
             .cart-nav {
                 right: 0;
+                
             }
 
             .cart-nav:active,
@@ -156,5 +159,17 @@
 
 
     }
-
+    
+}
+.header-account-popover{
+    min-width: 10rem;
+    a{
+        text-decoration: none;
+        font-size: 0.8em;
+        font-family: $font-regular;
+        color: #242C49;
+    }
+    font-family: $font-regular;
+    padding-bottom: 0.7rem;
+    padding-top: 0.7rem;
 }

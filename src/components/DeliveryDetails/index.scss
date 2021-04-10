@@ -1,0 +1,88 @@
+@import "/src/config/variables.scss";
+
+.delivery-details {
+  .first {
+    h5 {
+      color: #828282;
+      font-size: 13px;
+      font-family: $font-barlow-regular;
+    }
+    .details {
+      color: #333333;
+      font-size: 14px;
+      font-family: $font-barlow-regular;
+      border-bottom: 1px solid #f2f2f2;
+      padding-bottom: 5px;
+    }
+    .shipping {
+      padding: 1rem 0rem;
+      border-bottom: 1px solid #f2f2f2;
+      h4 {
+        color: #828282;
+        color: #828282;
+        font-size: 13px;
+        font-family: $font-barlow-regular;
+      }
+      h5 {
+        color: #333333;
+        font-size: 14px;
+        font-family: $font-barlow-regular;
+      }
+      h6 {
+        color: #333333;
+        font-size: 10px;
+        font-family: $font-barlow-regular;
+        span {
+          font-size: 14px;
+          font-family: $font-barlow-bold;
+        }
+      }
+    }
+    .subtotal {
+      padding: 1rem 0rem;
+      border-bottom: 1px solid #f2f2f2;
+      .first {
+        display: flex;
+        justify-content: space-between;
+        h5 {
+          font-size: 14px;
+          font-family: $font-barlow-regular;
+          color: #4f4f4f;
+        }
+        h6 {
+          font-size: 12px;
+          font-family: $font-barlow-regular;
+          color: #333333;
+        }
+      }
+    }
+    .total {
+      display: flex;
+      justify-content: space-between;
+      h5 {
+        font-size: 14px;
+        font-family: $font-barlow-regular;
+        color: #4f4f4f;
+      }
+      h6 {
+        font-size: 12px;
+        font-family: $font-barlow-regular;
+        color: #333333;
+      }
+    }
+  }
+  .second {
+    color: #fa9917;
+    color: #828282;
+    font-size: 13px;
+    font-family: $font-barlow-regular;
+  }
+  .next-button {
+    width: 100%;
+    background-color: #f3ca3e;
+    border: none;
+    color: #ffffff;
+    font-size: 15px;
+    font-family: $font-roboto-regular;
+  }
+}

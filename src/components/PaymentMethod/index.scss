@@ -1,0 +1,49 @@
+@import "/src/config/variables.scss";
+
+.payment-method {
+  .payment-form {
+    label {
+      color: #000000;
+      font-size: 14px;
+      font-family: $font-roboto-regular;
+    }
+    input {
+      border: 2px solid #dce6f0;
+      &::placeholder {
+        color: #e0e0e0;
+        font-size: 14px;
+      }
+    }
+    .details {
+      display: flex;
+      justify-content: space-between;
+      font-family: $font-roboto-regular;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      .all {
+        border: none;
+        background-color: #f3ca3e;
+        border-radius: 5px;
+        color: #ffffff;
+        height: 45px;
+        font-size: 15px;
+        font-family: $font-roboto-regular;
+        margin: 0.5rem 0rem;
+      }
+    }
+  }
+  .paystack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      padding-top: 15px;
+      margin-left: 10px;
+      color: #506686;
+      font-size: 14px;
+      font-family: $font-roboto-regular;
+    }
+  }
+}

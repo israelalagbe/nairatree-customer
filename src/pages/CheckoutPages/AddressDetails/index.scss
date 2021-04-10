@@ -1,0 +1,75 @@
+@import "/src/config/variables.scss";
+
+.address-details {
+  padding: 1rem;
+  background-color: #f7f7f7;
+  height: 100vh;
+  .go-back {
+    display: flex;
+    padding: 3rem 5rem 0rem 8rem;
+    cursor: pointer;
+    svg {
+      height: 1rem;
+      width: 1rem;
+      margin-top: 2px;
+    }
+    a {
+      text-decoration: none;
+      font-family: $font-roboto-light;
+      color: #bdbdbd;
+      font-size: 15px;
+      margin-left: 3px;
+    }
+  }
+  .accord-main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .makeStyles-root-1 {
+      max-width: 600px !important;
+      .MuiAccordion-rounded {
+        margin-bottom: 1rem;
+        box-shadow: none !important;
+        border-radius: 5px;
+        background-color: white;
+        filter: drop-shadow(2px 2px 2px rgba(0.25, 0.25, 0.25, 0.25));
+        .MuiAccordionSummary-root {
+          .MuiAccordionSummary-content {
+            p {
+              color: #bdbdbd;
+              font-size: 18px;
+              font-family: $font-barlow-regular;
+            }
+          }
+          .MuiAccordionSummary-expandIcon {
+            color: #bdbdbd;
+          }
+        }
+      }
+    }
+  }
+  .bottom {
+    position: absolute;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 0 10rem;
+    .copyright {
+      width: 50%;
+      text-align: left;
+      padding-left: 2.4rem;
+      padding-bottom: 1rem;
+    }
+    .footer {
+      justify-content: space-around;
+      width: 50%;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

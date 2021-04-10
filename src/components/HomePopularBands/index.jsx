@@ -6,11 +6,9 @@ import LoadingTrigger from "../LoadingTrigger";
 import './index.scss';
 
 export const HomePopularBands = () => {
-  const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
+  const { popularBrands, popularBrandsLoading } = useBrandStore();
 
-  useEffect(() => {
-    fetchPopularBrands();
-  }, []);
+
   
   return (
     <section className="home-popular-bands-component">
@@ -23,7 +21,7 @@ export const HomePopularBands = () => {
       <div className="brands-list-card">
       <LoadingTrigger isLoading={popularBrandsLoading}>
         {popularBrands.map((brand) => (
-          <CategoryItem key={brand.id} brand={brand} />
+          <BrandItem key={brand.id} brand={brand} />
         ))}
       </LoadingTrigger>
       </div>
@@ -37,11 +35,11 @@ export const HomePopularBands = () => {
  * @param {Object} props 
  * @param {Brand} props.brand
  */
-function CategoryItem({brand}) {
+function BrandItem({brand}) {
   return (
-    <div className="brand-item pointer">
-      <img src={brand.image} alt="" />
-      <span>{clipText(brand.name, 20)}</span>
-    </div>
+      <Link to={`/products?brand=${brand.name}`} className="brand-item pointer">
+        <img src={brand.image} alt="" />
+        <span>{clipText(brand.name, 20)}</span>
+      </Link>
   );
 }

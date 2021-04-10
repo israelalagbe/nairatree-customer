@@ -14,13 +14,13 @@ function ProductSearch() {
 
       <div className="product-container">
         <Row>
-          <Col md="2">
+          <Col md="3">
             <div className="input-main">
               <SearchInputs />
             </div>
           </Col>
 
-          <Col md="10">
+          <Col md="9">
             <div className="main mr-4">
               <div className="heading">
                 <span className="heading-text">

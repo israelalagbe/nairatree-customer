@@ -40,7 +40,6 @@ const useCategoryStore = create(
       }
       try{
         const categories = await getCategories();
-        
         set((state)=> ({...state, categories: categories}))
       }
       catch(e){

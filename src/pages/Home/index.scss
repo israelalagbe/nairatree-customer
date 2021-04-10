@@ -107,4 +107,13 @@
       overflow-x: auto;
     }
   }
+  @media (max-width: 767px) {
+    .sidebar-container{
+      margin-top: 2em;
+      display: flex;
+      align-items: center;
+      flex-direction: column
+    }
+  }
+  
 }

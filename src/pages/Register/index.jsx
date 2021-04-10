@@ -11,16 +11,17 @@ import girl from "../../img/girl.png";
 import avatar from "../../img/avatar.png";
 import mail from "../../img/mail.png";
 import lock from "../../img/lock.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Register() {
+  const history = useHistory();
   return (
     <div className="register-page">
       <div className="first">
         <AppLogo />
         <div className="inner">
           <div className="go-back">
-            <ArrowBackIcon />
+            <ArrowBackIcon onClick={()=>history.push('/')} />
             <Link to="/"> Market</Link>
           </div>
           <div className="inner-2">
@@ -54,7 +55,7 @@ function Register() {
               </div>
             </Form>
             <p>
-              I have an account already,<Link to="/"> Login Here</Link>
+              I have an account already,<Link to="/login"> Login Here</Link>
             </p>
 
             <div className="bottom">
