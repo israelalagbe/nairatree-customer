@@ -16,6 +16,7 @@ import {
   InputGroupAddon,
   InputGroupText,
   Input,
+  Dropdown,
 } from "reactstrap";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AccountCircle from "@material-ui/icons/AccountCircleOutlined";
@@ -24,15 +25,16 @@ import Badge from "@material-ui/core/Badge";
 import logo from "../../img/logo.svg";
 import search from "../../img/search.svg";
 import useCategoryStore from "../../stores/useCategoryStore";
+import { Popover } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 export default function Header() {
-  const { fetchCategories, categories } = useCategoryStore()
+  const { fetchCategories, categories } = useCategoryStore();
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [navbarIsOpen, setIsOpen] = useState(false);
+  const toggleNavbarCollapse = () => setIsOpen(!navbarIsOpen);
 
-  const toggle = () => setIsOpen(!isOpen);
- 
-  useEffect(()=>{
+  useEffect(() => {
     fetchCategories();
   }, [fetchCategories]);
 
@@ -42,8 +44,8 @@ export default function Header() {
         <NavbarBrand href="/">
           <img src={logo} alt="NairaTree" className="logo" />
         </NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+        <NavbarToggler onClick={toggleNavbarCollapse} />
+        <Collapse isOpen={navbarIsOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink href="/components/">New Deals</NavLink>
@@ -52,10 +54,7 @@ export default function Header() {
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>
                 Best Brands
-                <ExpandMoreIcon
-                  fontSize="small"
-                  className="ml-1 arrow-down-icon"
-                />
+                <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>Optddion 1</DropdownItem>
@@ -85,19 +84,64 @@ export default function Header() {
           </Nav>
 
           <div className="nav-items-space-placeholder"></div>
-          <div className="account-dropdown-nav">
-            <AccountCircle fontSize="small" />
-            <span className="ml-3 text">Account </span>
-            <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
-          </div>
-          <div className="cart-nav">
-            <Badge badgeContent={4} color="error" >
-              <ShoppingBasketIcon fontSize='small' />
+
+          <AccountNav />
+
+          <Link to='cart' className="cart-nav text-decoration-none">
+            <Badge badgeContent={4} color="error">
+              <ShoppingBasketIcon fontSize="small" />
             </Badge>
             <span className="ml-3 text">Cart</span>
-          </div>
+          </Link>
         </Collapse>
       </Navbar>
     </div>
+  );
+}
+
+function AccountNav() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "header-account-popover" : undefined;
+
+  return (
+    <>
+      <div className="account-dropdown-nav" onClick={handleClick}>
+        <AccountCircle fontSize="small" />
+        <span className="ml-3 text">Account </span>
+        <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
+      </div>
+
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+      >
+        <div className="header-account-popover">
+          {/* <DropdownItem header>Account</DropdownItem> */}
+          <Link to='login'><DropdownItem>Login</DropdownItem></Link>
+          <Link to='register'><DropdownItem>Register</DropdownItem></Link>
+          
+        </div>
+      </Popover>
+    </>
   );
 }
