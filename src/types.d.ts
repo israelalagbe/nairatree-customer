@@ -44,7 +44,7 @@ interface Product {
   avg_rating: number;
   no_of_ratings: number;
   features: string[];
-  variants: (Variant | Variants2)[];
+  variants: Variant[];
   product: string;
   name: string;
   type?: string;
@@ -78,12 +78,7 @@ interface State {
   __v: number;
 }
 
-interface Variants2 {
-  quantity: number;
-  images: any[];
-  Color: string;
-  variant_id: number;
-}
+
 
 interface Variant {
   quantity: number;
