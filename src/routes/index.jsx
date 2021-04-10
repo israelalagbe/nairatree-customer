@@ -12,6 +12,7 @@ import ProductDetails from "../pages/ProductDetails";
 import Cart from "../pages/Cart";
 import AddressInfo from "../pages/CheckoutPages/AddressInfo";
 import AddressDetails from "../pages/CheckoutPages/AddressDetails";
+import Profile from "../pages/Profile";
 
 export function Routes() {
   return (
@@ -51,6 +52,9 @@ export function Routes() {
       </Route>
       <Route path="/address-details" exact>
         <AddressDetails />
+      </Route>
+      <Route path="/profile" exact>
+        <Profile />
       </Route>
     </BrowserRouter>
   );
