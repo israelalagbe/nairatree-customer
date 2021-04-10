@@ -140,7 +140,7 @@ function AccountNav() {
         <div className="header-account-popover">
           {/* <DropdownItem header>Account</DropdownItem> */}
           <Link to='/login'><DropdownItem>Login</DropdownItem></Link>
-          <Link to='/register'><DropdownItem>Register</DropdownItem></Link>
+          <Link to='/registration-decision'><DropdownItem>Register</DropdownItem></Link>
           
         </div>
       </Popover>
