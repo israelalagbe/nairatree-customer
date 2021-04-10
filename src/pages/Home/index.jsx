@@ -37,8 +37,6 @@ export default function Home() {
             <br />
             <HomePopularBands />
             <br />
-            <ProductList allProductsLink="/products" title="Popular Brands" />
-            <br />
             <ProductList allProductsLink="/products" title="Liquid Sales" />
             <br />
             <ProductList
