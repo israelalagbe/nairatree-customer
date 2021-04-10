@@ -43,7 +43,7 @@ function Login() {
               </p>
               <p>
                 I already forgot my password,
-                <Link to="/reset-password"> Let me reset.</Link>
+                <Link to="/forgot-password"> Let me reset.</Link>
               </p>
             </div>
           </div>
