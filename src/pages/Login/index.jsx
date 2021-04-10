@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "reactstrap";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./index.scss";
 import AppLogo from "../../components/AppLogo";
 import AuthInput from "../../components/AuthInput";
@@ -13,13 +13,14 @@ import avatar from "../../img/avatar.png";
 import lock from "../../img/lock.png";
 
 function Login() {
+  const history = useHistory();
   return (
     <div className="login-page">
       <div className="first">
         <AppLogo />
         <div className="inner">
           <div className="go-back">
-            <ArrowBackIcon />
+            <ArrowBackIcon onClick={()=>history.push('/')}/>
             <Link to="/"> Market</Link>
           </div>
           <div className="inner-2">
