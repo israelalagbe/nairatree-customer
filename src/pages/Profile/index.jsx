@@ -26,6 +26,7 @@ function Profile() {
           <Col md="6">
             <div className="right">
               <Switch>
+              <Route exact path="/profile" component={Account} />
                 <Route
                   path="/profile/shippingaddress"
                   component={ShippingAddress}
@@ -33,7 +34,7 @@ function Profile() {
                 <Route path="/profile/myprofile" component={MyProfile} />
                 <Route path="/profile/wishlist" component={WishList} />
                 <Route path="/profile/orders" component={Orders} />
-                <Route path="/profile" component={Account} />
+                
               </Switch>
             </div>
           </Col>
