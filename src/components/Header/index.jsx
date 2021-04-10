@@ -27,22 +27,25 @@ import search from "../../img/search.svg";
 import useCategoryStore from "../../stores/useCategoryStore";
 import { Popover } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import useBrandStore from "../../stores/useBrandStore";
 
 export default function Header() {
   const { fetchCategories, categories } = useCategoryStore();
+  const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
 
   const [navbarIsOpen, setIsOpen] = useState(false);
   const toggleNavbarCollapse = () => setIsOpen(!navbarIsOpen);
 
   useEffect(() => {
     fetchCategories();
-  }, [fetchCategories]);
+    fetchPopularBrands();
+  }, [fetchCategories, fetchPopularBrands]);
 
   return (
     <div className="home-header">
       <Navbar dark expand="md">
-        <NavbarBrand href="/">
-          <img src={logo} alt="NairaTree" className="logo" />
+        <NavbarBrand >
+          <Link to="/"><img src={logo} alt="NairaTree" className="logo" /></Link>
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbarCollapse} />
         <Collapse isOpen={navbarIsOpen} navbar>
@@ -57,10 +60,9 @@ export default function Header() {
                 <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>Optddion 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
+                {popularBrands.map((brand)=> <DropdownItem>{brand.name}</DropdownItem>)}
+                
+                
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem className="mr-6">

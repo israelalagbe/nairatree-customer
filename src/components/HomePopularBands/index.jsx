@@ -6,11 +6,9 @@ import LoadingTrigger from "../LoadingTrigger";
 import './index.scss';
 
 export const HomePopularBands = () => {
-  const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
+  const { popularBrands, popularBrandsLoading } = useBrandStore();
 
-  useEffect(() => {
-    fetchPopularBrands();
-  }, []);
+
   
   return (
     <section className="home-popular-bands-component">
