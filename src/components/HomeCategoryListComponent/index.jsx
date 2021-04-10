@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import categoryIconSample from "../../img/category-sample-icon.png";
 import useCategoryStore from "../../stores/useCategoryStore";
 import clipText from "../../util/clipText";
@@ -24,9 +25,9 @@ export const HomeCategoryListComponent = () => {
  */
 function CategoryItem({category}) {
   return (
-    <div className="category-item pointer">
-      <img src={category.image_url} alt="" />
-      <span>{clipText(category.name, 20)}</span>
-    </div>
+      <Link to={`/products?category=${category.name}`} className="category-item pointer">
+        <img src={category.image_url} alt="" />
+        <span>{clipText(category.name, 20)}</span>
+      </Link>
   );
 }

@@ -14,3 +14,16 @@
 .pointer:active {
   opacity: 0.9;
 }
+
+.text-decoration-none{
+  text-decoration: none;
+}
+
+a{
+  color: inherit;
+}
+
+a:hover{
+  text-decoration: none;
+  
+}
