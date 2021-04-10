@@ -16,7 +16,7 @@ function Profile() {
       <Header />
 
       <div className="main">
-        <h3>My Profile</h3>
+        <h2>My Profile</h2>
         <Row>
           <Col md="4">
             <div className="left">

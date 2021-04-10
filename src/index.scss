@@ -228,13 +228,10 @@
   src: url("./fonts/Aller_Rg.ttf") format("truetype");
 }
 
-
 @font-face {
   font-family: $font-aller-bold;
   src: url("./fonts/Aller_Bd.ttf") format("truetype");
 }
-
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -249,4 +246,5 @@ html,
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+  background-color: red;
 }

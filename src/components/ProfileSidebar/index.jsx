@@ -45,7 +45,7 @@ const ProfileSidebar = () => {
         {linkList.map((item) => {
           return (
             <Link key={item.id} to={item.link}>
-              <h5
+              <h1
                 className={[
                   activeLink(item, item.sublinks) ? `activeMenuText ` : "",
                 ]
@@ -53,7 +53,7 @@ const ProfileSidebar = () => {
                   .toString()}
               >
                 {item.name}
-              </h5>
+              </h1>
             </Link>
           );
         })}

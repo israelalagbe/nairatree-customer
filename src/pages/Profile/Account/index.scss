@@ -1,0 +1,55 @@
+@import "/src/config/variables.scss";
+
+.account {
+  h3 {
+    color: #6171aa;
+    font-family: $font-aller-regular;
+    font-size: 18px;
+  }
+  h4 {
+    color: #687980;
+    font-family: $font-opensans-regular;
+    font-size: 14px;
+    margin-top: 1.5rem;
+  }
+  h5 {
+    color: #585858;
+    font-family: $font-opensans-bold;
+    font-size: 18px;
+  }
+  h6 {
+    color: #687980;
+    font-family: $font-aller-regular;
+    font-size: 14px;
+    margin-top: 1.5rem;
+  }
+  .content {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: white;
+    filter: drop-shadow(2px 2px 2px rgba(0.25, 0.25, 0.25, 0.25));
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    a {
+      color: #f3ca3e;
+      font-family: $font-aller-regular;
+      font-size: 14px;
+    }
+  }
+  .bt {
+    padding: 2rem;
+    background-color: white;
+    filter: drop-shadow(2px 2px 2px rgba(0.25, 0.25, 0.25, 0.25));
+    border-radius: 5px;
+    .content-bt {
+      display: flex;
+      justify-content: space-between;
+      h6 {
+        color: #3a3c3c;
+        font-family: $font-opensans-regular;
+        margin: 0;
+      }
+    }
+  }
+}
