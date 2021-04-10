@@ -10,7 +10,7 @@ const linkList = [
   },
   {
     id: "orders",
-    name: "ORDERS",
+    name: "MY ORDERS",
     link: "/profile/orders",
   },
   {

@@ -1,0 +1,74 @@
+@import "/src/config/variables.scss";
+
+.wish {
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  height: 100%;
+  padding: 1rem;
+  border-radius: 5px;
+
+  .main-wish {
+    display: flex;
+    .wish-img {
+      img {
+        height: 94px;
+        width: 80px;
+      }
+    }
+    .wish-details {
+      h3 {
+        color: #000000;
+        font-family: $font-roboto-regular;
+        font-size: 14px;
+      }
+      h6 {
+        color: #828282;
+        font-family: $font-roboto-regular;
+        font-size: 10px;
+      }
+      h4 {
+        color: #fa9917;
+        font-family: $font-roboto-regular;
+        font-size: 12px;
+      }
+      a {
+        color: #4e7b8d;
+        font-family: $font-aller-regular;
+        font-size: 12px;
+      }
+    }
+  }
+  .list-details {
+    display: flex;
+    .maintain {
+      display: flex;
+      margin-bottom: 1rem;
+      p {
+        background: #f2f2f2;
+        color: #000000;
+        text-align: center;
+        height: 20px;
+        width: 20px;
+        border-radius: 5px;
+        margin: 0px 5px;
+        font-size: 14px;
+      }
+      h6 {
+        text-align: center;
+        background: #f3ca3e;
+        color: #ffffff;
+        height: 19px;
+        width: 19px;
+        border-radius: 10px;
+      }
+    }
+
+    h5 {
+      color: #5e5755;
+      font-family: $font-roboto-regular;
+      font-size: 14px;
+      padding-left: 1rem;
+    }
+  }
+}
