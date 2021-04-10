@@ -89,7 +89,7 @@ export default function Header() {
 
           <AccountNav />
 
-          <Link to='cart' className="cart-nav text-decoration-none">
+          <Link to='/cart' className="cart-nav text-decoration-none">
             <Badge badgeContent={4} color="error">
               <ShoppingBasketIcon fontSize="small" />
             </Badge>
@@ -139,8 +139,8 @@ function AccountNav() {
       >
         <div className="header-account-popover">
           {/* <DropdownItem header>Account</DropdownItem> */}
-          <Link to='login'><DropdownItem>Login</DropdownItem></Link>
-          <Link to='register'><DropdownItem>Register</DropdownItem></Link>
+          <Link to='/login'><DropdownItem>Login</DropdownItem></Link>
+          <Link to='/register'><DropdownItem>Register</DropdownItem></Link>
           
         </div>
       </Popover>

@@ -50,7 +50,7 @@ export default function Home() {
             />
           </div>
         </Col>
-        <Col md={3}>
+        <Col md={3} className='sidebar-container'>
           <div className="sidebar-promo">
             <img
               className="fill-container"
