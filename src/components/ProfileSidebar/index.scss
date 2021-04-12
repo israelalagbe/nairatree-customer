@@ -6,15 +6,31 @@
       text-decoration: none;
       h1 {
         padding: 15px;
-        background-color: white;
-        filter: drop-shadow(2px 2px 2px rgba(0.25, 0.25, 0.25, 0.25));
-        color: #ca9e2f;
+        background-color: #ffffff;
+
+        color: #4d5971;
         font-family: $font-opensans-regular;
         height: 40px;
         width: 320px;
         font-size: 14px;
         border-radius: 5px;
         $font-aller-bold: "Aller Bold";
+        &.activeMenuText {
+          color: #ca9e2f;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 754px) {
+  .profile-sidebar {
+    margin-bottom: 3rem;
+    .profile-sidebar-link {
+      a {
+        h1 {
+          width: 100%;
+        }
       }
     }
   }

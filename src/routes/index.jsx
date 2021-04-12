@@ -11,7 +11,7 @@ import CartSuccess from "../pages/ProductDetails/CartSuccess";
 import ProductDetails from "../pages/ProductDetails";
 import Cart from "../pages/Cart";
 import AddressInfo from "../pages/CheckoutPages/AddressInfo";
-import AddressDetails from "../pages/CheckoutPages/AddressDetails";
+import CheckoutDetails from "../pages/CheckoutPages/CheckoutDetails";
 import Profile from "../pages/Profile";
 
 export function Routes() {
@@ -51,10 +51,10 @@ export function Routes() {
         <Route path="/address-information" exact>
           <AddressInfo />
         </Route>
-        <Route path="/address-details" exact>
-          <AddressDetails />
+        <Route path="/checkout-details" exact>
+          <CheckoutDetails />
         </Route>
-        <Route path="/profile" >
+        <Route path="/profile">
           <Profile />
         </Route>
       </Switch>
