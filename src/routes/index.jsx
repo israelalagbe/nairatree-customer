@@ -36,7 +36,7 @@ export function Routes() {
         <Route path="/registration-decision" exact>
           <RegistrationDecision />
         </Route>
-        <Route path="/product-search" exact>
+        <Route path="/products" exact>
           <ProductSearch />
         </Route>
         <Route path="/cart-success" exact>

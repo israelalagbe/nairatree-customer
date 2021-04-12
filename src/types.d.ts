@@ -31,3 +31,59 @@ interface Category {
     updatedAt: string;
     id: string;
   }
+
+
+interface Product {
+  description: string;
+  tags: string[];
+  images: string[];
+  price: number;
+  quantity_available: number;
+  payment_options: string[];
+  included_in_package: string[];
+  avg_rating: number;
+  no_of_ratings: number;
+  features: string[];
+  variants: Variant[];
+  product: string;
+  name: string;
+  type?: string;
+  model?: string;
+  condition: string;
+  date_manufactured: string;
+  return_policy: string;
+  category: string;
+  subcategory: string;
+  brand: string;
+  alias: string;
+  reviews: any[];
+  shipment_fees: Shipmentfee[];
+  createdAt: string;
+  updatedAt: string;
+  id: string;
+}
+
+interface Shipmentfee {
+  fee: number;
+  estimated_delivery_day: number;
+  _id: string;
+  state: State;
+}
+
+interface State {
+  _id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+
+
+interface Variant {
+  quantity: number;
+  images: string[];
+  color: string;
+  size: string;
+  variant_id: number;
+}

@@ -28,45 +28,47 @@ function AddressDetails() {
   const classes = useStyles();
 
   return (
-    <div className="address-details">
-      <AppLogo />
-      <div className="go-back">
-        <ArrowBackIcon />
-        <Link to="/login"> Address Information</Link>
-      </div>
+    <>
+      <div className="address-details">
+        <AppLogo />
+        <div className="go-back">
+          <ArrowBackIcon />
+          <Link to="/login"> Address Information</Link>
+        </div>
 
-      <div className="accord-main">
-        <div className={classes.root}>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography className={classes.heading}>Delivery</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                <DeliveryDetails />
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography className={classes.heading}>
-                Payment Method
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                <PaymentMethod />
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
+        <div className="accord-main">
+          <div className={classes.root}>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography className={classes.heading}>Delivery</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>
+                  <DeliveryDetails />
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel2a-content"
+                id="panel2a-header"
+              >
+                <Typography className={classes.heading}>
+                  Payment Method
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>
+                  <PaymentMethod />
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+          </div>
         </div>
       </div>
 
@@ -74,7 +76,7 @@ function AddressDetails() {
         <Copyright />
         <Footer />
       </div>
-    </div>
+    </>
   );
 }
 
