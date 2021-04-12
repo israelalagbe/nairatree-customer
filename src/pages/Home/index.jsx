@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/Header";
 import { Row, Col } from "reactstrap";
 import "./index.scss";
@@ -10,18 +10,23 @@ import ProductItem from "../../components/ProductItem";
 import { Link } from "react-router-dom";
 import { HomeCategoryListComponent } from "../../components/HomeCategoryListComponent";
 import { HomePopularBands } from "../../components/HomePopularBands";
-
+import useProductStore from "../../stores/useProductStore";
 
 export default function Home() {
+  const { products, fetchProducts } = useProductStore();
+
+  useEffect(() => {
+    fetchProducts()
+  }, []);
   return (
     <div className="home-page">
-      <Header />
+      {/* <Header /> */}
       <div className="mt-3"></div>
       <Row>
         <Col md={1}></Col>
         <Col md={8}>
           <div className="products-content">
-            <section>
+            {/* <section>
               <img
                 src={bannerPromo}
                 alt="Banner Promotion"
@@ -36,22 +41,19 @@ export default function Home() {
             <HomeCategoryListComponent />
             <br />
             <HomePopularBands />
-            <br />
-            <ProductList allProductsLink="/products" title="Liquid Sales" />
+            <br /> */}
+            {/* <ProductList allProductsLink="/products" title="Liquid Sales" />
             <br />
             <ProductList
               allProductsLink="/products"
               title="Cheapest this week"
             />
-            <br />
-            <ProductList
-              allProductsLink="/products"
-              title="Items you may like"
-            />
+            <br /> */}
+            <ProductList products={products} allProductsLink="/products" title="Items you may like" />
           </div>
         </Col>
-        <Col md={3} className='sidebar-container'>
-          <div className="sidebar-promo">
+        <Col md={3} className="sidebar-container">
+          {/* <div className="sidebar-promo">
             <img
               className="fill-container"
               src={promoImage1}
@@ -65,6 +67,7 @@ export default function Home() {
               alt="Promotion 2"
             />
           </div>
+         */}
         </Col>
       </Row>
     </div>
@@ -76,8 +79,9 @@ export default function Home() {
  * @param {object} props
  * @param {string} props.title
  * @param {string} props.allProductsLink
+ * @param {Product[]} props.products
  */
-function ProductList({ title, allProductsLink }) {
+function ProductList({ title, allProductsLink, products }) {
   return (
     <section className="product-list-container">
       <div className="heading">
@@ -87,12 +91,10 @@ function ProductList({ title, allProductsLink }) {
         </Link>
       </div>
       <div className="product-list-card">
-        {[1, 2, 3, 4, 5].map(() => (
-          <ProductItem />
+        {products.map((product) => (
+          <ProductItem key={product.id} product={product} />
         ))}
       </div>
     </section>
   );
 }
-
-
