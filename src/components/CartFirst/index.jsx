@@ -1,6 +1,4 @@
 import React from "react";
-import ProductItem from "../ProductItem";
-import { Link } from "react-router-dom";
 import { FormGroup, Label, Input } from "reactstrap";
 import Iphone from "../../img/iphone.png";
 import AppButton from "../AppButton";
@@ -10,12 +8,14 @@ function CartFirst() {
   return (
     <div className="cart-first">
       <div className="main">
-        <div>
+        <div className="shopping-cart">
           <h3>Shopping Cart(1)</h3>
         </div>
         <div className="main-flex">
-          <p>Select All</p>
-          <h6>Delete Selected</h6>
+          <div className="d-flex mt-1">
+            <p>Select All</p>
+            <h6>Delete Selected</h6>
+          </div>
           <AppButton buttonText="Update Cart" classname="update-button" />
         </div>
       </div>
@@ -53,20 +53,6 @@ function CartFirst() {
             <h5>DELETE </h5>
           </div>
         </div>
-      </div>
-
-      <div className="products-bottom">
-        <div className="heading">
-          <span className="heading-text">RECENT SHOPPING HISTORY</span>
-          <Link to="/products" className="show-all">
-            View all +
-          </Link>
-        </div>
-        <section className="product-list">
-          {new Array(10).fill(null).map(() => (
-            <ProductItem />
-          ))}
-        </section>
       </div>
     </div>
   );

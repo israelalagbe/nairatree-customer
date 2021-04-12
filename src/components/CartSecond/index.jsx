@@ -10,7 +10,9 @@ function CartSecond() {
         <div className="error-img">
           <img src={Error} alt="#" />
         </div>
-        <p> Your Cart is Up-to-date</p>
+        <div>
+          <p> Your Cart is Up-to-date</p>
+        </div>
       </div>
       <div className="sub-total">
         <div className="main">
