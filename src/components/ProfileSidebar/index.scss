@@ -15,6 +15,22 @@
         font-size: 14px;
         border-radius: 5px;
         $font-aller-bold: "Aller Bold";
+        &.activeMenuText {
+          color: #ca9e2f;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 754px) {
+  .profile-sidebar {
+    margin-bottom: 3rem;
+    .profile-sidebar-link {
+      a {
+        h1 {
+          width: 100%;
+        }
       }
     }
   }

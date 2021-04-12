@@ -43,3 +43,14 @@
     }
   }
 }
+
+@media only screen and (max-width: 1289px) {
+  .product-search-page {
+    .product-container {
+      padding: 1rem;
+      .main {
+        margin: 0 !important;
+      }
+    }
+  }
+}

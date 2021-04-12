@@ -21,7 +21,7 @@ function Register() {
         <AppLogo />
         <div className="inner">
           <div className="go-back">
-            <ArrowBackIcon onClick={()=>history.push('/')} />
+            <ArrowBackIcon onClick={() => history.push("/")} />
             <Link to="/"> Market</Link>
           </div>
           <div className="inner-2">
@@ -58,7 +58,7 @@ function Register() {
               I have an account already,<Link to="/login"> Login Here</Link>
             </p>
 
-            <div className="bottom">
+            <div className="mt-5">
               <Copyright />
               <Footer />
             </div>

@@ -41,6 +41,8 @@
   }
   .list-details {
     display: flex;
+    justify-content: flex-end;
+
     .maintain {
       display: flex;
       margin-bottom: 1rem;
@@ -69,6 +71,16 @@
       font-family: $font-roboto-regular;
       font-size: 14px;
       padding-left: 1rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 352px) {
+  .wish {
+    flex-direction: column;
+    width: 100%;
+    .main-wish {
+      margin-bottom: 3rem;
     }
   }
 }

@@ -35,7 +35,7 @@ function Account() {
             <h6>+2348100571955</h6>
           </div>
           <div>
-            <h3>Default</h3>
+            <h3 className="default">Default</h3>
           </div>
         </div>
       </div>

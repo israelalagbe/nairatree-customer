@@ -24,12 +24,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AddressDetails() {
+function CheckoutDetails() {
   const classes = useStyles();
 
   return (
     <>
-      <div className="address-details">
+      <div className="checkout-details">
         <AppLogo />
         <div className="go-back">
           <ArrowBackIcon />
@@ -80,4 +80,4 @@ function AddressDetails() {
   );
 }
 
-export default AddressDetails;
+export default CheckoutDetails;

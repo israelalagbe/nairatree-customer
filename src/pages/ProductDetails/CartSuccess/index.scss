@@ -50,3 +50,17 @@
     padding: 2rem 3rem;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .cart-success {
+    .main-cart {
+      padding: 1rem;
+      .cart {
+        width: 100%;
+      }
+    }
+    .single {
+      padding: 1rem;
+    }
+  }
+}
