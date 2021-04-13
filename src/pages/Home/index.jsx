@@ -11,12 +11,23 @@ import { Link } from "react-router-dom";
 import { HomeCategoryListComponent } from "../../components/HomeCategoryListComponent";
 import { HomePopularBands } from "../../components/HomePopularBands";
 import useProductStore from "../../stores/useProductStore";
+import LoadingTrigger from "../../components/LoadingTrigger";
 
 export default function Home() {
-  const { products, fetchProducts } = useProductStore();
+  const { 
+    productsLoading,
+    products,
+    fetchProducts,
+
+    dealsOfTheDay,
+    dealsOfTheDayLoading,
+    fetchDealOfTheDay
+    
+  } = useProductStore();
 
   useEffect(() => {
-    fetchProducts()
+    fetchProducts();
+    fetchDealOfTheDay();
   }, []);
   return (
     <div className="home-page">
@@ -27,11 +38,7 @@ export default function Home() {
         <Col md={8}>
           <div className="products-content">
             <section>
-              <img
-                src={bannerPromo}
-                alt="Banner Promotion"
-                className="banner-promo"
-              />
+              <img src={bannerPromo} alt="Banner Promotion" className="banner-promo" />
               <div className="banner-toggle">
                 <span className="ball"></span>
                 <span className="ball active"></span>
@@ -42,33 +49,28 @@ export default function Home() {
             <br />
             <HomePopularBands />
             <br />
-            <ProductList products={[]} allProductsLink="/products" title="Liquid Sales" />
+            <ProductList products={[]} allProductsLink="/products" title="Recently Viewed" />
             <br />
+            <ProductList products={[]} allProductsLink="/products" title="Trending Deals" />
+            <br />
+            <ProductList isLoading={dealsOfTheDayLoading} products={dealsOfTheDay} allProductsLink="/products" title="Deal of the Day" />
+            <br />
+            
             <ProductList
-              products={[]}
+              isLoading={productsLoading}
+              products={products}
               allProductsLink="/products"
-              title="Cheapest this week"
+              title="Items you may like"
             />
-            <br />
-            <ProductList products={products} allProductsLink="/products" title="Items you may like" />
           </div>
         </Col>
         <Col md={3} className="sidebar-container">
           <div className="sidebar-promo">
-            <img
-              className="fill-container"
-              src={promoImage1}
-              alt="Promotion 1"
-            />
+            <img className="fill-container" src={promoImage1} alt="Promotion 1" />
           </div>
           <div className="sidebar-promo mt-3">
-            <img
-              className="fill-container"
-              src={promoImage2}
-              alt="Promotion 2"
-            />
+            <img className="fill-container" src={promoImage2} alt="Promotion 2" />
           </div>
-        
         </Col>
       </Row>
     </div>
@@ -80,9 +82,10 @@ export default function Home() {
  * @param {object} props
  * @param {string} props.title
  * @param {string} props.allProductsLink
+ * @param {boolean} [props.isLoading]
  * @param {Product[]} props.products
  */
-function ProductList({ title, allProductsLink, products }) {
+function ProductList({ title, allProductsLink, products, isLoading }) {
   return (
     <section className="product-list-container">
       <div className="heading">
@@ -92,10 +95,14 @@ function ProductList({ title, allProductsLink, products }) {
         </Link>
       </div>
       <div className="product-list-card">
-        {products.map((product) => (
-          <ProductItem key={product.id} product={product} />
-        ))}
-        {products.length === 0 ? <h4 className='no-product-message'>No products found to display</h4>: null}
+        <LoadingTrigger isLoading={isLoading && !products.length}>
+          {products.map((product) => (
+            <ProductItem key={product.id} product={product} />
+          ))}
+          {products.length === 0 ? (
+            <h4 className="no-product-message">No products found to display</h4>
+          ) : null}
+        </LoadingTrigger>
       </div>
     </section>
   );

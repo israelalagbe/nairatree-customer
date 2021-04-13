@@ -1,6 +1,7 @@
 import create from 'zustand'
 import {
-  getProducts
+  getProducts,
+  getDealOfTheDay
 } from '../services/product-service';
 import {
   getCategories
@@ -14,11 +15,14 @@ import reportError from '../util/reportError';
  * @typedef {Object} InitialStateType
  * @prop {Product[]} products
  * @prop {boolean} productsLoading
+ * @prop {Product[]} dealsOfTheDay
+ * @prop {boolean} dealsOfTheDayLoading 
  */
 
 /**
  * @typedef {Object} MethodsType
  * @prop {()=>void} fetchProducts
+ * @prop {()=>void} fetchDealOfTheDay
  */
 
 /**
@@ -26,24 +30,24 @@ import reportError from '../util/reportError';
  */
 const initialState = {
   products: [],
-  productsLoading: false
+  productsLoading: false,
+  dealsOfTheDay: [],
+  dealsOfTheDayLoading: true,
 }
 
 /**
- * @type {import('zustand').UseStore<InitialStateType & MethodsType>}
+ * @type {UseStore<InitialStateType & MethodsType>}
  */
 const useProductStore = create(
   (set, get) => ({
     ...initialState,
 
     fetchProducts: async () => {
-      //Only set loading to false when there are no categories available
-      if (!get().products.length) {
-        set((state) => ({
-          ...state,
-          productsLoading: true
-        }))
-      }
+      set((state) => ({
+        ...state,
+        productsLoading: true
+      }))
+      
       try {
         const {
           products
@@ -62,7 +66,27 @@ const useProductStore = create(
         }))
       }
     },
+    fetchDealOfTheDay: async () => {
+      set((state) => ({
+        ...state,
+        dealsOfTheDayLoading: true
+      }));
+      
+      try {
+        const dealsOfTheDay = await getDealOfTheDay();
+        set((state) => ({
+          ...state,
+          dealsOfTheDay
+        }))
+      } catch (e) {
+        Notify.error(e.message)
+      } finally {
+        set((state) => ({
+          ...state,
+          dealsOfTheDayLoading: false
+        })); 
+      }
+    },
   }))
-
 
 export default useProductStore;
