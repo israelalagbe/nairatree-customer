@@ -20,9 +20,9 @@ function WishList() {
       </div>
       <div className="list-details">
         <div className="maintain">
-          <h6>-</h6>
+          <h6 className='cart-btn pointer'>-</h6>
           <p>2</p>
-          <h6>+</h6>
+          <h6 className='cart-btn pointer'>+</h6>
         </div>
         <h5>Add To Cart</h5>
       </div>

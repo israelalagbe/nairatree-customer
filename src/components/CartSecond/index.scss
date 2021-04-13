@@ -1,25 +1,24 @@
 @import "/src/config/variables.scss";
 
 .cart-second {
+  display: flex;
+    flex-direction: column;
   .error {
-    display: flex;
-    justify-content: flex-end;
+    // display: flex;
+    // justify-content: flex-end;
+    // align-items: center;
+    text-align: center;
     background: #fff5f5;
     border: 2px solid #990000;
+
     // justify-content: center;
     // align-items: center;
     height: 35px;
-    width: 100%;
+    width: 10rem;
+    align-self: flex-end;
     border-radius: 5px;
-
-    .error-img {
-      img {
-        width: 1rem;
-        height: 1rem;
-      }
-    }
-    p {
-      padding-top: 1rem;
+    span {
+      // padding-top: 1rem;
       color: #990000;
       font-size: 10px;
       font-family: $font-roboto-regular;
