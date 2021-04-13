@@ -26,15 +26,11 @@ function Profile() {
           <Col md="6">
             <div className="right">
               <Switch>
-              <Route exact path="/profile" component={Account} />
-                <Route
-                  path="/profile/shippingaddress"
-                  component={ShippingAddress}
-                />
+                <Route exact path="/profile" component={Account} />
+                <Route path="/profile/shippingaddress" component={ShippingAddress} />
                 <Route path="/profile/myprofile" component={MyProfile} />
                 <Route path="/profile/wishlist" component={WishList} />
                 <Route path="/profile/orders" component={Orders} />
-                
               </Switch>
             </div>
           </Col>

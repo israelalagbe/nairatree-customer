@@ -41,11 +41,10 @@
   }
   .list-details {
     display: flex;
-    justify-content: flex-end;
+    align-items: flex-end;
 
     .maintain {
       display: flex;
-      margin-bottom: 1rem;
       p {
         background: #f2f2f2;
         color: #000000;
@@ -56,13 +55,14 @@
         margin: 0px 5px;
         font-size: 14px;
       }
-      h6 {
+      .cart-btn {
         text-align: center;
         background: #f3ca3e;
         color: #ffffff;
         height: 19px;
         width: 19px;
         border-radius: 10px;
+        border:none;
       }
     }
 

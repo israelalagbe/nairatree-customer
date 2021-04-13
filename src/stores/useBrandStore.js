@@ -28,7 +28,7 @@ const initialState = {
 }
 
 /**
- * @type {import('zustand').UseStore<InitialStateType & MethodsType>}
+ * @type {UseStore<InitialStateType & MethodsType>}
  */
 const useBrandStore = create(
   (set, get) => ({

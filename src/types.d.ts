@@ -87,3 +87,5 @@ interface Variant {
   size: string;
   variant_id: number;
 }
+
+type UseStore<T> = import('zustand').UseStore<T>;
