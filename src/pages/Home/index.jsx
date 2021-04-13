@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
   return (
     <div className="home-page">
-      {/* <Header /> */}
+      <Header />
       <div className="mt-3"></div>
       <Row>
         <Col md={1}></Col>

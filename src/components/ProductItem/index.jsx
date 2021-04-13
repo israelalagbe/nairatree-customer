@@ -12,7 +12,7 @@ import clipText from "../../util/clipText";
 function ProductItem({product}) {
   return (
     <Link to={'/product-details'} className="product-item pointer">
-      <img src={productImageSample} alt="" />
+      <img src={product.images[0]} alt="" />
       <span className="name">{clipText(product.name, 20)}</span>
       {/* <span className="store-name">Veral Stores</span> */}
       <span className="price">{formatMoney(product.price)}</span>
