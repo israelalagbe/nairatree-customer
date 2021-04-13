@@ -14,15 +14,18 @@ import useProductStore from "../../stores/useProductStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
 
 export default function Home() {
-  const { 
+  const {
     productsLoading,
     products,
     fetchProducts,
 
     dealsOfTheDay,
     dealsOfTheDayLoading,
-    fetchDealOfTheDay
-    
+    fetchDealOfTheDay,
+
+    trendingProducts,
+    trendingProductsLoading,
+    fecthTrendingProducts,
   } = useProductStore();
 
   useEffect(() => {
@@ -51,11 +54,21 @@ export default function Home() {
             <br />
             <ProductList products={[]} allProductsLink="/products" title="Recently Viewed" />
             <br />
-            <ProductList products={[]} allProductsLink="/products" title="Trending Deals" />
+            <ProductList
+              isLoading={trendingProductsLoading}
+              products={trendingProducts}
+              allProductsLink="/products"
+              title="Trending Deals"
+            />
             <br />
-            <ProductList isLoading={dealsOfTheDayLoading} products={dealsOfTheDay} allProductsLink="/products" title="Deal of the Day" />
+            <ProductList
+              isLoading={dealsOfTheDayLoading}
+              products={dealsOfTheDay}
+              allProductsLink="/products"
+              title="Deal of the Day"
+            />
             <br />
-            
+
             <ProductList
               isLoading={productsLoading}
               products={products}
