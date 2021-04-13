@@ -105,6 +105,10 @@
       flex-direction: row;
       align-items: center;
       overflow-x: auto;
+
+      .no-product-message{
+       margin: auto;
+      }
     }
   }
   @media (max-width: 767px) {

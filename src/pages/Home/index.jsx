@@ -26,7 +26,7 @@ export default function Home() {
         <Col md={1}></Col>
         <Col md={8}>
           <div className="products-content">
-            {/* <section>
+            <section>
               <img
                 src={bannerPromo}
                 alt="Banner Promotion"
@@ -41,19 +41,20 @@ export default function Home() {
             <HomeCategoryListComponent />
             <br />
             <HomePopularBands />
-            <br /> */}
-            {/* <ProductList allProductsLink="/products" title="Liquid Sales" />
+            <br />
+            <ProductList products={[]} allProductsLink="/products" title="Liquid Sales" />
             <br />
             <ProductList
+              products={[]}
               allProductsLink="/products"
               title="Cheapest this week"
             />
-            <br /> */}
+            <br />
             <ProductList products={products} allProductsLink="/products" title="Items you may like" />
           </div>
         </Col>
         <Col md={3} className="sidebar-container">
-          {/* <div className="sidebar-promo">
+          <div className="sidebar-promo">
             <img
               className="fill-container"
               src={promoImage1}
@@ -67,7 +68,7 @@ export default function Home() {
               alt="Promotion 2"
             />
           </div>
-         */}
+        
         </Col>
       </Row>
     </div>
@@ -94,6 +95,7 @@ function ProductList({ title, allProductsLink, products }) {
         {products.map((product) => (
           <ProductItem key={product.id} product={product} />
         ))}
+        {products.length === 0 ? <h4 className='no-product-message'>No products found to display</h4>: null}
       </div>
     </section>
   );
