@@ -233,3 +233,16 @@
     }
   }
 }
+
+@media only screen and (max-width: 760px) {
+  .details {
+    .details-main {
+      background-color: white;
+      border-radius: 8px;
+
+      .main-2 {
+        padding: 1rem;
+      }
+    }
+  }
+}

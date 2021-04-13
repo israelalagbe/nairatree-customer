@@ -4,10 +4,13 @@
   .main {
     display: flex;
     justify-content: space-between;
-    h3 {
-      color: #000000;
-      font-size: 25px;
-      font-family: $font-roboto-regular;
+
+    .shopping-cart {
+      h3 {
+        color: #000000;
+        font-size: 20px;
+        font-family: $font-roboto-regular;
+      }
     }
     .main-flex {
       display: flex;
@@ -29,6 +32,7 @@
         margin-left: 1rem;
         background-color: #f3ca3e;
         height: 27px;
+        width: 80px;
         font-size: 10px;
         border: none;
         border-radius: 2px;
@@ -80,7 +84,8 @@
             }
             .maintain {
               display: flex;
-              margin-bottom: 1rem;
+              margin-top: 2rem;
+
               p {
                 background: #f2f2f2;
                 color: #000000;
@@ -92,12 +97,14 @@
                 font-size: 14px;
               }
               h6 {
-                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 background: #f3ca3e;
                 color: #ffffff;
                 height: 19px;
                 width: 19px;
-                border-radius: 10px;
+                border-radius: 10rem;
               }
             }
           }
@@ -105,8 +112,8 @@
       }
       .del-add {
         display: flex;
-        justify-content: flex-end;
-        height: 100%;
+        align-self: flex-end;
+        
         h6 {
           color: #4f4f4f;
           font-family: $font-roboto-regular;
@@ -123,38 +130,13 @@
       }
     }
   }
-  .products-bottom {
-    margin-top: 5rem;
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 1rem;
-    .heading {
-      padding: 0rem 1rem 2rem 0rem;
-      height: 1rem;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+}
 
-      .view-all {
-        font-family: $font-roboto-regular;
-        color: #bdbdbd;
-        font-size: 12px;
-      }
-      .heading-text {
-        color: 000000;
-        font-family: $font-roboto-bold;
-        font-size: 12px;
-      }
-    }
-    .product-list {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      .product-item {
-        background-color: white;
-        filter: drop-shadow(2px 2px 2px rgba(0.25, 0.25, 0.25, 0.25));
-        border-radius: 5px;
-        margin: 5px;
+@media only screen and (max-width: 504px) {
+  .cart-first {
+    .wishlist {
+      .main {
+        flex-direction: column;
       }
     }
   }

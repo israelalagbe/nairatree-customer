@@ -1,0 +1,47 @@
+@import "/src/config/variables.scss";
+
+.shipping-address {
+  .main-shipping {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    .ship-1 {
+      h5 {
+        color: #242c49;
+        font-size: 14px;
+        font-family: $font-opensans-regular;
+        margin-bottom: 1rem;
+      }
+      h6 {
+        color: #929292;
+        font-size: 14px;
+        font-family: $font-roboto-regular;
+      }
+    }
+    .ship-2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #6171aa;
+      border-radius: 5px;
+      height: 37px;
+      width: 120px;
+      cursor: pointer;
+      h5 {
+        color: #ffffff;
+        font-family: $font-opensans-regular;
+        font-size: 10px;
+        margin-right: 0.5rem;
+        margin-top: 5px;
+      }
+      svg {
+        color: white;
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+}

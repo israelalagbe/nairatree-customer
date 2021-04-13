@@ -116,15 +116,16 @@
   }
 }
 
-@media only screen and (max-width: 631px) {
+@media only screen and (max-width: 735px) {
   .registration-decision-page {
-    padding: 2rem 2rem;
+    padding: 2rem;
 
     .first {
       .go-back {
-        padding: 3rem 5rem 2rem 0rem;
+        padding: 3rem;
       }
       .how-do {
+        margin-top: 1rem;
         .tap {
           flex-direction: column;
           align-items: center;
@@ -146,6 +147,27 @@
         .footer {
           width: 100%;
           text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 397px) {
+  .registration-decision-page {
+    .first {
+      .how-do {
+        .tap {
+          .first {
+            button {
+              width: 100%;
+            }
+          }
+          .second {
+            button {
+              width: 100%;
+            }
+          }
         }
       }
     }
