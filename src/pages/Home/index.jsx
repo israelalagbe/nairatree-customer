@@ -25,12 +25,13 @@ export default function Home() {
 
     trendingProducts,
     trendingProductsLoading,
-    fecthTrendingProducts,
+    fetchTrendingProducts
   } = useProductStore();
 
   useEffect(() => {
     fetchProducts();
     fetchDealOfTheDay();
+    fetchTrendingProducts();
   }, []);
   return (
     <div className="home-page">

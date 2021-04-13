@@ -24,7 +24,7 @@ import reportError from '../util/reportError';
  * @typedef {Object} MethodsType
  * @prop {()=>void} fetchProducts
  * @prop {()=>void} fetchDealOfTheDay
- * @prop {()=>void} fecthTrendingProducts
+ * @prop {()=>void} fetchTrendingProducts
  */
 
 /**
@@ -95,7 +95,7 @@ const useProductStore = create(
       }
     },
 
-    fecthTrendingProducts: async () => {
+    fetchTrendingProducts: async () => {
       set((state) => ({
         ...state,
         trendingProductsLoading: true
