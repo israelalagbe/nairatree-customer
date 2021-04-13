@@ -1,10 +1,10 @@
 import create from 'zustand'
 import {
-  getProducts
+  getProducts,
+  getDealOfTheDay,
+  getTrendingProducts
 } from '../services/product-service';
-import {
-  getCategories
-} from '../services/categoryService'
+
 import delay from '../util/delay';
 import Notify from '../util/Notify';
 import reportError from '../util/reportError';
@@ -14,11 +14,17 @@ import reportError from '../util/reportError';
  * @typedef {Object} InitialStateType
  * @prop {Product[]} products
  * @prop {boolean} productsLoading
+ * @prop {Product[]} dealsOfTheDay
+ * @prop {boolean} dealsOfTheDayLoading 
+ * @prop {Product[]} trendingProducts
+ * @prop {boolean} trendingProductsLoading 
  */
 
 /**
  * @typedef {Object} MethodsType
  * @prop {()=>void} fetchProducts
+ * @prop {()=>void} fetchDealOfTheDay
+ * @prop {()=>void} fetchTrendingProducts
  */
 
 /**
@@ -26,24 +32,28 @@ import reportError from '../util/reportError';
  */
 const initialState = {
   products: [],
-  productsLoading: false
+  productsLoading: false,
+
+  trendingProducts: [],
+  trendingProductsLoading: false,
+
+  dealsOfTheDay: [],
+  dealsOfTheDayLoading: true,
 }
 
 /**
- * @type {import('zustand').UseStore<InitialStateType & MethodsType>}
+ * @type {UseStore<InitialStateType & MethodsType>}
  */
 const useProductStore = create(
   (set, get) => ({
     ...initialState,
 
     fetchProducts: async () => {
-      //Only set loading to false when there are no categories available
-      if (!get().products.length) {
-        set((state) => ({
-          ...state,
-          productsLoading: true
-        }))
-      }
+      set((state) => ({
+        ...state,
+        productsLoading: true
+      }))
+      
       try {
         const {
           products
@@ -62,7 +72,50 @@ const useProductStore = create(
         }))
       }
     },
-  }))
 
+    fetchDealOfTheDay: async () => {
+      set((state) => ({
+        ...state,
+        dealsOfTheDayLoading: true
+      }));
+      
+      try {
+        const dealsOfTheDay = await getDealOfTheDay();
+        set((state) => ({
+          ...state,
+          dealsOfTheDay
+        }))
+      } catch (e) {
+        Notify.error(e.message)
+      } finally {
+        set((state) => ({
+          ...state,
+          dealsOfTheDayLoading: false
+        })); 
+      }
+    },
+
+    fetchTrendingProducts: async () => {
+      set((state) => ({
+        ...state,
+        trendingProductsLoading: true
+      }));
+      
+      try {
+        const dealsOfTheDay = await getTrendingProducts();
+        set((state) => ({
+          ...state,
+          dealsOfTheDay
+        }))
+      } catch (e) {
+        Notify.error(e.message)
+      } finally {
+        set((state) => ({
+          ...state,
+          trendingProductsLoading: false
+        })); 
+      }
+    },
+  }))
 
 export default useProductStore;
