@@ -6,7 +6,15 @@ import {
   verifyOtp,
   resetPassword,
 } from "../services/authentication";
+
+import {
+  persist
+} from "zustand/middleware"
+
 import Notify from "../util/Notify";
+
+
+
 
 
 /**
@@ -33,6 +41,7 @@ import Notify from "../util/Notify";
  * @type {InitialStateType}
  */
 const initialState = {
+  accessToken: null,
   user: null,
   loginLoading: false,
   registerLoading: false,
@@ -44,7 +53,7 @@ const initialState = {
 /**
  * @type {import('zustand').UseStore<InitialStateType & MethodsType>}
  */
-const useAuthentication = create((set, get) => ({
+const useAuthentication = create(persist((set, get) => ({
   ...initialState,
 
   register: async (payload, callback) => {
@@ -74,7 +83,10 @@ const useAuthentication = create((set, get) => ({
     }));
 
     try {
-      const { user, token } = await login(payload);
+      const {
+        user,
+        token
+      } = await login(payload);
 
       set((state) => ({
         ...state,
@@ -83,7 +95,7 @@ const useAuthentication = create((set, get) => ({
       }));
       console.log(get())
       Notify.success("Customer successfully logged in");
-      // callback();
+      callback();
     } catch (e) {
       Notify.error(e.message);
     } finally {
@@ -151,6 +163,8 @@ const useAuthentication = create((set, get) => ({
       }));
     }
   },
+}), {
+  name: "auth",
+  whitelist: ['user', 'accessToken']
 }));
-
 export default useAuthentication;
