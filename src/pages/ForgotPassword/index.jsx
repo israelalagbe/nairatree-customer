@@ -14,6 +14,7 @@ import useAuthentication from "../../stores/useAuthentication";
 function ForgotPassword() {
   const history = useHistory();
   const { forgotPassword, forgotPasswordLoading } = useAuthentication();
+
   const [password, setNewPassword] = React.useState({
     email: "",
   });
@@ -51,12 +52,12 @@ function ForgotPassword() {
             required
           />
 
-          <div className="errorDiv">
+          {/* <div className="errorDiv">
             <img src={error} alt="error" />
             <p> Email does not exist, Give it another shot!</p>
-          </div>
+          </div> */}
           <div className="app-button">
-            <AppButton buttonText="Reset Password" classname="forgot-button" />
+            <AppButton disabled={forgotPasswordLoading} buttonText="Reset Password" classname="forgot-button" />
           </div>
         </Form>
         <p>

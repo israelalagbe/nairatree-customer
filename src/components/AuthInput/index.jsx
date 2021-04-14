@@ -12,8 +12,8 @@ import "./index.scss";
  * @param {*} [props.type]
  * @param {string} [props.id]
  * @param {string} [props.value]
- * * @param {boolean} [props.required]
- *  * @param {string} [props.name]
+ * @param {boolean} [props.required]
+ * @param {string} [props.name]
  * @param {(any)=>any} [props.onChange]
  */
 function AuthInput({

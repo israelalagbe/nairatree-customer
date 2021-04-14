@@ -6,12 +6,19 @@ import AppButton from "../../components/AppButton";
 import AppLogo from "../../components/AppLogo";
 import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import useAuthentication from "../../stores/useAuthentication";
 import Notify from "../../util/Notify";
 
 function ResetPassword() {
   const history = useHistory();
+  /**
+   * @type {{id:string}}
+   */
+  const { id } = useParams();
+
+
+  
   const { resetPassword, resetPasswordLoading } = useAuthentication();
   const [userReset, setNewPassword] = React.useState({
     password: "",
@@ -30,7 +37,7 @@ function ResetPassword() {
     }
 
     const payload = {
-      // id: userOtp.code,
+      id,
       password: userReset.password,
     };
 
@@ -60,7 +67,7 @@ function ResetPassword() {
           required
         />
         <div className="app-button">
-          <AppButton buttonText="Reset Password" classname="reset-button" />
+          <AppButton buttonText="Reset Password" classname="reset-button" disabled={resetPasswordLoading} />
         </div>
       </Form>
       <div className="bottom">

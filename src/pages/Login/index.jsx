@@ -71,6 +71,7 @@ function Login() {
               />
               <div className="app-button">
                 <AppButton
+                  disabled={loginLoading}
                   buttonText="Login to naira tree"
                   classname="login-button"
                 />

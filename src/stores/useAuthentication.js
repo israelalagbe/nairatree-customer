@@ -8,39 +8,37 @@ import {
 } from "../services/authentication";
 import Notify from "../util/Notify";
 
-/**
- * @return {*}
- */
 
 /**
  * @typedef {Object} InitialStateType
  * @prop {boolean} registerLoading
- * @prop {Login} login
  * @prop {boolean} loginLoading
  * @prop {boolean} forgotPasswordLoading
  * @prop {boolean} verifyOtpLoading
- * @prop {ResetPassword} resetPassword
  * @prop {boolean} resetPasswordLoading
+ * @prop {User} user
+ * @prop {string} accessToken
  */
 
 /**
  * @typedef {Object} MethodsType
  * @prop {()=>void} register
- * @prop {()=>void} login
- * @prop {()=>void} forgotPassword
- * @prop {()=>void} verifyOtp
- * @prop {()=>void} resetPassword
+ * @prop {(payload, callback)=>void} login
+ * @prop {(payload, callback)=>void} forgotPassword
+ * @prop {(payload, callback)=>void} verifyOtp
+ * @prop {(payload, callback)=>void} resetPassword
  */
 
 /**
  * @type {InitialStateType}
  */
 const initialState = {
-  user: {},
+  user: null,
   loginLoading: false,
   registerLoading: false,
   forgotPasswordLoading: false,
   resetPasswordLoading: false,
+  verifyOtpLoading: false,
 };
 
 /**
@@ -50,10 +48,14 @@ const useAuthentication = create((set, get) => ({
   ...initialState,
 
   register: async (payload, callback) => {
-    //Only set loading to false when there are no categories available
+    set((state) => ({
+      ...state,
+      registerLoading: true,
+    }));
 
     try {
-      const { registeration } = await register(payload);
+      await register(payload);
+
       Notify.success("Customer successfully added");
       callback();
     } catch (e) {
@@ -66,12 +68,22 @@ const useAuthentication = create((set, get) => ({
     }
   },
   login: async (payload, callback) => {
-    //Only set loading to false when there are no categories available
+    set((state) => ({
+      ...state,
+      loginLoading: true,
+    }));
 
     try {
-      const { loginUser } = await login(payload);
+      const { user, token } = await login(payload);
+
+      set((state) => ({
+        ...state,
+        user,
+        accessToken: token
+      }));
+      console.log(get())
       Notify.success("Customer successfully logged in");
-      callback();
+      // callback();
     } catch (e) {
       Notify.error(e.message);
     } finally {
@@ -82,11 +94,14 @@ const useAuthentication = create((set, get) => ({
     }
   },
   forgotPassword: async (payload, callback) => {
-    //Only set loading to false when there are no categories available
+    set((state) => ({
+      ...state,
+      forgotPasswordLoading: true,
+    }));
 
     try {
-      const { userForgot } = await forgotPassword(payload);
-      Notify.success("Check Email For Otp");
+      await forgotPassword(payload);
+      Notify.success("An otp has been sent to your mail");
       callback();
     } catch (e) {
       Notify.error(e.message);
@@ -98,14 +113,15 @@ const useAuthentication = create((set, get) => ({
     }
   },
   verifyOtp: async (payload, callback) => {
-    //Only set loading to false when there are no categories available
+    set((state) => ({
+      ...state,
+      verifyOtpLoading: true,
+    }));
 
     try {
       const result = await verifyOtp(payload);
       Notify.success("Otp verification is successful");
-      console.log(result.data.id);
-      console.log(result.id);
-      callback(result.data.id);
+      callback(result.id);
     } catch (e) {
       Notify.error(e.message);
     } finally {
@@ -115,13 +131,17 @@ const useAuthentication = create((set, get) => ({
       }));
     }
   },
-  resetPassword: async (payload, callback, data) => {
-    //Only set loading to false when there are no categories available
+  resetPassword: async (payload, callback) => {
+    set((state) => ({
+      ...state,
+      resetPasswordLoading: true,
+    }));
 
     try {
-      const { userReset } = await resetPassword(payload);
+      await resetPassword(payload);
+
       Notify.success("Password Reset Successful");
-      callback(data);
+      callback();
     } catch (e) {
       Notify.error(e.message);
     } finally {

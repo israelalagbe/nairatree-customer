@@ -48,7 +48,7 @@ function Otp() {
           required
         />
         <div className="app-button">
-          <AppButton buttonText="Confirm Otp" classname="otp-button" />
+          <AppButton disabled={verifyOtpLoading} buttonText="Confirm Otp" classname="otp-button" />
         </div>
       </Form>
       <div className="bottom">

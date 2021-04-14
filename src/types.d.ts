@@ -118,3 +118,32 @@ interface ResetPassword {
   id: string,
   password: string
 }
+
+
+
+interface User {
+  active:       number;
+  role:         string;
+  first_name:   string;
+  surname:      string;
+  email:        string;
+  phone:        string;
+  createdAt:    Date;
+  updatedAt:    Date;
+  address_book: AddressBook[];
+  id:           string;
+}
+
+interface AddressBook {
+  country:         string;
+  is_default:      boolean;
+  _id:             string;
+  label:           string;
+  name:            string;
+  phone:           string;
+  alternate_phone: string;
+  address:         string;
+  region:          string;
+  city:            string;
+  additional_info: string;
+}

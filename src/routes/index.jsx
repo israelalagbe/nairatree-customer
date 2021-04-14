@@ -28,7 +28,7 @@ export function Routes() {
         <Route path="/forgot-password" exact>
           <ForgotPassword />
         </Route>
-        <Route path="/reset-password" exact>
+        <Route path="/reset-password/:id" exact>
           <ResetPassword />
         </Route>
         <Route path="/login" exact>
