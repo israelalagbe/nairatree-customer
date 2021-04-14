@@ -93,16 +93,20 @@ const useAuthentication = create(persist((set, get) => ({
         user,
         accessToken: token
       }));
-      console.log(get())
+      
       Notify.success("Customer successfully logged in");
+
       callback();
+
     } catch (e) {
       Notify.error(e.message);
     } finally {
+
       set((state) => ({
         ...state,
         loginLoading: false,
       }));
+
     }
   },
   forgotPassword: async (payload, callback) => {
@@ -113,6 +117,7 @@ const useAuthentication = create(persist((set, get) => ({
 
     try {
       await forgotPassword(payload);
+      
       Notify.success("An otp has been sent to your mail");
       callback();
     } catch (e) {
