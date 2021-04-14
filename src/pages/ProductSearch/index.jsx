@@ -7,18 +7,15 @@ import "./index.scss";
 import { Link } from "react-router-dom";
 import AppPagination from "../../components/AppPagination";
 import useProductStore from "../../stores/useProductStore";
+import LoadingTrigger from "../../components/LoadingTrigger";
 
 function ProductSearch() {
-  const {
-    productsLoading,
-    products,
-    fetchProducts,
-  } = useProductStore();
+  const { productsLoading, products, fetchProducts } = useProductStore();
 
   useEffect(() => {
     fetchProducts();
-    
   }, []);
+  
   return (
     <div className="product-search-page">
       <Header />
@@ -34,17 +31,17 @@ function ProductSearch() {
           <Col md="9">
             <div className="main mr-4">
               <div className="heading">
-                <span className="heading-text">
-                  127 Search result for "IPHONE 12"
-                </span>
+                <span className="heading-text">127 Search result for "IPHONE 12"</span>
                 <Link to="/products" className="view-all">
                   VIEW ALL
                 </Link>
               </div>
               <section className="product-list">
-                {products.map((product) => (
-                  <ProductItem key={product.id} product={product} />
-                ))}
+                <LoadingTrigger isLoading={productsLoading}>
+                  {products.map((product) => (
+                    <ProductItem key={product.id} product={product} />
+                  ))}
+                </LoadingTrigger>
               </section>
             </div>
             <div className="float-right">
