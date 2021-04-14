@@ -1,36 +1,36 @@
 interface Category {
-    _id: string;
-    alias: string;
-    image_url: string;
-    active: number;
-    deleted: boolean;
-    name: string;
-    createdAt: string;
-    updatedAt: string;
-    __v: number;
-    subcategories: SubCategory[];
-  }
-  
-  interface SubCategory {
-    alias: string;
-    is_popular: number;
-    active: number;
-    image_url?: string;
-    category: string;
-    name: string;
-    createdAt: string;
-    updatedAt: string;
-    id: string;
-  }
-  
-  interface Brand {
-    is_popular: boolean;
-    name: string;
-    image: string;
-    createdAt: string;
-    updatedAt: string;
-    id: string;
-  }
+  _id: string;
+  alias: string;
+  image_url: string;
+  active: number;
+  deleted: boolean;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+  subcategories: SubCategory[];
+}
+
+interface SubCategory {
+  alias: string;
+  is_popular: number;
+  active: number;
+  image_url?: string;
+  category: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  id: string;
+}
+
+interface Brand {
+  is_popular: boolean;
+  name: string;
+  image: string;
+  createdAt: string;
+  updatedAt: string;
+  id: string;
+}
 
 
 interface Product {
@@ -86,4 +86,35 @@ interface Variant {
   color: string;
   size: string;
   variant_id: number;
+}
+
+interface Registeration {
+  role: string,
+  first_name: string,
+  surname: string,
+  email: string,
+  phone: string,
+  password: password,
+  address_book: [],
+  createdAt: string,
+  updatedAt: string,
+  id: string
+}
+
+interface Login {
+  email: string,
+  password: string
+}
+
+interface ForgotPassword {
+  email: string
+}
+
+interface OTP {
+  code: string
+}
+
+interface ResetPassword {
+  id: string,
+  password: string
 }
