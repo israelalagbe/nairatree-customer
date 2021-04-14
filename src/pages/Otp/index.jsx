@@ -27,7 +27,7 @@ function Otp() {
       code: otp.code,
     };
 
-    verifyOtp(payload, () => history.push("/reset-password"));
+    verifyOtp(payload, (id) => history.push(`/reset-password/${id}`));
 
     console.log(payload);
   };

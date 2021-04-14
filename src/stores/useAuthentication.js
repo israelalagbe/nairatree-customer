@@ -9,13 +9,17 @@ import {
 import Notify from "../util/Notify";
 
 /**
+ * @return {*}
+ */
+
+/**
  * @typedef {Object} InitialStateType
  * @prop {boolean} registerLoading
- * @prop {Login{}} login
+ * @prop {Login} login
  * @prop {boolean} loginLoading
  * @prop {boolean} forgotPasswordLoading
  * @prop {boolean} verifyOtpLoading
- * @prop {ResetPassword{}} resetPassword
+ * @prop {ResetPassword} resetPassword
  * @prop {boolean} resetPasswordLoading
  */
 
@@ -32,8 +36,7 @@ import Notify from "../util/Notify";
  * @type {InitialStateType}
  */
 const initialState = {
-  login: {},
-  resetPassword: {},
+  user: {},
   loginLoading: false,
   registerLoading: false,
   forgotPasswordLoading: false,
@@ -98,9 +101,11 @@ const useAuthentication = create((set, get) => ({
     //Only set loading to false when there are no categories available
 
     try {
-      const data = await verifyOtp(payload);
+      const result = await verifyOtp(payload);
       Notify.success("Otp verification is successful");
-      callback(data);
+      console.log(result.data.id);
+      console.log(result.id);
+      callback(result.data.id);
     } catch (e) {
       Notify.error(e.message);
     } finally {
