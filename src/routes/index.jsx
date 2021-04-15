@@ -14,8 +14,11 @@ import AddressInfo from "../pages/CheckoutPages/AddressInfo";
 import CheckoutDetails from "../pages/CheckoutPages/CheckoutDetails";
 import Profile from "../pages/Profile";
 import Otp from "../pages/Otp";
+import AuthRoute from "./AuthRoute";
+import useAuthentication from "../stores/useAuthentication";
 
 export function Routes() {
+  
   return (
     <BrowserRouter>
       <Switch>
@@ -55,9 +58,10 @@ export function Routes() {
         <Route path="/checkout-details" exact>
           <CheckoutDetails />
         </Route>
-        <Route path="/profile">
+        <AuthRoute path="/profile">
           <Profile />
-        </Route>
+        </AuthRoute>
+
         <Route path="/confirm-otp">
           <Otp />
         </Route>

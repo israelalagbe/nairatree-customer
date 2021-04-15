@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "reactstrap";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import "./index.scss";
 import AppLogo from "../../components/AppLogo";
 import AuthInput from "../../components/AuthInput";
@@ -13,8 +13,14 @@ import avatar from "../../img/avatar.png";
 import lock from "../../img/lock.png";
 import useAuthentication from "../../stores/useAuthentication";
 
+import getQueryParams from "../../util/getQueryParams";
+
 function Login() {
   const history = useHistory();
+  const location = useLocation()
+
+  const qParam = getQueryParams(location.search)
+
 
   const { login, loginLoading } = useAuthentication();
   const [user, setUser] = React.useState({
@@ -32,7 +38,7 @@ function Login() {
       email: user.email,
       password: user.password,
     };
-    login(payload, () => history.push("/"));
+    login(payload, () => history.push(qParam.redirect_to ? qParam.redirect_to: "/"));
   };
 
   return (

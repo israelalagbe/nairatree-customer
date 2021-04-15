@@ -94,7 +94,7 @@ const useAuthentication = create(persist((set, get) => ({
         accessToken: token
       }));
       
-      Notify.success("Customer successfully logged in");
+      Notify.success("Login Successful!");
 
       callback();
 
@@ -117,7 +117,7 @@ const useAuthentication = create(persist((set, get) => ({
 
     try {
       await forgotPassword(payload);
-      
+
       Notify.success("An otp has been sent to your mail");
       callback();
     } catch (e) {
@@ -169,7 +169,9 @@ const useAuthentication = create(persist((set, get) => ({
     }
   },
 }), {
+
   name: "auth",
-  whitelist: ['user', 'accessToken']
+  whitelist: ['user', 'accessToken'],
+  getStorage: ()=> localStorage,
 }));
 export default useAuthentication;
