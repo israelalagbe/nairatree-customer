@@ -15,6 +15,13 @@ export function getProducts() {
 /**
  * @return {*}
  */
+export function getTrendingProducts() {
+    return api.get(`${baseUrl}/customers/products/trending`, {});
+}
+
+/**
+ * @return {*}
+ */
 export function getDealOfTheDay() {
     return api.get(`${baseUrl}/customers/products/deal-of-the-day`, {});
 }

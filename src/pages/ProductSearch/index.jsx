@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/Header";
 import { Row, Col } from "reactstrap";
 import SearchInputs from "../../components/SearchInputs";
@@ -6,8 +6,19 @@ import ProductItem from "../../components/ProductItem";
 import "./index.scss";
 import { Link } from "react-router-dom";
 import AppPagination from "../../components/AppPagination";
+import useProductStore from "../../stores/useProductStore";
 
 function ProductSearch() {
+  const {
+    productsLoading,
+    products,
+    fetchProducts,
+  } = useProductStore();
+
+  useEffect(() => {
+    fetchProducts();
+    
+  }, []);
   return (
     <div className="product-search-page">
       <Header />
@@ -31,8 +42,8 @@ function ProductSearch() {
                 </Link>
               </div>
               <section className="product-list">
-                {new Array(10).fill(null).map(() => (
-                  <ProductItem />
+                {products.map((product) => (
+                  <ProductItem key={product.id} product={product} />
                 ))}
               </section>
             </div>

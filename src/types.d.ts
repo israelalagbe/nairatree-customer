@@ -147,3 +147,5 @@ interface AddressBook {
   city:            string;
   additional_info: string;
 }
+
+type UseStore<T> = import('zustand').UseStore<T>;
