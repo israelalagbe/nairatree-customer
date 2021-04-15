@@ -2,15 +2,20 @@ import React from "react";
 import "./index.scss";
 import CreateIcon from "@material-ui/icons/Create";
 import { Link } from "react-router-dom";
+import useAuthentication from "../../../stores/useAuthentication";
 
 function Account() {
+  const { user } = useAuthentication();
   return (
     <div className="account">
       <div className="content">
         <div>
           <h3>Account Overview</h3>
-          <h4>adeyems@gmail.com</h4>
-          <h5>Adeyemo Qudus</h5>
+          <h4>{user.email}</h4>
+          <h4>{user.phone}</h4>
+          <h5>
+            {user.surname} {user.first_name}
+          </h5>
         </div>
         <div>
           <CreateIcon />
