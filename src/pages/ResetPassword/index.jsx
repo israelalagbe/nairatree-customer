@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.scss";
 import { Form } from "reactstrap";
 import AuthInput from "../../components/AuthInput";
@@ -9,6 +9,8 @@ import Footer from "../../components/Footer";
 import { useHistory, useParams } from "react-router-dom";
 import useAuthentication from "../../stores/useAuthentication";
 import Notify from "../../util/Notify";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 
 function ResetPassword() {
   const history = useHistory();
@@ -17,9 +19,9 @@ function ResetPassword() {
    */
   const { id } = useParams();
 
-
-  
   const { resetPassword, resetPasswordLoading } = useAuthentication();
+  const [passwordVisible, setpasswordVisible] = useState(false);
+  const [confirmpasswordVisible, setconfirmpasswordVisible] = useState(false);
   const [userReset, setNewPassword] = React.useState({
     password: "",
     confirmPassword: "",
@@ -49,25 +51,45 @@ function ResetPassword() {
       <Form onSubmit={handleSubmit}>
         <h4>Reset Password</h4>
         <AuthInput
-          inputText="New Password"
-          type="password"
+          inputText="Password"
+          type={`${passwordVisible === true ? "text" : "password"}`}
           id="password"
           name="password"
           value={userReset.password}
           onChange={handleChange}
+          onIconClick={() => setpasswordVisible(!passwordVisible)}
+          Icon={
+            passwordVisible === true ? (
+              <VisibilityIcon />
+            ) : (
+              <VisibilityOffIcon />
+            )
+          }
           required
         />
         <AuthInput
           inputText="Confirm Password"
-          type="password"
+          type={`${confirmpasswordVisible === true ? "text" : "password"}`}
           id="confirmPassword"
           name="confirmPassword"
           value={userReset.confirmPassword}
           onChange={handleChange}
+          onIconClick={() => setconfirmpasswordVisible(!confirmpasswordVisible)}
+          Icon={
+            confirmpasswordVisible === true ? (
+              <VisibilityIcon />
+            ) : (
+              <VisibilityOffIcon />
+            )
+          }
           required
         />
         <div className="app-button">
-          <AppButton buttonText="Reset Password" classname="reset-button" disabled={resetPasswordLoading} />
+          <AppButton
+            buttonText="Reset Password"
+            classname="reset-button"
+            disabled={resetPasswordLoading}
+          />
         </div>
       </Form>
       <div className="bottom">
