@@ -57,7 +57,7 @@ function ResetPassword() {
           name="password"
           value={userReset.password}
           onChange={handleChange}
-          onIcon={() => setpasswordVisible(!passwordVisible)}
+          onIconClick={() => setpasswordVisible(!passwordVisible)}
           Icon={
             passwordVisible === true ? (
               <VisibilityIcon />
@@ -74,7 +74,7 @@ function ResetPassword() {
           name="confirmPassword"
           value={userReset.confirmPassword}
           onChange={handleChange}
-          onIcon={() => setconfirmpasswordVisible(!confirmpasswordVisible)}
+          onIconClick={() => setconfirmpasswordVisible(!confirmpasswordVisible)}
           Icon={
             confirmpasswordVisible === true ? (
               <VisibilityIcon />

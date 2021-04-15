@@ -10,7 +10,7 @@ import "./index.scss";
  * @param {string} [props.inputText]
  * @param {string} [props.errorMessage]
  * @param {any} [props.Icon]
- * @param {any} [props.onIcon]
+ * @param {any} [props.onIconClick]
  * @param {*} [props.type]
  * @param {string} [props.id]
  * @param {string} [props.value]
@@ -29,7 +29,7 @@ function AuthInput({
   name,
   required,
   Icon,
-  onIcon,
+  onIconClick,
 }) {
   return (
     <div className="auth-input-component">
@@ -49,7 +49,9 @@ function AuthInput({
           required={required}
         />
         <InputGroupAddon addonType="prepend">
-          <InputGroupText onClick={onIcon}>{Icon ? Icon : ""}</InputGroupText>
+          <InputGroupText onClick={onIconClick}>
+            {Icon ? Icon : ""}
+          </InputGroupText>
         </InputGroupAddon>
       </InputGroup>
       {errorMessage ? (

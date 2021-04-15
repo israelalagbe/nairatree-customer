@@ -119,7 +119,7 @@ function Register() {
                 name="password"
                 value={registeration.password}
                 onChange={handleChange}
-                onIcon={() => setpasswordVisible(!passwordVisible)}
+                onIconClick={() => setpasswordVisible(!passwordVisible)}
                 Icon={
                   passwordVisible === true ? (
                     <VisibilityIcon />
@@ -141,7 +141,7 @@ function Register() {
                 name="confirmPassword"
                 value={registeration.confirmPassword}
                 onChange={handleChange}
-                onIcon={() =>
+                onIconClick={() =>
                   setconfirmpasswordVisible(!confirmpasswordVisible)
                 }
                 Icon={

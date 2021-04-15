@@ -75,7 +75,7 @@ function Login() {
                 name="password"
                 value={user.password}
                 onChange={handleChange}
-                onIcon={() => setpasswordVisible(!passwordVisible)}
+                onIconClick={() => setpasswordVisible(!passwordVisible)}
                 Icon={
                   passwordVisible === true ? (
                     <VisibilityIcon />
