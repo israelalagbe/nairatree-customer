@@ -6,7 +6,6 @@ import useAuthentication from "../../../stores/useAuthentication";
 
 function Account() {
   const { user } = useAuthentication();
-  console.log(user);
   return (
     <div className="account">
       <div className="content">
