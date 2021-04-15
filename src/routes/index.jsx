@@ -13,6 +13,7 @@ import Cart from "../pages/Cart";
 import AddressInfo from "../pages/CheckoutPages/AddressInfo";
 import CheckoutDetails from "../pages/CheckoutPages/CheckoutDetails";
 import Profile from "../pages/Profile";
+import Otp from "../pages/Otp";
 
 export function Routes() {
   return (
@@ -27,7 +28,7 @@ export function Routes() {
         <Route path="/forgot-password" exact>
           <ForgotPassword />
         </Route>
-        <Route path="/reset-password" exact>
+        <Route path="/reset-password/:id" exact>
           <ResetPassword />
         </Route>
         <Route path="/login" exact>
@@ -56,6 +57,9 @@ export function Routes() {
         </Route>
         <Route path="/profile">
           <Profile />
+        </Route>
+        <Route path="/confirm-otp">
+          <Otp />
         </Route>
       </Switch>
     </BrowserRouter>

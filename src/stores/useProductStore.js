@@ -39,7 +39,7 @@ const initialState = {
 
   dealsOfTheDay: [],
   dealsOfTheDayLoading: true,
-}
+};
 
 /**
  * @type {UseStore<InitialStateType & MethodsType>}

@@ -75,6 +75,9 @@
               color: white;
               font-family: $font-roboto-regular;
               font-size: 14px;
+              &:disabled {
+                background-color: #bdbdbd;
+              }
             }
           }
         }
