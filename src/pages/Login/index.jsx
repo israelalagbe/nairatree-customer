@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "reactstrap";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import "./index.scss";
 import AppLogo from "../../components/AppLogo";
 import AuthInput from "../../components/AuthInput";
@@ -14,9 +14,12 @@ import lock from "../../img/lock.png";
 import useAuthentication from "../../stores/useAuthentication";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import getQueryParams from "../../util/getQueryParams";
 
 function Login() {
   const history = useHistory();
+  const location = useLocation();
+  const qParam = getQueryParams(location.search);
 
   const { login, loginLoading } = useAuthentication();
   const [passwordVisible, setpasswordVisible] = useState(false);
@@ -35,7 +38,9 @@ function Login() {
       email: user.email,
       password: user.password,
     };
-    login(payload, () => history.push("/"));
+    login(payload, () =>
+      history.push(qParam.redirect_to ? qParam.redirect_to : "/")
+    );
   };
 
   return (
