@@ -13,6 +13,7 @@ import useAuthentication from "../../stores/useAuthentication";
 function Otp() {
   const history = useHistory();
   const { verifyOtp, verifyOtpLoading } = useAuthentication();
+
   const [otp, setNewOtp] = React.useState({
     code: "",
   });
@@ -28,8 +29,6 @@ function Otp() {
     };
 
     verifyOtp(payload, (id) => history.push(`/reset-password/${id}`));
-
-    console.log(payload);
   };
 
   return (
@@ -48,7 +47,11 @@ function Otp() {
           required
         />
         <div className="app-button">
-          <AppButton disabled={verifyOtpLoading} buttonText="Confirm Otp" classname="otp-button" />
+          <AppButton
+            disabled={verifyOtpLoading}
+            buttonText="Confirm Otp"
+            classname="otp-button"
+          />
         </div>
       </Form>
       <div className="bottom">
