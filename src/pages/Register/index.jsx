@@ -21,6 +21,7 @@ function Register() {
   const history = useHistory();
   const { register, registerLoading } = useAuthentication();
   const [passwordVisible, setpasswordVisible] = useState(false);
+  const [confirmpasswordVisible, setconfirmpasswordVisible] = useState(false);
   const [acceptPrivacyPolicy, setAcceptedPrivacyPolicy] = useState(false);
   const [registeration, setRegisteration] = React.useState({
     first_name: "",
@@ -133,14 +134,18 @@ function Register() {
                 img={lock}
                 inputText="Confirm Password"
                 errorMessage="Enter the same password"
-                type={`${passwordVisible === true ? "text" : "password"}`}
+                type={`${
+                  confirmpasswordVisible === true ? "text" : "password"
+                }`}
                 id="confirmPassword"
                 name="confirmPassword"
                 value={registeration.confirmPassword}
                 onChange={handleChange}
-                onIcon={() => setpasswordVisible(!passwordVisible)}
+                onIcon={() =>
+                  setconfirmpasswordVisible(!confirmpasswordVisible)
+                }
                 Icon={
-                  passwordVisible === true ? (
+                  confirmpasswordVisible === true ? (
                     <VisibilityIcon />
                   ) : (
                     <VisibilityOffIcon />

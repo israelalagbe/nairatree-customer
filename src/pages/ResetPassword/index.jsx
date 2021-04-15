@@ -21,6 +21,7 @@ function ResetPassword() {
 
   const { resetPassword, resetPasswordLoading } = useAuthentication();
   const [passwordVisible, setpasswordVisible] = useState(false);
+  const [confirmpasswordVisible, setconfirmpasswordVisible] = useState(false);
   const [userReset, setNewPassword] = React.useState({
     password: "",
     confirmPassword: "",
@@ -68,14 +69,14 @@ function ResetPassword() {
         />
         <AuthInput
           inputText="Confirm Password"
-          type={`${passwordVisible === true ? "text" : "password"}`}
+          type={`${confirmpasswordVisible === true ? "text" : "password"}`}
           id="confirmPassword"
           name="confirmPassword"
           value={userReset.confirmPassword}
           onChange={handleChange}
-          onIcon={() => setpasswordVisible(!passwordVisible)}
+          onIcon={() => setconfirmpasswordVisible(!confirmpasswordVisible)}
           Icon={
-            passwordVisible === true ? (
+            confirmpasswordVisible === true ? (
               <VisibilityIcon />
             ) : (
               <VisibilityOffIcon />
