@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import "./index.scss";
@@ -13,11 +13,15 @@ import mail from "../../img/mail.png";
 import lock from "../../img/lock.png";
 import { Link, useHistory } from "react-router-dom";
 import useAuthentication from "../../stores/useAuthentication";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 import Notify from "../../util/Notify";
 
 function Register() {
   const history = useHistory();
   const { register, registerLoading } = useAuthentication();
+  const [passwordVisible, setpasswordVisible] = useState(false);
+  const [acceptPrivacyPolicy, setAcceptedPrivacyPolicy] = useState(false);
   const [registeration, setRegisteration] = React.useState({
     first_name: "",
     surname: "",
@@ -26,7 +30,6 @@ function Register() {
     password: "",
     confirmPassword: "",
   });
-  const [acceptPrivacyPolicy, setAcceptedPrivacyPolicy] = React.useState(false);
 
   const toggle = () => {
     setAcceptedPrivacyPolicy(!acceptPrivacyPolicy);
@@ -110,11 +113,19 @@ function Register() {
               <AuthInput
                 img={lock}
                 inputText="Password"
-                type="password"
+                type={`${passwordVisible === true ? "text" : "password"}`}
                 id="password"
                 name="password"
                 value={registeration.password}
                 onChange={handleChange}
+                onIcon={() => setpasswordVisible(!passwordVisible)}
+                Icon={
+                  passwordVisible === true ? (
+                    <VisibilityIcon />
+                  ) : (
+                    <VisibilityOffIcon />
+                  )
+                }
                 required
               />
 
@@ -122,16 +133,29 @@ function Register() {
                 img={lock}
                 inputText="Confirm Password"
                 errorMessage="Enter the same password"
-                type="password"
+                type={`${passwordVisible === true ? "text" : "password"}`}
                 id="confirmPassword"
                 name="confirmPassword"
                 value={registeration.confirmPassword}
                 onChange={handleChange}
+                onIcon={() => setpasswordVisible(!passwordVisible)}
+                Icon={
+                  passwordVisible === true ? (
+                    <VisibilityIcon />
+                  ) : (
+                    <VisibilityOffIcon />
+                  )
+                }
                 required
               />
               <FormGroup check>
                 <Label check>
-                  <Input type="checkbox" />I agree with the
+                  <Input
+                    type="checkbox"
+                    onClick={toggle}
+                    checked={acceptPrivacyPolicy}
+                  />
+                  I agree with the
                   <Link to="/privacy-policy">Privacy Policy</Link>
                 </Label>
               </FormGroup>
@@ -139,6 +163,7 @@ function Register() {
                 <AppButton
                   buttonText="Create Account"
                   classname="register-button"
+                  disabled={acceptPrivacyPolicy}
                 />
               </div>
             </Form>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "reactstrap";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Link, useHistory } from "react-router-dom";
@@ -12,11 +12,14 @@ import boy from "../../img/boy.png";
 import avatar from "../../img/avatar.png";
 import lock from "../../img/lock.png";
 import useAuthentication from "../../stores/useAuthentication";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 
 function Login() {
   const history = useHistory();
 
   const { login, loginLoading } = useAuthentication();
+  const [passwordVisible, setpasswordVisible] = useState(false);
   const [user, setUser] = React.useState({
     email: "",
     password: "",
@@ -62,13 +65,22 @@ function Login() {
               <AuthInput
                 img={lock}
                 inputText="Password"
-                type="password"
+                type={`${passwordVisible === true ? "text" : "password"}`}
                 id="password"
                 name="password"
                 value={user.password}
                 onChange={handleChange}
+                onIcon={() => setpasswordVisible(!passwordVisible)}
+                Icon={
+                  passwordVisible === true ? (
+                    <VisibilityIcon />
+                  ) : (
+                    <VisibilityOffIcon />
+                  )
+                }
                 required
               />
+
               <div className="app-button">
                 <AppButton
                   disabled={loginLoading}
