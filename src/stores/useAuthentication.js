@@ -12,6 +12,7 @@ import {
 } from "zustand/middleware"
 
 import Notify from "../util/Notify";
+import api from "../util/api";
 
 
 
@@ -169,9 +170,13 @@ const useAuthentication = create(persist((set, get) => ({
     }
   },
 }), {
-
   name: "auth",
   whitelist: ['user', 'accessToken'],
   getStorage: ()=> localStorage,
 }));
+
+useAuthentication.subscribe((state)=>{
+  api.defaults.headers.common.Authorization = `Bearer ${state.accessToken}`;
+});
+
 export default useAuthentication;
