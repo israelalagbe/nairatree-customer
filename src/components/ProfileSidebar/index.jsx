@@ -22,7 +22,6 @@ const linkList = [
   {
     id: "myprofile",
     name: "MY PROFILE",
-
     link: "/profile/myprofile",
   },
   {

@@ -13,6 +13,12 @@ import Cart from "../pages/Cart";
 import AddressInfo from "../pages/CheckoutPages/AddressInfo";
 import CheckoutDetails from "../pages/CheckoutPages/CheckoutDetails";
 import Profile from "../pages/Profile";
+import Otp from "../pages/Otp";
+import PaymentPolicy from "../pages/PaymentPolicy";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import Blog from "../pages/Blog";
+import AboutUs from "../pages/AboutUs";
+import AuthRoute from "./AuthRoute";
 
 export function Routes() {
   return (
@@ -27,7 +33,7 @@ export function Routes() {
         <Route path="/forgot-password" exact>
           <ForgotPassword />
         </Route>
-        <Route path="/reset-password" exact>
+        <Route path="/reset-password/:id" exact>
           <ResetPassword />
         </Route>
         <Route path="/login" exact>
@@ -54,8 +60,24 @@ export function Routes() {
         <Route path="/checkout-details" exact>
           <CheckoutDetails />
         </Route>
-        <Route path="/profile">
+        <AuthRoute path="/profile">
           <Profile />
+        </AuthRoute>
+
+        <Route path="/confirm-otp">
+          <Otp />
+        </Route>
+        <Route path="/payment-policy">
+          <PaymentPolicy />
+        </Route>
+        <Route path="/privacy-policy">
+          <PrivacyPolicy />
+        </Route>
+        <Route path="/blog">
+          <Blog />
+        </Route>
+        <Route path="/about-us">
+          <AboutUs />
         </Route>
       </Switch>
     </BrowserRouter>

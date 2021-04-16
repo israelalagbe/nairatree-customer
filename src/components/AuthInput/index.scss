@@ -21,8 +21,11 @@
 
     input {
       border: none !important;
-
       line-height: 3rem;
+      color: #828282;
+      font-size: 16px;
+      font-family: $font-barlow-regular;
+      background-color: none !important;
       &::placeholder {
         color: #828282;
         font-size: 14px;
