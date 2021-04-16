@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import AppBreadcrumb from "../../components/AppBreadcrumb";
 import Header from "../../components/Header";
-import Details from "../../components/Details";
+import ProductPrimaryDetails from "../../components/ProductPrimaryDetails";
 import ProductTab from "../../components/ProductTab";
 import "./index.scss";
 import { useParams } from "react-router-dom";
@@ -28,7 +28,7 @@ function ProductDetails() {
         <LoadingTrigger isLoading={selectedProductLoading || !selectedProduct}>
           <AppBreadcrumb product={selectedProduct} />
           <div className="details">
-            <Details />
+            <ProductPrimaryDetails product={selectedProduct} />
             <ProductTab />
           </div>
         </LoadingTrigger>

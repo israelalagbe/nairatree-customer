@@ -22,7 +22,7 @@ import Notify from "../util/Notify";
 
 /**
  * @typedef {Object} MethodsType
- * @prop {()=>void} register
+ * @prop {(payload, callback)=>void} register
  * @prop {(payload, callback)=>void} login
  * @prop {(payload, callback)=>void} forgotPassword
  * @prop {(payload, callback)=>void} verifyOtp

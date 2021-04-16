@@ -5,8 +5,13 @@ import "./index.scss";
 import AppButton from "../AppButton";
 import Car from "../../img/car.png";
 import classnames from "classnames";
+import formatMoney from "../../util/formatMoney";
 
-function Details() {
+/**
+ * 
+ * @param {{product: Product}} props 
+ */
+function ProductPrimaryDetails({product}) {
   const [active, setActive] = useState("");
 
   const toggle = (color) => {
@@ -19,28 +24,24 @@ function Details() {
           <div className="details-main">
             <Row>
               <Col md="6">
-                <div className="main-1">
+                <div className="images-box">
                   <div className="big">
-                    <img src={Iphone} alt="iphone" />
+                    <img src={product.images[0]} alt="iphone" />
                   </div>
                   <div className="small">
-                    <img src={Iphone} alt="iphone" />
-                    <img src={Iphone} alt="iphone" />
-                    <img src={Iphone} alt="iphone" />
-                    <img src={Iphone} alt="iphone" />
-                    <img src={Iphone} alt="iphone" />
+                    {product.images.map((image)=><img src={image} alt="iphone" />)}
                   </div>
                 </div>
               </Col>
               <Col md="6">
                 <div className="main-2">
                   <div className="more-details">
-                    <p className="type">Iphone 12 128GB/4GB Red</p>
-                    <h6>
+                    <p className="type">{product.name}</p>
+                    {/* <h6>
                       Sold by:<span>Veral Stores</span>
-                    </h6>
+                    </h6> */}
                     <h4>20% off on shipping for Abeokuta and Lagos</h4>
-                    <p className="amount">₦ 150,999.00</p>
+                    <p className="amount">{formatMoney(product.price)}</p>
 
                     <div className="colors">
                       <h6>Select Other Colors</h6>
@@ -95,17 +96,10 @@ function Details() {
                   </div>
                   <div className="quantity">
                     <p>
-                      Quantity available: <span>3</span>
+                      Quantity available: <span>{product.quantity_available}</span>
                     </p>
                     <h5>Short description</h5>
-                    <p className="down">
-                      Lorem ipsum dolor amend petum nici galu helin mocovureol
-                      <br />
-                      nuile funcut cuyen yiolum makdola nidef gundu niolpplery
-                      hunjy
-                      <br />
-                      cendy udart airnew bulli nexx benca...
-                    </p>
+                    <p className="down" dangerouslySetInnerHTML={{__html: product.description}}></p>
                   </div>
                 </div>
               </Col>
@@ -141,4 +135,4 @@ function Details() {
   );
 }
 
-export default Details;
+export default ProductPrimaryDetails;
