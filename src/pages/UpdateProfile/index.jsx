@@ -15,11 +15,11 @@ import {
 import AppButton from "../../components/AppButton";
 import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
-import useProfile from "../../stores/useProfile";
+import useAuthentication from "../../stores/useAuthentication";
 
 function UpdateProfile() {
   const history = useHistory();
-  const { updateUser, updateUserLoading } = useProfile();
+  const { updateUser, updateUserLoading } = useAuthentication();
 
   const [user, updateUserDetails] = React.useState({
     phone: "",
@@ -32,7 +32,7 @@ function UpdateProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
-      phone: user.phone,
+      phone: `+234${user.phone}`,
     };
 
     updateUser(payload, () => history.push("/profile"));

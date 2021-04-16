@@ -15,11 +15,11 @@ import {
 import AppButton from "../../../components/AppButton";
 import Copyright from "../../../components/Copyright";
 import Footer from "../../../components/Footer";
-import useProfile from "../../../stores/useProfile";
+import useAuthentication from "../../../stores/useAuthentication";
 
 function AddressInfo() {
   const history = useHistory();
-  const { updateUser, updateUserLoading } = useProfile();
+  const { updateUser, updateUserLoading } = useAuthentication();
 
   const [address, updateAddress] = React.useState({
     name: "",
@@ -27,6 +27,7 @@ function AddressInfo() {
     city: "",
     phone: "",
     address: "",
+    label: "",
   });
 
   const handleChange = async (e) => {
@@ -36,13 +37,17 @@ function AddressInfo() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
-      name: address.region,
-      region: address.region,
-      city: address.city,
-      phone: address.phone,
-      address: address.address,
+      address_book: [
+        {
+          name: address.region,
+          region: address.region,
+          city: address.city,
+          phone: `+234${address.phone}`,
+          address: address.address,
+          label: address.label,
+        },
+      ],
     };
-
     updateUser(payload, () => history.push("/profile"));
   };
   return (
@@ -93,6 +98,18 @@ function AddressInfo() {
                 id="address"
                 placeholder="81b Kusa Street"
                 value={address.address}
+                onChange={handleChange}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="label">Home/Office</Label>
+              <Input
+                type="text"
+                name="label"
+                id="label"
+                placeholder="Home"
+                value={address.label}
                 onChange={handleChange}
                 required
               />
