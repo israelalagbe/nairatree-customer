@@ -15,10 +15,8 @@ import CheckoutDetails from "../pages/CheckoutPages/CheckoutDetails";
 import Profile from "../pages/Profile";
 import Otp from "../pages/Otp";
 import AuthRoute from "./AuthRoute";
-import useAuthentication from "../stores/useAuthentication";
-
+import UpdateProfile from "../pages/UpdateProfile";
 export function Routes() {
-  
   return (
     <BrowserRouter>
       <Switch>
@@ -60,6 +58,9 @@ export function Routes() {
         </Route>
         <AuthRoute path="/profile">
           <Profile />
+        </AuthRoute>
+        <AuthRoute path="/update-profile">
+          <UpdateProfile />
         </AuthRoute>
 
         <Route path="/confirm-otp">

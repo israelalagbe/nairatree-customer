@@ -1,7 +1,7 @@
 import React from "react";
 import AppLogo from "../../../components/AppLogo";
 import "./index.scss";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import {
   Form,
@@ -15,8 +15,36 @@ import {
 import AppButton from "../../../components/AppButton";
 import Copyright from "../../../components/Copyright";
 import Footer from "../../../components/Footer";
+import useProfile from "../../../stores/useProfile";
 
 function AddressInfo() {
+  const history = useHistory();
+  const { updateUser, updateUserLoading } = useProfile();
+
+  const [address, updateAddress] = React.useState({
+    name: "",
+    region: "",
+    city: "",
+    phone: "",
+    address: "",
+  });
+
+  const handleChange = async (e) => {
+    updateAddress({ ...address, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const payload = {
+      name: address.region,
+      region: address.region,
+      city: address.city,
+      phone: address.phone,
+      address: address.address,
+    };
+
+    updateUser(payload, () => history.push("/profile"));
+  };
   return (
     <>
       <div className="address-info">
@@ -26,15 +54,18 @@ function AddressInfo() {
           <Link to="/login"> Cart</Link>
         </div>
         <div className="address-form">
-          <Form className="address-main">
+          <Form className="address-main" onSubmit={handleSubmit}>
             <h3>ADDRESS INFORMATION</h3>
             <FormGroup>
               <Label for="fullName">Full Name*</Label>
               <Input
                 type="text"
-                name="fullName"
-                id="fullName"
+                name="name"
+                id="name"
                 placeholder="Adekola Diekola"
+                value={address.name}
+                onChange={handleChange}
+                required
               />
             </FormGroup>
             <FormGroup>
@@ -43,7 +74,15 @@ function AddressInfo() {
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText>+234</InputGroupText>
                 </InputGroupAddon>
-                <Input placeholder="8082269035" />
+                <Input
+                  placeholder="8082269035"
+                  type="number"
+                  id="phone"
+                  name="phone"
+                  value={address.phone}
+                  onChange={handleChange}
+                  required
+                />
               </InputGroup>
             </FormGroup>
             <FormGroup>
@@ -53,15 +92,21 @@ function AddressInfo() {
                 name="address"
                 id="address"
                 placeholder="81b Kusa Street"
+                value={address.address}
+                onChange={handleChange}
+                required
               />
             </FormGroup>
             <FormGroup>
               <Label for="state">State / Region *</Label>
               <Input
                 type="text"
-                name="state"
-                id="state"
+                name="region"
+                id="region"
                 placeholder="Please select..."
+                value={address.region}
+                onChange={handleChange}
+                required
               />
             </FormGroup>
             <FormGroup>
@@ -71,6 +116,9 @@ function AddressInfo() {
                 name="city"
                 id="city"
                 placeholder="Please select..."
+                value={address.city}
+                onChange={handleChange}
+                required
               />
             </FormGroup>
 
