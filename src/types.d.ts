@@ -61,6 +61,7 @@ interface Product {
   createdAt: string;
   updatedAt: string;
   id: string;
+  related_items?: Product[]
 }
 
 interface Shipmentfee {

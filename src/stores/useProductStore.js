@@ -2,7 +2,8 @@ import create from 'zustand'
 import {
   getProducts,
   getDealOfTheDay,
-  getTrendingProducts
+  getTrendingProducts,
+  getProduct
 } from '../services/product-service';
 
 import delay from '../util/delay';
@@ -19,6 +20,8 @@ import reportError from '../util/reportError';
  * @prop {boolean} dealsOfTheDayLoading 
  * @prop {Product[]} trendingProducts
  * @prop {boolean} trendingProductsLoading 
+ * @prop {Product} selectedProduct 
+ * @prop {boolean} selectedProductLoading 
  */
 
 /**
@@ -26,6 +29,7 @@ import reportError from '../util/reportError';
  * @prop {()=>void} fetchProducts
  * @prop {()=>void} fetchDealOfTheDay
  * @prop {()=>void} fetchTrendingProducts
+ * @prop {(id:string)=>void} fetchSelectedProduct
  */
 
 /**
@@ -41,6 +45,9 @@ const initialState = {
 
   dealsOfTheDay: [],
   dealsOfTheDayLoading: true,
+
+  selectedProduct: null,
+  selectedProductLoading: false
 };
 
 /**
@@ -118,6 +125,32 @@ const useProductStore = create(
         set((state) => ({
           ...state,
           trendingProductsLoading: false
+        })); 
+      }
+    },
+
+    fetchSelectedProduct: async (id) => {
+      set((state) => ({
+        ...state,
+        selectedProductLoading: true
+      }));
+      
+      try {
+        const {product, related_items} = await getProduct(id);
+        product.related_items = related_items;
+        
+        set((state) => ({
+          ...state,
+           selectedProduct: product
+        }))
+
+       
+      } catch (e) {
+        Notify.error(e.message)
+      } finally {
+        set((state) => ({
+          ...state,
+          selectedProductLoading: false
         })); 
       }
     },

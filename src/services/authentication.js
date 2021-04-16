@@ -4,7 +4,7 @@ import api from "../util/api";
 const { baseUrl } = env;
 
 /**
- * @return {*}
+ * @return {any}
  */
 export function register(payload) {
   return api.post(`${baseUrl}/customers/auth/register`, payload);

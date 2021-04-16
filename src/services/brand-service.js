@@ -6,7 +6,7 @@ const {
 } = env;
 
 /**
- * @return {*}
+ * @return {any}
  */
 export function getBrands() {
     return api.get(`${baseUrl}/customers/brands/all`, {
@@ -15,7 +15,7 @@ export function getBrands() {
 }
 
 /**
- * @return {*}
+ * @return {any}
  */
 export function getPopularBrands() {
     return api.get(`${baseUrl}/customers/brands/popular`, {

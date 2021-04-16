@@ -51,7 +51,7 @@ export function Routes() {
         <Route path="/cart" exact>
           <Cart />
         </Route>
-        <Route path="/product-details" exact>
+        <Route path="/product-details/:productId" exact>
           <ProductDetails />
         </Route>
         <Route path="/address-information" exact>
