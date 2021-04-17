@@ -1,3 +1,4 @@
+type UseStore<T> = import('zustand').UseStore<T>;
 interface Category {
   _id: string;
   alias: string;
@@ -149,4 +150,10 @@ interface AddressBook {
   additional_info: string;
 }
 
-type UseStore<T> = import('zustand').UseStore<T>;
+interface Cart {
+  product:  Product;
+  quantity: number;
+  variant?: string;
+}
+
+
