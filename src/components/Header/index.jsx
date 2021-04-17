@@ -64,7 +64,7 @@ export default function Header() {
               </DropdownToggle>
               <DropdownMenu right>
                 {popularBrands.map((brand) => (
-                  <DropdownItem>{brand.name}</DropdownItem>
+                  <DropdownItem key={brand.id}>{brand.name}</DropdownItem>
                 ))}
               </DropdownMenu>
             </UncontrolledDropdown>

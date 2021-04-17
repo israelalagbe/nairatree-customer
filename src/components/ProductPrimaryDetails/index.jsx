@@ -88,6 +88,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                     <div className="small">
                       {productImages.map((image, index) => (
                         <img
+                          key={index}
                           className="pointer"
                           onClick={() => setCurrentImageIndex(index)}
                           src={image}
@@ -112,6 +113,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                         <div className="diff pointer mb-2">
                           {product.variants.map((variant) => (
                             <h6
+                              key={variant.variant_id}
                               className={classnames({ active: selectedVariant?.color === variant.color })}
                               onClick={() => {
                                 toggle(variant);
