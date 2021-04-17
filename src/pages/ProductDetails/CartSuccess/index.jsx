@@ -17,18 +17,18 @@ function CartSuccess() {
           <AppButton
             buttonText="VIEW CART AND CHECKOUT"
             classname="checkout-button"
-            onClick={() => history.push("/")}
+            onClick={() => history.push("/cart")}
           />
           <AppButton
             buttonText="CONTINUE SHOPPING"
             classname="continue-button"
-            onClick={() => history.push("/")}
+            onClick={() => history.goBack()}
           />
         </div>
       </div>
-      <div className="single">
+      {/* <div className="single">
         <SingleProductDetails />
-      </div>
+      </div> */}
     </div>
   );
 }

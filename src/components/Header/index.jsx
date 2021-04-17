@@ -29,10 +29,12 @@ import { Popover } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import useBrandStore from "../../stores/useBrandStore";
 import useAuthentication from "../../stores/useAuthentication";
+import useCartStore from "../../stores/useCartStore";
 
 export default function Header() {
   const { fetchCategories, categories } = useCategoryStore();
   const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
+  const { carts } = useCartStore();
 
   const [navbarIsOpen, setIsOpen] = useState(false);
   const toggleNavbarCollapse = () => setIsOpen(!navbarIsOpen);
@@ -93,7 +95,7 @@ export default function Header() {
           <AccountNav />
 
           <Link to="/cart" className="cart-nav text-decoration-none">
-            <Badge badgeContent={4} color="error">
+            <Badge badgeContent={carts.length} color="error">
               <ShoppingBasketIcon fontSize="small" />
             </Badge>
             <span className="ml-3 text">Cart</span>
