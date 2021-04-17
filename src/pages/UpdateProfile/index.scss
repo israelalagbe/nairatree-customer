@@ -1,6 +1,6 @@
 @import "/src/config/variables.scss";
 
-.address-info {
+.update-profile {
   padding: 1rem;
   background-color: #f7f7f7;
   .go-back {
@@ -20,12 +20,12 @@
       margin-left: 3px;
     }
   }
-  .address-form {
+  .update-form {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    .address-main {
+    .update-main {
       padding: 0.8rem;
       background-color: white;
       border-radius: 5px;
@@ -60,7 +60,7 @@
           }
         }
       }
-      .info-button {
+      .update-buttons {
         .continue {
           width: 100%;
           background-color: #f3ca3e;
@@ -72,21 +72,11 @@
           height: 37px;
           border-radius: 5px;
         }
-        .save {
-          width: 100%;
-          background-color: #f3ca3e;
-          color: white;
-          font-size: 15px;
-          font-family: $font-roboto-regular;
-          border: none;
-          height: 37px;
-          border-radius: 5px;
-        }
       }
     }
   }
 }
-.bottom {
+.update-bottom {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -107,7 +97,7 @@
 }
 
 @media only screen and (max-width: 1289px) {
-  .address-info {
+  .update-profile {
     .go-back {
       padding: 3rem;
     }
@@ -115,13 +105,13 @@
 }
 
 @media only screen and (max-width: 917px) {
-  .bottom {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .update-bottom {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
     .copyright {
       text-align: center;
-      width: 100%;
     }
     .footer {
       width: 100%;

@@ -17,9 +17,9 @@ function Account() {
             {user.surname} {user.first_name}
           </h5>
         </div>
-        <div>
+        <Link to="/update-profile">
           <CreateIcon />
-        </div>
+        </Link>
       </div>
       <div className="content">
         <div>

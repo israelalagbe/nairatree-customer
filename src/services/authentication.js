@@ -45,3 +45,10 @@ export function resetPassword(payload) {
     payload
   );
 }
+
+/**
+ * @return {any}
+ */
+export function updateProfile(payload) {
+  return api.put(`${baseUrl}/customers/profile/update`, payload);
+}

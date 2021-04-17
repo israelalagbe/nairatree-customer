@@ -5,9 +5,13 @@ import {
   forgotPassword,
   verifyOtp,
   resetPassword,
+  updateProfile,
 } from "../services/authentication";
+
 import { persist } from "zustand/middleware";
+
 import Notify from "../util/Notify";
+import api from "../util/api";
 
 /**
  * @typedef {Object} InitialStateType
@@ -16,6 +20,7 @@ import Notify from "../util/Notify";
  * @prop {boolean} forgotPasswordLoading
  * @prop {boolean} verifyOtpLoading
  * @prop {boolean} resetPasswordLoading
+ * @prop {boolean} updateUserLoading
  * @prop {User} user
  * @prop {string} accessToken
  */
@@ -27,6 +32,7 @@ import Notify from "../util/Notify";
  * @prop {(payload, callback)=>void} forgotPassword
  * @prop {(payload, callback)=>void} verifyOtp
  * @prop {(payload, callback)=>void} resetPassword
+ * @prop {(payload, callback)=>void} updateUser
  */
 
 /**
@@ -40,6 +46,7 @@ const initialState = {
   forgotPasswordLoading: false,
   resetPasswordLoading: false,
   verifyOtpLoading: false,
+  updateUserLoading: false,
 };
 
 /**
@@ -55,8 +62,10 @@ const useAuthentication = create(
           ...state,
           registerLoading: true,
         }));
+
         try {
           await register(payload);
+
           Notify.success("Customer successfully added");
           callback();
         } catch (e) {
@@ -152,11 +161,42 @@ const useAuthentication = create(
           }));
         }
       },
+      updateUser: async (payload, callback) => {
+        set((state) => ({
+          ...state,
+          updateUserLoading: true,
+        }));
+
+        try {
+          const data = await updateProfile(payload);
+          console.log(data);
+          set((state) => ({
+            ...state,
+            data,
+          }));
+
+          Notify.success("Profile Updated");
+          callback();
+        } catch (e) {
+          Notify.error(e.message);
+        } finally {
+          set((state) => ({
+            ...state,
+            updateUserLoading: false,
+          }));
+        }
+      },
     }),
     {
       name: "auth",
       whitelist: ["user", "accessToken"],
+      getStorage: () => localStorage,
     }
   )
 );
+
+useAuthentication.subscribe((state) => {
+  api.defaults.headers.common.Authorization = `Bearer ${state.accessToken}`;
+});
+
 export default useAuthentication;
