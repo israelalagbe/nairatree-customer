@@ -10,11 +10,11 @@ import useAuthentication from "../../../stores/useAuthentication";
 
 const AddressBookModal = ({ show, onClose }) => {
   const { user } = useAuthentication();
-  const address = user?.address_book;
-  const [checked, setChecked] = useState(true);
-  const toggle = (Id) => {
-    if (checked !== Id) setChecked(Id);
-  };
+  const addresses = user?.address_book;
+  const [selectedAddress, setSelectedAddress] = useState(
+    addresses.find((item) => item.is_default)
+  );
+
   console.log(user);
   return (
     <Modal isOpen={show} toggle={onClose} size="lg">
@@ -22,10 +22,7 @@ const AddressBookModal = ({ show, onClose }) => {
         <div className="addressBookModal">
           <div className="addressBookContainer">
             <h2> Address Book</h2>
-            <CloseIcon
-              className="cursor-pointer close-image"
-              onClick={onClose}
-            />
+            <CloseIcon className="cursor-pointer close-image" onClick={onClose} />
           </div>
           <div className="add-new-address">
             <CancelIcon />
@@ -33,15 +30,12 @@ const AddressBookModal = ({ show, onClose }) => {
           </div>
           <div className="addressBookDefault">
             <h5>DEFAULT ADDRESS</h5>
-            {address.map((item) => (
+            {addresses.map((item) => (
               <div className="addressBookForm">
                 <div className="addressFormGroup">
                   <FormGroup check>
                     <Label check>
-                      <Input
-                        type="checkbox"
-                        checked={toggle(item.is_default)}
-                      />
+                      <Input type="checkbox" checked={item._id === selectedAddress?._id} />
                       <div>
                         <h4>{item.name}</h4>
                         <h6>{item.address}</h6>

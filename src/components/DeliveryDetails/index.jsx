@@ -11,7 +11,6 @@ function DeliveryDetails() {
       <AddressBookModal
         show={addressModal.isOpen}
         onClose={addressModal.close}
-        onOpen={addressModal.open}
       />
       <div className="delivery-details">
         <div className="delivery-details-first">
