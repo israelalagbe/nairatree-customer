@@ -23,6 +23,8 @@ function UpdateProfile() {
 
   const [user, updateUserDetails] = React.useState({
     phone: "",
+    first_name: "",
+    surname: "",
   });
 
   const handleChange = async (e) => {
@@ -33,6 +35,8 @@ function UpdateProfile() {
     e.preventDefault();
     const payload = {
       phone: `+234${user.phone}`,
+      first_name: user.first_name,
+      surname: user.surname,
     };
 
     updateUser(payload, () => history.push("/profile"));
@@ -51,7 +55,33 @@ function UpdateProfile() {
             <h3>UPDATE PROFILE</h3>
 
             <FormGroup>
-              <Label for="mobilePhone">Mobile Phone Number *</Label>
+              <Label for="name">First Name</Label>
+              <Input
+                type="text"
+                name="first_name"
+                id="first_name"
+                placeholder="Adekola Diekola"
+                value={user.first_name}
+                onChange={handleChange}
+                required
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="name">Surname</Label>
+              <Input
+                type="text"
+                name="surname"
+                id="surname"
+                placeholder="Adekola Diekola"
+                value={user.surname}
+                onChange={handleChange}
+                required
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="mobilePhone">Mobile Phone Number</Label>
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText>+234</InputGroupText>

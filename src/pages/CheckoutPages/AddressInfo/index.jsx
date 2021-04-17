@@ -19,7 +19,7 @@ import useAuthentication from "../../../stores/useAuthentication";
 
 function AddressInfo() {
   const history = useHistory();
-  const { updateUser, updateUserLoading } = useAuthentication();
+  const { user, updateUser, updateUserLoading } = useAuthentication();
 
   const [address, updateAddress] = React.useState({
     name: "",
@@ -38,8 +38,16 @@ function AddressInfo() {
     e.preventDefault();
     const payload = {
       address_book: [
+        ...user.address_book.map((item) => ({
+          name: item.name,
+          region: item.region,
+          city: item.city,
+          phone: item.phone,
+          address: item.address,
+          label: item.label,
+        })),
         {
-          name: address.region,
+          name: address.name,
           region: address.region,
           city: address.city,
           phone: `+234${address.phone}`,
@@ -48,6 +56,7 @@ function AddressInfo() {
         },
       ],
     };
+
     updateUser(payload, () => history.push("/profile"));
   };
   return (
@@ -74,7 +83,7 @@ function AddressInfo() {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="mobilePhone">Mobile Phone Number *</Label>
+              <Label for="mobilePhone">Mobile Phone Number</Label>
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText>+234</InputGroupText>
