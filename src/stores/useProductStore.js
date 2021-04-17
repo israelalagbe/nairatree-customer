@@ -14,6 +14,7 @@ import reportError from '../util/reportError';
  * @typedef {Object} InitialStateType
  * @prop {Product[]} products
  * @prop {boolean} productsLoading
+ * @prop {number} totalProducts
  * @prop {Product[]} dealsOfTheDay
  * @prop {boolean} dealsOfTheDayLoading 
  * @prop {Product[]} trendingProducts
@@ -33,6 +34,7 @@ import reportError from '../util/reportError';
 const initialState = {
   products: [],
   productsLoading: false,
+  totalProducts: 0,
 
   trendingProducts: [],
   trendingProductsLoading: false,
@@ -56,13 +58,16 @@ const useProductStore = create(
       
       try {
         const {
-          products
+          products,
+          total_records
         } = await getProducts();
 
         set((state) => ({
           ...state,
-          products
+          products,
+          totalProducts: total_records
         }))
+
       } catch (e) {
         Notify.error(e.message)
       } finally {

@@ -6,13 +6,13 @@ import "./index.scss";
 function Footer() {
   return (
     <div className="footer">
-      <Link to="/">Privacy Policy</Link>
+      <Link to="/privacy-policy">Privacy Policy</Link>
 
-      <Link to="/">About</Link>
+      <Link to="/about-us">About</Link>
 
-      <Link to="/">Blog</Link>
+      <Link to="/blog">Blog</Link>
 
-      <Link to="/">Payment Policy</Link>
+      <Link to="/payment-policy">Payment Policy</Link>
     </div>
   );
 }
