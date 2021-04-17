@@ -11,7 +11,7 @@ import "./index.scss";
  * @param {string} [props.errorMessage]
  * @param {any} [props.Icon]
  * @param {any} [props.onIconClick]
- * @param {*} [props.type]
+ * @param {any} [props.type]
  * @param {string} [props.id]
  * @param {string} [props.value]
  * @param {boolean} [props.required]

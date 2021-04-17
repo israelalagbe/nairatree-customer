@@ -19,7 +19,11 @@ function handleClick(event) {
   console.info("You clicked a breadcrumb.");
 }
 
-function AppBreadcrumb() {
+/**
+ * 
+ * @param {{product: Product}} param0 
+ */
+function AppBreadcrumb({product}) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -28,16 +32,16 @@ function AppBreadcrumb() {
       </div>
       <Breadcrumbs separator="›" aria-label="breadcrumb">
         <Link color="inherit" href="/" onClick={handleClick}>
-          Material-UI
+          {product.category}
         </Link>
         <Link
           color="inherit"
           href="/getting-started/installation/"
           onClick={handleClick}
         >
-          Core
+          {product.subcategory}
         </Link>
-        <Typography color="textPrimary">Breadcrumb</Typography>
+        <Typography color="textPrimary">{product.name}</Typography>
       </Breadcrumbs>
     </div>
   );

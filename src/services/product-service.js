@@ -6,22 +6,30 @@ const {
 } = env;
 
 /**
- * @return {*}
+ * @return {any}
  */
 export function getProducts() {
     return api.get(`${baseUrl}/customers/products/fetch`, {});
 }
 
 /**
- * @return {*}
+ * @return {any}
  */
 export function getTrendingProducts() {
     return api.get(`${baseUrl}/customers/products/trending`, {});
 }
 
 /**
- * @return {*}
+ * @return {any}
  */
 export function getDealOfTheDay() {
     return api.get(`${baseUrl}/customers/products/deal-of-the-day`, {});
+}
+
+/**
+ * @param {string} id
+ * @return {any}
+ */
+export function getProduct(id) {
+    return api.get(`${baseUrl}/customers/products/single/${id}`);
 }
