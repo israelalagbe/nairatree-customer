@@ -1,4 +1,5 @@
 import create from 'zustand'
+import { persist } from 'zustand/middleware';
 import { getCarts, saveCart } from '../services/cart-service';
 import Notify from '../util/Notify';
 
@@ -14,7 +15,7 @@ import Notify from '../util/Notify';
 /**
  * @typedef {Object} MethodsType
  * @prop {()=>void} fetchCarts
- * @prop {(payload:any)=>void} saveCarts
+ * @prop {(payload:any, onError)=>void} saveCarts
  */
 
 /**
@@ -29,7 +30,7 @@ const initialState = {
 /**
  * @type {UseStore<InitialStateType & MethodsType>}
  */
-const useCartStore = create(
+const useCartStore = create(persist(
   (set, get) => ({
     ...initialState,
 
@@ -50,16 +51,19 @@ const useCartStore = create(
 
       }
     },
-    saveCarts: async (cartsPayload) => {
+    saveCarts: async (cartsPayload, onSuccess, onError) => {
         set((state)=> ({...state, saveCartsLoading: true}))
   
         try{
+            
           const carts = await saveCart(cartsPayload);
-          console.log("cart result", carts)
-          //   set((state)=> ({...state, carts: brands}))
+          set((state)=> ({...state, carts}))
+          onSuccess();
         }
         catch(e){
+         
           Notify.error(e.message)
+        //   onError(e)
         }
         finally{
   
@@ -67,6 +71,9 @@ const useCartStore = create(
   
         }
       },
+  }), {
+      name: 'carts',
+      whitelist: ['carts']
   }))
   
 

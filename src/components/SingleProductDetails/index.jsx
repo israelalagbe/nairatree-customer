@@ -6,7 +6,6 @@ import "./index.scss";
  * @param {{product: Product, variant: ProductVariant}} props
  */
 function SingleProductDetails({ product, variant }) {
-  
   const items = [
     { key: "Name", value: product.name },
     {
@@ -31,26 +30,28 @@ function SingleProductDetails({ product, variant }) {
     },
     {
       key: "Features",
-      value: product.features.join(', '),
+      value: product.features.join(", "),
     },
     {
       key: "Date Manufactured",
-      value: product.date_manufactured
+      value: product.date_manufactured,
     },
-  ].filter((item)=>item.value);
+  ].filter((item) => item.value);
   return (
     <div className="single-product-details">
       <table>
-        {items.map((item) => (
-          <tr>
-            <td>
-              <span className="key">{item.key}:</span>
-            </td>
-            <td>
-              <span className="value">{item.value}</span>
-            </td>
-          </tr>
-        ))}
+        <tbody>
+          {items.map((item) => (
+            <tr key={item.key}>
+              <td>
+                <span className="key">{item.key}:</span>
+              </td>
+              <td>
+                <span className="value">{item.value}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

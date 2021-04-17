@@ -30,9 +30,9 @@ function Cart() {
             </Link>
           </div>
           <section className="product-list">
-            {new Array(10).fill(null).map(() => (
+            {/* {new Array(10).fill(null).map(() => (
               <ProductItem />
-            ))}
+            ))} */}
           </section>
         </div>
       </div>
