@@ -82,7 +82,6 @@ const useAuthentication = create(
           ...state,
           loginLoading: true,
         }));
-
         try {
           const { user, token } = await login(payload);
 
@@ -92,7 +91,7 @@ const useAuthentication = create(
             accessToken: token,
           }));
 
-          Notify.success("Login Successful!");
+          Notify.success("Customer successfully logged in");
 
           callback();
         } catch (e) {
@@ -151,7 +150,6 @@ const useAuthentication = create(
 
         try {
           await resetPassword(payload);
-
           Notify.success("Password Reset Successful");
           callback();
         } catch (e) {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "reactstrap";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Link, useHistory, useLocation } from "react-router-dom";
@@ -12,17 +12,17 @@ import boy from "../../img/boy.png";
 import avatar from "../../img/avatar.png";
 import lock from "../../img/lock.png";
 import useAuthentication from "../../stores/useAuthentication";
-
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 import getQueryParams from "../../util/getQueryParams";
 
 function Login() {
   const history = useHistory();
-  const location = useLocation()
-
-  const qParam = getQueryParams(location.search)
-
+  const location = useLocation();
+  const qParam = getQueryParams(location.search);
 
   const { login, loginLoading } = useAuthentication();
+  const [passwordVisible, setpasswordVisible] = useState(false);
   const [user, setUser] = React.useState({
     email: "",
     password: "",
@@ -38,7 +38,9 @@ function Login() {
       email: user.email,
       password: user.password,
     };
-    login(payload, () => history.push(qParam.redirect_to ? qParam.redirect_to: "/"));
+    login(payload, () =>
+      history.push(qParam.redirect_to ? qParam.redirect_to : "/")
+    );
   };
 
   return (
@@ -68,13 +70,22 @@ function Login() {
               <AuthInput
                 img={lock}
                 inputText="Password"
-                type="password"
+                type={`${passwordVisible === true ? "text" : "password"}`}
                 id="password"
                 name="password"
                 value={user.password}
                 onChange={handleChange}
+                onIconClick={() => setpasswordVisible(!passwordVisible)}
+                Icon={
+                  passwordVisible === true ? (
+                    <VisibilityIcon />
+                  ) : (
+                    <VisibilityOffIcon />
+                  )
+                }
                 required
               />
+
               <div className="app-button">
                 <AppButton
                   disabled={loginLoading}
