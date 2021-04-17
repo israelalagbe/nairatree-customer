@@ -4,7 +4,11 @@ import classnames from "classnames";
 import SingleProductDetails from "../SingleProductDetails";
 import "./index.scss";
 
-const ProductTab = () => {
+/**
+ *
+ * @param {{product: Product, variant: ProductVariant}} props
+ */
+const ProductTab = ({ product, variant }) => {
   const [activeTab, setActiveTab] = useState("1");
 
   const toggle = (tab) => {
@@ -48,13 +52,13 @@ const ProductTab = () => {
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-          <SingleProductDetails />
+          <SingleProductDetails variant={variant} product={product} />
         </TabPane>
         <TabPane tabId="2">
-          <SingleProductDetails />
+          <SingleProductDetails variant={variant} product={product} />
         </TabPane>
         <TabPane tabId="3">
-          <SingleProductDetails />
+          <SingleProductDetails variant={variant} product={product} />
         </TabPane>
       </TabContent>
     </div>

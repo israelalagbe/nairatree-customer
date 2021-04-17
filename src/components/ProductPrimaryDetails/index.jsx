@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "reactstrap";
 import Iphone from "../../img/iphone.png";
 import "./index.scss";
@@ -9,31 +9,37 @@ import formatMoney from "../../util/formatMoney";
 
 /**
  *
- * @param {{product: Product}} props
+ * @param {object} props
+ * @param {Product} props.product
+ * @param {Function} props.setVariant
+ * @param {ProductVariant} [props.selectedVariant]
  */
-function ProductPrimaryDetails({ product }) {
-  const [active, setActive] = useState("");
+function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
 
+  const availableQuantity = selectedVariant?.quantity ?? product.quantity_available;
+  
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const [productImages, setProductImages] = useState(product.images);
 
   const [counter, setCounter] = useState(1);
 
+  console.log(product)
+
   /**
    * @param {ProductVariant} variant 
    */
   const toggle = (variant) => {
-    if (active !== variant.color) setActive(variant.color);
-
+    // if (active !== variant.color) setActive(variant.color);
+    setVariant(variant);
     
     setProductImages(variant.images);
     setCurrentImageIndex(0);
   };
 
   const incrementCounter = (e) => {
-    if(counter >= product.quantity_available){
-      setCounter(product.quantity_available);
+    if(counter >= availableQuantity){
+      setCounter(availableQuantity);
       return;
     };
     setCounter(counter + 1)
@@ -47,6 +53,12 @@ function ProductPrimaryDetails({ product }) {
     };
     setCounter(counter - 1)
   }
+  
+  useEffect(() => {
+    if(counter >= availableQuantity) {
+      setCounter(availableQuantity);
+    }
+  },[counter, availableQuantity]);
   
   return (
     <div className="details">
@@ -86,7 +98,7 @@ function ProductPrimaryDetails({ product }) {
                       <div className="diff pointer mb-2">
                         {product.variants.map((variant) => (
                           <h6
-                            className={classnames({ active: active === variant.color })}
+                            className={classnames({ active: selectedVariant?.color === variant.color })}
                             onClick={() => {
                               toggle(variant);
                             }}
@@ -133,7 +145,7 @@ function ProductPrimaryDetails({ product }) {
                   </div>
                   <div className="quantity">
                     <p>
-                      Quantity available: <span>{product.quantity_available}</span>
+                      Quantity available: <span>{availableQuantity}</span>
                     </p>
                     <h5>Short description</h5>
                     <p

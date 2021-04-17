@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AppBreadcrumb from "../../components/AppBreadcrumb";
 import Header from "../../components/Header";
 import ProductPrimaryDetails from "../../components/ProductPrimaryDetails";
@@ -14,9 +14,11 @@ function ProductDetails() {
    */
   const { productId } = useParams();
 
+  const [selectedVariant, setVariant] = useState(null);
+
   const { selectedProduct, selectedProductLoading, fetchSelectedProduct } = useProductStore();
 
-  console.log(selectedProduct);
+  
   useEffect(() => {
     fetchSelectedProduct(productId);
   }, [fetchSelectedProduct, productId]);
@@ -28,8 +30,8 @@ function ProductDetails() {
         <LoadingTrigger marginTop='10rem' isLoading={selectedProductLoading || !selectedProduct}>
           <AppBreadcrumb product={selectedProduct} />
           <div className="details">
-            <ProductPrimaryDetails product={selectedProduct} />
-            <ProductTab />
+            <ProductPrimaryDetails selectedVariant={selectedVariant} setVariant={setVariant} product={selectedProduct} />
+            <ProductTab variant={selectedVariant} product={selectedProduct} />
           </div>
         </LoadingTrigger>
       </div>
