@@ -171,10 +171,10 @@ const useAuthentication = create(
 
         try {
           const data = await updateProfile(payload);
-          console.log(data);
+          const user = data;
           set((state) => ({
             ...state,
-            data,
+            user,
           }));
 
           Notify.success("Profile Updated");

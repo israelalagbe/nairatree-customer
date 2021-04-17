@@ -45,6 +45,7 @@ function AddressInfo() {
           phone: item.phone,
           address: item.address,
           label: item.label,
+          is_default: false,
         })),
         {
           name: address.name,
@@ -53,6 +54,7 @@ function AddressInfo() {
           phone: `+234${address.phone}`,
           address: address.address,
           label: address.label,
+          is_default: true,
         },
       ],
     };
