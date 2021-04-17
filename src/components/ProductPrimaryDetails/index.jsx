@@ -63,11 +63,13 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
   }, [counter, availableQuantity]);
 
   const addToCart = (e) => {
+    //Format existing cart details in format suitable for the backend
     const existingCarts = carts.map((cart) => ({
       product: cart.product.id,
       quantity: cart.quantity,
       ...(cart.variant ? { variant: String(cart.variant) } : null),
     }))
+    // Remove current product from shopping cart
     .filter((cart) => !(cart.product ===product.id && String(cart.variant) === String(selectedVariant?.variant_id)) );
 
 
