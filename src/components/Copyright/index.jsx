@@ -3,11 +3,11 @@ import "./index.scss";
 
 function Copyright() {
   return (
-  
-      <div className="copyright">
+    <div >
+      <p className="copyright">
         © 2020 <span>Nairatree.</span>
-      </div>
-    
+      </p>
+    </div>
   );
 }
 
