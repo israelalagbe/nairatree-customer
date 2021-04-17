@@ -38,7 +38,7 @@ function CheckoutDetails() {
 
         <div className="accord-main">
           <div className={classes.root}>
-            <Accordion>
+            <Accordion expanded={true}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"

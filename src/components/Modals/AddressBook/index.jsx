@@ -35,7 +35,7 @@ const AddressBookModal = ({ show, onClose }) => {
                 <div className="addressFormGroup">
                   <FormGroup check>
                     <Label check>
-                      <Input type="checkbox" checked={item._id === selectedAddress?._id} />
+                      <Input onClick={() => setSelectedAddress(item)} type="checkbox" checked={item._id === selectedAddress?._id} />
                       <div>
                         <h4>{item.name}</h4>
                         <h6>{item.address}</h6>
