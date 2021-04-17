@@ -26,6 +26,10 @@
   pointer-events: none;
 }
 
+.capitalize{
+  text-transform: capitalize;
+}
+
 a{
   color: inherit;
 }

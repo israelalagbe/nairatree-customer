@@ -34,7 +34,7 @@ import useCartStore from "../../stores/useCartStore";
 export default function Header() {
   const { fetchCategories, categories } = useCategoryStore();
   const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
-  const { carts } = useCartStore();
+  const { carts, fetchCarts } = useCartStore();
 
   const [navbarIsOpen, setIsOpen] = useState(false);
   const toggleNavbarCollapse = () => setIsOpen(!navbarIsOpen);
@@ -42,7 +42,9 @@ export default function Header() {
   useEffect(() => {
     fetchCategories();
     fetchPopularBrands();
-  }, [fetchCategories, fetchPopularBrands]);
+    fetchCarts();
+
+  }, [fetchCategories, fetchPopularBrands, fetchCarts]);
 
   return (
     <div className="home-header">

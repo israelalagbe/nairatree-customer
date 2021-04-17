@@ -6,15 +6,18 @@ import CartSecond from "../../components/CartSecond";
 import "./index.scss";
 import { Link } from "react-router-dom";
 import ProductItem from "../../components/ProductItem";
+import useCartStore from "../../stores/useCartStore";
 
-function Cart() {
+function ShoppingCart() {
+  const {carts } = useCartStore();
+    
   return (
     <div className="cart">
       <Header />
       <div className="cart-row">
         <Row>
           <Col md={8}>
-            <CartFirst />
+            <CartFirst carts={carts} />
           </Col>
           <Col md={4}>
             <CartSecond />
@@ -40,4 +43,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default ShoppingCart;
