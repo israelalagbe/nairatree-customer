@@ -25,7 +25,7 @@ function ProductDetails() {
     <div className="product-details">
       <Header />
       <div className="product-details-main">
-        <LoadingTrigger isLoading={selectedProductLoading || !selectedProduct}>
+        <LoadingTrigger marginTop='10rem' isLoading={selectedProductLoading || !selectedProduct}>
           <AppBreadcrumb product={selectedProduct} />
           <div className="details">
             <ProductPrimaryDetails product={selectedProduct} />

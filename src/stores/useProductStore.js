@@ -138,7 +138,7 @@ const useProductStore = create(
       try {
         const {product, related_items} = await getProduct(id);
         product.related_items = related_items;
-        
+
         set((state) => ({
           ...state,
            selectedProduct: product

@@ -8,15 +8,46 @@ import classnames from "classnames";
 import formatMoney from "../../util/formatMoney";
 
 /**
- * 
- * @param {{product: Product}} props 
+ *
+ * @param {{product: Product}} props
  */
-function ProductPrimaryDetails({product}) {
+function ProductPrimaryDetails({ product }) {
   const [active, setActive] = useState("");
 
-  const toggle = (color) => {
-    if (active !== color) setActive(color);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const [productImages, setProductImages] = useState(product.images);
+
+  const [counter, setCounter] = useState(1);
+
+  /**
+   * @param {ProductVariant} variant 
+   */
+  const toggle = (variant) => {
+    if (active !== variant.color) setActive(variant.color);
+
+    
+    setProductImages(variant.images);
+    setCurrentImageIndex(0);
   };
+
+  const incrementCounter = (e) => {
+    if(counter >= product.quantity_available){
+      setCounter(product.quantity_available);
+      return;
+    };
+    setCounter(counter + 1)
+  }
+
+  const decrementCounter = (e) => {
+    
+    if(counter<=1){
+      setCounter(1);
+      return;
+    };
+    setCounter(counter - 1)
+  }
+  
   return (
     <div className="details">
       <Row>
@@ -26,10 +57,17 @@ function ProductPrimaryDetails({product}) {
               <Col md="6">
                 <div className="images-box">
                   <div className="big">
-                    <img src={product.images[0]} alt="iphone" />
+                    <img src={productImages[currentImageIndex]} alt="iphone" />
                   </div>
                   <div className="small">
-                    {product.images.map((image)=><img src={image} alt="iphone" />)}
+                    {productImages.map((image, index) => (
+                      <img
+                        className="pointer"
+                        onClick={() => setCurrentImageIndex(index)}
+                        src={image}
+                        alt="iphone"
+                      />
+                    ))}
                   </div>
                 </div>
               </Col>
@@ -46,15 +84,17 @@ function ProductPrimaryDetails({product}) {
                     <div className="colors">
                       <h6>Select Other Colors</h6>
                       <div className="diff pointer mb-2">
-                        <h6
-                          className={classnames({ active: active === "red" })}
-                          onClick={() => {
-                            toggle("red");
-                          }}
-                        >
-                          Red
-                        </h6>
-                        <h6
+                        {product.variants.map((variant) => (
+                          <h6
+                            className={classnames({ active: active === variant.color })}
+                            onClick={() => {
+                              toggle(variant);
+                            }}
+                          >
+                            {variant.color}
+                          </h6>
+                        ))}
+                        {/* <h6
                           className={classnames({ active: active === "lime" })}
                           onClick={() => {
                             toggle("lime");
@@ -69,20 +109,17 @@ function ProductPrimaryDetails({product}) {
                           }}
                         >
                           Black
-                        </h6>
+                        </h6> */}
                       </div>
                     </div>
                   </div>
                   <div className="second-details">
                     <div className="maintain">
-                      <h6>-</h6>
-                      <p>2</p>
-                      <h6>+</h6>
+                      <h6 className='pointer' onClick={decrementCounter} >-</h6>
+                      <p>{counter}</p>
+                      <h6 className='pointer' onClick={incrementCounter} >+</h6>
                     </div>
-                    <AppButton
-                      buttonText="Add to Cart"
-                      classname="add-to-cart"
-                    />
+                    <AppButton buttonText="Add to Cart" classname="add-to-cart" />
                     <div className="shipping">
                       <div>
                         <img src={Car} alt="#" />
@@ -99,7 +136,10 @@ function ProductPrimaryDetails({product}) {
                       Quantity available: <span>{product.quantity_available}</span>
                     </p>
                     <h5>Short description</h5>
-                    <p className="down" dangerouslySetInnerHTML={{__html: product.description}}></p>
+                    <p
+                      className="down"
+                      dangerouslySetInnerHTML={{ __html: product.description }}
+                    ></p>
                   </div>
                 </div>
               </Col>
@@ -124,10 +164,7 @@ function ProductPrimaryDetails({product}) {
           <div className="vendor">
             <h6>Wanna be a vendor?</h6>
             <h6>Click here to register your account!</h6>
-            <AppButton
-              buttonText="Register as a Vendor"
-              classname="register-as-vendor"
-            />
+            <AppButton buttonText="Register as a Vendor" classname="register-as-vendor" />
           </div>
         </Col>
       </Row>
