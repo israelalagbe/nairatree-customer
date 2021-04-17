@@ -92,7 +92,6 @@ function Register() {
               <AuthInput
                 img={mail}
                 inputText="Email"
-                errorMessage="Enter correct email address"
                 type="email"
                 id="email"
                 name="email"
@@ -120,47 +119,31 @@ function Register() {
                 value={registeration.password}
                 onChange={handleChange}
                 onIconClick={() => setpasswordVisible(!passwordVisible)}
-                Icon={
-                  passwordVisible === true ? (
-                    <VisibilityIcon />
-                  ) : (
-                    <VisibilityOffIcon />
-                  )
-                }
+                Icon={passwordVisible === true ? <VisibilityIcon /> : <VisibilityOffIcon />}
                 required
               />
 
               <AuthInput
                 img={lock}
                 inputText="Confirm Password"
-                errorMessage="Enter the same password"
-                type={`${
-                  confirmpasswordVisible === true ? "text" : "password"
-                }`}
+                errorMessage={
+                  registeration.password !== registeration.confirmPassword
+                    ? "Enter the same password"
+                    : null
+                }
+                type={`${confirmpasswordVisible === true ? "text" : "password"}`}
                 id="confirmPassword"
                 name="confirmPassword"
                 value={registeration.confirmPassword}
                 onChange={handleChange}
-                onIconClick={() =>
-                  setconfirmpasswordVisible(!confirmpasswordVisible)
-                }
-                Icon={
-                  confirmpasswordVisible === true ? (
-                    <VisibilityIcon />
-                  ) : (
-                    <VisibilityOffIcon />
-                  )
-                }
+                onIconClick={() => setconfirmpasswordVisible(!confirmpasswordVisible)}
+                Icon={confirmpasswordVisible === true ? <VisibilityIcon /> : <VisibilityOffIcon />}
                 required
               />
               <FormGroup check>
                 <Label check>
-                  <Input
-                    type="checkbox"
-                    onClick={toggle}
-                    checked={acceptPrivacyPolicy}
-                  />
-                  I agree with the
+                  <Input type="checkbox" onClick={toggle} checked={acceptPrivacyPolicy} />I agree
+                  with the
                   <Link to="/privacy-policy">Privacy Policy</Link>
                 </Label>
               </FormGroup>
@@ -168,7 +151,7 @@ function Register() {
                 <AppButton
                   buttonText="Create Account"
                   classname="register-button"
-                  disabled={acceptPrivacyPolicy}
+                  disabled={!acceptPrivacyPolicy || registerLoading}
                 />
               </div>
             </Form>

@@ -1,3 +1,4 @@
+type UseStore<T> = import('zustand').UseStore<T>;
 interface Category {
   _id: string;
   alias: string;
@@ -44,7 +45,7 @@ interface Product {
   avg_rating: number;
   no_of_ratings: number;
   features: string[];
-  variants: Variant[];
+  variants: ProductVariant[];
   product: string;
   name: string;
   type?: string;
@@ -61,6 +62,7 @@ interface Product {
   createdAt: string;
   updatedAt: string;
   id: string;
+  related_items?: Product[]
 }
 
 interface Shipmentfee {
@@ -80,7 +82,7 @@ interface State {
 
 
 
-interface Variant {
+interface ProductVariant {
   quantity: number;
   images: string[];
   color: string;
@@ -148,4 +150,10 @@ interface AddressBook {
   additional_info: string;
 }
 
-type UseStore<T> = import('zustand').UseStore<T>;
+interface Cart {
+  product:  Product;
+  quantity: number;
+  variant?: string;
+}
+
+

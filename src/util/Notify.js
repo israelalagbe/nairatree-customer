@@ -7,9 +7,6 @@ export default class Notify {
      * @param {String} title
      */
     static error(message, title = "Error") {
-        if(message === 'User session has expired!'){
-          return;
-        }
         NotificationManager.error(message, title);
     }
     /**

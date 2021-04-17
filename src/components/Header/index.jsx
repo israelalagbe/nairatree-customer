@@ -28,10 +28,13 @@ import useCategoryStore from "../../stores/useCategoryStore";
 import { Popover } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import useBrandStore from "../../stores/useBrandStore";
+import useAuthentication from "../../stores/useAuthentication";
+import useCartStore from "../../stores/useCartStore";
 
 export default function Header() {
   const { fetchCategories, categories } = useCategoryStore();
   const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
+  const { carts } = useCartStore();
 
   const [navbarIsOpen, setIsOpen] = useState(false);
   const toggleNavbarCollapse = () => setIsOpen(!navbarIsOpen);
@@ -44,8 +47,10 @@ export default function Header() {
   return (
     <div className="home-header">
       <Navbar dark expand="md">
-        <NavbarBrand >
-          <Link to="/"><img src={logo} alt="NairaTree" className="logo" /></Link>
+        <NavbarBrand>
+          <Link to="/">
+            <img src={logo} alt="NairaTree" className="logo" />
+          </Link>
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbarCollapse} />
         <Collapse isOpen={navbarIsOpen} navbar>
@@ -60,9 +65,9 @@ export default function Header() {
                 <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
               </DropdownToggle>
               <DropdownMenu right>
-                {popularBrands.map((brand)=> <DropdownItem>{brand.name}</DropdownItem>)}
-                
-                
+                {popularBrands.map((brand) => (
+                  <DropdownItem key={brand.id}>{brand.name}</DropdownItem>
+                ))}
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem className="mr-6">
@@ -89,8 +94,8 @@ export default function Header() {
 
           <AccountNav />
 
-          <Link to='/cart' className="cart-nav text-decoration-none">
-            <Badge badgeContent={4} color="error">
+          <Link to="/cart" className="cart-nav text-decoration-none">
+            <Badge badgeContent={carts.length} color="error">
               <ShoppingBasketIcon fontSize="small" />
             </Badge>
             <span className="ml-3 text">Cart</span>
@@ -102,6 +107,8 @@ export default function Header() {
 }
 
 function AccountNav() {
+  const user = useAuthentication((state) => state.user);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -119,7 +126,7 @@ function AccountNav() {
     <>
       <div className="account-dropdown-nav" onClick={handleClick}>
         <AccountCircle fontSize="small" />
-        <span className="ml-3 text">Account </span>
+        <span className="ml-3 text">{user ? user.first_name : "Account"} </span>
         <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
       </div>
 
@@ -138,10 +145,28 @@ function AccountNav() {
         }}
       >
         <div className="header-account-popover">
-          {/* <DropdownItem header>Account</DropdownItem> */}
-          <Link to='/login'><DropdownItem>Login</DropdownItem></Link>
-          <Link to='/registration-decision'><DropdownItem>Register</DropdownItem></Link>
-          
+          {user ? (
+            <>
+              <Link to="/profile">
+                <DropdownItem>Profile</DropdownItem>
+              </Link>
+              <Link to="/profile/orders">
+                <DropdownItem>Orders</DropdownItem>
+              </Link>
+              <Link to="/df">
+                <DropdownItem>Logout</DropdownItem>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <DropdownItem>Login</DropdownItem>
+              </Link>
+              <Link to="/registration-decision">
+                <DropdownItem>Register</DropdownItem>
+              </Link>
+            </>
+          )}
         </div>
       </Popover>
     </>

@@ -1,13 +1,22 @@
 @import "/src/config/variables.scss";
 
 .single-product-details {
-  h5 {
-    color: #333333;
-    font-family: $font-roboto-bold;
-    font-size: 15px;
-    padding-bottom: 5px;
-    span {
+  table{
+    width: 100%;
+    .key, .value {
+      color: #333333;
+      font-family: $font-roboto-bold;
+      font-size: 15px;
+      padding-bottom: 5px;
+      
+    }
+    .value {
+      text-transform: capitalize;
       font-family: $font-roboto-regular;
     }
+    td{
+      padding-bottom: .7rem;
+    }
   }
+  
 }

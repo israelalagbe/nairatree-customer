@@ -3,6 +3,7 @@ import Axios from "axios";
 import {
   CustomHttpError
 } from "./Errors/CustomHttpError";
+import logout from "./logout";
 import Notify from "./Notify";
 // import { logout } from "../store/actions/loginAction";
 
@@ -53,10 +54,7 @@ api.interceptors.response.use(function (response) {
       }));
   }
   if (err.response.status === 401) {
-    //
-    // import('../store').then((module) => {
-    //   module.default.dispatch(logout());
-    // });
+    logout()
     return Promise.reject(new CustomHttpError('User session has expired!', {
       statusCode: err.response.status,
       responseText: 'User session has expired!'
