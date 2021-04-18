@@ -30,6 +30,7 @@ import { Link } from "react-router-dom";
 import useBrandStore from "../../stores/useBrandStore";
 import useAuthentication from "../../stores/useAuthentication";
 import useCartStore from "../../stores/useCartStore";
+import HeaderCategory from "../HeaderCategory";
 
 export default function Header() {
   const { fetchCategories, categories } = useCategoryStore();

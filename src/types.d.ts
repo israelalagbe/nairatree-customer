@@ -156,4 +156,25 @@ interface Cart {
   variant?: string;
 }
 
+interface Country {
+  name: string,
+  phone_code: number,
+  code: string,
+  regions: Region[],
+}
 
+interface Region {
+  id: string,
+  name: string,
+  cities: Cities[],
+}
+
+interface Cities {
+  _id: string,
+  name: string,
+}
+
+interface State {
+  name: string;
+  id: string;
+}
