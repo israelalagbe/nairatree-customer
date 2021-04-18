@@ -28,7 +28,7 @@ function CheckoutDetails() {
   const classes = useStyles();
   const [expansionIndex, setExpansionIndex] = useState(0);
   const history = useHistory();
-  
+  console.log(expansionIndex)
   return (
     <>
       <div className="checkout-details">
@@ -42,26 +42,28 @@ function CheckoutDetails() {
           <div className={classes.root}>
             <Accordion
               expanded={expansionIndex === 0}
-              onClick={() => setExpansionIndex(0)}
+              
             >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
+                onClick={() => setExpansionIndex(0)}
               >
                 <Typography className={classes.heading}>Delivery</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
-                  <DeliveryDetails />
+                  <DeliveryDetails onNext={() => setExpansionIndex(1)} />
                 </Typography>
               </AccordionDetails>
             </Accordion>
             <Accordion
               expanded={expansionIndex === 1}
-              onClick={() => setExpansionIndex(1)}
+              
             >
               <AccordionSummary
+                onClick={() => setExpansionIndex(1)}
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"
                 id="panel2a-header"

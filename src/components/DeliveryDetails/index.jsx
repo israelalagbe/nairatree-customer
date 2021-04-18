@@ -5,7 +5,11 @@ import AddressBookModal from "../Modals/AddressBook";
 import useModal from "../../hooks/useModal";
 import useAuthentication from "../../stores/useAuthentication";
 
-function DeliveryDetails() {
+/**
+ * @param {object} props 
+ * @param {()=>void} props.onNext
+ */
+function DeliveryDetails({onNext}) {
   const addressModal = useModal(false);
   const { user } = useAuthentication();
   const defaultAddress = user.address_book.find(
@@ -57,7 +61,7 @@ function DeliveryDetails() {
           </div>
         </div>
 
-        <AppButton buttonText="Next" classname="next-button" />
+        <AppButton buttonText="Next" classname="next-button" onClick={onNext} />
       </div>
     </>
   );
