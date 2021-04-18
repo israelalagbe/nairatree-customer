@@ -43,6 +43,7 @@ api.interceptors.response.use(function (response) {
         responseText: response.data?.message
       }));
   }
+  
   return response.data?.data ?? response.data;
 }, function (err) {
   hideLoadingBar();
