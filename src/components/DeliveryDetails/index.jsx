@@ -3,9 +3,14 @@ import AppButton from "../AppButton";
 import "./index.scss";
 import AddressBookModal from "../Modals/AddressBook";
 import useModal from "../../hooks/useModal";
+import useAuthentication from "../../stores/useAuthentication";
 
 function DeliveryDetails() {
   const addressModal = useModal(false);
+  const { user } = useAuthentication();
+  const defaultAddress = user.address_book.find(
+    (item) => item.is_default === true
+  );
   return (
     <>
       <AddressBookModal
@@ -19,10 +24,12 @@ function DeliveryDetails() {
             <h6 onClick={addressModal.open}>CHANGE ADDRESS</h6>
           </div>
           <div className="details">
-            <h6>Adekola Diekola</h6>
-            <h6>No 3, Adekola Close</h6>
-            <h6>Lekki Ajah - Lagos</h6>
-            <h6>+2349080800080</h6>
+            <h6>{defaultAddress.name}</h6>
+            <h6>{defaultAddress.address}</h6>
+            <h6>
+              {defaultAddress.city} ,{defaultAddress.country}
+            </h6>
+            <h6>{defaultAddress.phone}</h6>
           </div>
           <div className="shipping">
             <h4>SHIPMENT DETAILS</h4>

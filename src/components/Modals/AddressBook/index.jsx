@@ -7,27 +7,49 @@ import AppButton from "../../AppButton";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import useAuthentication from "../../../stores/useAuthentication";
+import { useHistory, Link } from "react-router-dom";
 
 const AddressBookModal = ({ show, onClose }) => {
-  const { user } = useAuthentication();
+  const history = useHistory();
+  const { user, updateUser, updateUserLoading } = useAuthentication();
   const addresses = user?.address_book;
   const [selectedAddress, setSelectedAddress] = useState(
     addresses.find((item) => item.is_default)
   );
 
-  console.log(user);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const payload = {
+      address_book: [
+        ...addresses.map((item) => ({
+          name: item.name,
+          region: item.region,
+          city: item.city,
+          phone: item.phone,
+          address: item.address,
+          label: item.label,
+          is_default: item._id === selectedAddress?._id,
+        })),
+      ],
+    };
+
+    updateUser(payload, () => history.push("/profile"));
+  };
   return (
     <Modal isOpen={show} toggle={onClose} size="lg">
       <ModalBody className="addressModalBody">
         <div className="addressBookModal">
           <div className="addressBookContainer">
             <h2> Address Book</h2>
-            <CloseIcon className="cursor-pointer close-image" onClick={onClose} />
+            <CloseIcon
+              className="cursor-pointer close-image"
+              onClick={onClose}
+            />
           </div>
-          <div className="add-new-address">
+          <Link to="/address-information" className="add-new-address">
             <CancelIcon />
             <h6> ADD A NEW ADDRESS</h6>
-          </div>
+          </Link>
           <div className="addressBookDefault">
             <h5>DEFAULT ADDRESS</h5>
             {addresses.map((item) => (
@@ -35,7 +57,11 @@ const AddressBookModal = ({ show, onClose }) => {
                 <div className="addressFormGroup">
                   <FormGroup check>
                     <Label check>
-                      <Input onClick={() => setSelectedAddress(item)} type="checkbox" checked={item._id === selectedAddress?._id} />
+                      <Input
+                        onClick={() => setSelectedAddress(item)}
+                        type="checkbox"
+                        checked={item._id === selectedAddress?._id}
+                      />
                       <div>
                         <h4>{item.name}</h4>
                         <h6>{item.address}</h6>
@@ -57,8 +83,12 @@ const AddressBookModal = ({ show, onClose }) => {
               </div>
             ))}
           </div>
-          <div>
-            <AppButton buttonText="Use This Address" />
+          <div className="addressModalButton">
+            <AppButton
+              buttonText="Use This Address"
+              onClick={handleSubmit}
+              classname="useAddressButton"
+            />
           </div>
         </div>
       </ModalBody>

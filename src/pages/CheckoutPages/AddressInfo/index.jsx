@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AppLogo from "../../../components/AppLogo";
 import "./index.scss";
 import { Link, useHistory } from "react-router-dom";
@@ -16,11 +16,14 @@ import AppButton from "../../../components/AppButton";
 import Copyright from "../../../components/Copyright";
 import Footer from "../../../components/Footer";
 import useAuthentication from "../../../stores/useAuthentication";
+import { Select } from "@material-ui/core";
+import useLocationStore from "../../../stores/useLocation";
 
 function AddressInfo() {
   const history = useHistory();
   const { user, updateUser, updateUserLoading } = useAuthentication();
-
+  const { fetchStates, states } = useLocationStore();
+  console.log(states);
   const [address, updateAddress] = React.useState({
     name: "",
     region: "",
@@ -61,13 +64,18 @@ function AddressInfo() {
 
     updateUser(payload, () => history.push("/profile"));
   };
+
+  useEffect(() => {
+    fetchStates();
+  }, [fetchStates]);
+
   return (
     <>
       <div className="address-info">
         <AppLogo />
-        <div className="go-back">
+        <div className="go-back" onClick={history.goBack}>
           <ArrowBackIcon />
-          <Link to="/login"> Cart</Link>
+          <h6>Back</h6>
         </div>
         <div className="address-form">
           <Form className="address-main" onSubmit={handleSubmit}>
@@ -127,15 +135,20 @@ function AddressInfo() {
             </FormGroup>
             <FormGroup>
               <Label for="state">State / Region *</Label>
-              <Input
-                type="text"
+
+              <Select
                 name="region"
                 id="region"
                 placeholder="Please select..."
                 value={address.region}
                 onChange={handleChange}
+                className="form-control"
                 required
-              />
+              >
+                {states.map((state) => (
+                  <option value={state.name}>{state.name}</option>
+                ))}
+              </Select>
             </FormGroup>
             <FormGroup>
               <Label for="city">City *</Label>
@@ -152,15 +165,15 @@ function AddressInfo() {
 
             <div className="info-button">
               <AppButton buttonText="SAVE & CONTINUE" classname="continue" />
-              <AppButton
+              {/* <AppButton
                 buttonText="CONTINUE WITHOUT SAVING"
                 classname="save"
-              />
+              /> */}
             </div>
           </Form>
         </div>
       </div>
-      <div className="bottom">
+      <div className="address-info-bottom">
         <Copyright />
         <Footer />
       </div>

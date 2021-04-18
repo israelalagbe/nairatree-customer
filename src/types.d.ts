@@ -124,36 +124,57 @@ interface ResetPassword {
 
 
 interface User {
-  active:       number;
-  role:         string;
-  first_name:   string;
-  surname:      string;
-  email:        string;
-  phone:        string;
-  createdAt:    Date;
-  updatedAt:    Date;
+  active: number;
+  role: string;
+  first_name: string;
+  surname: string;
+  email: string;
+  phone: string;
+  createdAt: Date;
+  updatedAt: Date;
   address_book: AddressBook[];
-  id:           string;
+  id: string;
 }
 
 interface AddressBook {
-  country:         string;
-  is_default:      boolean;
-  _id:             string;
-  label:           string;
-  name:            string;
-  phone:           string;
+  country: string;
+  is_default: boolean;
+  _id: string;
+  label: string;
+  name: string;
+  phone: string;
   alternate_phone: string;
-  address:         string;
-  region:          string;
-  city:            string;
+  address: string;
+  region: string;
+  city: string;
   additional_info: string;
 }
 
 interface Cart {
-  product:  Product;
+  product: Product;
   quantity: number;
   variant?: string;
 }
 
+interface Country {
+  name: string,
+  phone_code: number,
+  code: string,
+  regions: Region[],
+}
 
+interface Region {
+  id: string,
+  name: string,
+  cities: Cities[],
+}
+
+interface Cities {
+  _id: string,
+  name: string,
+}
+
+interface State {
+  name: string;
+  id: string;
+}

@@ -29,7 +29,7 @@
       }
     }
   }
-  .bottom {
+  .otp-bottom {
     position: absolute;
     bottom: 1rem;
     display: flex;
@@ -56,7 +56,7 @@
 
 @media only screen and (max-width: 1289px) {
   .otp-page {
-    .bottom {
+    .otp-bottom {
       padding: 0 !important;
     }
   }
@@ -66,7 +66,7 @@
   .otp-page {
     padding: 2rem 2rem;
 
-    .bottom {
+    .otp-bottom {
       display: block;
       .copyright {
         width: 100%;

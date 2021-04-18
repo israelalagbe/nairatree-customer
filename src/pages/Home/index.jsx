@@ -12,6 +12,7 @@ import { HomeCategoryListComponent } from "../../components/HomeCategoryListComp
 import { HomePopularBands } from "../../components/HomePopularBands";
 import useProductStore from "../../stores/useProductStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
+import HeaderCategory from "../../components/HeaderCategory";
 
 export default function Home() {
   const {
@@ -25,7 +26,7 @@ export default function Home() {
 
     trendingProducts,
     trendingProductsLoading,
-    fetchTrendingProducts
+    fetchTrendingProducts,
   } = useProductStore();
 
   useEffect(() => {
@@ -36,13 +37,18 @@ export default function Home() {
   return (
     <div className="home-page">
       <Header />
+      <HeaderCategory />
       <div className="mt-3"></div>
       <Row>
         <Col md={1}></Col>
         <Col md={8}>
           <div className="products-content">
             <section>
-              <img src={bannerPromo} alt="Banner Promotion" className="banner-promo" />
+              <img
+                src={bannerPromo}
+                alt="Banner Promotion"
+                className="banner-promo"
+              />
               <div className="banner-toggle">
                 <span className="ball"></span>
                 <span className="ball active"></span>
@@ -53,7 +59,11 @@ export default function Home() {
             <br />
             <HomePopularBands />
             <br />
-            <ProductList products={[]} allProductsLink="/products" title="Recently Viewed" />
+            <ProductList
+              products={[]}
+              allProductsLink="/products"
+              title="Recently Viewed"
+            />
             <br />
             <ProductList
               isLoading={trendingProductsLoading}
@@ -80,10 +90,18 @@ export default function Home() {
         </Col>
         <Col md={3} className="sidebar-container">
           <div className="sidebar-promo">
-            <img className="fill-container" src={promoImage1} alt="Promotion 1" />
+            <img
+              className="fill-container"
+              src={promoImage1}
+              alt="Promotion 1"
+            />
           </div>
           <div className="sidebar-promo mt-3">
-            <img className="fill-container" src={promoImage2} alt="Promotion 2" />
+            <img
+              className="fill-container"
+              src={promoImage2}
+              alt="Promotion 2"
+            />
           </div>
         </Col>
       </Row>
