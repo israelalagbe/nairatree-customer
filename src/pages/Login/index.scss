@@ -70,7 +70,7 @@
             font-family: $font-opensans-regular;
             font-size: 14px;
             a {
-              color: #5D6EE7;
+              color: #5d6ee7;
               text-decoration: none;
             }
           }
@@ -79,6 +79,7 @@
     }
   }
   .second {
+    height: 100vh;
     position: relative;
     background-color: #90d5f8;
     width: 50%;

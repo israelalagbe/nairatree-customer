@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Copyright from "../../../components/Copyright";
 import Footer from "../../../components/Footer";
 import AppLogo from "../../../components/AppLogo";
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 function CheckoutDetails() {
   const classes = useStyles();
-
+  const [expansionIndex, setExpansionIndex] = useState(0);
   return (
     <>
       <div className="checkout-details">
@@ -38,7 +38,10 @@ function CheckoutDetails() {
 
         <div className="accord-main">
           <div className={classes.root}>
-            <Accordion>
+            <Accordion
+              expanded={expansionIndex === 0}
+              onClick={() => setExpansionIndex(0)}
+            >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
@@ -52,7 +55,10 @@ function CheckoutDetails() {
                 </Typography>
               </AccordionDetails>
             </Accordion>
-            <Accordion>
+            <Accordion
+              expanded={expansionIndex === 1}
+              onClick={() => setExpansionIndex(1)}
+            >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"
@@ -72,7 +78,7 @@ function CheckoutDetails() {
         </div>
       </div>
 
-      <div className="bottom">
+      <div className="checkout-details-bottom">
         <Copyright />
         <Footer />
       </div>

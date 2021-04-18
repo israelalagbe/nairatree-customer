@@ -6,6 +6,10 @@ import useAuthentication from "../../../stores/useAuthentication";
 
 function Account() {
   const { user } = useAuthentication();
+  const defaultAddress = user.address_book.find(
+    (item) => item.is_default === true
+  );
+
   return (
     <div className="account">
       <div className="content">
@@ -34,10 +38,12 @@ function Account() {
         <h3 className="mb-3">Address Book</h3>
         <div className="content-bt">
           <div>
-            <h6>ADEYEMO QUDUS</h6>
-            <h6>Yetunde Brown, Gbagada</h6>
-            <h6>Lagos, Nigeria</h6>
-            <h6>+2348100571955</h6>
+            <h6>{defaultAddress.name}</h6>
+            <h6>{defaultAddress.address}</h6>
+            <h6>
+              {defaultAddress.city} ,{defaultAddress.country}
+            </h6>
+            <h6>{defaultAddress.phone}</h6>
           </div>
           <div>
             <h3 className="default">Default</h3>

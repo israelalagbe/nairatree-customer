@@ -40,7 +40,7 @@ function RegistrationDecision() {
             I have an account already,<Link to="/login"> Login Here</Link>
           </p>
         </div>
-        <div className="bottom">
+        <div className="registration-decision-bottom">
           <Copyright />
           <Footer />
         </div>

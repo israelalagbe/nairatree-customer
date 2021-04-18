@@ -54,7 +54,7 @@ function Otp() {
           />
         </div>
       </Form>
-      <div className="bottom">
+      <div className="otp-bottom">
         <Copyright />
         <Footer />
       </div>
