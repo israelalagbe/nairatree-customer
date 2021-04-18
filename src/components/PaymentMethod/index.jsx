@@ -9,34 +9,26 @@ function PaymentMethod() {
     <div className="payment-method">
       <Form>
         <div className="payment-form">
-          <FormGroup>
-            <Label for="fullName">Card Number</Label>
-            <Input
-              type="text"
-              name="cardNumber"
-              id="cardNumber"
-              placeholder="5396 **** **** ****"
-            />
-          </FormGroup>
-          <div className="details">
-            <FormGroup className="mr-5">
-              <Label for="fullName">Exp. Date</Label>
-              <Input
-                type="text"
-                name="fullName"
-                id="fullName"
-                placeholder="10  /  21"
-              />
-            </FormGroup>
+          <div className='input-container'>
             <FormGroup>
-              <Label for="fullName">CVV</Label>
+              <Label for="fullName">Card Number</Label>
               <Input
                 type="text"
-                name="fullName"
-                id="fullName"
-                placeholder="123"
+                name="cardNumber"
+                id="cardNumber"
+                placeholder="5396 **** **** ****"
               />
             </FormGroup>
+            <div className="details">
+              <FormGroup className="mr-5">
+                <Label for="fullName">Exp. Date</Label>
+                <Input type="text" name="fullName" id="fullName" placeholder="10  /  21" />
+              </FormGroup>
+              <FormGroup>
+                <Label for="fullName">CVV</Label>
+                <Input type="text" name="fullName" id="fullName" placeholder="123" />
+              </FormGroup>
+            </div>
           </div>
           <div className="buttons">
             <AppButton buttonText="SAVE CARD & PAY" classname="all" />
