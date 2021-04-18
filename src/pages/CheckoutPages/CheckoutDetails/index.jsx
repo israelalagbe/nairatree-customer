@@ -28,7 +28,7 @@ function CheckoutDetails() {
   const classes = useStyles();
   const [expansionIndex, setExpansionIndex] = useState(0);
   const history = useHistory();
-  console.log(expansionIndex)
+  
   return (
     <>
       <div className="checkout-details">
