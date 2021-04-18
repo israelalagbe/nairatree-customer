@@ -3,13 +3,20 @@ import Error from "../../img/error.png";
 import AppButton from "../AppButton";
 import "./index.scss";
 
-function CartSecond() {
+/**
+ *
+ * @param {object} props
+ * @param {Cart[]} props.carts
+ */
+function CartSecond({carts}) {
+  const numberOfItems = carts.reduce((count, cart)=> cart.quantity + count , 0);
+  console.log(carts)
   return (
     <div className="cart-second">
-      <div className="error">
+      {/* <div className="error">
         <img src={Error} alt="#" />
         <span> Your Cart is Up-to-date</span>
-      </div>
+      </div> */}
       <div className="sub-total">
         <div className="main">
           <div className="sub">
@@ -18,7 +25,7 @@ function CartSecond() {
           </div>
           <div className="sub">
             <h6>Number of Items</h6>
-            <h5>2</h5>
+            <h5>{numberOfItems}</h5>
           </div>
           <div className="sub">
             <h6>Shipping fee</h6>

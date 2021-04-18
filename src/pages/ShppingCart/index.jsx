@@ -20,7 +20,7 @@ function ShoppingCart() {
             <CartFirst carts={carts} />
           </Col>
           <Col md={4}>
-            <CartSecond />
+            <CartSecond carts={carts} />
           </Col>
         </Row>
       </div>

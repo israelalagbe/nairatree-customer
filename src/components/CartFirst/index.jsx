@@ -1,6 +1,7 @@
 import React from "react";
 import { FormGroup, Label, Input } from "reactstrap";
 import Iphone from "../../img/iphone.png";
+import formatMoney from "../../util/formatMoney";
 import AppButton from "../AppButton";
 import "./index.scss";
 
@@ -44,9 +45,9 @@ function CartFirst({ carts }) {
                       <div className="content-2">
                         <h5>{cart.product.name}</h5>
 
-                        <h6>Color: Red</h6>
+                        {variant?<h6>Color: <span className='capitalize'>{variant.color}</span></h6>:null}
                         <h4>
-                          ₦ 150,999.00 &nbsp;&nbsp; <span>₦ 150,999.00</span>
+                          {formatMoney(product.price)} &nbsp;&nbsp; {product.deal?<span>{formatMoney(product.deal.new_price)}</span>: null}
                         </h4>
                         <div className="maintain">
                           <h6>-</h6>
