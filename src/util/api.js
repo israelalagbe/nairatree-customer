@@ -37,6 +37,15 @@ api.interceptors.request.use(function (config) {
 api.interceptors.response.use(function (response) {
   hideLoadingBar();
   if(response.data?.status=== 'error'){
+    if(response.data?.errors){
+      const errors = Object.values(response.data?.errors)
+      return Promise.reject(new CustomHttpError(
+        errors[0], {
+          statusCode: 400,
+          responseText: errors[0],
+          payload: response.data?.errors
+        }));
+    }
     return Promise.reject(new CustomHttpError(
       response.data?.message, {
         statusCode: 400,
