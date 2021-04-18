@@ -4,7 +4,11 @@ import AppButton from "../AppButton";
 import lock from "../../img/lock.png";
 import "./index.scss";
 
-function PaymentMethod() {
+/**
+ * @param {object} props
+ * @param {(payload)=>void} props.onCheckout
+ */
+function PaymentMethod({onCheckout}) {
   const [formData, setFormData] = React.useState({
     card_number: "",
     exp_date: "",
@@ -14,16 +18,24 @@ function PaymentMethod() {
   const [paymentMode, setPaymentMode] = React.useState(null);
 
   const handleChange = async (e) => {
-    if(e.target.name ==='card_number' && !Number(e.target.value) && e.target.value!== '') return;
-
+    let value = e.target.value;
+    const name = e.target.name;
+    if(name ==='card_number' && !Number(value) && value !== '') return;
+    if(name === 'exp_date' && Number(value) && value.length === 2){
+      value += '/';
+    };
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     })
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    onCheckout({
+      ...formData,
+      paymentMode
+    })
     console.log(paymentMode)
   };
 

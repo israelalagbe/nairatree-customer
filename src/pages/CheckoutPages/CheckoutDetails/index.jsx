@@ -28,6 +28,12 @@ function CheckoutDetails() {
   const classes = useStyles();
   const [expansionIndex, setExpansionIndex] = useState(0);
   const history = useHistory();
+
+
+
+  const checkout = async (payload) => {
+    console.log(payload)
+  }
   
   return (
     <>
@@ -74,7 +80,7 @@ function CheckoutDetails() {
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
-                  <PaymentMethod />
+                  <PaymentMethod onCheckout={checkout} />
                 </Typography>
               </AccordionDetails>
             </Accordion>
