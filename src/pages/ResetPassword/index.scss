@@ -32,7 +32,7 @@
       }
     }
   }
-  .bottom {
+  .reset-password-bottom {
     position: absolute;
     bottom: 1rem;
     display: flex;
@@ -59,7 +59,7 @@
 
 @media only screen and (max-width: 1289px) {
   .reset-password-page {
-    .bottom {
+    .reset-password-bottom {
       padding: 0 !important;
     }
   }
@@ -71,7 +71,7 @@
     .go-back {
       padding: 3rem 5rem 2rem 0rem;
     }
-    .bottom {
+    .reset-password-bottom {
       display: block;
       .copyright {
         width: 100%;

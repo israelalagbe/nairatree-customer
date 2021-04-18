@@ -38,7 +38,6 @@ function UpdateProfile() {
       first_name: user.first_name,
       surname: user.surname,
     };
-
     updateUser(payload, () => history.push("/profile"));
   };
 

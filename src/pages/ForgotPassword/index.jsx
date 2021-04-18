@@ -57,7 +57,11 @@ function ForgotPassword() {
             <p> Email does not exist, Give it another shot!</p>
           </div> */}
           <div className="app-button">
-            <AppButton disabled={forgotPasswordLoading} buttonText="Reset Password" classname="forgot-button" />
+            <AppButton
+              disabled={forgotPasswordLoading}
+              buttonText="Reset Password"
+              classname="forgot-button"
+            />
           </div>
         </Form>
         <p>
@@ -65,7 +69,7 @@ function ForgotPassword() {
           <Link to="/register"> Create a new account</Link>
         </p>
       </div>
-      <div className="bottom">
+      <div className="forgot-password-bottom">
         <Copyright />
         <Footer />
       </div>

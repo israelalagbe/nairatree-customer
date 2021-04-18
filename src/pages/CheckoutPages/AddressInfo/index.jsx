@@ -45,6 +45,7 @@ function AddressInfo() {
           phone: item.phone,
           address: item.address,
           label: item.label,
+          is_default: false,
         })),
         {
           name: address.name,
@@ -53,6 +54,7 @@ function AddressInfo() {
           phone: `+234${address.phone}`,
           address: address.address,
           label: address.label,
+          is_default: true,
         },
       ],
     };
@@ -63,9 +65,9 @@ function AddressInfo() {
     <>
       <div className="address-info">
         <AppLogo />
-        <div className="go-back">
+        <div className="go-back" onClick={history.goBack}>
           <ArrowBackIcon />
-          <Link to="/login"> Cart</Link>
+          <h6>Back</h6>
         </div>
         <div className="address-form">
           <Form className="address-main" onSubmit={handleSubmit}>
@@ -150,15 +152,15 @@ function AddressInfo() {
 
             <div className="info-button">
               <AppButton buttonText="SAVE & CONTINUE" classname="continue" />
-              <AppButton
+              {/* <AppButton
                 buttonText="CONTINUE WITHOUT SAVING"
                 classname="save"
-              />
+              /> */}
             </div>
           </Form>
         </div>
       </div>
-      <div className="bottom">
+      <div className="address-info-bottom">
         <Copyright />
         <Footer />
       </div>
