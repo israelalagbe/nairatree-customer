@@ -11,9 +11,6 @@ function HeaderCategory() {
     fetchCategories();
   }, [fetchCategories]);
 
-  const onCategorySelected = (category) => {
-    setSelectedCategory(selectedCategory);
-  };
 
   console.log(categories);
   console.log(selectedCategory);
@@ -29,7 +26,7 @@ function HeaderCategory() {
             <Col md="6">
               <div className="categoryCol">
                 {categories.map((item) => (
-                  <p onClick={() => onCategorySelected(item)}>{item.name}</p>
+                  <p className='pointer' onClick={() => setSelectedCategory(item)}>{item.name}</p>
                 ))}
                 ;
               </div>
