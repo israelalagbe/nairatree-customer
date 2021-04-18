@@ -33,7 +33,11 @@ import useCartStore from "../../stores/useCartStore";
 
 export default function Header() {
   const { fetchCategories, categories } = useCategoryStore();
-  const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
+  const {
+    popularBrands,
+    popularBrandsLoading,
+    fetchPopularBrands,
+  } = useBrandStore();
   const { carts } = useCartStore();
 
   const [navbarIsOpen, setIsOpen] = useState(false);
@@ -62,7 +66,10 @@ export default function Header() {
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>
                 Best Brands
-                <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
+                <ExpandMoreIcon
+                  fontSize="small"
+                  className="ml-1 arrow-down-icon"
+                />
               </DropdownToggle>
               <DropdownMenu right>
                 {popularBrands.map((brand) => (
@@ -126,7 +133,9 @@ function AccountNav() {
     <>
       <div className="account-dropdown-nav" onClick={handleClick}>
         <AccountCircle fontSize="small" />
-        <span className="ml-3 text">{user ? user.first_name : "Account"} </span>
+        <span className="ml-3 text">
+          Hi {user ? user.first_name : "Account"}{" "}
+        </span>
         <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
       </div>
 

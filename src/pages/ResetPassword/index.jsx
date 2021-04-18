@@ -92,7 +92,7 @@ function ResetPassword() {
           />
         </div>
       </Form>
-      <div className="bottom">
+      <div className="reset-password-bottom">
         <Copyright />
         <Footer />
       </div>

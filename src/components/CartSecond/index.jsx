@@ -2,8 +2,13 @@ import React from "react";
 import Error from "../../img/error.png";
 import AppButton from "../AppButton";
 import "./index.scss";
+import { Link, useHistory } from "react-router-dom";
 
 function CartSecond() {
+  const history = useHistory();
+  const checkoutPage = () => {
+    history.push("/checkout-details");
+  };
   return (
     <div className="cart-second">
       <div className="error">
@@ -31,7 +36,11 @@ function CartSecond() {
           <h5>₦ 150,999.00</h5>
         </div>
         <div className="all-button">
-          <AppButton buttonText="PROCEED TO CHECKOUT" classname="check" />
+          <AppButton
+            buttonText="PROCEED TO CHECKOUT"
+            classname="check"
+            onClick={checkoutPage}
+          />
           <AppButton buttonText="CHECKOUT AS GUEST" classname="check" />
         </div>
       </div>

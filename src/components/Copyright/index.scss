@@ -2,12 +2,10 @@
 
 .copyright {
   text-align: center;
-    padding: 0px;
-    padding-left: 10rem;
-    color: #525f7f;
-    font-family: $font-roboto-regular;
-    span {
-      color: hsl(156, 100%, 27%);
-    }
-  
+  color: #525f7f;
+  font-family: $font-roboto-regular;
+  margin-bottom: 1rem;
+  span {
+    color: hsl(156, 100%, 27%);
+  }
 }
