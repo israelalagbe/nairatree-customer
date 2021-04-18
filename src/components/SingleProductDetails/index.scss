@@ -3,6 +3,8 @@
 .single-product-details {
   table{
     width: 100%;
+    max-width: 40rem;
+    
     .key, .value {
       color: #333333;
       font-family: $font-roboto-bold;

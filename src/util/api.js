@@ -1,4 +1,5 @@
 import Axios from "axios";
+import useNetworkLoaderStore from "../stores/useNetworkLoaderStore";
 
 import {
   CustomHttpError
@@ -7,17 +8,7 @@ import logout from "./logout";
 import Notify from "./Notify";
 // import { logout } from "../store/actions/loginAction";
 
-function showLoadingBar() {
-  // import('../store/index').then((store) => {
-  //   store.default.dispatch(showLoading());
-  // });
-}
 
-function hideLoadingBar() {
-  // import('../store/index').then((store) => {
-  //   store.default.dispatch(hideLoading());
-  // });
-}
 const api = Axios.create({
   withCredentials: false,
   headers: {
@@ -92,5 +83,13 @@ api.interceptors.response.use(function (response) {
       responseText: 'Error occured while sending the request'
     }));
 });
+
+function showLoadingBar() {
+  useNetworkLoaderStore.getState().increaseLoadingCount()
+}
+
+function hideLoadingBar() {
+  useNetworkLoaderStore.getState().decreaseLoadingCount()
+}
 
 export default api;
