@@ -3,7 +3,7 @@ import Copyright from "../../../components/Copyright";
 import Footer from "../../../components/Footer";
 import AppLogo from "../../../components/AppLogo";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./index.scss";
 import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
@@ -27,13 +27,15 @@ const useStyles = makeStyles((theme) => ({
 function CheckoutDetails() {
   const classes = useStyles();
   const [expansionIndex, setExpansionIndex] = useState(0);
+  const history = useHistory();
+  
   return (
     <>
       <div className="checkout-details">
         <AppLogo />
         <div className="go-back">
           <ArrowBackIcon />
-          <Link to="/login"> Address Information</Link>
+          <span onClick={history.goBack}  className='pointer'> Address Information</span>
         </div>
 
         <div className="accord-main">

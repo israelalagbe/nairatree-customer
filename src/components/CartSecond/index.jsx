@@ -3,6 +3,7 @@ import Error from "../../img/error.png";
 import AppButton from "../AppButton";
 import "./index.scss";
 import { Link, useHistory } from "react-router-dom";
+import formatMoney from "../../util/formatMoney";
 
 /**
  *
@@ -13,7 +14,12 @@ function CartSecond({carts}) {
   const history = useHistory();
   
   const numberOfItems = carts.reduce((count, cart)=> cart.quantity + count , 0);
-  console.log(carts)
+
+  const subTotal = carts.reduce((price, cart)=> cart.product.price + price , 0);
+
+  const totalShippingFee = carts.reduce((price, cart)=> cart.product.shipment_fees[0].fee + price , 0);
+  
+  const total = totalShippingFee + subTotal;
 
   const checkoutPage = () => {
     history.push("/checkout-details");
@@ -28,7 +34,7 @@ function CartSecond({carts}) {
         <div className="main">
           <div className="sub">
             <h6>Subtotal</h6>
-            <h5>₦ 150,999.00</h5>
+            <h5>{formatMoney(subTotal)}</h5>
           </div>
           <div className="sub">
             <h6>Number of Items</h6>
@@ -36,13 +42,13 @@ function CartSecond({carts}) {
           </div>
           <div className="sub">
             <h6>Shipping fee</h6>
-            <h5>₦ 0.0</h5>
+            <h5>{formatMoney(totalShippingFee)}</h5>
           </div>
         </div>
 
         <div className="attach">
           <h6>Order Total</h6>
-          <h5>₦ 150,999.00</h5>
+          <h5>{formatMoney(total)}</h5>
         </div>
         <div className="all-button">
           <AppButton
