@@ -57,9 +57,9 @@ export function Routes() {
       <Route path="/address-information" exact>
         <AddressInfo />
       </Route>
-      <Route path="/checkout-details" exact>
+      <AuthRoute path="/checkout-details" exact>
         <CheckoutDetails />
-      </Route>
+      </AuthRoute>
       <AuthRoute path="/profile">
         <Profile />
       </AuthRoute>
