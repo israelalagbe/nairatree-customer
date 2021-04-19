@@ -2,6 +2,10 @@
 
 .payment-method {
   .payment-form {
+    .input-container{
+      max-width: 23rem;
+    }
+
     label {
       color: #000000;
       font-size: 14px;
@@ -27,7 +31,7 @@
         background-color: #f3ca3e;
         border-radius: 5px;
         color: #ffffff;
-        height: 45px;
+        padding: 0.5rem 1rem;
         font-size: 15px;
         font-family: $font-roboto-regular;
         margin: 0.5rem 0rem;

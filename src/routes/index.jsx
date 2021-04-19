@@ -9,7 +9,7 @@ import RegistrationDecision from "../pages/RegistrationDecision";
 import ProductSearch from "../pages/ProductSearch";
 import CartSuccess from "../pages/ProductDetails/CartSuccess";
 import ProductDetails from "../pages/ProductDetails";
-import Cart from "../pages/Cart";
+import ShoppingCart from "../pages/ShppingCart";
 import AddressInfo from "../pages/CheckoutPages/AddressInfo";
 import CheckoutDetails from "../pages/CheckoutPages/CheckoutDetails";
 import Profile from "../pages/Profile";
@@ -50,7 +50,7 @@ export function Routes() {
           <CartSuccess />
         </Route>
         <Route path="/cart" exact>
-          <Cart />
+          <ShoppingCart />
         </Route>
         <Route path="/product-details/:productId" exact>
           <ProductDetails />

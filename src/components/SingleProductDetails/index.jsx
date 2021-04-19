@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import React from "react";
 import "./index.scss";
 
@@ -30,11 +31,11 @@ function SingleProductDetails({ product, variant }) {
     },
     {
       key: "Features",
-      value: product.features.join(", "),
+      value: product.features && product.features.join(", "),
     },
     {
       key: "Date Manufactured",
-      value: product.date_manufactured,
+      value: format(new Date(product.date_manufactured), 'd LLLL yyyy'),
     },
   ].filter((item) => item.value);
   return (

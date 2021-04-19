@@ -1,4 +1,5 @@
 import Axios from "axios";
+import useNetworkLoaderStore from "../stores/useNetworkLoaderStore";
 
 import {
   CustomHttpError
@@ -7,17 +8,7 @@ import logout from "./logout";
 import Notify from "./Notify";
 // import { logout } from "../store/actions/loginAction";
 
-function showLoadingBar() {
-  // import('../store/index').then((store) => {
-  //   store.default.dispatch(showLoading());
-  // });
-}
 
-function hideLoadingBar() {
-  // import('../store/index').then((store) => {
-  //   store.default.dispatch(hideLoading());
-  // });
-}
 const api = Axios.create({
   withCredentials: false,
   headers: {
@@ -37,12 +28,22 @@ api.interceptors.request.use(function (config) {
 api.interceptors.response.use(function (response) {
   hideLoadingBar();
   if(response.data?.status=== 'error'){
+    if(response.data?.errors){
+      const errors = Object.values(response.data?.errors)
+      return Promise.reject(new CustomHttpError(
+        errors[0], {
+          statusCode: 400,
+          responseText: errors[0],
+          payload: response.data?.errors
+        }));
+    }
     return Promise.reject(new CustomHttpError(
       response.data?.message, {
         statusCode: 400,
         responseText: response.data?.message
       }));
   }
+  
   return response.data?.data ?? response.data;
 }, function (err) {
   hideLoadingBar();
@@ -83,5 +84,13 @@ api.interceptors.response.use(function (response) {
       responseText: 'Error occured while sending the request'
     }));
 });
+
+function showLoadingBar() {
+  useNetworkLoaderStore.getState().increaseLoadingCount()
+}
+
+function hideLoadingBar() {
+  useNetworkLoaderStore.getState().decreaseLoadingCount()
+}
 
 export default api;

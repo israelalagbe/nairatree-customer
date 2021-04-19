@@ -62,7 +62,11 @@ interface Product {
   createdAt: string;
   updatedAt: string;
   id: string;
-  related_items?: Product[]
+  related_items?: Product[],
+  deal?: {
+    new_price: string,
+    until: string
+  }
 }
 
 interface Shipmentfee {
@@ -178,3 +182,38 @@ interface State {
   name: string;
   id: string;
 }
+
+
+interface Order {
+  delivery_address: AddressBook;
+  total_amount_to_pay: number;
+  total_amount_paid: number;
+  is_updated_by_webhook: boolean;
+  is_updated_by_client: boolean;
+  status: string;
+  delivery_status: string;
+  user: string;
+  products: ProductElement[];
+  payment_reference: string;
+  createdAt: Date;
+  updatedAt: Date;
+  id: string;
+}
+
+
+
+interface ProductElement {
+  is_reviewed: boolean;
+  _id: string;
+  quantity: number;
+  product: Product;
+  variant?: Variant;
+}
+
+
+
+interface Deal {
+  new_price: number;
+  until: Date;
+}
+

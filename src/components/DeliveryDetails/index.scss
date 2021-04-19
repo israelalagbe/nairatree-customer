@@ -14,7 +14,6 @@
       h6 {
         color: #f3ca3e;
         cursor: pointer;
-        text-decoration: underline;
         font-size: 13px;
         font-family: $font-barlow-regular;
       }
@@ -86,10 +85,11 @@
 
   .next-button {
     width: 100%;
+    padding: 0.5rem 1rem;
     background-color: #f3ca3e;
     border: none;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 16px;
     font-family: $font-roboto-regular;
   }
 }
