@@ -4,10 +4,13 @@ import { Row, Col } from "reactstrap";
 import useCategoryStore from "../../stores/useCategoryStore";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import "./index.scss";
+import LoadingTrigger from "../LoadingTrigger";
 
 function HeaderCategory() {
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const { fetchCategories, categories } = useCategoryStore();
+  const { fetchCategories, categories, categoriesLoading} = useCategoryStore();
+
+  
   useEffect(() => {
     fetchCategories();
   }, [fetchCategories]);
@@ -23,6 +26,7 @@ function HeaderCategory() {
           <Row>
             <Col md="6">
               <div className="categoryCol">
+                <LoadingTrigger isLoading={categoriesLoading}>
                 {categories.map((item) => (
                   <div className="categoryMap">
                     <p
@@ -40,7 +44,7 @@ function HeaderCategory() {
                     </div>
                   </div>
                 ))}
-                ;
+                </LoadingTrigger>
               </div>
             </Col>
             <Col md="6">
@@ -50,7 +54,6 @@ function HeaderCategory() {
                       <p>{item.name}</p>
                     ))
                   : null}
-                ;
               </div>
             </Col>
           </Row>

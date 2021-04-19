@@ -37,7 +37,6 @@ export default function Home() {
   return (
     <div className="home-page">
       <Header />
-      <HeaderCategory />
       <div className="mt-3"></div>
       <Row>
         <Col md={1}></Col>

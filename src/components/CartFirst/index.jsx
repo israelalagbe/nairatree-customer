@@ -51,7 +51,7 @@ function CartFirst({ carts }) {
                         </h4>
                         <div className="maintain">
                           <h6>-</h6>
-                          <p>2</p>
+                          <p>{cart.quantity}</p>
                           <h6>+</h6>
                         </div>
                         <h6>Free Shipping: Within Lagos</h6>
@@ -61,7 +61,7 @@ function CartFirst({ carts }) {
                 </FormGroup>
               </div>
               <div className="del-add">
-                <h6>ADD TO WISHLIST </h6>
+                {/* <h6>ADD TO WISHLIST </h6> */}
                 <h5>DELETE </h5>
               </div>
             </div>

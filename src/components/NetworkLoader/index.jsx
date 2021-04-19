@@ -18,7 +18,7 @@ const NetworkLoader = () => {
   return (
       <>
         {/* {loadingBar ? <div className='network-loader'></div>: null} */}
-        <LoadingBar waitingTime={0} height={3} color="white" ref={ref} shadow={true} />
+        <LoadingBar waitingTime={0} height={2} color="red" ref={ref} shadow={true} />
       </>
 
   )
