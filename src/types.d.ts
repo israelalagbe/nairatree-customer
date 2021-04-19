@@ -159,3 +159,61 @@ interface Cart {
   quantity: number;
   variant?: string;
 }
+
+interface Country {
+  name: string,
+  phone_code: number,
+  code: string,
+  regions: Region[],
+}
+
+interface Region {
+  id: string,
+  name: string,
+  cities: Cities[],
+}
+
+interface Cities {
+  _id: string,
+  name: string,
+}
+
+interface State {
+  name: string;
+  id: string;
+}
+
+
+interface Order {
+  delivery_address: AddressBook;
+  total_amount_to_pay: number;
+  total_amount_paid: number;
+  is_updated_by_webhook: boolean;
+  is_updated_by_client: boolean;
+  status: string;
+  delivery_status: string;
+  user: string;
+  products: ProductElement[];
+  payment_reference: string;
+  createdAt: Date;
+  updatedAt: Date;
+  id: string;
+}
+
+
+
+interface ProductElement {
+  is_reviewed: boolean;
+  _id: string;
+  quantity: number;
+  product: Product;
+  variant?: Variant;
+}
+
+
+
+interface Deal {
+  new_price: number;
+  until: Date;
+}
+
