@@ -9,7 +9,7 @@ import RegistrationDecision from "../pages/RegistrationDecision";
 import ProductSearch from "../pages/ProductSearch";
 import CartSuccess from "../pages/ProductDetails/CartSuccess";
 import ProductDetails from "../pages/ProductDetails";
-import ShoppingCart from "../pages/ShppingCart";
+import ShoppingCart from "../pages/ShoppingCart";
 import AddressInfo from "../pages/CheckoutPages/AddressInfo";
 import CheckoutDetails from "../pages/CheckoutPages/CheckoutDetails";
 import Profile from "../pages/Profile";
