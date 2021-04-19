@@ -31,6 +31,7 @@ import useBrandStore from "../../stores/useBrandStore";
 import useAuthentication from "../../stores/useAuthentication";
 import useCartStore from "../../stores/useCartStore";
 import clipText from "../../util/clipText";
+import logout from "../../util/logout";
 
 export default function Header() {
   const { fetchCategories, categories } = useCategoryStore();
@@ -40,12 +41,18 @@ export default function Header() {
   const [navbarIsOpen, setIsOpen] = useState(false);
   const toggleNavbarCollapse = () => setIsOpen(!navbarIsOpen);
 
+  const user = useAuthentication((state) => state.user);
+
   useEffect(() => {
     fetchCategories();
     fetchPopularBrands();
-    fetchCarts();
+  }, [fetchCategories, fetchPopularBrands]);
 
-  }, [fetchCategories, fetchPopularBrands, fetchCarts]);
+  useEffect(() => {
+    if (user) {
+      fetchCarts();
+    }
+  }, [user, fetchCarts]);
 
   return (
     <div className="home-header">
@@ -65,10 +72,7 @@ export default function Header() {
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav>
                 Best Brands
-                <ExpandMoreIcon
-                  fontSize="small"
-                  className="ml-1 arrow-down-icon"
-                />
+                <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
               </DropdownToggle>
               <DropdownMenu right>
                 {popularBrands.map((brand) => (
@@ -132,9 +136,7 @@ function AccountNav() {
     <>
       <div className="account-dropdown-nav" onClick={handleClick}>
         <AccountCircle fontSize="small" />
-        <span className="ml-3 text">
-          {user ? clipText(user.first_name, 10) : "Account"}{" "}
-        </span>
+        <span className="ml-3 text">{user ? clipText(user.first_name, 10) : "Account"} </span>
         <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
       </div>
 
@@ -161,9 +163,9 @@ function AccountNav() {
               <Link to="/profile/orders">
                 <DropdownItem>Orders</DropdownItem>
               </Link>
-              <Link to="/df">
+              <span href="#" onClick={logout}>
                 <DropdownItem>Logout</DropdownItem>
-              </Link>
+              </span>
             </>
           ) : (
             <>

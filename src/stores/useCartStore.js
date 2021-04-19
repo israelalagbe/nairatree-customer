@@ -2,6 +2,7 @@ import create from 'zustand'
 import { persist } from 'zustand/middleware';
 import { getCarts, saveCart } from '../services/cart-service';
 import Notify from '../util/Notify';
+import useAuthentication from './useAuthentication';
 
 
 
@@ -16,6 +17,7 @@ import Notify from '../util/Notify';
  * @typedef {Object} MethodsType
  * @prop {()=>void} fetchCarts
  * @prop {(payload:any, onError)=>void} saveCarts
+ * @prop {(carts:Cart[])=>void} setLocalCarts
  */
 
 /**
@@ -51,6 +53,10 @@ const useCartStore = create(persist(
 
       }
     },
+    setLocalCarts: (carts)=> {
+      set((state)=> ({...state, carts}))
+    },
+
     saveCarts: async (cartsPayload, onSuccess, onError) => {
         set((state)=> ({...state, saveCartsLoading: true}))
   
