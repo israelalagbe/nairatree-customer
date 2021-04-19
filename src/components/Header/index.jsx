@@ -36,11 +36,7 @@ import logout from "../../util/logout";
 
 export default function Header() {
   const { fetchCategories, categories } = useCategoryStore();
-  const {
-    popularBrands,
-    popularBrandsLoading,
-    fetchPopularBrands,
-  } = useBrandStore();
+  const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
   const { carts, fetchCarts } = useCartStore();
 
   const [navbarIsOpen, setIsOpen] = useState(false);
@@ -60,64 +56,67 @@ export default function Header() {
   }, [user, fetchCarts]);
 
   return (
-    <div className="home-header">
-      <Navbar dark expand="md">
-        <NavbarBrand>
-          <Link to="/">
-            <img src={logo} alt="NairaTree" className="logo" />
-          </Link>
-        </NavbarBrand>
-        <NavbarToggler onClick={toggleNavbarCollapse} />
-        <Collapse isOpen={navbarIsOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink href="/components/">New Deals</NavLink>
-            </NavItem>
+    <>
+      <div className="home-header">
+        <Navbar dark expand="md">
+          <NavbarBrand>
+            <Link to="/">
+              <img src={logo} alt="NairaTree" className="logo" />
+            </Link>
+          </NavbarBrand>
+          <NavbarToggler onClick={toggleNavbarCollapse} />
+          <Collapse isOpen={navbarIsOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/components/">New Deals</NavLink>
+              </NavItem>
 
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav>
-                Best Brands
-                <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
-              </DropdownToggle>
-              <DropdownMenu right>
-                {popularBrands.map((brand) => (
-                  <DropdownItem key={brand.id}>{brand.name}</DropdownItem>
-                ))}
-              </DropdownMenu>
-            </UncontrolledDropdown>
-            <NavItem className="mr-6">
-              <NavLink href="/components/">FAQ</NavLink>
-            </NavItem>
-            <div className="form-group category-form">
-              <select className="form-control category">
-                <option>Categories</option>
-              </select>
-            </div>
-            <div className="form-group search-form ml-lg-2">
-              <InputGroup>
-                <Input placeholder="Search Items..." />
-                <InputGroupAddon addonType="append" className="search-btn">
-                  <InputGroupText>
-                    <img src={search} alt="Search" />
-                  </InputGroupText>
-                </InputGroupAddon>
-              </InputGroup>
-            </div>
-          </Nav>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav>
+                  Best Brands
+                  <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
+                </DropdownToggle>
+                <DropdownMenu right>
+                  {popularBrands.map((brand) => (
+                    <DropdownItem key={brand.id}>{brand.name}</DropdownItem>
+                  ))}
+                </DropdownMenu>
+              </UncontrolledDropdown>
+              <NavItem className="mr-6">
+                <NavLink href="/components/">FAQ</NavLink>
+              </NavItem>
+              <div className="form-group category-form">
+                <select className="form-control category">
+                  <option>Categories</option>
+                </select>
+              </div>
+              <div className="form-group search-form ml-lg-2">
+                <InputGroup>
+                  <Input placeholder="Search Items..." />
+                  <InputGroupAddon addonType="append" className="search-btn">
+                    <InputGroupText>
+                      <img src={search} alt="Search" />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                </InputGroup>
+              </div>
+            </Nav>
 
-          <div className="nav-items-space-placeholder"></div>
+            <div className="nav-items-space-placeholder"></div>
 
-          <AccountNav />
+            <AccountNav />
 
-          <Link to="/cart" className="cart-nav text-decoration-none">
-            <Badge badgeContent={carts.length} color="error">
-              <ShoppingBasketIcon fontSize="small" />
-            </Badge>
-            <span className="ml-3 text">Cart</span>
-          </Link>
-        </Collapse>
-      </Navbar>
-    </div>
+            <Link to="/cart" className="cart-nav text-decoration-none">
+              <Badge badgeContent={carts.length} color="error">
+                <ShoppingBasketIcon fontSize="small" />
+              </Badge>
+              <span className="ml-3 text">Cart</span>
+            </Link>
+          </Collapse>
+        </Navbar>
+      </div>
+      <HeaderCategory />
+    </>
   );
 }
 
