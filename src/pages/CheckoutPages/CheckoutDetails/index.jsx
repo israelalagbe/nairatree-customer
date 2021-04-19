@@ -77,8 +77,8 @@ function CheckoutDetails() {
       email: user.email,
       ref: paymentInfo.payment_reference,
       amount: amountInKobo,
-      callback: async (response) => {
-           await updateOrderPaymentStatus({
+      callback: function (response){
+          updateOrderPaymentStatus({
             payment_reference: response.reference,
             status: 'success'
           });
