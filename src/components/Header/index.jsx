@@ -26,7 +26,7 @@ import logo from "../../img/logo.svg";
 import search from "../../img/search.svg";
 import useCategoryStore from "../../stores/useCategoryStore";
 import { Popover } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import useBrandStore from "../../stores/useBrandStore";
 import useAuthentication from "../../stores/useAuthentication";
 import useCartStore from "../../stores/useCartStore";
@@ -35,6 +35,8 @@ import clipText from "../../util/clipText";
 import logout from "../../util/logout";
 
 export default function Header() {
+  const history = useHistory();
+  
   const { fetchCategories, categories } = useCategoryStore();
   const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
   const { carts, fetchCarts } = useCartStore();
@@ -43,6 +45,10 @@ export default function Header() {
   const toggleNavbarCollapse = () => setIsOpen(!navbarIsOpen);
 
   const user = useAuthentication((state) => state.user);
+
+  const [showHeaderCategories, setHeaderCategoriesShown] = useState(false);
+
+  const [keyword, setSearch] = useState("");
 
   useEffect(() => {
     fetchCategories();
@@ -54,6 +60,10 @@ export default function Header() {
       fetchCarts();
     }
   }, [user, fetchCarts]);
+
+  const onSearch = (e) => {
+    history.push(`/products?search=${keyword}`)
+  }
 
   return (
     <>
@@ -85,15 +95,17 @@ export default function Header() {
               <NavItem className="mr-6">
                 <NavLink href="/components/">FAQ</NavLink>
               </NavItem>
-              <div className="form-group category-form">
-                <select className="form-control category">
+              <div className="form-group category-form pointer" onClick={(e)=>{
+                  setHeaderCategoriesShown(!showHeaderCategories)
+                }}>
+                <select disabled className="form-control category pointer" >
                   <option>Categories</option>
                 </select>
               </div>
               <div className="form-group search-form ml-lg-2">
                 <InputGroup>
-                  <Input placeholder="Search Items..." />
-                  <InputGroupAddon addonType="append" className="search-btn">
+                  <Input onChange={(e) => setSearch(e.target.value)} value={keyword} placeholder="Search Items..." />
+                  <InputGroupAddon addonType="append" className="search-btn" onClick={onSearch}>
                     <InputGroupText>
                       <img src={search} alt="Search" />
                     </InputGroupText>
@@ -115,7 +127,7 @@ export default function Header() {
           </Collapse>
         </Navbar>
       </div>
-      <HeaderCategory />
+      {showHeaderCategories ?<HeaderCategory />: null}
     </>
   );
 }

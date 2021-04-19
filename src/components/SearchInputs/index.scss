@@ -27,10 +27,14 @@
         font-family: $font-barlow-regular;
         font-size: 18px;
       }
-      .makeStyles-root-1 {
+      .makeStyles-root-1, .makeStyles-root-2 {
         width: 100%;
         .MuiSlider-root {
           color: #f3ca3e;
+        }
+        .MuiSlider-thumb{
+          border-radius: 2px;
+          width: 7px;
         }
       }
       .box {

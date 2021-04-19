@@ -75,6 +75,7 @@
                 select{
                     -webkit-appearance: none;
                     -moz-appearance: none;
+                    pointer-events: none;
                    
                     background-image: url('data:image/svg+xml;utf8,<svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 6.65505L1.92261 0.577637L0.744019 1.75615L8 9.01207L15.256 1.75615L14.0774 0.577637L8 6.65505Z" fill="silver"/></svg>');
                     background-repeat: no-repeat;
