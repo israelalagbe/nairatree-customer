@@ -30,12 +30,17 @@ import { Link } from "react-router-dom";
 import useBrandStore from "../../stores/useBrandStore";
 import useAuthentication from "../../stores/useAuthentication";
 import useCartStore from "../../stores/useCartStore";
+import HeaderCategory from "../HeaderCategory";
 import clipText from "../../util/clipText";
 import logout from "../../util/logout";
 
 export default function Header() {
   const { fetchCategories, categories } = useCategoryStore();
-  const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
+  const {
+    popularBrands,
+    popularBrandsLoading,
+    fetchPopularBrands,
+  } = useBrandStore();
   const { carts, fetchCarts } = useCartStore();
 
   const [navbarIsOpen, setIsOpen] = useState(false);

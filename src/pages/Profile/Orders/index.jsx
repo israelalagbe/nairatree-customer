@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.scss";
 import iphone from "../../../img/iphone.png";
 import { Link } from "react-router-dom";
+import useOrderStore from "../../../stores/useOrderStore";
 
 function Orders() {
+  const { orders, fetchOrders } = useOrderStore();
+  const product = orders;
+
+  useEffect(() => {
+    fetchOrders();
+  }, [fetchOrders]);
+
+  console.log(product);
+
   return (
     <div className="orders">
       <div className="main-order">
@@ -21,6 +31,9 @@ function Orders() {
       <div className="details">
         <Link to="/">See details</Link>
       </div>
+      {/* {orders.map((order) => {
+        <div></div>;
+      })} */}
     </div>
   );
 }
