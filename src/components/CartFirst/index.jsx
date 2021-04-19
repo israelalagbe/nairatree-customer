@@ -47,7 +47,7 @@ function CartFirst({ carts }) {
 
                         {variant?<h6>Color: <span className='capitalize'>{variant.color}</span></h6>:null}
                         <h4>
-                          {formatMoney(product.price)} &nbsp;&nbsp; {product.deal?<span>{formatMoney(product.deal.new_price)}</span>: null}
+                          {formatMoney(product.price * cart.quantity)} &nbsp;&nbsp; {product.deal?<span>{formatMoney(product.deal.new_price)}</span>: null}
                         </h4>
                         <div className="maintain">
                           <h6>-</h6>

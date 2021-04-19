@@ -23,67 +23,65 @@ import UpdateProfile from "../pages/UpdateProfile";
 
 export function Routes() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/register" exact>
-          <Register />
-        </Route>
-        <Route path="/forgot-password" exact>
-          <ForgotPassword />
-        </Route>
-        <Route path="/reset-password/:id" exact>
-          <ResetPassword />
-        </Route>
-        <Route path="/login" exact>
-          <Login />
-        </Route>
-        <Route path="/registration-decision" exact>
-          <RegistrationDecision />
-        </Route>
-        <Route path="/products" exact>
-          <ProductSearch />
-        </Route>
-        <Route path="/cart-success" exact>
-          <CartSuccess />
-        </Route>
-        <Route path="/cart" exact>
-          <ShoppingCart />
-        </Route>
-        <Route path="/product-details/:productId" exact>
-          <ProductDetails />
-        </Route>
-        <Route path="/address-information" exact>
-          <AddressInfo />
-        </Route>
-        <Route path="/checkout-details" exact>
-          <CheckoutDetails />
-        </Route>
-        <AuthRoute path="/profile">
-          <Profile />
-        </AuthRoute>
-        <AuthRoute path="/update-profile">
-          <UpdateProfile />
-        </AuthRoute>
+    <Switch>
+      <Route path="/" exact>
+        <Home />
+      </Route>
+      <Route path="/register" exact>
+        <Register />
+      </Route>
+      <Route path="/forgot-password" exact>
+        <ForgotPassword />
+      </Route>
+      <Route path="/reset-password/:id" exact>
+        <ResetPassword />
+      </Route>
+      <Route path="/login" exact>
+        <Login />
+      </Route>
+      <Route path="/registration-decision" exact>
+        <RegistrationDecision />
+      </Route>
+      <Route path="/products" exact>
+        <ProductSearch />
+      </Route>
+      <Route path="/cart-success" exact>
+        <CartSuccess />
+      </Route>
+      <Route path="/cart" exact>
+        <ShoppingCart />
+      </Route>
+      <Route path="/product-details/:productId" exact>
+        <ProductDetails />
+      </Route>
+      <Route path="/address-information" exact>
+        <AddressInfo />
+      </Route>
+      <Route path="/checkout-details" exact>
+        <CheckoutDetails />
+      </Route>
+      <AuthRoute path="/profile">
+        <Profile />
+      </AuthRoute>
+      <AuthRoute path="/update-profile">
+        <UpdateProfile />
+      </AuthRoute>
 
-        <Route path="/confirm-otp">
-          <Otp />
-        </Route>
-        <Route path="/payment-policy">
-          <PaymentPolicy />
-        </Route>
-        <Route path="/privacy-policy">
-          <PrivacyPolicy />
-        </Route>
-        <Route path="/blog">
-          <Blog />
-        </Route>
-        <Route path="/about-us">
-          <AboutUs />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+      <Route path="/confirm-otp">
+        <Otp />
+      </Route>
+      <Route path="/payment-policy">
+        <PaymentPolicy />
+      </Route>
+      <Route path="/privacy-policy">
+        <PrivacyPolicy />
+      </Route>
+      <Route path="/blog">
+        <Blog />
+      </Route>
+      <Route path="/about-us">
+        <AboutUs />
+      </Route>
+    </Switch>
   );
 }
