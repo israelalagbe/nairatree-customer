@@ -48,7 +48,7 @@ const useOrderStore = create(
         set((state) => ({ ...state, ordersLoading: true }));
 
         try {
-          const orders = await getOrders();
+          const { orders } = await getOrders();
 
           set((state) => ({ ...state, orders }));
         } catch (e) {
