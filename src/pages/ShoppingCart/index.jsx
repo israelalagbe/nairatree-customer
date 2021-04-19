@@ -9,8 +9,8 @@ import ProductItem from "../../components/ProductItem";
 import useCartStore from "../../stores/useCartStore";
 
 function ShoppingCart() {
-  const {carts } = useCartStore();
-    
+  const { carts } = useCartStore();
+
   return (
     <div className="cart">
       <Header />

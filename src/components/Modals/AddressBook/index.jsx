@@ -35,6 +35,15 @@ const AddressBookModal = ({ show, onClose }) => {
 
     updateUser(payload, () => history.push("/profile"));
   };
+
+  const removeAddress = (id) => {
+    const newAddress = addresses.filter((address) => {
+      return address._id !== id;
+    });
+    console.log(newAddress);
+    updateUser(newAddress, () => {});
+  };
+
   return (
     <Modal isOpen={show} toggle={onClose} size="lg">
       <ModalBody className="addressModalBody">
@@ -71,11 +80,14 @@ const AddressBookModal = ({ show, onClose }) => {
                   </FormGroup>
                 </div>
                 <div className="addressGroupEdit">
-                  <h6>
+                  <h6 className="pointer">
                     Edit
                     <EditIcon />
                   </h6>
-                  <h6>
+                  <h6
+                    className="pointer"
+                    onClick={() => removeAddress(item._id)}
+                  >
                     Remove
                     <DeleteOutlineIcon />
                   </h6>
