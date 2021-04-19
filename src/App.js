@@ -29,7 +29,7 @@ function App() {
 
 const EventHandler = () => {
   const history = useHistory();
-  console.log(history)
+
   useEffect(() => {
     eventEmitter.on('logout', () => {
       history.push(`/login?redirect_to=${history.location.pathname}`)
