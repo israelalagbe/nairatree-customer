@@ -43,14 +43,17 @@ function DeliveryDetails({ onNext }) {
             <h5>ADDRESS</h5>
             <h6 onClick={addressModal.open}>CHANGE ADDRESS</h6>
           </div>
-          <div className="details">
-            <h6>{defaultAddress.name}</h6>
-            <h6>{defaultAddress.address}</h6>
-            <h6>
-              {defaultAddress.city} ,{defaultAddress.country}
-            </h6>
-            <h6>{defaultAddress.phone}</h6>
-          </div>
+          {defaultAddress ? (
+            <div className="details">
+              <h6>{defaultAddress.name}</h6>
+              <h6>{defaultAddress.address}</h6>
+              <h6>
+                {defaultAddress.city} ,{defaultAddress.country}
+              </h6>
+              <h6>{defaultAddress.phone}</h6>
+            </div>
+          ) : null}
+
           <div className="shipping">
             <h4>SHIPMENT DETAILS</h4>
             <h5>TOTAL ITEM NO: {numberOfItems}</h5>
