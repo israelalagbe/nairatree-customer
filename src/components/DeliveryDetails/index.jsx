@@ -14,12 +14,16 @@ import formatMoney from "../../util/formatMoney";
 function DeliveryDetails({ onNext }) {
   const addressModal = useModal(false);
   const { user } = useAuthentication();
-  const defaultAddress = user.address_book.find((item) => item.is_default === true);
+
   const { carts } = useCartStore();
 
   const numberOfItems = carts.reduce((count, cart) => cart.quantity + count, 0);
 
-  const subTotal = carts.reduce((price, cart) => cart.product.price + price, 0);
+  const subTotal = carts.reduce(
+    (price, cart) =>
+      cart.product.price * cart.quantity + price + cart.product.shipment_fees[0].fee,
+    0
+  );
 
   const totalShippingFee = carts.reduce(
     (price, cart) => cart.product.shipment_fees[0].fee + price,
@@ -27,6 +31,8 @@ function DeliveryDetails({ onNext }) {
   );
 
   const total = totalShippingFee + subTotal;
+
+  const defaultAddress = user.address_book.find((item) => item.is_default === true);
 
   return (
     <>
@@ -49,11 +55,15 @@ function DeliveryDetails({ onNext }) {
             <h4>SHIPMENT DETAILS</h4>
             <h5>TOTAL ITEM NO: {numberOfItems}</h5>
             {carts.map((cart) => {
-              const variant = cart.product.variants.find((variant)=> String(variant.variant_id) === String(cart.variant))
-             
+              const variant = cart.product.variants.find(
+                (variant) => String(variant.variant_id) === String(cart.variant)
+              );
+
               return (
                 <h6>
-                  {cart.product.name} ({variant? <big className='capitalize'>{variant.color}</big>: null}{cart.product.features.join(" ")})
+                  {cart.product.name} (
+                  {variant ? <big className="capitalize">{variant.color}</big> : null}
+                  {cart.product.features.join(" ")})
                 </h6>
               );
             })}

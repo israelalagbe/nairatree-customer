@@ -159,5 +159,3 @@ interface Cart {
   quantity: number;
   variant?: string;
 }
-
-
