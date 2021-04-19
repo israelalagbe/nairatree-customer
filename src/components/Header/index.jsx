@@ -30,15 +30,12 @@ import { Link } from "react-router-dom";
 import useBrandStore from "../../stores/useBrandStore";
 import useAuthentication from "../../stores/useAuthentication";
 import useCartStore from "../../stores/useCartStore";
+import clipText from "../../util/clipText";
 
 export default function Header() {
   const { fetchCategories, categories } = useCategoryStore();
-  const {
-    popularBrands,
-    popularBrandsLoading,
-    fetchPopularBrands,
-  } = useBrandStore();
-  const { carts } = useCartStore();
+  const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
+  const { carts, fetchCarts } = useCartStore();
 
   const [navbarIsOpen, setIsOpen] = useState(false);
   const toggleNavbarCollapse = () => setIsOpen(!navbarIsOpen);
@@ -46,7 +43,9 @@ export default function Header() {
   useEffect(() => {
     fetchCategories();
     fetchPopularBrands();
-  }, [fetchCategories, fetchPopularBrands]);
+    fetchCarts();
+
+  }, [fetchCategories, fetchPopularBrands, fetchCarts]);
 
   return (
     <div className="home-header">
@@ -134,7 +133,7 @@ function AccountNav() {
       <div className="account-dropdown-nav" onClick={handleClick}>
         <AccountCircle fontSize="small" />
         <span className="ml-3 text">
-          Hi {user ? user.first_name : "Account"}{" "}
+          {user ? clipText(user.first_name, 10) : "Account"}{" "}
         </span>
         <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
       </div>

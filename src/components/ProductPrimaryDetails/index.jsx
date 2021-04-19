@@ -33,11 +33,16 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
    * @param {ProductVariant} variant
    */
   const toggle = (variant) => {
-    // if (active !== variant.color) setActive(variant.color);
-    setVariant(variant);
-
-    setProductImages(variant.images);
-    setCurrentImageIndex(0);
+    if(variant === selectedVariant) {
+      setVariant(null);
+      setProductImages(product.images);
+      setCurrentImageIndex(0);
+    }
+    else {
+      setVariant(variant);
+      setProductImages(variant.images);
+      setCurrentImageIndex(0);
+    }
   };
 
   const incrementCounter = (e) => {

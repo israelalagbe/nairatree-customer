@@ -62,7 +62,11 @@ interface Product {
   createdAt: string;
   updatedAt: string;
   id: string;
-  related_items?: Product[]
+  related_items?: Product[],
+  deal?: {
+    new_price: string,
+    until: string
+  }
 }
 
 interface Shipmentfee {
@@ -155,5 +159,3 @@ interface Cart {
   quantity: number;
   variant?: string;
 }
-
-

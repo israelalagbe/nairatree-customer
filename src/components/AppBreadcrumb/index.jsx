@@ -4,6 +4,7 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import ArrowBack from "../../img/arrow-back.png";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,10 +26,13 @@ function handleClick(event) {
  */
 function AppBreadcrumb({product}) {
   const classes = useStyles();
+  const history = useHistory();
+
+
   return (
     <div className={classes.root}>
       <div>
-        <img src={ArrowBack} alt="arrow-back" />
+        <img src={ArrowBack} alt="arrow-back" onClick={history.goBack} className='pointer' />
       </div>
       <Breadcrumbs separator="›" aria-label="breadcrumb">
         <Link color="inherit" href="/" onClick={handleClick}>
