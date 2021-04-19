@@ -8,6 +8,7 @@ import classnames from "classnames";
 import formatMoney from "../../util/formatMoney";
 import useCartStore from "../../stores/useCartStore";
 import { useHistory } from "react-router-dom";
+import useAuthentication from "../../stores/useAuthentication";
 
 /**
  *
@@ -27,18 +28,19 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
 
   const [counter, setCounter] = useState(1);
 
-  const { carts, saveCarts, saveCartsLoading } = useCartStore();
+  const { carts, setLocalCarts, saveCarts, saveCartsLoading } = useCartStore();
+
+  const { user } = useAuthentication();
 
   /**
    * @param {ProductVariant} variant
    */
   const toggle = (variant) => {
-    if(variant === selectedVariant) {
+    if (variant === selectedVariant) {
       setVariant(null);
       setProductImages(product.images);
       setCurrentImageIndex(0);
-    }
-    else {
+    } else {
       setVariant(variant);
       setProductImages(variant.images);
       setCurrentImageIndex(0);
@@ -68,15 +70,52 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
   }, [counter, availableQuantity]);
 
   const addToCart = (e) => {
-    //Format existing cart details in format suitable for the backend
-    const existingCarts = carts.map((cart) => ({
-      product: cart.product.id,
-      quantity: cart.quantity,
-      ...(cart.variant ? { variant: String(cart.variant) } : null),
-    }))
-    // Remove current product from shopping cart
-    .filter((cart) => !(cart.product ===product.id && String(cart.variant) === String(selectedVariant?.variant_id)) );
+    if (!user) {
+      //Format existing cart details in format suitable for the backend
+      const existingCarts = carts
+        .map((cart) => ({
+          product: cart.product,
+          quantity: cart.quantity,
+          ...(cart.variant ? { variant: String(cart.variant) } : null),
+        }))
+        // Remove current product from shopping cart
+        .filter(
+          (cart) =>
+            !(
+              cart.product.id === product.id &&
+              String(cart.variant) === String(selectedVariant?.variant_id)
+            )
+        );
 
+      /**
+       * @type {Cart}
+       */
+      const newCart = {
+        product: { ...product },
+        quantity: counter,
+        ...(selectedVariant?.variant_id ? { variant: String(selectedVariant?.variant_id) } : null),
+      };
+      setLocalCarts([...existingCarts, newCart]);
+      history.push("/cart-success");
+
+      return;
+    }
+
+    //Format existing cart details in format suitable for the backend
+    const existingCarts = carts
+      .map((cart) => ({
+        product: cart.product.id,
+        quantity: cart.quantity,
+        ...(cart.variant ? { variant: String(cart.variant) } : null),
+      }))
+      // Remove current product from shopping cart
+      .filter(
+        (cart) =>
+          !(
+            cart.product === product.id &&
+            String(cart.variant) === String(selectedVariant?.variant_id)
+          )
+      );
 
     const payload = [
       ...existingCarts,

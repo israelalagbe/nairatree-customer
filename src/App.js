@@ -4,6 +4,8 @@ import "react-notifications/lib/notifications.css";
 import { NotificationContainer } from "react-notifications";
 import { Routes } from "./routes";
 import NetworkLoader from "./components/NetworkLoader";
+import eventEmitter from "./util/eventEmitter";
+import { useHistory } from "react-router-dom";
 
 function App() {
   const [isInitialized, setIsInitialized] = React.useState(false);
@@ -20,8 +22,22 @@ function App() {
       <NetworkLoader />
       <NotificationContainer />
       {isInitialized ? <Routes /> : null}
+      <EventHandler />
     </>
   );
 }
+
+const EventHandler = () => {
+  const history = useHistory();
+
+  useEffect(() => {
+    eventEmitter.on('logout', () => {
+      history.push(`/login?redirect_to=${history.location.pathname}`)
+    });
+  }, []);
+  return <></>;
+}
+
+
 
 export default App;
