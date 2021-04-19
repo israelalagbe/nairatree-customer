@@ -62,7 +62,7 @@ function AddressInfo() {
       ],
     };
 
-    updateUser(payload, () => history.push("/profile"));
+    updateUser(payload, () => history.goBack());
   };
 
   useEffect(() => {
