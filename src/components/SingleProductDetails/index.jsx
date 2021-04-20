@@ -1,12 +1,22 @@
 import { format } from "date-fns";
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.scss";
+import { useParams } from "react-router-dom";
+import useProductStore from "../../stores/useProductStore";
 
 /**
  *
  * @param {{product: Product, variant: ProductVariant}} props
  */
 function SingleProductDetails({ product, variant }) {
+  const { productId } = useParams();
+
+  const { updateRecentView } = useProductStore();
+
+  useEffect(() => {
+    updateRecentView(productId);
+  }, [updateRecentView, productId]);
+
   const items = [
     { key: "Name", value: product.name },
     {
@@ -35,7 +45,7 @@ function SingleProductDetails({ product, variant }) {
     },
     {
       key: "Date Manufactured",
-      value: format(new Date(product.date_manufactured), 'd LLLL yyyy'),
+      value: format(new Date(product.date_manufactured), "d LLLL yyyy"),
     },
   ].filter((item) => item.value);
   return (

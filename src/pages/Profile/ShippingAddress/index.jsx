@@ -23,6 +23,7 @@ function ShippingAddress() {
         {addresses.map((item) => (
           <div className="allBelow">
             <div>
+              <h3>{item.label}</h3>
               <h6>{item.name}</h6>
               <h6>{item.address}</h6>
               <h6>

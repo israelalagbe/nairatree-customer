@@ -16,9 +16,12 @@ function ProductDetails() {
 
   const [selectedVariant, setVariant] = useState(null);
 
-  const { selectedProduct, selectedProductLoading, fetchSelectedProduct } = useProductStore();
+  const {
+    selectedProduct,
+    selectedProductLoading,
+    fetchSelectedProduct,
+  } = useProductStore();
 
-  
   useEffect(() => {
     fetchSelectedProduct(productId);
   }, [fetchSelectedProduct, productId]);
@@ -27,10 +30,17 @@ function ProductDetails() {
     <div className="product-details">
       <Header />
       <div className="product-details-main">
-        <LoadingTrigger marginTop='10rem' isLoading={selectedProductLoading || !selectedProduct}>
+        <LoadingTrigger
+          marginTop="10rem"
+          isLoading={selectedProductLoading || !selectedProduct}
+        >
           <AppBreadcrumb product={selectedProduct} />
           <div className="details">
-            <ProductPrimaryDetails selectedVariant={selectedVariant} setVariant={setVariant} product={selectedProduct} />
+            <ProductPrimaryDetails
+              selectedVariant={selectedVariant}
+              setVariant={setVariant}
+              product={selectedProduct}
+            />
             <ProductTab variant={selectedVariant} product={selectedProduct} />
           </div>
         </LoadingTrigger>
