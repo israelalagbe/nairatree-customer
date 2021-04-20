@@ -20,8 +20,6 @@ import useCartStore from "../../../stores/useCartStore";
 import env from "../../../config/env";
 import Notify from "../../../util/Notify";
 
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -38,20 +36,26 @@ function CheckoutDetails() {
   const { user } = useAuthentication();
 
   const { carts } = useCartStore();
-  
-  const defaultAddress = user.address_book.find((item) => item.is_default === true);
+
+  const defaultAddress = user.address_book.find(
+    (item) => item.is_default === true
+  );
 
   const history = useHistory();
 
   // @ts-ignore
-  const { updateOrderPaymentStatus ,saveCheckout, saveCheckoutLoading } = useOrderStore();
+  const {
+    updateOrderPaymentStatus,
+    saveCheckout,
+    saveCheckoutLoading,
+  } = useOrderStore();
 
   // @ts-ignore
   const checkout = async (payload) => {
     const cartPayload = carts.map((cart) => ({
       product: cart.product.id,
       quantity: cart.quantity,
-      variant: cart.variant
+      variant: cart.variant,
     }));
 
     saveCheckout(
@@ -64,43 +68,39 @@ function CheckoutDetails() {
   };
 
   /**
-   * 
-   * @param {{payment_reference: string, amount: number}} paymentInfo 
+   *
+   * @param {{payment_reference: string, amount: number}} paymentInfo
    */
   const openPaymentPopup = (paymentInfo) => {
-
     const amountInKobo = paymentInfo.amount * 100;
-    const PaystackPop = window['PaystackPop'];
-    
+    const PaystackPop = window["PaystackPop"];
+
     const handler = PaystackPop.setup({
       key: env.paystackKey,
       email: user.email,
       ref: paymentInfo.payment_reference,
       amount: amountInKobo,
-      callback: function (response){
-          updateOrderPaymentStatus({
-            payment_reference: response.reference,
-            status: 'success'
-          });
-          history.push('/')
+      callback: function (response) {
+        updateOrderPaymentStatus({
+          payment_reference: response.reference,
+          status: "success",
+        });
+        history.push("/");
       },
-      onClose: function(){
-          Notify.warning("You cancelled your payment!")
-      }
+      onClose: function () {
+        Notify.warning("You cancelled your payment!");
+      },
     });
     handler.openIframe();
-  }
+  };
 
   return (
     <>
       <div className="checkout-details">
         <AppLogo />
-        <div className="go-back">
+        <div className="go-back" onClick={history.goBack}>
           <ArrowBackIcon />
-          <span onClick={history.goBack} className="pointer">
-            {" "}
-            Address Information
-          </span>
+          <h6>Back</h6>
         </div>
 
         <div className="accord-main">
@@ -127,7 +127,9 @@ function CheckoutDetails() {
                 aria-controls="panel2a-content"
                 id="panel2a-header"
               >
-                <Typography className={classes.heading}>Payment Method</Typography>
+                <Typography className={classes.heading}>
+                  Payment Method
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
