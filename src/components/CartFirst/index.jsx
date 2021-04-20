@@ -38,6 +38,14 @@ function CartFirst({ carts, updateCart }) {
     });
   }
 
+  /**
+   * @param {number} index
+   */
+  const deleteCart = (index) => {
+    //null cart will be deleted
+    updateCart(index, null);
+  }
+
 
 
   return (
@@ -109,7 +117,7 @@ function CartFirst({ carts, updateCart }) {
               </div>
               <div className="del-add">
                 {/* <h6>ADD TO WISHLIST </h6> */}
-                <h5>DELETE </h5>
+                <h5 className="pointer" onClick={() => deleteCart(index)}>DELETE </h5>
               </div>
             </div>
           </div>

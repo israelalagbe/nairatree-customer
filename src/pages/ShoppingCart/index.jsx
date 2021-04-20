@@ -21,7 +21,9 @@ function ShoppingCart() {
         return cartUpdate;
       }
       return cart;
-    });
+    })
+    //This deletes null cart
+    .filter((cart) => cart);
     setLocalCarts(updatedCarts)
   }
   return (
