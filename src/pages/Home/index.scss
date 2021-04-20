@@ -63,7 +63,6 @@
           width: 6rem;
           height: 6rem;
           border-radius: 50%;
-          ;
         }
 
         span {
@@ -106,18 +105,19 @@
       align-items: center;
       overflow-x: auto;
 
-      .no-product-message{
-       margin: auto;
+      .no-product-message {
+        margin: auto;
+        font-family: $font-aller-regular;
+        color: #698875;
       }
     }
   }
   @media (max-width: 767px) {
-    .sidebar-container{
+    .sidebar-container {
       margin-top: 2em;
       display: flex;
       align-items: center;
-      flex-direction: column
+      flex-direction: column;
     }
   }
-  
 }
