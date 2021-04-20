@@ -12,6 +12,34 @@ import "./index.scss";
  * @param {(cartIndex:number, cartUpdate: Cart)=>void} props.updateCart
  */
 function CartFirst({ carts, updateCart }) {
+  /**
+   * @param {number} index 
+   * @param {Cart} cart 
+   * @param {ProductVariant} variant 
+   */
+  const incrementCart = (index, cart, variant) => {
+    updateCart(index, {
+      ...cart,
+      quantity: cart.quantity <
+        (variant?.quantity ?? cart.product.quantity_available)
+        ? cart.quantity + 1
+        : cart.quantity,
+    });
+  }
+
+  /**
+   * @param {number} index 
+   * @param {Cart} cart
+   */
+  const decreaseCart = (index, cart) => {
+    updateCart(index, {
+      ...cart,
+      quantity: cart.quantity > 1 ? cart.quantity - 1 : cart.quantity,
+    });
+  }
+
+
+
   return (
     <div className="cart-first">
       <div className="main">
@@ -61,28 +89,14 @@ function CartFirst({ carts, updateCart }) {
                         <div className="maintain">
                           <h6
                             className="pointer"
-                            onClick={() =>
-                              updateCart(index, {
-                                ...cart,
-                                quantity: cart.quantity > 1 ? cart.quantity - 1 : cart.quantity,
-                              })
-                            }
+                            onClick={() => decreaseCart(index, cart)}
                           >
                             -
                           </h6>
                           <p>{cart.quantity}</p>
                           <h6
                             className="pointer"
-                            onClick={() =>
-                              updateCart(index, {
-                                ...cart,
-                                quantity:
-                                  cart.quantity <
-                                  (variant?.quantity ?? cart.product.quantity_available)
-                                    ? cart.quantity + 1
-                                    : cart.quantity,
-                              })
-                            }
+                            onClick={() => incrementCart(index, cart, variant)}
                           >
                             +
                           </h6>
@@ -103,6 +117,10 @@ function CartFirst({ carts, updateCart }) {
       })}
     </div>
   );
+
+  
+
+  
 }
 
 export default CartFirst;
