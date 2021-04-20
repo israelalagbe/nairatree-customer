@@ -9,15 +9,28 @@ import ProductItem from "../../components/ProductItem";
 import useCartStore from "../../stores/useCartStore";
 
 function ShoppingCart() {
-  const { carts } = useCartStore();
+  const { carts, setLocalCarts  } = useCartStore();
 
+  /**
+   * @param {number} cartIndex
+   * @param {Cart} cartUpdate 
+   */
+  const updateCart = (cartIndex, cartUpdate) => {
+    const updatedCarts = carts.map((cart, index) => {
+      if(index === cartIndex){
+        return cartUpdate;
+      }
+      return cart;
+    });
+    setLocalCarts(updatedCarts)
+  }
   return (
     <div className="cart">
       <Header />
       <div className="cart-row">
         <Row>
           <Col md={8}>
-            <CartFirst carts={carts} />
+            <CartFirst updateCart={updateCart} carts={carts} />
           </Col>
           <Col md={4}>
             <CartSecond carts={carts} />

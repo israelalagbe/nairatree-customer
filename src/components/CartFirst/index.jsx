@@ -9,9 +9,9 @@ import "./index.scss";
  *
  * @param {object} props
  * @param {Cart[]} props.carts
+ * @param {(cartIndex:number, cartUpdate: Cart)=>void} props.updateCart
  */
-function CartFirst({ carts }) {
-  console.log(carts)
+function CartFirst({ carts, updateCart }) {
   return (
     <div className="cart-first">
       <div className="main">
@@ -27,16 +27,18 @@ function CartFirst({ carts }) {
         </div>
       </div>
 
-      {carts.map((cart) => {
+      {carts.map((cart, index) => {
         const product = cart.product;
-        const variant = product.variants.find((variant)=> String(variant.variant_id) === String(cart.variant))
+        const variant = product.variants.find(
+          (variant) => String(variant.variant_id) === String(cart.variant)
+        );
         const productImage = variant?.images[0] ?? cart.product.images[0];
         return (
           <div className="wishlist">
             <div className="main">
               <div className="wish-check">
-                <FormGroup check>
-                  <Label check>
+                <FormGroup>
+                  <div>
                     <Input type="checkbox" />
                     <div className="content">
                       <div className="content-img">
@@ -45,19 +47,50 @@ function CartFirst({ carts }) {
                       <div className="content-2">
                         <h5>{cart.product.name}</h5>
 
-                        {variant?<h6>Color: <span className='capitalize'>{variant.color}</span></h6>:null}
+                        {variant ? (
+                          <h6>
+                            Color: <span className="capitalize">{variant.color}</span>
+                          </h6>
+                        ) : null}
                         <h4>
-                          {formatMoney(product.price * cart.quantity)} &nbsp;&nbsp; {product.deal?<span>{formatMoney(product.deal.new_price)}</span>: null}
+                          {formatMoney(product.price * cart.quantity)} &nbsp;&nbsp;{" "}
+                          {product.deal ? (
+                            <span>{formatMoney(product.deal.new_price)}</span>
+                          ) : null}
                         </h4>
                         <div className="maintain">
-                          <h6>-</h6>
+                          <h6
+                            className="pointer"
+                            onClick={() =>
+                              updateCart(index, {
+                                ...cart,
+                                quantity: cart.quantity > 1 ? cart.quantity - 1 : cart.quantity,
+                              })
+                            }
+                          >
+                            -
+                          </h6>
                           <p>{cart.quantity}</p>
-                          <h6>+</h6>
+                          <h6
+                            className="pointer"
+                            onClick={() =>
+                              updateCart(index, {
+                                ...cart,
+                                quantity:
+                                  cart.quantity <
+                                  (variant?.quantity ?? cart.product.quantity_available)
+                                    ? cart.quantity + 1
+                                    : cart.quantity,
+                              })
+                            }
+                          >
+                            +
+                          </h6>
                         </div>
                         <h6>Free Shipping: Within Lagos</h6>
                       </div>
                     </div>
-                  </Label>
+                  </div>
                 </FormGroup>
               </div>
               <div className="del-add">
