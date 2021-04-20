@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col } from "reactstrap";
 import Header from "../../components/Header";
 import CartFirst from "../../components/CartFirst";
@@ -10,7 +10,7 @@ import useCartStore from "../../stores/useCartStore";
 
 function ShoppingCart() {
   const { carts, setLocalCarts  } = useCartStore();
-
+  const [selectedCartsIndexes , setSelectedCartsIndexes] = useState([]);
   /**
    * @param {number} cartIndex
    * @param {Cart} cartUpdate 
@@ -32,7 +32,7 @@ function ShoppingCart() {
       <div className="cart-row">
         <Row>
           <Col md={8}>
-            <CartFirst updateCart={updateCart} carts={carts} />
+            <CartFirst selectedCartsIndexes={selectedCartsIndexes} setSelectedCartsIndexes={setSelectedCartsIndexes} updateCart={updateCart} carts={carts} />
           </Col>
           <Col md={4}>
             <CartSecond carts={carts} />

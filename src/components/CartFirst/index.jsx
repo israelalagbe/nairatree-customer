@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FormGroup, Label, Input } from "reactstrap";
 import Iphone from "../../img/iphone.png";
 import formatMoney from "../../util/formatMoney";
 import AppButton from "../AppButton";
 import "./index.scss";
-
+import { ray } from 'js-ray';
 /**
  *
  * @param {object} props
  * @param {Cart[]} props.carts
  * @param {(cartIndex:number, cartUpdate: Cart)=>void} props.updateCart
+ * @param {number[]} props.selectedCartsIndexes
+ * @param {(indexs:number[]) => void} props.setSelectedCartsIndexes
  */
-function CartFirst({ carts, updateCart }) {
+function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIndexes }) {
   /**
    * @param {number} index 
    * @param {Cart} cart 
@@ -46,7 +48,18 @@ function CartFirst({ carts, updateCart }) {
     updateCart(index, null);
   }
 
-
+  const toggleSelected = (index) => {
+    const isChecked = selectedCartsIndexes.filter((item) => item === index).length > 0;
+    if(isChecked){
+      const updatedIndexes = selectedCartsIndexes.filter((item) => item !== index)
+      setSelectedCartsIndexes(updatedIndexes);
+    }else {
+      
+      const updatedIndexes = [...selectedCartsIndexes, index]
+      setSelectedCartsIndexes(updatedIndexes);
+    };
+  }
+  
 
   return (
     <div className="cart-first">
@@ -64,6 +77,8 @@ function CartFirst({ carts, updateCart }) {
       </div>
 
       {carts.map((cart, index) => {
+        const isChecked = selectedCartsIndexes.filter((item) => item === index).length > 0;
+
         const product = cart.product;
         const variant = product.variants.find(
           (variant) => String(variant.variant_id) === String(cart.variant)
@@ -75,7 +90,7 @@ function CartFirst({ carts, updateCart }) {
               <div className="wish-check">
                 <FormGroup>
                   <div>
-                    <Input type="checkbox" />
+                    <Input type="checkbox" checked={isChecked} onClick={() =>toggleSelected(index)} />
                     <div className="content">
                       <div className="content-img">
                         <img src={productImage} alt={product.name} />
