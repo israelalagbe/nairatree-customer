@@ -26,13 +26,21 @@ function ShoppingCart() {
     .filter((cart) => cart);
     setLocalCarts(updatedCarts)
   }
+  
+  const deleteSelectedCarts = () => {
+    const updatedCarts = carts
+    //This deletes null cart
+      .filter((cart, index) => !selectedCartsIndexes.includes(index));
+      setLocalCarts(updatedCarts)
+  }
+
   return (
     <div className="cart">
       <Header />
       <div className="cart-row">
         <Row>
           <Col md={8}>
-            <CartFirst selectedCartsIndexes={selectedCartsIndexes} setSelectedCartsIndexes={setSelectedCartsIndexes} updateCart={updateCart} carts={carts} />
+            <CartFirst deleteSelectedCarts={deleteSelectedCarts} selectedCartsIndexes={selectedCartsIndexes} setSelectedCartsIndexes={setSelectedCartsIndexes} updateCart={updateCart} carts={carts} />
           </Col>
           <Col md={4}>
             <CartSecond carts={carts} />

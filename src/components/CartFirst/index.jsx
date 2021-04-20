@@ -4,16 +4,17 @@ import Iphone from "../../img/iphone.png";
 import formatMoney from "../../util/formatMoney";
 import AppButton from "../AppButton";
 import "./index.scss";
-import { ray } from 'js-ray';
+// import { ray } from 'js-ray';
 /**
  *
  * @param {object} props
  * @param {Cart[]} props.carts
  * @param {(cartIndex:number, cartUpdate: Cart)=>void} props.updateCart
+ * @param {()=>void} props.deleteSelectedCarts
  * @param {number[]} props.selectedCartsIndexes
  * @param {(indexs:number[]) => void} props.setSelectedCartsIndexes
  */
-function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIndexes }) {
+function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIndexes, deleteSelectedCarts }) {
   /**
    * @param {number} index 
    * @param {Cart} cart 
@@ -59,6 +60,14 @@ function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIn
       setSelectedCartsIndexes(updatedIndexes);
     };
   }
+
+  const selectAll = () => {
+    setSelectedCartsIndexes(carts.map((cart, index) => index));
+  }
+
+  
+
+
   
 
   return (
@@ -69,8 +78,8 @@ function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIn
         </div>
         <div className="main-flex">
           <div className="d-flex mt-1">
-            <p>Select All</p>
-            <h6>Delete Selected</h6>
+            <p className='pointer ' onClick={selectAll}>Select All</p>
+            <h6 className="pointer" onClick={deleteSelectedCarts}>Delete Selected</h6>
           </div>
           <AppButton buttonText="Update Cart" classname="update-button" />
         </div>
