@@ -38,7 +38,9 @@ function Orders() {
           </div>
 
           <div className="details">
-            <Link to={`/product-details/${order.id}`}>See details</Link>
+            <Link to={`/product-details/${order.products[0].product._id}`}>
+              See details
+            </Link>
           </div>
         </div>
       ))}
