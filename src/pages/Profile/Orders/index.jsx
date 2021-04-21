@@ -17,32 +17,31 @@ function Orders() {
 
   return (
     <>
-      {orders.map((order) =>
-        order.products.map((item) => (
-          <div className="orders mb-3">
-            <div className="main-order">
-              <div className="order-img">
-                <img src={item.product.images[0]} alt="#" />
-              </div>
-
-              <div className="order-details">
-                <h3>{item.product.name}</h3>
-
-                {item.product.variants.map((colors) => (
-                  <h6>Color:{colors ? colors.color : null} </h6>
-                ))}
-
-                <h4>{formatMoney(item.product.price)}</h4>
-                <h5>Delivered</h5>
-              </div>
+      {product.map((order) => (
+        <div className="orders mb-3">
+          <div className="main-order">
+            <div className="order-img">
+              <img src={order.products[0].product.images[0]} alt="#" />
             </div>
 
-            <div className="details">
-              <Link to="/">See details</Link>
+            <div className="order-details">
+              <h3>{order.products[0].product.name}</h3>
+              <h6>
+                Color:
+                {/* {order.products[0].product.variants[0].color
+                  ? order.products[0].product.variants[0].color
+                  : null}{" "} */}
+              </h6>
+              <h4>{formatMoney(order.products[0].product.price)}</h4>
+              <h5>{order.delivery_status}</h5>
             </div>
           </div>
-        ))
-      )}
+
+          <div className="details">
+            <Link to={`/product-details/${order.id}`}>See details</Link>
+          </div>
+        </div>
+      ))}
     </>
   );
 }
