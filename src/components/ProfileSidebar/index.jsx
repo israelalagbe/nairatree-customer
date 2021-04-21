@@ -13,12 +13,12 @@ const linkList = [
     name: "MY ORDERS",
     link: "/profile/orders",
   },
-  {
-    id: "wishlist",
-    name: "WISHLIST",
-    icon: "wishlist",
-    link: "/profile/wishlist",
-  },
+  // {
+  //   id: "wishlist",
+  //   name: "WISHLIST",
+  //   icon: "wishlist",
+  //   link: "/profile/wishlist",
+  // },
   {
     id: "myprofile",
     name: "MY PROFILE",
