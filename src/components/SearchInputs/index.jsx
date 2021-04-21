@@ -6,7 +6,7 @@ import AppSlider from "../AppSlider";
 import useBrandStore from "../../stores/useBrandStore";
 import AppButton from "../AppButton";
 
-function SearchInputs() {
+function SearchInputs({ applyFilter }) {
   const { popularBrands } = useBrandStore();
 
   const [priceRange, setPriceRange] = React.useState([100, 1000000]);
@@ -15,6 +15,18 @@ function SearchInputs() {
   const [conditionsFilter, setConditionsFilter] = useState([]);
   const [brandsFilter, setBrandsFilter] = useState([]);
 
+
+
+  const onApplyFilterClicked = (e) => {
+    e.preventDefault();
+    
+    applyFilter({
+      prices : priceRange,
+      colors : colorFilter,
+      brands : brandsFilter,
+      conditions: conditionsFilter
+    })
+  }
   return (
     <div className="search-inputs">
       <div className="first-part">
@@ -22,7 +34,7 @@ function SearchInputs() {
         <h6 className="category-2">Phones and accessories</h6>
       </div>
 
-      <Form>
+      <Form onSubmit={onApplyFilterClicked}>
         <div className="main-inputs">
           <div className="price">
             <h6>Price (#)</h6>

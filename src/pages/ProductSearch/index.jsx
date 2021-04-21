@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { Row, Col } from "reactstrap";
 import SearchInputs from "../../components/SearchInputs";
@@ -21,13 +21,20 @@ function ProductSearch() {
    */
   const query = getQueryParams(location.search);
 
+  const [filters, setFilters] = useState({});
+
   const { productsLoading, products, totalProducts, fetchProducts } = useProductStore();
 
   useEffect(() => {
     fetchProducts(removeNullItems({
-      search: query.search
+      search: query.search,
+      ...filters
     }));
-  }, [query.search]);
+  }, [query.search, filters, fetchProducts]);
+
+  const applyFilter = (filter) => {
+    setFilters(filter)
+  }
   
   return (
     <div className="product-search-page">
@@ -37,7 +44,7 @@ function ProductSearch() {
         <Row>
           <Col md="3">
             <div className="input-main">
-              <SearchInputs />
+              <SearchInputs applyFilter={applyFilter} />
             </div>
           </Col>
 
