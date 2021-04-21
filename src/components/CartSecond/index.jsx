@@ -4,6 +4,7 @@ import AppButton from "../AppButton";
 import "./index.scss";
 import { Link, useHistory } from "react-router-dom";
 import formatMoney from "../../util/formatMoney";
+import useCartStore from "../../stores/useCartStore";
 
 /**
  *
@@ -12,6 +13,8 @@ import formatMoney from "../../util/formatMoney";
  */
 function CartSecond({carts}) {
   const history = useHistory();
+
+  const saveCarts = useCartStore((store) => store.saveCarts);
   
   const numberOfItems = carts.reduce((count, cart)=> cart.quantity + count , 0);
 
@@ -22,7 +25,15 @@ function CartSecond({carts}) {
   const total = totalShippingFee + subTotal;
 
   const checkoutPage = () => {
-    history.push("/checkout-details");
+    const payload = carts
+      .map((cart) => ({
+        product: cart.product.id,
+        quantity: cart.quantity,
+        ...(cart.variant ? { variant: String(cart.variant) } : null),
+      }));
+
+    saveCarts(payload, () => history.push("/checkout-details"))
+    
   };
   return (
     <div className="cart-second">
