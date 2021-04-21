@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { FormGroup, Label, Input } from "reactstrap";
 import Iphone from "../../img/iphone.png";
+import useAuthentication from "../../stores/useAuthentication";
+import useCartStore from "../../stores/useCartStore";
 import formatMoney from "../../util/formatMoney";
+import Notify from "../../util/Notify";
 import AppButton from "../AppButton";
 import "./index.scss";
 // import { ray } from 'js-ray';
@@ -15,6 +18,11 @@ import "./index.scss";
  * @param {(indexs:number[]) => void} props.setSelectedCartsIndexes
  */
 function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIndexes, deleteSelectedCarts }) {
+
+  const saveCarts = useCartStore((store) => store.saveCarts);
+
+  const user = useAuthentication((state) => state.user);
+
   /**
    * @param {number} index 
    * @param {Cart} cart 
@@ -65,6 +73,23 @@ function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIn
     setSelectedCartsIndexes(carts.map((cart, index) => index));
   }
 
+  const updateCartsOnline = () => {
+    const payload = carts
+      .map((cart) => ({
+        product: cart.product.id,
+        quantity: cart.quantity,
+        ...(cart.variant ? { variant: String(cart.variant) } : null),
+      }))
+    
+    if(user){
+      saveCarts(payload, () => Notify.success("Cart updated successfully!"))
+    }
+    else {
+      Notify.success("Cart updated successfully!")
+    }
+    
+  }
+
   
 
 
@@ -81,7 +106,7 @@ function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIn
             <p className='pointer ' onClick={selectAll}>Select All</p>
             <h6 className="pointer" onClick={deleteSelectedCarts}>Delete Selected</h6>
           </div>
-          <AppButton buttonText="Update Cart" classname="update-button" />
+          <AppButton onClick={updateCartsOnline} buttonText="Update Cart" classname="update-button" />
         </div>
       </div>
 

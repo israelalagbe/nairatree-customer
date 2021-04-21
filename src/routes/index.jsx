@@ -20,6 +20,7 @@ import Blog from "../pages/Blog";
 import AboutUs from "../pages/AboutUs";
 import AuthRoute from "./AuthRoute";
 import UpdateProfile from "../pages/UpdateProfile";
+import GuestRoute from "./GuestRoute";
 
 export function Routes() {
   return (
@@ -27,21 +28,21 @@ export function Routes() {
       <Route path="/" exact>
         <Home />
       </Route>
-      <Route path="/register" exact>
+      <GuestRoute path="/register" exact>
         <Register />
-      </Route>
-      <Route path="/forgot-password" exact>
+      </GuestRoute>
+      <GuestRoute path="/forgot-password" exact>
         <ForgotPassword />
-      </Route>
+      </GuestRoute>
       <Route path="/reset-password/:id" exact>
         <ResetPassword />
       </Route>
-      <Route path="/login" exact>
+      <GuestRoute path="/login" exact>
         <Login />
-      </Route>
-      <Route path="/registration-decision" exact>
+      </GuestRoute>
+      <GuestRoute path="/registration-decision" exact>
         <RegistrationDecision />
-      </Route>
+      </GuestRoute>
       <Route path="/products" exact>
         <ProductSearch />
       </Route>

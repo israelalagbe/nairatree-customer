@@ -56,7 +56,7 @@ function CartSecond({carts}) {
             classname="check"
             onClick={checkoutPage}
           />
-          <AppButton buttonText="CHECKOUT AS GUEST" classname="check" />
+          {/* <AppButton buttonText="CHECKOUT AS GUEST" classname="check" /> */}
         </div>
       </div>
     </div>

@@ -84,7 +84,7 @@ export default function Header() {
           <Collapse isOpen={navbarIsOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">New Deals</NavLink>
+                <NavLink href="/products/?type=new_deal">New Deals</NavLink>
               </NavItem>
 
               <UncontrolledDropdown nav inNavbar>
