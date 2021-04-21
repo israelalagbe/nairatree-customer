@@ -25,7 +25,7 @@ function Account() {
           <CreateIcon />
         </Link>
       </div>
-      <div className="content">
+      {/* <div className="content">
         <div>
           <h3>Transaction Summary</h3>
           <h6>No Orders in progress</h6>
@@ -33,7 +33,7 @@ function Account() {
         <div>
           <Link to="/">View details</Link>
         </div>
-      </div>
+      </div> */}
       <div className="bt">
         <h3 className="mb-3">Address Book</h3>
         <div className="content-bt">

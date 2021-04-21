@@ -35,7 +35,7 @@ function ShippingAddress() {
           </div>
         ))}
       </div>
-      <div className="main-shipping">
+      {/* <div className="main-shipping">
         <div className="mainShippingContent">
           <div className="ship-1">
             <h5>Payment Details</h5>
@@ -55,7 +55,7 @@ function ShippingAddress() {
             <h5>Default</h5>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
