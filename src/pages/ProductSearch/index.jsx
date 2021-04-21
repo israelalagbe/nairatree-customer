@@ -32,9 +32,6 @@ function ProductSearch() {
             <div className="main mr-4">
               <div className="heading">
                 <span className="heading-text">127 Search result for "IPHONE 12"</span>
-                <Link to="/products" className="view-all">
-                  VIEW ALL
-                </Link>
               </div>
               <section className="product-list">
                 <LoadingTrigger isLoading={productsLoading}>
