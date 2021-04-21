@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "reactstrap";
 import Header from "../../components/Header";
 import CartFirst from "../../components/CartFirst";
@@ -12,14 +12,40 @@ import useAuthentication from "../../stores/useAuthentication";
 import useProductStore from "../../stores/useProductStore";
 
 function ShoppingCart() {
-  const { carts } = useCartStore();
-
+  const { carts, setLocalCarts  } = useCartStore();
+  const [selectedCartsIndexes , setSelectedCartsIndexes] = useState([]);
   const { user } = useAuthentication();
   const {
     recentlyViewed,
     recentlyViewedLoading,
     fetchRecentlyViewed,
   } = useProductStore();
+  
+  /**
+   * @param {number} cartIndex
+   * @param {Cart} cartUpdate 
+   */
+  const updateCart = (cartIndex, cartUpdate) => {
+    const updatedCarts = carts.map((cart, index) => {
+      if(index === cartIndex){
+        return cartUpdate;
+      }
+      return cart;
+    })
+    //This deletes null cart
+    .filter((cart) => cart);
+    setLocalCarts(updatedCarts)
+  }
+  
+  const deleteSelectedCarts = () => {
+    const updatedCarts = carts
+    //This deletes null cart
+      .filter((cart, index) => !selectedCartsIndexes.includes(index));
+
+    setLocalCarts(updatedCarts)
+  }
+
+  
 
   useEffect(() => {
     if (user) {
@@ -33,7 +59,7 @@ function ShoppingCart() {
       <div className="cart-row">
         <Row>
           <Col md={8}>
-            <CartFirst carts={carts} />
+            <CartFirst deleteSelectedCarts={deleteSelectedCarts} selectedCartsIndexes={selectedCartsIndexes} setSelectedCartsIndexes={setSelectedCartsIndexes} updateCart={updateCart} carts={carts} />
           </Col>
           <Col md={4}>
             <CartSecond carts={carts} />

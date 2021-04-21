@@ -1,20 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { Row, Col } from "reactstrap";
 import SearchInputs from "../../components/SearchInputs";
 import ProductItem from "../../components/ProductItem";
 import "./index.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AppPagination from "../../components/AppPagination";
 import useProductStore from "../../stores/useProductStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
+import getQueryParams from "../../util/getQueryParams";
+import removeNullItems from "../../util/removeNullItem";
+
+
 
 function ProductSearch() {
-  const { productsLoading, products, fetchProducts } = useProductStore();
+  const location = useLocation();
+
+  /**
+   * @type {SearchQuery}
+   */
+  const query = getQueryParams(location.search);
+
+  const [filters, setFilters] = useState({});
+
+  const { productsLoading, products, totalProducts, fetchProducts } = useProductStore();
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    fetchProducts(removeNullItems({
+      search: query.search,
+      ...filters
+    }));
+  }, [query.search, filters, fetchProducts]);
+
+  const applyFilter = (filter) => {
+    setFilters(filter)
+  }
   
   return (
     <div className="product-search-page">
@@ -24,17 +44,14 @@ function ProductSearch() {
         <Row>
           <Col md="3">
             <div className="input-main">
-              <SearchInputs />
+              <SearchInputs applyFilter={applyFilter} />
             </div>
           </Col>
 
           <Col md="9">
             <div className="main mr-4">
               <div className="heading">
-                <span className="heading-text">127 Search result for "IPHONE 12"</span>
-                <Link to="/products" className="view-all">
-                  VIEW ALL
-                </Link>
+                <span className="heading-text">{totalProducts} Search result found {query.search? `for '${query.search}'` : null}</span>
               </div>
               <section className="product-list">
                 <LoadingTrigger isLoading={productsLoading}>

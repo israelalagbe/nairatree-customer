@@ -87,7 +87,7 @@ function PaymentMethod({onCheckout}) {
           */}
           <div className="buttons"> 
             <AppButton onClick={() => setPaymentMode('save_card')} type="submit" buttonText="SAVE CARD & PAY" classname="all" />
-            <AppButton onClick={() => setPaymentMode('no_save_card')} type="submit" buttonText="PAY WITHOUT SAVING CARD" classname="all" />
+            {/* <AppButton onClick={() => setPaymentMode('no_save_card')} type="submit" buttonText="PAY WITHOUT SAVING CARD" classname="all" /> */}
           </div>
         </div>
       </Form>

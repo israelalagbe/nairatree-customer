@@ -65,6 +65,12 @@ export default function Header() {
     history.push(`/products?search=${keyword}`)
   }
 
+  const handleSearchInput = (e) => {
+    if (e.key === 'Enter') {
+      onSearch(e);
+    }
+  }
+
   return (
     <>
       <div className="home-header">
@@ -78,7 +84,7 @@ export default function Header() {
           <Collapse isOpen={navbarIsOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">New Deals</NavLink>
+                <NavLink href="/products/?type=new_deal">New Deals</NavLink>
               </NavItem>
 
               <UncontrolledDropdown nav inNavbar>
@@ -104,7 +110,7 @@ export default function Header() {
               </div>
               <div className="form-group search-form ml-lg-2">
                 <InputGroup>
-                  <Input onChange={(e) => setSearch(e.target.value)} value={keyword} placeholder="Search Items..." />
+                  <Input onChange={(e) => setSearch(e.target.value)} onKeyPress={handleSearchInput} value={keyword} placeholder="Search Items..." />
                   <InputGroupAddon addonType="append" className="search-btn" onClick={onSearch}>
                     <InputGroupText>
                       <img src={search} alt="Search" />
@@ -127,7 +133,7 @@ export default function Header() {
           </Collapse>
         </Navbar>
       </div>
-      {showHeaderCategories ?<HeaderCategory />: null}
+      {showHeaderCategories ?<HeaderCategory close={() => setHeaderCategoriesShown(false)} />: null}
     </>
   );
 }

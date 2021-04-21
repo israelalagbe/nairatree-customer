@@ -7,6 +7,7 @@ import "./index.scss";
 import { useParams } from "react-router-dom";
 import useProductStore from "../../stores/useProductStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
+import useAuthentication from "../../stores/useAuthentication";
 
 function ProductDetails() {
   /**
@@ -16,15 +17,30 @@ function ProductDetails() {
 
   const [selectedVariant, setVariant] = useState(null);
 
+
+
+
+
+  const { user } = useAuthentication();
+  
+
   const {
     selectedProduct,
     selectedProductLoading,
     fetchSelectedProduct,
+
+    updateRecentView
   } = useProductStore();
 
   useEffect(() => {
     fetchSelectedProduct(productId);
   }, [fetchSelectedProduct, productId]);
+
+  useEffect(() => {
+    if(user) {
+      updateRecentView(productId);
+    }
+  }, [updateRecentView, user, productId]);
 
   return (
     <div className="product-details">

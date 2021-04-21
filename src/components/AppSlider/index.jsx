@@ -4,17 +4,16 @@ import Slider from "@material-ui/core/Slider";
 
 const useStyles = makeStyles({
   root: {
-    width: 300,
+    width: '100%',
   },
 });
 
 function valuetext(value) {
-  return `${value}°C`;
+  return `${value}`;
 }
 
-function AppSlider() {
+function AppSlider({value, setValue}) {
   const classes = useStyles();
-  const [value, setValue] = React.useState([20, 37]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -23,11 +22,15 @@ function AppSlider() {
   return (
     <div className={classes.root}>
       <Slider
+        className='app-slider'
         value={value}
         onChange={handleChange}
         valueLabelDisplay="auto"
         aria-labelledby="range-slider"
         getAriaValueText={valuetext}
+        min={100}
+        max={1000000}
+
       />
     </div>
   );

@@ -15,9 +15,9 @@ function CartSecond({carts}) {
   
   const numberOfItems = carts.reduce((count, cart)=> cart.quantity + count , 0);
 
-  const subTotal = carts.reduce((price, cart)=> cart.product.price + price , 0);
+  const subTotal = carts.reduce((price, cart)=> (cart.product.price * cart.quantity) + price , 0);
 
-  const totalShippingFee = carts.reduce((price, cart)=> cart.product.shipment_fees[0].fee + price , 0);
+  const totalShippingFee = carts.reduce((price, cart)=> (cart.product.shipment_fees[0].fee * cart.quantity) + price , 0);
   
   const total = totalShippingFee + subTotal;
 
@@ -56,7 +56,7 @@ function CartSecond({carts}) {
             classname="check"
             onClick={checkoutPage}
           />
-          <AppButton buttonText="CHECKOUT AS GUEST" classname="check" />
+          {/* <AppButton buttonText="CHECKOUT AS GUEST" classname="check" /> */}
         </div>
       </div>
     </div>

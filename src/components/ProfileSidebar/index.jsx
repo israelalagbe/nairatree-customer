@@ -19,11 +19,11 @@ const linkList = [
   //   icon: "wishlist",
   //   link: "/profile/wishlist",
   // },
-  {
-    id: "myprofile",
-    name: "MY PROFILE",
-    link: "/profile/myprofile",
-  },
+  // {
+  //   id: "myprofile",
+  //   name: "MY PROFILE",
+  //   link: "/profile/myprofile",
+  // },
   {
     id: "shippingaddress",
     name: "SHIPPING ADDRESS",

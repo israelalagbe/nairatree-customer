@@ -219,3 +219,7 @@ interface Deal {
   until: Date;
 }
 
+
+interface SearchQuery{
+  search?: string
+}

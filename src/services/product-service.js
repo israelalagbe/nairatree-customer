@@ -6,8 +6,10 @@ const { baseUrl } = env;
 /**
  * @return {any}
  */
-export function getProducts() {
-  return api.get(`${baseUrl}/customers/products/fetch`, {});
+export function getProducts(query) {
+  return api.get(`${baseUrl}/customers/products/fetch`, {
+    params: query
+  });
 }
 
 /**
@@ -37,7 +39,7 @@ export function getProduct(id) {
  */
 export function getRecentlyViewed() {
   return api.get(
-    `${baseUrl}/customers/products/recently-viewed?limit=3&page=1`
+    `${baseUrl}/customers/products/recently-viewed?limit=7&page=1`
   );
 }
 

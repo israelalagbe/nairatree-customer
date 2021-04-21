@@ -9,13 +9,6 @@ import useProductStore from "../../stores/useProductStore";
  * @param {{product: Product, variant: ProductVariant}} props
  */
 function SingleProductDetails({ product, variant }) {
-  const { productId } = useParams();
-
-  const { updateRecentView } = useProductStore();
-
-  useEffect(() => {
-    updateRecentView(productId);
-  }, [updateRecentView, productId]);
 
   const items = [
     { key: "Name", value: product.name },
