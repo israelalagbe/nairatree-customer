@@ -14,6 +14,13 @@ import useProductStore from "../../stores/useProductStore";
 function ShoppingCart() {
   const { carts, setLocalCarts  } = useCartStore();
   const [selectedCartsIndexes , setSelectedCartsIndexes] = useState([]);
+  const { user } = useAuthentication();
+  const {
+    recentlyViewed,
+    recentlyViewedLoading,
+    fetchRecentlyViewed,
+  } = useProductStore();
+  
   /**
    * @param {number} cartIndex
    * @param {Cart} cartUpdate 
@@ -34,15 +41,11 @@ function ShoppingCart() {
     const updatedCarts = carts
     //This deletes null cart
       .filter((cart, index) => !selectedCartsIndexes.includes(index));
-      setLocalCarts(updatedCarts)
+
+    setLocalCarts(updatedCarts)
   }
 
-  const { user } = useAuthentication();
-  const {
-    recentlyViewed,
-    recentlyViewedLoading,
-    fetchRecentlyViewed,
-  } = useProductStore();
+  
 
   useEffect(() => {
     if (user) {
