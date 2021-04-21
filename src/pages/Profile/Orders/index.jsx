@@ -20,7 +20,7 @@ function Orders() {
       {product.map((order) => (
         <div className="orders mb-3">
           <div className="main-order">
-            <div className="order-img">
+            <div className="order-img mr-3">
               <img src={order.products[0].product.images[0]} alt="#" />
             </div>
 
@@ -28,9 +28,7 @@ function Orders() {
               <h3>{order.products[0].product.name}</h3>
               <h6>
                 Color:
-                {/* {order.products[0].product.variants[0].color
-                  ? order.products[0].product.variants[0].color
-                  : null}{" "} */}
+                {order.products[0].product.variants[0]?.color}
               </h6>
               <h4>{formatMoney(order.products[0].product.price)}</h4>
               <h5>{order.delivery_status}</h5>
