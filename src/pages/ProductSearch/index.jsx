@@ -62,7 +62,7 @@ function ProductSearch() {
               </section>
             </div>
             <div className="float-right">
-              <AppPagination />
+              {/* <AppPagination /> */}
             </div>
           </Col>
         </Row>
