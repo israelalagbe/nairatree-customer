@@ -5,7 +5,7 @@ import React from "react";
  * @param {object} props
  * @param {string} props.buttonText
  * @param {'button'|'submit'|'reset'} [props.type]
- * @param {string} props.classname
+ * @param {string} [props.classname]
  * @param {boolean} [props.disabled]
  * @param {(any)=>any} [props.onClick]
  */
