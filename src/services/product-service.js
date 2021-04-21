@@ -37,7 +37,7 @@ export function getProduct(id) {
  */
 export function getRecentlyViewed() {
   return api.get(
-    `${baseUrl}/customers/products/recently-viewed?limit=3&page=1`
+    `${baseUrl}/customers/products/recently-viewed?limit=7&page=1`
   );
 }
 

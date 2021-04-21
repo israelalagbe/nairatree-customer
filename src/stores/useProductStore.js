@@ -157,9 +157,8 @@ const useProductStore = create((set, get) => ({
 
   updateRecentView: async (id) => {
     try {
-      const { products } = await updateRecentlyViewed(id);
+      await updateRecentlyViewed(id);
     } catch (e) {
-    } finally {
     }
   },
   fetchSelectedProduct: async (id) => {
