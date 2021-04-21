@@ -13,8 +13,10 @@ import { HomePopularBands } from "../../components/HomePopularBands";
 import useProductStore from "../../stores/useProductStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
 import HeaderCategory from "../../components/HeaderCategory";
+import useAuthentication from "../../stores/useAuthentication";
 
 export default function Home() {
+  const { user } = useAuthentication();
   const {
     productsLoading,
     products,
@@ -23,6 +25,10 @@ export default function Home() {
     dealsOfTheDay,
     dealsOfTheDayLoading,
     fetchDealOfTheDay,
+
+    recentlyViewed,
+    recentlyViewedLoading,
+    fetchRecentlyViewed,
 
     trendingProducts,
     trendingProductsLoading,
@@ -34,6 +40,13 @@ export default function Home() {
     fetchDealOfTheDay();
     fetchTrendingProducts();
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      fetchRecentlyViewed();
+    }
+  }, [user]);
+
   return (
     <div className="home-page">
       <Header />
@@ -59,7 +72,8 @@ export default function Home() {
             <HomePopularBands />
             <br />
             <ProductList
-              products={[]}
+              products={recentlyViewed}
+              isLoading={recentlyViewedLoading}
               allProductsLink="/products"
               title="Recently Viewed"
             />

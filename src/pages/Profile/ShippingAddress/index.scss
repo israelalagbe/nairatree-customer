@@ -29,6 +29,7 @@
         height: 37px;
 
         cursor: pointer;
+
         h5 {
           color: #ffffff;
           font-family: $font-opensans-regular;
@@ -47,6 +48,11 @@
       display: flex;
       justify-content: space-between;
       margin-top: 1rem;
+      h3 {
+        color: #000000;
+        font-family: $font-aller-regular;
+        font-size: 15px;
+      }
       h6 {
         color: #929292;
         font-size: 14px;
