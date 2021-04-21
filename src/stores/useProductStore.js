@@ -29,7 +29,7 @@ import reportError from "../util/reportError";
 
 /**
  * @typedef {Object} MethodsType
- * @prop {()=>void} fetchProducts
+ * @prop {(query?:SearchQuery)=>void} fetchProducts
  * @prop {()=>void} fetchDealOfTheDay
  * @prop {()=>void} fetchTrendingProducts
  * @prop {(id:string)=>void} fetchSelectedProduct
@@ -64,14 +64,14 @@ const initialState = {
 const useProductStore = create((set, get) => ({
   ...initialState,
 
-  fetchProducts: async () => {
+  fetchProducts: async (query) => {
     set((state) => ({
       ...state,
       productsLoading: true,
     }));
 
     try {
-      const { products, total_records } = await getProducts();
+      const { products, total_records } = await getProducts({...query});
 
       set((state) => ({
         ...state,

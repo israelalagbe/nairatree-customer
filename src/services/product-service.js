@@ -6,8 +6,10 @@ const { baseUrl } = env;
 /**
  * @return {any}
  */
-export function getProducts() {
-  return api.get(`${baseUrl}/customers/products/fetch`, {});
+export function getProducts(query) {
+  return api.get(`${baseUrl}/customers/products/fetch`, {
+    params: query
+  });
 }
 
 /**
