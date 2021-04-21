@@ -133,7 +133,7 @@ export default function Header() {
           </Collapse>
         </Navbar>
       </div>
-      {showHeaderCategories ?<HeaderCategory />: null}
+      {showHeaderCategories ?<HeaderCategory close={() => setHeaderCategoriesShown(false)} />: null}
     </>
   );
 }
