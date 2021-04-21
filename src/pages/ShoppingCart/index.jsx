@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "reactstrap";
 import Header from "../../components/Header";
 import CartFirst from "../../components/CartFirst";
@@ -7,6 +7,9 @@ import "./index.scss";
 import { Link } from "react-router-dom";
 import ProductItem from "../../components/ProductItem";
 import useCartStore from "../../stores/useCartStore";
+import LoadingTrigger from "../../components/LoadingTrigger";
+import useAuthentication from "../../stores/useAuthentication";
+import useProductStore from "../../stores/useProductStore";
 
 function ShoppingCart() {
   const { carts, setLocalCarts  } = useCartStore();
@@ -34,6 +37,19 @@ function ShoppingCart() {
       setLocalCarts(updatedCarts)
   }
 
+  const { user } = useAuthentication();
+  const {
+    recentlyViewed,
+    recentlyViewedLoading,
+    fetchRecentlyViewed,
+  } = useProductStore();
+
+  useEffect(() => {
+    if (user) {
+      fetchRecentlyViewed();
+    }
+  }, [user]);
+
   return (
     <div className="cart">
       <Header />
@@ -56,9 +72,18 @@ function ShoppingCart() {
             </Link>
           </div>
           <section className="product-list">
-            {/* {new Array(10).fill(null).map(() => (
-              <ProductItem />
-            ))} */}
+            <LoadingTrigger
+              isLoading={recentlyViewedLoading && !recentlyViewed.length}
+            >
+              {recentlyViewed.map((product) => (
+                <ProductItem key={product.id} product={product} />
+              ))}
+              {recentlyViewed.length === 0 ? (
+                <h4 className="no-product-message">
+                  No products found to display
+                </h4>
+              ) : null}
+            </LoadingTrigger>
           </section>
         </div>
       </div>

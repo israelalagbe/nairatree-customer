@@ -198,6 +198,7 @@ interface Order {
   createdAt: Date;
   updatedAt: Date;
   id: string;
+  colors: string;
 }
 
 
@@ -208,6 +209,7 @@ interface ProductElement {
   quantity: number;
   product: Product;
   variant?: Variant;
+  delivery_status: string;
 }
 
 
