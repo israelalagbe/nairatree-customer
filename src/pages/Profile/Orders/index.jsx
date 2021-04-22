@@ -41,7 +41,9 @@ function Orders() {
             </div>
 
             <div className="details">
-              <Link to={`/product-details/${order.products[0].product._id}`}>
+              <Link
+                to={`/profile/orders/order-details/${order.products[0].product._id}`}
+              >
                 See details
               </Link>
             </div>

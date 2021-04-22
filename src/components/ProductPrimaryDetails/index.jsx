@@ -24,7 +24,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
     selectedVariant?.quantity ?? product.quantity_available;
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [otherProduct, setOtherProduct] = useState([]);
+  const [relatedProduct, setRelatedProduct] = useState([]);
 
   const [productImages, setProductImages] = useState(product.images);
 
@@ -45,7 +45,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
         .sort(() => Math.random() - Math.random())
         .slice(0, 3);
 
-      setOtherProduct(randomItems);
+      setRelatedProduct(randomItems);
     }
   }, [fetchProducts, products]);
 
@@ -254,23 +254,27 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
           <div className="other-offer">
             <p>Related Products</p>
 
-            {otherProduct.map((item) => (
-              <div className="offers">
-                <div className="offers-img">
-                  <img src={item.images[0]} alt="iphone" />
-                </div>
+            {relatedProduct.length === 0 ? (
+              <h2>No Related Product</h2>
+            ) : (
+              relatedProduct.map((item) => (
+                <div className="offers">
+                  <div className="offers-img">
+                    <img src={item.images[0]} alt="iphone" />
+                  </div>
 
-                <div className="offers-content">
-                  <h4>{item.name}</h4>
-                  <h6>{formatMoney(item.price)}</h6>
-                  <AppButton
-                    buttonText="View Product"
-                    classname="view-product"
-                    onClick={() => viewProduct(item.id)}
-                  />
+                  <div className="offers-content">
+                    <h4>{item.name}</h4>
+                    <h6>{formatMoney(item.price)}</h6>
+                    <AppButton
+                      buttonText="View Product"
+                      classname="view-product"
+                      onClick={() => viewProduct(item.id)}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
           <div className="border"></div>
           <div className="vendor">

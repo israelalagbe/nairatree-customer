@@ -12,6 +12,7 @@ import { Row, Col } from "reactstrap";
 import ChangePassword from "./ChangePassword";
 import UpdateProfile from "./UpdateProfile";
 import AddressInfo from "./AddressInfo";
+import OrdersDetails from "./Orders/OrdersDetails";
 
 function Profile() {
   return (
@@ -42,7 +43,12 @@ function Profile() {
                 />
                 <Route path="/profile/myprofile" component={MyProfile} />
                 <Route path="/profile/wishlist" component={WishList} />
-                <Route path="/profile/orders" component={Orders} />
+                <Route exact path="/profile/orders" component={Orders} />
+                <Route
+                  exact
+                  path=" /profile/orders/order-details/:id"
+                  component={OrdersDetails}
+                />
                 <Route
                   path="/profile/change-password"
                   component={ChangePassword}

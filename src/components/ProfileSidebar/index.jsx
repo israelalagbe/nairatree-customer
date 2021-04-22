@@ -19,6 +19,7 @@ const linkList = [
     name: "MY ORDERS",
     link: "/profile/orders",
     icon: <ShoppingBasketIcon />,
+    sublinks: ["/profile/orders/order-details"],
   },
 
   // {
