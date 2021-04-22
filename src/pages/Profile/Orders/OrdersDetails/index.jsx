@@ -1,78 +1,97 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Row, Col } from "reactstrap";
+import "./index.scss";
+import { useHistory, useParams } from "react-router-dom";
+import useOrderStore from "../../../../stores/useOrderStore";
+import { format } from "date-fns";
+import formatMoney from "../../../../util/formatMoney";
 
 function OrdersDetails() {
+  const history = useHistory();
+  const { orders } = useOrderStore();
+
+  const [selectedOrder, setSelectedOrder] = useState(
+    orders.find((item) => item.id)
+  );
+  const total = selectedOrder.total_amount_to_pay + selectedOrder.shipping_fee;
+  console.log(selectedOrder);
+
   return (
     <div className="orderDetails">
-      <div>
+      <div className="orderArrow" onClick={history.goBack}>
         <ArrowBackIcon />
         <h3>Order Details</h3>
       </div>
-      <div>
-        <h4>
-          Order NO: <span>jjjjjj</span>
-        </h4>
+      <div className="orderNumber">
+        <h3>Order NO: {selectedOrder.id}</h3>
         <h6>1 Items</h6>
-        <h6> Placed on 22-04-2021</h6>
+        <h6>
+          Placed on {format(new Date(selectedOrder.createdAt), "LLL d, yyyy")}
+        </h6>
 
-        <h6>Total: ₦ 40,990</h6>
+        <h6>Total: {formatMoney(selectedOrder.total_amount_to_pay)}</h6>
       </div>
 
-      <div>
-        <h4>ITEMS IN YOUR ORDER</h4>
-        <div>
-          <div>
-            <h5>Status</h5>
-            <h2>On Thursday, 22-04</h2>
-            <div>
-              <div>
-                <img />
-              </div>
-              <div>
-                <h4>Samsung q10</h4>
+      <div className="orderItem">
+        <h3>ITEMS IN YOUR ORDER</h3>
 
-                <h5>QTY: 1</h5>
-                <h6>₦ 40,990</h6>
-              </div>
+        <div className="orderItem1">
+          <h5>{selectedOrder.status}</h5>
+          <h4>On {format(new Date(selectedOrder.createdAt), "LLL d, yyyy")}</h4>
+          <div className="orderItem2">
+            <div className="orderItemsImg">
+              <img
+                src={selectedOrder.products[0].product.images[0]}
+                alt="product"
+              />
+            </div>
+            <div>
+              <h4>{selectedOrder.products[0].product.name}</h4>
+
+              <h6>QTY: 1</h6>
+              <h4>{formatMoney(selectedOrder.total_amount_to_pay)}</h4>
             </div>
           </div>
         </div>
       </div>
-      <div>
+      <div className="orderDetailsBottom">
         <Row>
           <Col md="6">
-            <div>
-              <h3>PAYMENT INFORMATION</h3>
+            <div className="orderDetailsPayment">
+              <h3 className="mainH3">PAYMENT INFORMATION</h3>
               <div>
                 <h3>Payment Method</h3>
-                <p>
-                  Pay Now to enjoy 5% Instant Discount up to N1,000. Stay Safe,
-                  go cashless with JumiaPay
-                </p>
+                <h6>Pay Now to enjoy Instant Discount up to N1,000.</h6>
               </div>
               <div>
                 <h3>Payment Details</h3>
-                <p>Items total: ₦ 40,990</p>
-                <p>Shipping Fees: ₦ 600</p>
-                <p>Promotional Discount: ₦ -600</p>
-                <h3>Total: ₦ 40,990</h3>
+                <h6>
+                  Items total: {formatMoney(selectedOrder.total_amount_to_pay)}
+                </h6>
+                <h6>
+                  Shipping Fees: {formatMoney(selectedOrder.shipping_fee)}
+                </h6>
+                <h6>Promotional Discount:-----</h6>
+                <h3>Total: {formatMoney(total)}</h3>
               </div>
             </div>
           </Col>
           <Col md="6">
-            {" "}
-            <div>
-              <h3>DELIVERY INFORMATION</h3>
+            <div className="orderDetailsPayment">
+              <h3 className="mainH3">DELIVERY INFORMATION</h3>
               <div>
                 <h3>Delivery Method</h3>
-                <p>Standard Door Delivery</p>
+                <h6>Standard Door Delivery</h6>
               </div>
               <div>
                 <h3>Shipping Address</h3>
-                <p>Zainab Oyedeji</p>
-                <p>47a Iwaya Road Sabo Yaba</p>
-                <p>Yaba-Onike Iwaya, Lagos</p>
+                <h6>{selectedOrder.delivery_address.name}</h6>
+                <h6>{selectedOrder.delivery_address.address}</h6>
+                <h6>
+                  {selectedOrder.delivery_address.region},
+                  {selectedOrder.delivery_address.city}
+                </h6>
               </div>
             </div>
           </Col>

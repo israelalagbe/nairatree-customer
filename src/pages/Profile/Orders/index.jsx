@@ -14,7 +14,7 @@ function Orders() {
   }, [fetchOrders]);
 
   return (
-    <div className="profile-orders">
+    <div className="profile-orders-main">
       {product.length === 0 ? (
         <h2>You have no order to display </h2>
       ) : (

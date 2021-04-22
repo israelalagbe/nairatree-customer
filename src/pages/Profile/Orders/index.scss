@@ -1,14 +1,14 @@
 @import "/src/config/variables.scss";
 
-.profile-orders {
+.profile-orders-main {
   background-color: white;
   padding: 2rem;
   border-radius: 5px;
+  height: 100%;
   .orders {
     display: flex;
     background-color: white;
     justify-content: space-between;
-    height: 100%;
     padding: 1rem;
     border-radius: 5px;
     filter: drop-shadow(2px 2px 2px rgba(0.25, 0.25, 0.25, 0.25));
@@ -58,7 +58,7 @@
         color: #f3ca3e;
         font-family: $font-aller-regular;
         font-size: 14px;
-        text-decoration: underline;
+        text-decoration: none;
       }
     }
   }

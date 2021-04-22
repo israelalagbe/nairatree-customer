@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import categoryIconSample from "../../img/category-sample-icon.png";
 import useCategoryStore from "../../stores/useCategoryStore";
 import clipText from "../../util/clipText";
 import LoadingTrigger from "../LoadingTrigger";
@@ -19,15 +18,18 @@ export const HomeCategoryListComponent = () => {
 };
 
 /**
- * 
- * @param {Object} props 
+ *
+ * @param {Object} props
  * @param {Category} props.category
  */
-function CategoryItem({category}) {
+function CategoryItem({ category }) {
   return (
-      <Link to={`/products?category=${category.name}`} className="category-item pointer">
-        <img src={category.image_url} alt="" />
-        <span>{clipText(category.name, 20)}</span>
-      </Link>
+    <Link
+      to={`/products?category=${category.name}`}
+      className="category-item pointer"
+    >
+      <img src={category.image_url} alt="" />
+      <span>{clipText(category.name, 20)}</span>
+    </Link>
   );
 }
