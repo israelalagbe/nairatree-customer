@@ -10,7 +10,6 @@ import clipText from "../../util/clipText";
  * @param {Product} props.product
  */
 function ProductItem({ product }) {
-  console.log(product);
   return (
     <Link
       to={`/product-details/${product.id}`}

@@ -64,7 +64,7 @@ const ProfileSidebar = () => {
               <div
                 className={[
                   `iconStyle`,
-                  activeLink(item, item.sublinks) ? `activeIcon` : "",
+                  activeLink(item, item.sublinks) ? `activeMenu` : "",
                 ]
                   .join(" ")
                   .toString()}
