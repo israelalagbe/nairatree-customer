@@ -10,7 +10,6 @@ import ProductSearch from "../pages/ProductSearch";
 import CartSuccess from "../pages/ProductDetails/CartSuccess";
 import ProductDetails from "../pages/ProductDetails";
 import ShoppingCart from "../pages/ShoppingCart";
-import AddressInfo from "../pages/CheckoutPages/AddressInfo";
 import CheckoutDetails from "../pages/CheckoutPages/CheckoutDetails";
 import Profile from "../pages/Profile";
 import Otp from "../pages/Otp";
@@ -53,9 +52,6 @@ export function Routes() {
       </Route>
       <Route path="/product-details/:productId" exact>
         <ProductDetails />
-      </Route>
-      <Route path="/address-information" exact>
-        <AddressInfo />
       </Route>
       <AuthRoute path="/checkout-details" exact>
         <CheckoutDetails />

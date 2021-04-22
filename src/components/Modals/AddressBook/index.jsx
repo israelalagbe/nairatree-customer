@@ -54,7 +54,10 @@ const AddressBookModal = ({ show, onClose }) => {
               onClick={onClose}
             />
           </div>
-          <Link to="/address-information" className="add-new-address">
+          <Link
+            to="/profile/addressbook/new-address"
+            className="add-new-address"
+          >
             <CancelIcon />
             <h6> ADD A NEW ADDRESS</h6>
           </Link>

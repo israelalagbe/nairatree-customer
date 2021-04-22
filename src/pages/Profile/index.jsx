@@ -11,6 +11,7 @@ import Orders from "./Orders";
 import { Row, Col } from "reactstrap";
 import ChangePassword from "./ChangePassword";
 import UpdateProfile from "./UpdateProfile";
+import AddressInfo from "./AddressInfo";
 
 function Profile() {
   return (
@@ -30,8 +31,14 @@ function Profile() {
               <Switch>
                 <Route exact path="/profile" component={Account} />
                 <Route
+                  exact
                   path="/profile/addressbook"
                   component={ShippingAddress}
+                />
+                <Route
+                  exact
+                  path="/profile/addressbook/new-address"
+                  component={AddressInfo}
                 />
                 <Route path="/profile/myprofile" component={MyProfile} />
                 <Route path="/profile/wishlist" component={WishList} />

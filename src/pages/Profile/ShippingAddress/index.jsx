@@ -14,7 +14,7 @@ function ShippingAddress() {
           <div className="ship-1">
             <h5>Address Book</h5>
           </div>
-          <Link to="/address-information" className="ship-2">
+          <Link to="/profile/addressbook/new-address" className="ship-2">
             <h5>Add New Address Book</h5>
             <CreateIcon />
           </Link>

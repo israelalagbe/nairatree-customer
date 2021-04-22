@@ -4,30 +4,33 @@
   background-color: white;
   padding: 2rem;
   border-radius: 5px;
-  .profile-sidebar-link {
-    display: flex;
-    margin-bottom: 1rem;
-    .activeIcon {
-      color: #f3ca3e;
-      svg {
-        height: 20px;
-        width: 20px;
+  a {
+    text-decoration: none;
+    .profile-sidebar-link {
+      display: flex;
+      margin-bottom: 1rem;
+
+      .iconStyle {
+        svg {
+          color: #4d5971 !important;
+          height: 20px;
+          width: 20px;
+        }
+        &.activeIcon {
+          color: #f3ca3e !important;
+        }
       }
-    }
 
-    a {
-      text-decoration: none;
-      h1 {
+      h5 {
         padding: 7px;
-
-        color: #4d5971;
+        color: #4d5971 !important;
         font-family: $font-opensans-regular;
 
         font-size: 14px;
 
         $font-aller-bold: "Aller Bold";
         &.activeMenuText {
-          color: #f3ca3e;
+          color: #f3ca3e !important;
         }
       }
     }

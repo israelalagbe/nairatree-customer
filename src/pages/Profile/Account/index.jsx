@@ -40,7 +40,7 @@ function Account() {
           </h4>
           <h4>{defaultAddress.phone}</h4>
         </div>
-        <Link to="/profile/address-book">
+        <Link to="/profile/addressbook/new-address">
           <CreateIcon />
         </Link>
       </div>

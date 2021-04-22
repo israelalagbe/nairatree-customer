@@ -31,6 +31,7 @@ const linkList = [
     name: "ADDRESS BOOK",
     link: "/profile/addressbook",
     icon: <LocalShippingIcon />,
+    sublinks: ["/profile/addressbook/new-address"],
   },
   {
     id: "updateprofile",
@@ -49,6 +50,7 @@ const linkList = [
 const ProfileSidebar = () => {
   const location = useLocation();
   const pathname = location.pathname;
+
   const activeLink = (item, sublinks) =>
     sublinks?.some((sublink) => pathname.includes(sublink)) ||
     pathname === item.link;
@@ -57,24 +59,29 @@ const ProfileSidebar = () => {
     <div className="profile-sidebar">
       {linkList.map((item) => {
         return (
-          <div className="profile-sidebar-link">
-            <div
-              className={[activeLink(item) ? `activeIcon ` : ""]
-                .join(" ")
-                .toString()}
-            >
-              {item.icon}
-            </div>
-            <Link key={item.id} to={item.link}>
-              <h1
-                className={[activeLink(item) ? `activeMenuText ` : ""]
+          <Link key={item.id} to={item.link}>
+            <div className="profile-sidebar-link">
+              <div
+                className={[
+                  `iconStyle`,
+                  activeLink(item, item.sublinks) ? `activeIcon` : "",
+                ]
+                  .join(" ")
+                  .toString()}
+              >
+                {item.icon}
+              </div>
+              <h5
+                className={[
+                  activeLink(item, item.sublinks) ? "activeMenuText " : "",
+                ]
                   .join(" ")
                   .toString()}
               >
                 {item.name}
-              </h1>
-            </Link>
-          </div>
+              </h5>
+            </div>
+          </Link>
         );
       })}
     </div>

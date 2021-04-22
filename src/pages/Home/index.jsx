@@ -56,7 +56,11 @@ export default function Home() {
         <Col md={8}>
           <div className="products-content">
             <section>
-              <img src={bannerPromo} alt="Banner Promotion" className="banner-promo" />
+              <img
+                src={bannerPromo}
+                alt="Banner Promotion"
+                className="banner-promo"
+              />
               <div className="banner-toggle">
                 <span className="ball"></span>
                 <span className="ball active"></span>
@@ -101,10 +105,18 @@ export default function Home() {
         </Col>
         <Col md={3} className="sidebar-container">
           <div className="sidebar-promo">
-            <img className="fill-container" src={promoImage1} alt="Promotion 1" />
+            <img
+              className="fill-container"
+              src={promoImage1}
+              alt="Promotion 1"
+            />
           </div>
           <div className="sidebar-promo mt-3">
-            <img className="fill-container" src={promoImage2} alt="Promotion 2" />
+            <img
+              className="fill-container"
+              src={promoImage2}
+              alt="Promotion 2"
+            />
           </div>
         </Col>
       </Row>
@@ -135,7 +147,9 @@ function ProductList({ title, allProductsLink, products, isLoading }) {
             <ProductItem key={product.id} product={product} />
           ))}
           {products.length === 0 ? (
-            <h4 className="no-product-message">No products found to display</h4>
+            <h4 className="no-product-message">
+              No {title} has been added recently.
+            </h4>
           ) : null}
         </LoadingTrigger>
       </div>
