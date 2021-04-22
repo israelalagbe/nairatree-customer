@@ -1,22 +1,33 @@
 @import "/src/config/variables.scss";
 
 .profile-sidebar {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
   .profile-sidebar-link {
+    display: flex;
+    margin-bottom: 1rem;
+    .activeIcon {
+      color: #f3ca3e;
+      svg {
+        height: 20px;
+        width: 20px;
+      }
+    }
+
     a {
       text-decoration: none;
       h1 {
-        padding: 15px;
-        background-color: #ffffff;
+        padding: 7px;
 
         color: #4d5971;
         font-family: $font-opensans-regular;
-        height: 40px;
-        width: 320px;
+
         font-size: 14px;
-        border-radius: 5px;
+
         $font-aller-bold: "Aller Bold";
         &.activeMenuText {
-          color: #ca9e2f;
+          color: #f3ca3e;
         }
       }
     }

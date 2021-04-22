@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import "./index.scss";
-import iphone from "../../../img/iphone.png";
 import { Link } from "react-router-dom";
 import useOrderStore from "../../../stores/useOrderStore";
 import formatMoney from "../../../util/formatMoney";
+import { format } from "date-fns";
 
 function Orders() {
   const { orders, fetchOrders } = useOrderStore();
@@ -16,7 +16,7 @@ function Orders() {
   console.log(product);
 
   return (
-    <>
+    <div className="profile-orders">
       {product.map((order) => (
         <div className="orders mb-3">
           <div className="main-order">
@@ -25,13 +25,17 @@ function Orders() {
             </div>
 
             <div className="order-details">
-              <h3>{order.products[0].product.name}</h3>
+              <h2>{order.products[0].product.name}</h2>
               <h6>
                 Color:
                 {order.products[0].product.variants[0]?.color}
               </h6>
-              <h4>{formatMoney(order.products[0].product.price)}</h4>
+              <h6>{formatMoney(order.products[0].product.price)}</h6>
               <h5>{order.delivery_status}</h5>
+
+              <h2 className="mt-3">
+                On {format(new Date(order.createdAt), "LLL d, yyyy")}
+              </h2>
             </div>
           </div>
 
@@ -42,7 +46,7 @@ function Orders() {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

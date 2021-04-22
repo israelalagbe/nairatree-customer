@@ -8,7 +8,7 @@ import "./index.scss";
  * @param {object} props
  * @param {(payload)=>void} props.onCheckout
  */
-function PaymentMethod({onCheckout}) {
+function PaymentMethod({ onCheckout }) {
   const [formData, setFormData] = React.useState({
     card_number: "",
     exp_date: "",
@@ -20,23 +20,22 @@ function PaymentMethod({onCheckout}) {
   const handleChange = async (e) => {
     let value = e.target.value;
     const name = e.target.name;
-    if(name ==='card_number' && !Number(value) && value !== '') return;
-    if(name === 'exp_date' && Number(value) && value.length === 2){
-      value += '/';
-    };
+    if (name === "card_number" && !Number(value) && value !== "") return;
+    if (name === "exp_date" && Number(value) && value.length === 2) {
+      value += "/";
+    }
     setFormData({
       ...formData,
-      [name]: value
-    })
+      [name]: value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onCheckout({
       ...formData,
-      paymentMode
-    })
-    console.log(paymentMode)
+      paymentMode,
+    });
   };
 
   return (
@@ -85,8 +84,13 @@ function PaymentMethod({onCheckout}) {
             </div>
           </div>
           */}
-          <div className="buttons"> 
-            <AppButton onClick={() => setPaymentMode('save_card')} type="submit" buttonText="SAVE CARD & PAY" classname="all" />
+          <div className="buttons">
+            <AppButton
+              onClick={() => setPaymentMode("save_card")}
+              type="submit"
+              buttonText="SAVE CARD & PAY"
+              classname="all"
+            />
             {/* <AppButton onClick={() => setPaymentMode('no_save_card')} type="submit" buttonText="PAY WITHOUT SAVING CARD" classname="all" /> */}
           </div>
         </div>

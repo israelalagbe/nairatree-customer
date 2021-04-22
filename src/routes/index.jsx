@@ -19,7 +19,6 @@ import PrivacyPolicy from "../pages/PrivacyPolicy";
 import Blog from "../pages/Blog";
 import AboutUs from "../pages/AboutUs";
 import AuthRoute from "./AuthRoute";
-import UpdateProfile from "../pages/UpdateProfile";
 import GuestRoute from "./GuestRoute";
 
 export function Routes() {
@@ -64,10 +63,6 @@ export function Routes() {
       <AuthRoute path="/profile">
         <Profile />
       </AuthRoute>
-      <AuthRoute path="/update-profile">
-        <UpdateProfile />
-      </AuthRoute>
-
       <Route path="/confirm-otp">
         <Otp />
       </Route>

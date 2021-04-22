@@ -23,7 +23,6 @@ function AddressInfo() {
   const history = useHistory();
   const { user, updateUser, updateUserLoading } = useAuthentication();
   const { fetchStates, states } = useLocationStore();
-  console.log(states);
   const [address, updateAddress] = React.useState({
     name: "",
     region: "",

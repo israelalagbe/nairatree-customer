@@ -47,7 +47,6 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
         .slice(0, 3);
 
       setOtherProduct(randomItems);
-      console.log(randomItems);
     }
   }, [fetchProducts, products]);
 

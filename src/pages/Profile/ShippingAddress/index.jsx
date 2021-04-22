@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import CreateIcon from "@material-ui/icons/Create";
 import { Link } from "react-router-dom";
 import useAuthentication from "../../../stores/useAuthentication";
 
@@ -12,26 +12,28 @@ function ShippingAddress() {
       <div className="main-shipping">
         <div className="mainShippingContent">
           <div className="ship-1">
-            <h5>Shipping Addresses</h5>
+            <h5>Address Book</h5>
           </div>
           <Link to="/address-information" className="ship-2">
-            <h5>Add New Shipping Address</h5>
-            <AddCircleOutlineIcon />
+            <h5>Add New Address Book</h5>
+            <CreateIcon />
           </Link>
         </div>
 
         {addresses.map((item) => (
           <div className="allBelow">
             <div>
-              <h3>{item.label}</h3>
-              <h6>{item.name}</h6>
+              <h3>{item.name}</h3>
+
               <h6>{item.address}</h6>
               <h6>
                 {item.city},{item.country}
               </h6>
-              <h6>{item.phone}</h6>
+              <h6 className="mt-3">{item.phone}</h6>
             </div>
-            <div>{item.is_default === true ? <h5>Default </h5> : ""}</div>
+            <div>
+              {item.is_default === true ? <h5>Default Address</h5> : ""}
+            </div>
           </div>
         ))}
       </div>

@@ -52,3 +52,10 @@ export function resetPassword(payload) {
 export function updateProfile(payload) {
   return api.put(`${baseUrl}/customers/profile/update`, payload);
 }
+
+/**
+ * @return {any}
+ */
+export function updatePassword(payload) {
+  return api.put(`${baseUrl}/customers/profile/password/update`, payload);
+}

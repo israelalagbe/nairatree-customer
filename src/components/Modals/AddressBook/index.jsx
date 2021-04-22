@@ -40,7 +40,6 @@ const AddressBookModal = ({ show, onClose }) => {
     const newAddress = addresses.filter((address) => {
       return address._id !== id;
     });
-    console.log(newAddress);
     updateUser(newAddress, () => {});
   };
 
