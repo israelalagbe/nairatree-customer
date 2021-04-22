@@ -39,9 +39,6 @@ function UpdateProfile() {
     updateUser(payload, () => history.push("/profile"));
   };
 
-  let placeNumber = user.phone;
-  placeNumber = placeNumber.slice(4);
-
   return (
     <div className="update-profile">
       <h3>UPDATE PROFILE</h3>
@@ -80,7 +77,7 @@ function UpdateProfile() {
                 <InputGroupText>+234</InputGroupText>
               </InputGroupAddon>
               <Input
-                placeholder={placeNumber}
+                placeholder={user.phone}
                 type="number"
                 id="phone"
                 name="phone"

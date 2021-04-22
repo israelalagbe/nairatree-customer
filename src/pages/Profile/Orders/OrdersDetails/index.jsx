@@ -41,8 +41,41 @@ function OrdersDetails() {
       </div>
       <div>
         <Row>
-          <Col md="6">nn</Col>
-          <Col md="6">nnn</Col>
+          <Col md="6">
+            <div>
+              <h3>PAYMENT INFORMATION</h3>
+              <div>
+                <h3>Payment Method</h3>
+                <p>
+                  Pay Now to enjoy 5% Instant Discount up to N1,000. Stay Safe,
+                  go cashless with JumiaPay
+                </p>
+              </div>
+              <div>
+                <h3>Payment Details</h3>
+                <p>Items total: ₦ 40,990</p>
+                <p>Shipping Fees: ₦ 600</p>
+                <p>Promotional Discount: ₦ -600</p>
+                <h3>Total: ₦ 40,990</h3>
+              </div>
+            </div>
+          </Col>
+          <Col md="6">
+            {" "}
+            <div>
+              <h3>DELIVERY INFORMATION</h3>
+              <div>
+                <h3>Delivery Method</h3>
+                <p>Standard Door Delivery</p>
+              </div>
+              <div>
+                <h3>Shipping Address</h3>
+                <p>Zainab Oyedeji</p>
+                <p>47a Iwaya Road Sabo Yaba</p>
+                <p>Yaba-Onike Iwaya, Lagos</p>
+              </div>
+            </div>
+          </Col>
         </Row>
       </div>
     </div>
