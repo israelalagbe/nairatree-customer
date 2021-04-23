@@ -1,0 +1,19 @@
+.arrow-button{
+  position: absolute;
+  z-index: 3;
+  cursor: pointer;
+  .arrows {
+    display: flex;
+    position: relative;  
+    align-items: center;
+    justify-content: center;
+    max-height: 1rem;
+    max-width: 1rem;
+    border-radius: 100%;
+    padding: 1rem;
+    background:white;
+    border: none;
+    margin-top: 1rem;
+   
+  }
+}

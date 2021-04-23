@@ -14,6 +14,7 @@ import useProductStore from "../../stores/useProductStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
 import HeaderCategory from "../../components/HeaderCategory";
 import useAuthentication from "../../stores/useAuthentication";
+import HorizontalSlider from "../../components/HorizontalSlider/HorizontalSlider";
 
 export default function Home() {
   const { user } = useAuthentication();
@@ -141,18 +142,20 @@ function ProductList({ title, allProductsLink, products, isLoading }) {
           Show all +
         </Link>
       </div>
-      <div className="product-list-card">
-        <LoadingTrigger isLoading={isLoading && !products.length}>
-          {products.map((product) => (
-            <ProductItem key={product.id} product={product} />
-          ))}
-          {products.length === 0 ? (
-            <h4 className="no-product-message">
-              No {title} has been added recently.
-            </h4>
-          ) : null}
-        </LoadingTrigger>
-      </div>
+      <HorizontalSlider>
+        <div className="product-list-card">
+          <LoadingTrigger isLoading={isLoading && !products.length}>
+            {products.map((product) => (
+              <ProductItem key={product.id} product={product} />
+            ))}
+            {products.length === 0 ? (
+              <h4 className="no-product-message">
+                No {title} has been added recently.
+              </h4>
+            ) : null}
+          </LoadingTrigger>
+        </div>
+      </HorizontalSlider>
     </section>
   );
 }
