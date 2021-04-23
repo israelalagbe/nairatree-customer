@@ -29,30 +29,6 @@ function Account() {
           <CreateIcon />
         </Link>
       </div>
-      <div className="content">
-        <div>
-          <h3>Address Book</h3>
-          <h5>Your default shipping address:</h5>
-          <h4>{defaultAddress.name}</h4>
-          <h4>{defaultAddress.address}</h4>
-          <h4>
-            {defaultAddress.city} ,{defaultAddress.country}
-          </h4>
-          <h4>{defaultAddress.phone}</h4>
-        </div>
-        <Link to="/profile/addressbook/new-address">
-          <CreateIcon />
-        </Link>
-      </div>
-      {/* <div className="content">
-        <div>
-          <h3>Transaction Summary</h3>
-          <h6>No Orders in progress</h6>
-        </div>
-        <div>
-          <Link to="/">View details</Link>
-        </div>
-      </div> */}
     </div>
   );
 }

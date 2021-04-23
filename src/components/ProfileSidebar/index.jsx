@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import StorefrontIcon from '@material-ui/icons/Storefront';
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import LockIcon from "@material-ui/icons/Lock";
 import CreateIcon from "@material-ui/icons/Create";
@@ -18,7 +18,7 @@ const linkList = [
     id: "orders",
     name: "MY ORDERS",
     link: "/profile/orders",
-    icon: <ShoppingBasketIcon />,
+    icon: <StorefrontIcon />,
     sublinks: ["/profile/orders/order-details"],
   },
 
