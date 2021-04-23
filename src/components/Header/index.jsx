@@ -49,6 +49,7 @@ export default function Header() {
   const [showHeaderCategories, setHeaderCategoriesShown] = useState(false);
 
   const [keyword, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     fetchCategories();
@@ -62,7 +63,7 @@ export default function Header() {
   }, [user, fetchCarts]);
 
   const onSearch = (e) => {
-    history.push(`/products?search=${keyword}`);
+    history.push(`/products?search=${keyword}${selectedCategory? `&category=${selectedCategory}`:""}`);
   };
 
   const handleSearchInput = (e) => {
@@ -105,11 +106,12 @@ export default function Header() {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem className="mr-6">
-                <NavLink href="/components/">FAQ</NavLink>
+                <NavLink href="/faqs/">FAQ</NavLink>
               </NavItem>
               <div className="form-group category-form pointer">
-                <select disabled className="form-control category pointer">
-                  <option>Categories</option>
+                <select className="form-control category pointer" onChange={(e) => setSelectedCategory(e.target.value)}>
+                  <option selected disabled>Categories</option>
+                  {categories.map(category => <option>{category.name}</option>)}
                 </select>
               </div>
               <div className="form-group search-form ml-lg-2">

@@ -53,7 +53,7 @@ function HeaderCategory({close}) {
               <div className="categoryCol-2">
                 {selectedCategory
                   ? selectedCategory.subcategories.map((item) => (
-                      <p className="pointer" onClick={() => history.push(`/products?search=${item.name}`)} >{item.name}</p>
+                      <p className="pointer" onClick={() => history.push(`/products?sub_category=${item.name}`)} >{item.name}</p>
                     ))
                   : null}
               </div>
