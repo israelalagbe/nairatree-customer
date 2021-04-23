@@ -36,7 +36,7 @@ import logout from "../../util/logout";
 
 export default function Header() {
   const history = useHistory();
-  
+
   const { fetchCategories, categories } = useCategoryStore();
   const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
   const { carts, fetchCarts } = useCartStore();
@@ -62,14 +62,14 @@ export default function Header() {
   }, [user, fetchCarts]);
 
   const onSearch = (e) => {
-    history.push(`/products?search=${keyword}`)
-  }
+    history.push(`/products?search=${keyword}`);
+  };
 
   const handleSearchInput = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       onSearch(e);
     }
-  }
+  };
 
   return (
     <>
@@ -84,7 +84,13 @@ export default function Header() {
           <Collapse isOpen={navbarIsOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/products/?type=new_deal">New Deals</NavLink>
+                <NavLink className="pointer"
+                  onClick={(e) => {
+                    setHeaderCategoriesShown(!showHeaderCategories);
+                  }}
+                >
+                  New Deals
+                </NavLink>
               </NavItem>
 
               <UncontrolledDropdown nav inNavbar>
@@ -101,16 +107,19 @@ export default function Header() {
               <NavItem className="mr-6">
                 <NavLink href="/components/">FAQ</NavLink>
               </NavItem>
-              <div className="form-group category-form pointer" onClick={(e)=>{
-                  setHeaderCategoriesShown(!showHeaderCategories)
-                }}>
-                <select disabled className="form-control category pointer" >
+              <div className="form-group category-form pointer">
+                <select disabled className="form-control category pointer">
                   <option>Categories</option>
                 </select>
               </div>
               <div className="form-group search-form ml-lg-2">
                 <InputGroup>
-                  <Input onChange={(e) => setSearch(e.target.value)} onKeyPress={handleSearchInput} value={keyword} placeholder="Search Items..." />
+                  <Input
+                    onChange={(e) => setSearch(e.target.value)}
+                    onKeyPress={handleSearchInput}
+                    value={keyword}
+                    placeholder="Search Items..."
+                  />
                   <InputGroupAddon addonType="append" className="search-btn" onClick={onSearch}>
                     <InputGroupText>
                       <img src={search} alt="Search" />
@@ -133,7 +142,9 @@ export default function Header() {
           </Collapse>
         </Navbar>
       </div>
-      {showHeaderCategories ?<HeaderCategory close={() => setHeaderCategoriesShown(false)} />: null}
+      {showHeaderCategories ? (
+        <HeaderCategory close={() => setHeaderCategoriesShown(false)} />
+      ) : null}
     </>
   );
 }

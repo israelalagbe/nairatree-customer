@@ -10,13 +10,10 @@ import useOnClickOutside from "../../util/useClickOutside";
 function HeaderCategory({close}) {
   const history = useHistory();
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const { fetchCategories, categories, categoriesLoading} = useCategoryStore();
+  const { categories, categoriesLoading} = useCategoryStore();
 
   const ref = useRef();
   
-  useEffect(() => {
-    fetchCategories();
-  }, [fetchCategories]);
 
   useOnClickOutside(ref, close);
 
@@ -25,7 +22,7 @@ function HeaderCategory({close}) {
       <div className="headerCategoryMain" ref={ref}>
         <div className="headerCategoriesViewAll">
           <h3>CATEGORIES</h3>
-          <Link to="/">View All</Link>
+          {/* <Link to="/">View All</Link> */}
         </div>
         <div className="headerCategoriesRow">
           <Row>
