@@ -6,7 +6,8 @@ import useAuthentication from "../../../stores/useAuthentication";
 
 function ShippingAddress() {
   const { user } = useAuthentication();
-  const addresses = user?.address_book;
+  const addresses = user?.address_book.sort((b,a) => (a.is_default === b.is_default)? 0 : a.is_default? 1 : -1);
+
   return (
     <div className="shipping-address">
       <div className="main-shipping">
