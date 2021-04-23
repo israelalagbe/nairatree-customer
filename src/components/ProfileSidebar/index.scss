@@ -14,13 +14,24 @@
       display: flex;
       margin-bottom: 1rem;
 
+      .iconStyle.activeMenu svg {
+        color: #f3ca3e;
+      }
+
+      &:hover {
+        .iconStyle svg {
+          color: #f3ca3e !important;
+        }
+      }
+
       .iconStyle {
         svg {
           width: 1rem;
           height: 1rem;
-          color: #4d5971 !important;
+          color: #4d5971;
         }
       }
+
 
       h5 {
         padding: 7px;
