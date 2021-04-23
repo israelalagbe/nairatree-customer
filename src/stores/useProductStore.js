@@ -160,6 +160,12 @@ const useProductStore = create((set, get) => ({
       await updateRecentlyViewed(id);
     } catch (e) {}
   },
+  addLocalRecentlyViewed: (product) => {
+    set((state) => ({
+      ...state,
+      recentlyViewed: [...state.recentlyViewed, product],
+    }));
+  },
   fetchSelectedProduct: async (id) => {
     set((state) => ({
       ...state,

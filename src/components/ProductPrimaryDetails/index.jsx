@@ -120,7 +120,6 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
       };
       setLocalCarts([...existingCarts, newCart]);
       history.push("/cart-success");
-
       return;
     }
 
