@@ -7,8 +7,13 @@
   align-items: center;
   justify-content: center;
   padding: 0.2rem;
-  flex-grow: 1; 
+  flex-grow: 1;
   flex-shrink: 1;
+  &:hover {
+    img {
+      width: 10rem;
+    }
+  }
 
   @media only screen and (min-width: 730px) {
     max-width: 32%;
@@ -17,7 +22,6 @@
   @media only screen and (min-width: 900px) {
     max-width: 20%;
   }
-  
 
   // background: red;
 
@@ -37,7 +41,7 @@
 
   .price {
     font-family: $font-roboto-regular;
-    color: #124f36;
+    color: #824040;
     font-size: 0.8rem;
   }
 

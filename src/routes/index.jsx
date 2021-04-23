@@ -10,7 +10,6 @@ import ProductSearch from "../pages/ProductSearch";
 import CartSuccess from "../pages/ProductDetails/CartSuccess";
 import ProductDetails from "../pages/ProductDetails";
 import ShoppingCart from "../pages/ShoppingCart";
-import AddressInfo from "../pages/CheckoutPages/AddressInfo";
 import CheckoutDetails from "../pages/CheckoutPages/CheckoutDetails";
 import Profile from "../pages/Profile";
 import Otp from "../pages/Otp";
@@ -19,7 +18,6 @@ import PrivacyPolicy from "../pages/PrivacyPolicy";
 import Blog from "../pages/Blog";
 import AboutUs from "../pages/AboutUs";
 import AuthRoute from "./AuthRoute";
-import UpdateProfile from "../pages/UpdateProfile";
 import GuestRoute from "./GuestRoute";
 
 export function Routes() {
@@ -55,19 +53,12 @@ export function Routes() {
       <Route path="/product-details/:productId" exact>
         <ProductDetails />
       </Route>
-      <Route path="/address-information" exact>
-        <AddressInfo />
-      </Route>
       <AuthRoute path="/checkout-details" exact>
         <CheckoutDetails />
       </AuthRoute>
       <AuthRoute path="/profile">
         <Profile />
       </AuthRoute>
-      <AuthRoute path="/update-profile">
-        <UpdateProfile />
-      </AuthRoute>
-
       <Route path="/confirm-otp">
         <Otp />
       </Route>

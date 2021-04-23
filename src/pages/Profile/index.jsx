@@ -9,6 +9,9 @@ import Header from "../../components/Header";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import Orders from "./Orders";
 import { Row, Col } from "reactstrap";
+import ChangePassword from "./ChangePassword";
+import UpdateProfile from "./UpdateProfile";
+import AddressInfo from "./AddressInfo";
 
 function Profile() {
   return (
@@ -27,10 +30,27 @@ function Profile() {
             <div className="right">
               <Switch>
                 <Route exact path="/profile" component={Account} />
-                <Route path="/profile/shippingaddress" component={ShippingAddress} />
+                <Route
+                  exact
+                  path="/profile/addressbook"
+                  component={ShippingAddress}
+                />
+                <Route
+                  exact
+                  path="/profile/addressbook/new-address"
+                  component={AddressInfo}
+                />
                 <Route path="/profile/myprofile" component={MyProfile} />
                 <Route path="/profile/wishlist" component={WishList} />
                 <Route path="/profile/orders" component={Orders} />
+                <Route
+                  path="/profile/change-password"
+                  component={ChangePassword}
+                />
+                <Route
+                  path="/profile/update-profile"
+                  component={UpdateProfile}
+                />
               </Switch>
             </div>
           </Col>

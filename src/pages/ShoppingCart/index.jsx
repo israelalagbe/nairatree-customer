@@ -12,40 +12,39 @@ import useAuthentication from "../../stores/useAuthentication";
 import useProductStore from "../../stores/useProductStore";
 
 function ShoppingCart() {
-  const { carts, setLocalCarts  } = useCartStore();
-  const [selectedCartsIndexes , setSelectedCartsIndexes] = useState([]);
+  const { carts, setLocalCarts } = useCartStore();
+  const [selectedCartsIndexes, setSelectedCartsIndexes] = useState([]);
   const { user } = useAuthentication();
   const {
     recentlyViewed,
     recentlyViewedLoading,
     fetchRecentlyViewed,
   } = useProductStore();
-  
+
   /**
    * @param {number} cartIndex
-   * @param {Cart} cartUpdate 
+   * @param {Cart} cartUpdate
    */
   const updateCart = (cartIndex, cartUpdate) => {
-    const updatedCarts = carts.map((cart, index) => {
-      if(index === cartIndex){
-        return cartUpdate;
-      }
-      return cart;
-    })
-    //This deletes null cart
-    .filter((cart) => cart);
-    setLocalCarts(updatedCarts)
-  }
-  
+    const updatedCarts = carts
+      .map((cart, index) => {
+        if (index === cartIndex) {
+          return cartUpdate;
+        }
+        return cart;
+      })
+      //This deletes null cart
+      .filter((cart) => cart);
+    setLocalCarts(updatedCarts);
+  };
+
   const deleteSelectedCarts = () => {
     const updatedCarts = carts
-    //This deletes null cart
+      //This deletes null cart
       .filter((cart, index) => !selectedCartsIndexes.includes(index));
 
-    setLocalCarts(updatedCarts)
-  }
-
-  
+    setLocalCarts(updatedCarts);
+  };
 
   useEffect(() => {
     if (user) {
@@ -59,7 +58,13 @@ function ShoppingCart() {
       <div className="cart-row">
         <Row>
           <Col md={8}>
-            <CartFirst deleteSelectedCarts={deleteSelectedCarts} selectedCartsIndexes={selectedCartsIndexes} setSelectedCartsIndexes={setSelectedCartsIndexes} updateCart={updateCart} carts={carts} />
+            <CartFirst
+              deleteSelectedCarts={deleteSelectedCarts}
+              selectedCartsIndexes={selectedCartsIndexes}
+              setSelectedCartsIndexes={setSelectedCartsIndexes}
+              updateCart={updateCart}
+              carts={carts}
+            />
           </Col>
           <Col md={4}>
             <CartSecond carts={carts} />
@@ -69,7 +74,7 @@ function ShoppingCart() {
       <div className="cart-products">
         <div className="products-bottom">
           <div className="heading">
-            <span className="heading-text">RECENT SHOPPING HISTORY</span>
+            <span className="heading-text">RECENT VIEWED</span>
             <Link to="/products" className="view-all">
               View all +
             </Link>

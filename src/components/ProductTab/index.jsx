@@ -38,16 +38,6 @@ const ProductTab = ({ product, variant }) => {
             Product Reviews
           </NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === "3" })}
-            onClick={() => {
-              toggle("3");
-            }}
-          >
-            Vendor Details
-          </NavLink>
-        </NavItem>
       </Nav>
 
       <TabContent activeTab={activeTab}>
@@ -55,9 +45,6 @@ const ProductTab = ({ product, variant }) => {
           <SingleProductDetails variant={variant} product={product} />
         </TabPane>
         <TabPane tabId="2">
-          <SingleProductDetails variant={variant} product={product} />
-        </TabPane>
-        <TabPane tabId="3">
           <SingleProductDetails variant={variant} product={product} />
         </TabPane>
       </TabContent>

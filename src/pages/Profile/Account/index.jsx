@@ -12,16 +12,35 @@ function Account() {
 
   return (
     <div className="account">
+      <h3>Account Overview</h3>
       <div className="content">
         <div>
-          <h3>Account Overview</h3>
-          <h4>{user.email}</h4>
-          <h4>{user.phone}</h4>
+          <h3>Account Details</h3>
+
           <h5>
             {user.surname} {user.first_name}
           </h5>
+          <h4>{user.email}</h4>
+          <h4>{user.phone}</h4>
+
+          <Link to="/profile/change-password">CHANGE PASSWORD</Link>
         </div>
-        <Link to="/update-profile">
+        <Link to="/profile/update-profile">
+          <CreateIcon />
+        </Link>
+      </div>
+      <div className="content">
+        <div>
+          <h3>Address Book</h3>
+          <h5>Your default shipping address:</h5>
+          <h4>{defaultAddress.name}</h4>
+          <h4>{defaultAddress.address}</h4>
+          <h4>
+            {defaultAddress.city} ,{defaultAddress.country}
+          </h4>
+          <h4>{defaultAddress.phone}</h4>
+        </div>
+        <Link to="/profile/addressbook/new-address">
           <CreateIcon />
         </Link>
       </div>
@@ -34,22 +53,6 @@ function Account() {
           <Link to="/">View details</Link>
         </div>
       </div> */}
-      <div className="bt">
-        <h3 className="mb-3">Address Book</h3>
-        <div className="content-bt">
-          <div>
-            <h6>{defaultAddress.name}</h6>
-            <h6>{defaultAddress.address}</h6>
-            <h6>
-              {defaultAddress.city} ,{defaultAddress.country}
-            </h6>
-            <h6>{defaultAddress.phone}</h6>
-          </div>
-          <div>
-            <h3 className="default">Default</h3>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

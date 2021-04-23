@@ -1,46 +1,23 @@
 @import "/src/config/variables.scss";
 
 .address-info {
-  padding: 1rem;
-  background-color: #f7f7f7;
-  .go-back {
-    display: flex;
-    padding: 3rem 5rem 0rem 8rem;
-    cursor: pointer;
-    svg {
-      height: 1rem;
-      width: 1rem;
-      margin-top: 2px;
-    }
-    h6 {
-      text-decoration: none;
-      font-family: $font-roboto-light;
-      color: #bdbdbd;
-      font-size: 15px;
-      margin-left: 3px;
-    }
+  background-color: white;
+  padding: 2rem;
+  height: 100vh;
+  border-radius: 5px;
+  h3 {
+    color: #6171aa;
+    font-family: $font-aller-regular;
+    font-size: 18px;
+    margin-bottom: 1rem;
   }
   .address-form {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     .address-main {
-      padding: 0.8rem;
-      background-color: white;
-      border-radius: 5px;
-      width: 400px;
-      h3 {
-        text-align: center;
-        color: #000000;
-        font-family: $font-roboto-regular;
-        font-size: 14px;
-      }
       .form-group {
         label {
-          color: #828282;
-          font-family: $font-barlow-regular;
-          font-size: 12px;
+          color: #929292;
+          font-size: 14px;
+          font-family: $font-roboto-regular;
         }
         input {
           &::placeholder {

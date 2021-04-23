@@ -40,7 +40,6 @@ const AddressBookModal = ({ show, onClose }) => {
     const newAddress = addresses.filter((address) => {
       return address._id !== id;
     });
-    console.log(newAddress);
     updateUser(newAddress, () => {});
   };
 
@@ -55,7 +54,10 @@ const AddressBookModal = ({ show, onClose }) => {
               onClick={onClose}
             />
           </div>
-          <Link to="/address-information" className="add-new-address">
+          <Link
+            to="/profile/addressbook/new-address"
+            className="add-new-address"
+          >
             <CancelIcon />
             <h6> ADD A NEW ADDRESS</h6>
           </Link>

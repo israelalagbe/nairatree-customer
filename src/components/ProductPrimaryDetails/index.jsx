@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col } from "reactstrap";
-import Iphone from "../../img/iphone.png";
 import "./index.scss";
 import AppButton from "../AppButton";
 import Car from "../../img/car.png";
@@ -41,13 +40,12 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
   }, []);
 
   useEffect(() => {
-    if (products) {
-      const randomItems = products
+    if (product) {
+      const randomItems = product.related_items
         .sort(() => Math.random() - Math.random())
         .slice(0, 3);
 
       setOtherProduct(randomItems);
-      console.log(randomItems);
     }
   }, [fetchProducts, products]);
 
@@ -254,7 +252,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
         </Col>
         <Col md={3}>
           <div className="other-offer">
-            <p>Other offers from vendors</p>
+            <p>Related Products</p>
 
             {otherProduct.map((item) => (
               <div className="offers">

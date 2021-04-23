@@ -6,6 +6,7 @@ import {
   verifyOtp,
   resetPassword,
   updateProfile,
+  updatePassword,
 } from "../services/authentication";
 
 import { persist } from "zustand/middleware";
@@ -21,6 +22,7 @@ import api from "../util/api";
  * @prop {boolean} verifyOtpLoading
  * @prop {boolean} resetPasswordLoading
  * @prop {boolean} updateUserLoading
+ * @prop {boolean} updateUserPasswordLoading
  * @prop {User} user
  * @prop {string} accessToken
  */
@@ -33,6 +35,7 @@ import api from "../util/api";
  * @prop {(payload, callback)=>void} verifyOtp
  * @prop {(payload, callback)=>void} resetPassword
  * @prop {(payload, callback)=>void} updateUser
+ * @prop {(payload, callback)=>void} updateUserPassword
  */
 
 /**
@@ -47,6 +50,7 @@ const initialState = {
   resetPasswordLoading: false,
   verifyOtpLoading: false,
   updateUserLoading: false,
+  updateUserPasswordLoading: false,
 };
 
 /**
@@ -183,6 +187,31 @@ const useAuthentication = create(
           set((state) => ({
             ...state,
             updateUserLoading: false,
+          }));
+        }
+      },
+      updateUserPassword: async (payload, callback) => {
+        set((state) => ({
+          ...state,
+          updateUserPasswordLoading: true,
+        }));
+
+        try {
+          const data = await updatePassword(payload);
+          const user = data;
+          set((state) => ({
+            ...state,
+            user,
+          }));
+
+          Notify.success("Password Updated");
+          callback();
+        } catch (e) {
+          Notify.error(e.message);
+        } finally {
+          set((state) => ({
+            ...state,
+            updateUserPasswordLoading: false,
           }));
         }
       },
