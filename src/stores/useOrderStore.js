@@ -19,7 +19,6 @@ import Notify from "../util/Notify";
 
 /**
  * @typedef {Object} MethodsType
- * @prop {()=>void} fetchCarts
  * @prop {()=>void} fetchOrders
  * @prop {(payload:any, onSuccess)=>void} saveCheckout
  * @prop {(payload:any)=>void} updateOrderPaymentStatus

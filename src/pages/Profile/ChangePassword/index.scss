@@ -4,6 +4,7 @@
   padding: 2rem;
   background-color: white;
   border-radius: 5px;
+  height: 100%;
   h3 {
     color: #6171aa;
     font-family: $font-aller-regular;
@@ -20,7 +21,13 @@
           font-size: 14px;
           font-family: $font-roboto-regular;
         }
+
         input {
+          color: #828282;
+          font-size: 16px;
+          font-family: $font-barlow-regular;
+          background-color: none !important;
+          border-right: none !important;
           &::placeholder {
             color: #e0e0e0;
             font-family: $font-barlow-regular;
@@ -30,10 +37,17 @@
         .input-group {
           .input-group-prepend {
             margin-right: 5px !important;
+            svg {
+              width: 1rem;
+              height: 1rem;
+            }
             span {
+              border-top-right-radius: 5px;
+              border-bottom-right-radius: 5px;
               background-color: #ffffff;
               color: #828282;
               font-family: $font-barlow-regular;
+              border-left: none !important;
             }
           }
         }

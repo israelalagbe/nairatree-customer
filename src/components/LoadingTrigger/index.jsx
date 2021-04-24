@@ -1,5 +1,4 @@
 import React from "react";
-import BackDrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import "./index.scss";
 
@@ -14,7 +13,9 @@ import "./index.scss";
 export default function LoadingTrigger(props) {
   return (
     <>
-      {props.isLoading ? props.loader || <Loader marginTop={props.marginTop} /> : props.children}
+      {props.isLoading
+        ? props.loader || <Loader marginTop={props.marginTop} />
+        : props.children}
     </>
   );
 }

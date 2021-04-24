@@ -1,8 +1,7 @@
 import React from "react";
-import Error from "../../img/error.png";
 import AppButton from "../AppButton";
 import "./index.scss";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import formatMoney from "../../util/formatMoney";
 import useCartStore from "../../stores/useCartStore";
 
@@ -11,29 +10,33 @@ import useCartStore from "../../stores/useCartStore";
  * @param {object} props
  * @param {Cart[]} props.carts
  */
-function CartSecond({carts}) {
+function CartSecond({ carts }) {
   const history = useHistory();
 
   const saveCarts = useCartStore((store) => store.saveCarts);
-  
-  const numberOfItems = carts.reduce((count, cart)=> cart.quantity + count , 0);
 
-  const subTotal = carts.reduce((price, cart)=> (cart.product.price * cart.quantity) + price , 0);
+  const numberOfItems = carts.reduce((count, cart) => cart.quantity + count, 0);
 
-  const totalShippingFee = carts.reduce((price, cart)=> (cart.product.shipment_fees[0].fee * cart.quantity) + price , 0);
-  
+  const subTotal = carts.reduce(
+    (price, cart) => cart.product.price * cart.quantity + price,
+    0
+  );
+
+  const totalShippingFee = carts.reduce(
+    (price, cart) => cart.product.shipment_fees[0].fee * cart.quantity + price,
+    0
+  );
+
   const total = totalShippingFee + subTotal;
 
   const checkoutPage = () => {
-    const payload = carts
-      .map((cart) => ({
-        product: cart.product.id,
-        quantity: cart.quantity,
-        ...(cart.variant ? { variant: String(cart.variant) } : null),
-      }));
+    const payload = carts.map((cart) => ({
+      product: cart.product.id,
+      quantity: cart.quantity,
+      ...(cart.variant ? { variant: String(cart.variant) } : null),
+    }));
 
-    saveCarts(payload, () => history.push("/checkout-details"))
-    
+    saveCarts(payload, () => history.push("/checkout-details"));
   };
   return (
     <div className="cart-second">

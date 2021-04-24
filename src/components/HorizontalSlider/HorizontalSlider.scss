@@ -1,0 +1,33 @@
+.horizontal-slider {
+  position: relative;
+  .horizontal-slider-content {
+    position: relative;
+    display: flex!important;
+    background: white;
+    ul {
+      display: flex!important;
+      justify-content: flex-start;
+      overflow: hidden;
+      overflow-x: scroll;
+      overflow-y: hidden!important;
+      padding: 0;
+      margin: 0;
+     
+      &::-webkit-scrollbar {
+        display: none!important;  
+      }
+      h2 {
+        font-size: 1.8rem;
+        margin: 0;
+        text-transform: capitalize;
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 640px) {
+ .horizontal-slider {
+    padding: 1rem 0rem;
+  }
+}

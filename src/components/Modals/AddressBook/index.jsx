@@ -11,7 +11,7 @@ import { useHistory, Link } from "react-router-dom";
 
 const AddressBookModal = ({ show, onClose }) => {
   const history = useHistory();
-  const { user, updateUser, updateUserLoading } = useAuthentication();
+  const { user, updateUser } = useAuthentication();
   const addresses = user?.address_book;
   const [selectedAddress, setSelectedAddress] = useState(
     addresses.find((item) => item.is_default)

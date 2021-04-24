@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import { FormGroup, Label, Input } from "reactstrap";
-import Iphone from "../../img/iphone.png";
+import React from "react";
+import { FormGroup, Input } from "reactstrap";
 import useAuthentication from "../../stores/useAuthentication";
 import useCartStore from "../../stores/useCartStore";
 import formatMoney from "../../util/formatMoney";
@@ -17,29 +16,34 @@ import "./index.scss";
  * @param {number[]} props.selectedCartsIndexes
  * @param {(indexs:number[]) => void} props.setSelectedCartsIndexes
  */
-function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIndexes, deleteSelectedCarts }) {
-
+function CartFirst({
+  carts,
+  updateCart,
+  selectedCartsIndexes,
+  setSelectedCartsIndexes,
+  deleteSelectedCarts,
+}) {
   const saveCarts = useCartStore((store) => store.saveCarts);
 
   const user = useAuthentication((state) => state.user);
 
   /**
-   * @param {number} index 
-   * @param {Cart} cart 
-   * @param {ProductVariant} variant 
+   * @param {number} index
+   * @param {Cart} cart
+   * @param {ProductVariant} variant
    */
   const incrementCart = (index, cart, variant) => {
     updateCart(index, {
       ...cart,
-      quantity: cart.quantity <
-        (variant?.quantity ?? cart.product.quantity_available)
-        ? cart.quantity + 1
-        : cart.quantity,
+      quantity:
+        cart.quantity < (variant?.quantity ?? cart.product.quantity_available)
+          ? cart.quantity + 1
+          : cart.quantity,
     });
-  }
+  };
 
   /**
-   * @param {number} index 
+   * @param {number} index
    * @param {Cart} cart
    */
   const decreaseCart = (index, cart) => {
@@ -47,7 +51,7 @@ function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIn
       ...cart,
       quantity: cart.quantity > 1 ? cart.quantity - 1 : cart.quantity,
     });
-  }
+  };
 
   /**
    * @param {number} index
@@ -55,45 +59,39 @@ function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIn
   const deleteCart = (index) => {
     //null cart will be deleted
     updateCart(index, null);
-  }
+  };
 
   const toggleSelected = (index) => {
-    const isChecked = selectedCartsIndexes.filter((item) => item === index).length > 0;
-    if(isChecked){
-      const updatedIndexes = selectedCartsIndexes.filter((item) => item !== index)
+    const isChecked =
+      selectedCartsIndexes.filter((item) => item === index).length > 0;
+    if (isChecked) {
+      const updatedIndexes = selectedCartsIndexes.filter(
+        (item) => item !== index
+      );
       setSelectedCartsIndexes(updatedIndexes);
-    }else {
-      
-      const updatedIndexes = [...selectedCartsIndexes, index]
+    } else {
+      const updatedIndexes = [...selectedCartsIndexes, index];
       setSelectedCartsIndexes(updatedIndexes);
-    };
-  }
+    }
+  };
 
   const selectAll = () => {
     setSelectedCartsIndexes(carts.map((cart, index) => index));
-  }
+  };
 
   const updateCartsOnline = () => {
-    const payload = carts
-      .map((cart) => ({
-        product: cart.product.id,
-        quantity: cart.quantity,
-        ...(cart.variant ? { variant: String(cart.variant) } : null),
-      }))
-    
-    if(user){
-      saveCarts(payload, () => Notify.success("Cart updated successfully!"))
+    const payload = carts.map((cart) => ({
+      product: cart.product.id,
+      quantity: cart.quantity,
+      ...(cart.variant ? { variant: String(cart.variant) } : null),
+    }));
+
+    if (user) {
+      saveCarts(payload, () => Notify.success("Cart updated successfully!"));
+    } else {
+      Notify.success("Cart updated successfully!");
     }
-    else {
-      Notify.success("Cart updated successfully!")
-    }
-    
-  }
-
-  
-
-
-  
+  };
 
   return (
     <div className="cart-first">
@@ -103,15 +101,24 @@ function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIn
         </div>
         <div className="main-flex">
           <div className="d-flex mt-1">
-            <p className='pointer ' onClick={selectAll}>Select All</p>
-            <h6 className="pointer" onClick={deleteSelectedCarts}>Delete Selected</h6>
+            <p className="pointer " onClick={selectAll}>
+              Select All
+            </p>
+            <h6 className="pointer" onClick={deleteSelectedCarts}>
+              Delete Selected
+            </h6>
           </div>
-          <AppButton onClick={updateCartsOnline} buttonText="Update Cart" classname="update-button" />
+          <AppButton
+            onClick={updateCartsOnline}
+            buttonText="Update Cart"
+            classname="update-button"
+          />
         </div>
       </div>
 
       {carts.map((cart, index) => {
-        const isChecked = selectedCartsIndexes.filter((item) => item === index).length > 0;
+        const isChecked =
+          selectedCartsIndexes.filter((item) => item === index).length > 0;
 
         const product = cart.product;
         const variant = product.variants.find(
@@ -124,7 +131,11 @@ function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIn
               <div className="wish-check">
                 <FormGroup>
                   <div>
-                    <Input type="checkbox" checked={isChecked} onClick={() =>toggleSelected(index)} />
+                    <Input
+                      type="checkbox"
+                      checked={isChecked}
+                      onClick={() => toggleSelected(index)}
+                    />
                     <div className="content">
                       <div className="content-img">
                         <img src={productImage} alt={product.name} />
@@ -134,11 +145,13 @@ function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIn
 
                         {variant ? (
                           <h6>
-                            Color: <span className="capitalize">{variant.color}</span>
+                            Color:{" "}
+                            <span className="capitalize">{variant.color}</span>
                           </h6>
                         ) : null}
                         <h4>
-                          {formatMoney(product.price * cart.quantity)} &nbsp;&nbsp;{" "}
+                          {formatMoney(product.price * cart.quantity)}{" "}
+                          &nbsp;&nbsp;{" "}
                           {product.deal ? (
                             <span>{formatMoney(product.deal.new_price)}</span>
                           ) : null}
@@ -166,7 +179,9 @@ function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIn
               </div>
               <div className="del-add">
                 {/* <h6>ADD TO WISHLIST </h6> */}
-                <h5 className="pointer" onClick={() => deleteCart(index)}>DELETE </h5>
+                <h5 className="pointer" onClick={() => deleteCart(index)}>
+                  DELETE{" "}
+                </h5>
               </div>
             </div>
           </div>
@@ -174,10 +189,6 @@ function CartFirst({ carts, updateCart, selectedCartsIndexes, setSelectedCartsIn
       })}
     </div>
   );
-
-  
-
-  
 }
 
 export default CartFirst;

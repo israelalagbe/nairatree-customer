@@ -16,7 +16,6 @@ import {
   InputGroupAddon,
   InputGroupText,
   Input,
-  Dropdown,
 } from "reactstrap";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AccountCircle from "@material-ui/icons/AccountCircleOutlined";
@@ -36,9 +35,13 @@ import logout from "../../util/logout";
 
 export default function Header() {
   const history = useHistory();
-  
-  const { fetchCategories, categories } = useCategoryStore();
-  const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
+
+  const { fetchCategories } = useCategoryStore();
+  const {
+    popularBrands,
+
+    fetchPopularBrands,
+  } = useBrandStore();
   const { carts, fetchCarts } = useCartStore();
 
   const [navbarIsOpen, setIsOpen] = useState(false);
@@ -62,14 +65,14 @@ export default function Header() {
   }, [user, fetchCarts]);
 
   const onSearch = (e) => {
-    history.push(`/products?search=${keyword}`)
-  }
+    history.push(`/products?search=${keyword}`);
+  };
 
   const handleSearchInput = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       onSearch(e);
     }
-  }
+  };
 
   return (
     <>
@@ -90,7 +93,10 @@ export default function Header() {
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav>
                   Best Brands
-                  <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
+                  <ExpandMoreIcon
+                    fontSize="small"
+                    className="ml-1 arrow-down-icon"
+                  />
                 </DropdownToggle>
                 <DropdownMenu right>
                   {popularBrands.map((brand) => (
@@ -101,17 +107,29 @@ export default function Header() {
               <NavItem className="mr-6">
                 <NavLink href="/components/">FAQ</NavLink>
               </NavItem>
-              <div className="form-group category-form pointer" onClick={(e)=>{
-                  setHeaderCategoriesShown(!showHeaderCategories)
-                }}>
-                <select disabled className="form-control category pointer" >
+              <div
+                className="form-group category-form pointer"
+                onClick={(e) => {
+                  setHeaderCategoriesShown(!showHeaderCategories);
+                }}
+              >
+                <select disabled className="form-control category pointer">
                   <option>Categories</option>
                 </select>
               </div>
               <div className="form-group search-form ml-lg-2">
                 <InputGroup>
-                  <Input onChange={(e) => setSearch(e.target.value)} onKeyPress={handleSearchInput} value={keyword} placeholder="Search Items..." />
-                  <InputGroupAddon addonType="append" className="search-btn" onClick={onSearch}>
+                  <Input
+                    onChange={(e) => setSearch(e.target.value)}
+                    onKeyPress={handleSearchInput}
+                    value={keyword}
+                    placeholder="Search Items..."
+                  />
+                  <InputGroupAddon
+                    addonType="append"
+                    className="search-btn"
+                    onClick={onSearch}
+                  >
                     <InputGroupText>
                       <img src={search} alt="Search" />
                     </InputGroupText>
@@ -133,7 +151,9 @@ export default function Header() {
           </Collapse>
         </Navbar>
       </div>
-      {showHeaderCategories ?<HeaderCategory close={() => setHeaderCategoriesShown(false)} />: null}
+      {showHeaderCategories ? (
+        <HeaderCategory close={() => setHeaderCategoriesShown(false)} />
+      ) : null}
     </>
   );
 }
@@ -158,7 +178,9 @@ function AccountNav() {
     <>
       <div className="account-dropdown-nav" onClick={handleClick}>
         <AccountCircle fontSize="small" />
-        <span className="ml-3 text">{user ? clipText(user.first_name, 10) : "Account"} </span>
+        <span className="ml-3 text">
+          {user ? clipText(user.first_name, 10) : "Account"}{" "}
+        </span>
         <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
       </div>
 
