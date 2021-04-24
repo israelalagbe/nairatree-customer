@@ -59,6 +59,12 @@
         margin-right: 0.4rem;
         white-space: nowrap;
 
+        &:hover{
+          img{
+            width: 6.4rem;
+          }
+        }
+
         img {
           width: 6rem;
           height: 6rem;
@@ -77,6 +83,7 @@
     background: white;
     padding: 1rem;
     border-radius: 5px;
+    position: relative;
 
     .heading {
       padding: 0rem 1rem 2rem 0rem;
@@ -99,12 +106,11 @@
 
     .product-list-card {
       height: 12rem;
-
       display: flex;
       flex-direction: row;
       align-items: center;
       overflow-x: auto;
-
+      scroll-behavior: smooth;
       .no-product-message {
         margin: auto;
         font-family: $font-aller-regular;

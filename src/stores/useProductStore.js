@@ -35,6 +35,7 @@ import reportError from "../util/reportError";
  * @prop {(id:string)=>void} fetchSelectedProduct
  * @prop {()=>void} fetchRecentlyViewed
  * @prop {(id:string)=>void} updateRecentView;
+ * @prop {(product:Product)=>void} addLocalRecentlyViewed
  */
 
 /**
