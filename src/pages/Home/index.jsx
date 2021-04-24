@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { Row, Col } from "reactstrap";
 import "./index.scss";
@@ -7,6 +7,7 @@ import promoImage2 from "../../img/promotion-image2.png";
 import promoImage3 from "../../img/promotion-image3.png";
 import bannerPromo from "../../img/banner-promo.png";
 import bannerPromo2 from "../../img/banner-promo-2.png";
+import HomeFooter from "../../components/HomeFooter";
 
 import ProductItem from "../../components/ProductItem";
 import { Link } from "react-router-dom";
@@ -15,8 +16,7 @@ import { HomePopularBands } from "../../components/HomePopularBands";
 import useProductStore from "../../stores/useProductStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
 import useAuthentication from "../../stores/useAuthentication";
-import HorizontalSlider from "../../components/HorizontalSlider/HorizontalSlider";
-import HomeFooter from "../../components/HomeFooter";
+import SliderButton from "../../components/HorizontalSlider/SliderButton/SliderButton";
 
 export default function Home() {
   const { user } = useAuthentication();
@@ -48,7 +48,7 @@ export default function Home() {
     if (user) {
       fetchRecentlyViewed();
     }
-  }, [user]);
+  }, [fetchRecentlyViewed, user]);
 
   return (
     <>
@@ -77,34 +77,34 @@ export default function Home() {
               <br />
               {user && recentlyViewed.length ? (
                 <ProductList
+                  topSpacing="1.5rem"
                   products={recentlyViewed}
                   isLoading={recentlyViewedLoading}
                   allProductsLink="/products"
                   title="Recently Viewed"
                 />
               ) : null}
-              <br />
               <ProductList
+                topSpacing="1.5rem"
                 isLoading={trendingProductsLoading}
                 products={trendingProducts}
                 allProductsLink="/products"
                 title="Trending Deals"
               />
-              <br />
               <ProductList
+                topSpacing="1.5rem"
                 isLoading={dealsOfTheDayLoading}
                 products={dealsOfTheDay}
                 allProductsLink="/products"
                 title="Deal of the Day"
               />
-              <br />
               <img
                 src={bannerPromo2}
                 alt="Banner Promotion 2"
-                className="banner-promo mb-4"
+                className="banner-promo mb-4 mt-4"
               />
-              <br />
               <ProductList
+                topSpacing="1.5rem"
                 isLoading={productsLoading}
                 products={products}
                 allProductsLink="/products"
@@ -147,32 +147,87 @@ export default function Home() {
  * @param {object} props
  * @param {string} props.title
  * @param {string} props.allProductsLink
+ * @param {string} props.topSpacing
  * @param {boolean} [props.isLoading]
  * @param {Product[]} props.products
  */
-function ProductList({ title, allProductsLink, products, isLoading }) {
+function ProductList({
+  title,
+  allProductsLink,
+  products,
+  isLoading,
+  topSpacing,
+}) {
+  const [showScrollLeftButton, setShowScrollLeftButton] = useState(false);
+  const [showScrollRightButton, setShowScrollRightButton] = useState(false);
+  const sliderContent = React.createRef();
+
+  useEffect(() => {
+    if (
+      sliderContent.current?.scrollWidth > sliderContent.current?.clientWidth
+    ) {
+      setShowScrollRightButton(true);
+    }
+  }, []);
+
+  if (!isLoading && !products.length) {
+    return null;
+  }
+
+  const onScroll = (e) => {
+    const isScrolledLeft = sliderContent.current.scrollLeft <= 0;
+    setShowScrollLeftButton(!isScrolledLeft);
+
+    const isScrolledRight =
+      sliderContent.current?.scrollWidth -
+        sliderContent.current?.offsetWidth ===
+      sliderContent.current.scrollLeft;
+    setShowScrollRightButton(!isScrolledRight);
+  };
+
   return (
-    <section className="product-list-container">
+    <section
+      className="product-list-container"
+      style={{ marginTop: topSpacing }}
+    >
       <div className="heading">
         <span className="heading-text">{title}</span>
         <Link to={allProductsLink} className="show-all">
           Show all +
         </Link>
       </div>
-      <HorizontalSlider>
-        <div className="product-list-card">
-          <LoadingTrigger isLoading={isLoading && !products.length}>
-            {products.map((product) => (
-              <ProductItem key={product.id} product={product} />
-            ))}
-            {products.length === 0 ? (
-              <h4 className="no-product-message">
-                No {title} has been added recently.
-              </h4>
-            ) : null}
-          </LoadingTrigger>
-        </div>
-      </HorizontalSlider>
+      {showScrollRightButton ? (
+        <SliderButton
+          click={() => {
+            sliderContent.current.scrollBy(30, 0);
+          }}
+          position="right"
+        />
+      ) : null}
+      {showScrollLeftButton ? (
+        <SliderButton
+          click={() => {
+            sliderContent.current.scrollBy(-30, 0);
+          }}
+          position="left"
+        />
+      ) : null}
+      <div
+        className="product-list-card"
+        ref={sliderContent}
+        onScroll={onScroll}
+      >
+        <LoadingTrigger isLoading={isLoading && !products.length}>
+          {products.map((product) => (
+            <ProductItem key={product.id} product={product} />
+          ))}
+          {products.length === 0 ? (
+            <h4 className="no-product-message">
+              No {title} has been added recently.
+            </h4>
+          ) : null}
+        </LoadingTrigger>
+      </div>
     </section>
   );
 }
