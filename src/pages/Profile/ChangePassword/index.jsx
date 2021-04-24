@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AppLogo from "../../../components/AppLogo";
 import "./index.scss";
 import { Link, useHistory } from "react-router-dom";
@@ -17,13 +17,16 @@ import Copyright from "../../../components/Copyright";
 import Footer from "../../../components/Footer";
 import useAuthentication from "../../../stores/useAuthentication";
 import { Select } from "@material-ui/core";
-import useLocationStore from "../../../stores/useLocation";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import Notify from "../../../util/Notify";
 
 function ChangePassword() {
   const history = useHistory();
   const { updateUserPassword, updateUserPasswordLoading } = useAuthentication();
+  const [passwordVisible, setpasswordVisible] = useState(false);
+  const [passwordVisible2, setpasswordVisible2] = useState(false);
+  const [passwordVisible3, setpasswordVisible3] = useState(false);
   const [password, updatePassword] = React.useState({
     current_password: "",
     new_password: "",
@@ -57,7 +60,7 @@ function ChangePassword() {
             <InputGroup size="lg">
               <Input
                 placeholder="*********"
-                type="password"
+                type={`${passwordVisible === true ? "text" : "password"}`}
                 id="current_password"
                 name="current_password"
                 value={password.current_password}
@@ -65,8 +68,14 @@ function ChangePassword() {
                 required
               />
               <InputGroupAddon addonType="prepend">
-                <InputGroupText>
-                  <VisibilityIcon />
+                <InputGroupText
+                  onClick={() => setpasswordVisible(!passwordVisible)}
+                >
+                  {passwordVisible === true ? (
+                    <VisibilityIcon />
+                  ) : (
+                    <VisibilityOffIcon />
+                  )}
                 </InputGroupText>
               </InputGroupAddon>
             </InputGroup>
@@ -76,7 +85,7 @@ function ChangePassword() {
             <InputGroup size="lg">
               <Input
                 placeholder="*********"
-                type="password"
+                type={`${passwordVisible2 === true ? "text" : "password"}`}
                 id="new_password"
                 name="new_password"
                 value={password.new_password}
@@ -84,8 +93,14 @@ function ChangePassword() {
                 required
               />
               <InputGroupAddon addonType="prepend">
-                <InputGroupText>
-                  <VisibilityIcon />
+                <InputGroupText
+                  onClick={() => setpasswordVisible2(!passwordVisible2)}
+                >
+                  {passwordVisible2 === true ? (
+                    <VisibilityIcon />
+                  ) : (
+                    <VisibilityOffIcon />
+                  )}
                 </InputGroupText>
               </InputGroupAddon>
             </InputGroup>
@@ -96,7 +111,7 @@ function ChangePassword() {
             <InputGroup size="lg">
               <Input
                 placeholder="*********"
-                type="password"
+                type={`${passwordVisible3 === true ? "text" : "password"}`}
                 id="new_password_2"
                 name="new_password_2"
                 value={password.new_password_2}
@@ -104,8 +119,14 @@ function ChangePassword() {
                 required
               />
               <InputGroupAddon addonType="prepend">
-                <InputGroupText>
-                  <VisibilityIcon />
+                <InputGroupText
+                  onClick={() => setpasswordVisible3(!passwordVisible3)}
+                >
+                  {passwordVisible3 === true ? (
+                    <VisibilityIcon />
+                  ) : (
+                    <VisibilityOffIcon />
+                  )}
                 </InputGroupText>
               </InputGroupAddon>
             </InputGroup>

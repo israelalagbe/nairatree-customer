@@ -16,24 +16,25 @@ import AppButton from "../../../components/AppButton";
 import useAuthentication from "../../../stores/useAuthentication";
 
 function UpdateProfile() {
+  const { user } = useAuthentication();
   const history = useHistory();
   const { updateUser, updateUserLoading } = useAuthentication();
-  const [user, updateUserDetails] = React.useState({
+  const [userDetails, updateUserDetails] = React.useState({
     phone: "",
     first_name: "",
     surname: "",
   });
 
   const handleChange = async (e) => {
-    updateUserDetails({ ...user, [e.target.name]: e.target.value });
+    updateUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
-      phone: `+234${user.phone}`,
-      first_name: user.first_name,
-      surname: user.surname,
+      phone: `+234${userDetails.phone}`,
+      first_name: userDetails.first_name,
+      surname: userDetails.surname,
     };
     updateUser(payload, () => history.push("/profile"));
   };
@@ -49,8 +50,8 @@ function UpdateProfile() {
               type="text"
               name="first_name"
               id="first_name"
-              placeholder="Adekola Diekola"
-              value={user.first_name}
+              placeholder={user.first_name}
+              value={userDetails.first_name}
               onChange={handleChange}
               required
             />
@@ -62,8 +63,8 @@ function UpdateProfile() {
               type="text"
               name="surname"
               id="surname"
-              placeholder="Adekola Diekola"
-              value={user.surname}
+              placeholder={user.surname}
+              value={userDetails.surname}
               onChange={handleChange}
               required
             />
@@ -76,11 +77,11 @@ function UpdateProfile() {
                 <InputGroupText>+234</InputGroupText>
               </InputGroupAddon>
               <Input
-                placeholder="8082269035"
+                placeholder={user.phone}
                 type="number"
                 id="phone"
                 name="phone"
-                value={user.phone}
+                value={userDetails.phone}
                 onChange={handleChange}
                 required
               />

@@ -191,6 +191,7 @@ interface Order {
   total_amount_paid: number;
   is_updated_by_webhook: boolean;
   is_updated_by_client: boolean;
+  shipping_fee: any;
   status: string;
   delivery_status: string;
   user: string;

@@ -16,7 +16,6 @@ import {
   InputGroupAddon,
   InputGroupText,
   Input,
-  Dropdown,
 } from "reactstrap";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AccountCircle from "@material-ui/icons/AccountCircleOutlined";
@@ -38,7 +37,7 @@ export default function Header() {
   const history = useHistory();
 
   const { fetchCategories, categories } = useCategoryStore();
-  const { popularBrands, popularBrandsLoading, fetchPopularBrands } = useBrandStore();
+  const { popularBrands, fetchPopularBrands } = useBrandStore();
   const { carts, fetchCarts } = useCartStore();
 
   const [navbarIsOpen, setIsOpen] = useState(false);
@@ -97,7 +96,10 @@ export default function Header() {
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav>
                   Best Brands
-                  <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
+                  <ExpandMoreIcon
+                    fontSize="small"
+                    className="ml-1 arrow-down-icon"
+                  />
                 </DropdownToggle>
                 <DropdownMenu right>
                   {popularBrands.map((brand) => (
@@ -171,7 +173,9 @@ function AccountNav() {
     <>
       <div className="account-dropdown-nav" onClick={handleClick}>
         <AccountCircle fontSize="small" />
-        <span className="ml-3 text">{user ? clipText(user.first_name, 10) : "Account"} </span>
+        <span className="ml-3 text">
+          {user ? clipText(user.first_name, 10) : "Account"}{" "}
+        </span>
         <ExpandMoreIcon fontSize="small" className="ml-1 arrow-down-icon" />
       </div>
 
@@ -198,7 +202,7 @@ function AccountNav() {
               <Link to="/profile/orders">
                 <DropdownItem>Orders</DropdownItem>
               </Link>
-              <span href="#" onClick={logout}>
+              <span onClick={logout}>
                 <DropdownItem>Logout</DropdownItem>
               </span>
             </>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import AppButton from "../AppButton";
 import "./index.scss";
 import AddressBookModal from "../Modals/AddressBook";
@@ -21,7 +21,9 @@ function DeliveryDetails({ onNext }) {
 
   const subTotal = carts.reduce(
     (price, cart) =>
-      cart.product.price * cart.quantity + price + cart.product.shipment_fees[0].fee,
+      cart.product.price * cart.quantity +
+      price +
+      cart.product.shipment_fees[0].fee,
     0
   );
 
@@ -32,11 +34,16 @@ function DeliveryDetails({ onNext }) {
 
   const total = totalShippingFee + subTotal;
 
-  const defaultAddress = user.address_book.find((item) => item.is_default === true);
+  const defaultAddress = user.address_book.find(
+    (item) => item.is_default === true
+  );
 
   return (
     <>
-      <AddressBookModal show={addressModal.isOpen} onClose={addressModal.close} />
+      <AddressBookModal
+        show={addressModal.isOpen}
+        onClose={addressModal.close}
+      />
       <div className="delivery-details">
         <div className="delivery-details-first">
           <div className="delivery-details-head">
@@ -65,7 +72,9 @@ function DeliveryDetails({ onNext }) {
               return (
                 <h6>
                   {cart.product.name} (
-                  {variant ? <big className="capitalize">{variant.color}</big> : null}
+                  {variant ? (
+                    <big className="capitalize">{variant.color}</big>
+                  ) : null}
                   {cart.product.features.join(" ")})
                 </h6>
               );

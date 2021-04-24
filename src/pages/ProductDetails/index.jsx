@@ -17,19 +17,14 @@ function ProductDetails() {
 
   const [selectedVariant, setVariant] = useState(null);
 
-
-
-
-
   const { user } = useAuthentication();
-  
 
   const {
     selectedProduct,
     selectedProductLoading,
     fetchSelectedProduct,
-
-    updateRecentView
+    addLocalRecentlyViewed,
+    updateRecentView,
   } = useProductStore();
 
   useEffect(() => {
@@ -37,10 +32,12 @@ function ProductDetails() {
   }, [fetchSelectedProduct, productId]);
 
   useEffect(() => {
-    if(user) {
+    if (user) {
       updateRecentView(productId);
+    } else {
+      addLocalRecentlyViewed(selectedProduct);
     }
-  }, [updateRecentView, user, productId]);
+  }, [updateRecentView, addLocalRecentlyViewed, selectedProduct, user, productId]);
 
   return (
     <div className="product-details">

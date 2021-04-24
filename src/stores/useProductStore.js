@@ -35,6 +35,7 @@ import reportError from "../util/reportError";
  * @prop {(id:string)=>void} fetchSelectedProduct
  * @prop {()=>void} fetchRecentlyViewed
  * @prop {(id:string)=>void} updateRecentView;
+ * @prop {(product:Product)=>void} addLocalRecentlyViewed
  */
 
 /**
@@ -71,7 +72,7 @@ const useProductStore = create((set, get) => ({
     }));
 
     try {
-      const { products, total_records } = await getProducts({...query});
+      const { products, total_records } = await getProducts({ ...query });
 
       set((state) => ({
         ...state,
@@ -158,8 +159,13 @@ const useProductStore = create((set, get) => ({
   updateRecentView: async (id) => {
     try {
       await updateRecentlyViewed(id);
-    } catch (e) {
-    }
+    } catch (e) {}
+  },
+  addLocalRecentlyViewed: (product) => {
+    set((state) => ({
+      ...state,
+      recentlyViewed: [...state.recentlyViewed, product],
+    }));
   },
   fetchSelectedProduct: async (id) => {
     set((state) => ({
