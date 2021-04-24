@@ -59,6 +59,12 @@
         margin-right: 0.4rem;
         white-space: nowrap;
 
+        &:hover{
+          img{
+            width: 6.4rem;
+          }
+        }
+
         img {
           width: 6rem;
           height: 6rem;
