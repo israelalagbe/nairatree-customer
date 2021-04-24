@@ -37,7 +37,7 @@ function ProductDetails() {
     } else {
       addLocalRecentlyViewed(selectedProduct);
     }
-  }, [updateRecentView, user, productId]);
+  }, [updateRecentView, addLocalRecentlyViewed, selectedProduct, user, productId]);
 
   return (
     <div className="product-details">

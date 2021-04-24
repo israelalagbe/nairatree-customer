@@ -43,6 +43,10 @@
             margin-right: 1rem;
             // background: red;
 
+            &:hover{
+                img{width: 8.2rem;}
+            }
+
             img {
                 object-fit: contain;
                 width: 8rem;

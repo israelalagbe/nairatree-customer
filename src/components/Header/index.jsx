@@ -36,12 +36,8 @@ import logout from "../../util/logout";
 export default function Header() {
   const history = useHistory();
 
-  const { fetchCategories } = useCategoryStore();
-  const {
-    popularBrands,
-
-    fetchPopularBrands,
-  } = useBrandStore();
+  const { fetchCategories, categories } = useCategoryStore();
+  const { popularBrands, fetchPopularBrands } = useBrandStore();
   const { carts, fetchCarts } = useCartStore();
 
   const [navbarIsOpen, setIsOpen] = useState(false);
@@ -52,6 +48,7 @@ export default function Header() {
   const [showHeaderCategories, setHeaderCategoriesShown] = useState(false);
 
   const [keyword, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     fetchCategories();
@@ -65,7 +62,7 @@ export default function Header() {
   }, [user, fetchCarts]);
 
   const onSearch = (e) => {
-    history.push(`/products?search=${keyword}`);
+    history.push(`/products?search=${keyword}${selectedCategory? `&category=${selectedCategory}`:""}`);
   };
 
   const handleSearchInput = (e) => {
@@ -87,7 +84,13 @@ export default function Header() {
           <Collapse isOpen={navbarIsOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/products/?type=new_deal">New Deals</NavLink>
+                <NavLink className="pointer"
+                  onClick={(e) => {
+                    setHeaderCategoriesShown(!showHeaderCategories);
+                  }}
+                >
+                  New Deals
+                </NavLink>
               </NavItem>
 
               <UncontrolledDropdown nav inNavbar>
@@ -105,16 +108,12 @@ export default function Header() {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem className="mr-6">
-                <NavLink href="/components/">FAQ</NavLink>
+                <NavLink href="/faqs/">FAQ</NavLink>
               </NavItem>
-              <div
-                className="form-group category-form pointer"
-                onClick={(e) => {
-                  setHeaderCategoriesShown(!showHeaderCategories);
-                }}
-              >
-                <select disabled className="form-control category pointer">
-                  <option>Categories</option>
+              <div className="form-group category-form pointer">
+                <select className="form-control category pointer" onChange={(e) => setSelectedCategory(e.target.value)}>
+                  <option selected disabled>Categories</option>
+                  {categories.map(category => <option>{category.name}</option>)}
                 </select>
               </div>
               <div className="form-group search-form ml-lg-2">
@@ -125,11 +124,7 @@ export default function Header() {
                     value={keyword}
                     placeholder="Search Items..."
                   />
-                  <InputGroupAddon
-                    addonType="append"
-                    className="search-btn"
-                    onClick={onSearch}
-                  >
+                  <InputGroupAddon addonType="append" className="search-btn" onClick={onSearch}>
                     <InputGroupText>
                       <img src={search} alt="Search" />
                     </InputGroupText>
@@ -207,7 +202,7 @@ function AccountNav() {
               <Link to="/profile/orders">
                 <DropdownItem>Orders</DropdownItem>
               </Link>
-              <span href="#" onClick={logout}>
+              <span onClick={logout}>
                 <DropdownItem>Logout</DropdownItem>
               </span>
             </>
