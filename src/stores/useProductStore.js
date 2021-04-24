@@ -7,10 +7,7 @@ import {
   getRecentlyViewed,
   updateRecentlyViewed,
 } from "../services/product-service";
-
-import delay from "../util/delay";
 import Notify from "../util/Notify";
-import reportError from "../util/reportError";
 
 /**
  * @typedef {Object} InitialStateType

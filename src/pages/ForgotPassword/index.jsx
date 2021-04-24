@@ -7,7 +7,6 @@ import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
 import AppLogo from "../../components/AppLogo";
 import AppButton from "../../components/AppButton";
-import error from "../../img/error.png";
 import "./index.scss";
 import useAuthentication from "../../stores/useAuthentication";
 

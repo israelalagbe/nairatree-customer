@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import useAuthentication from "../stores/useAuthentication";
 
@@ -8,11 +8,7 @@ import useAuthentication from "../stores/useAuthentication";
  */
 const GuestRoute = ({ children, ...props }) => {
   const user = useAuthentication((state) => state.user);
-  return (
-    <Route {...props}>
-      {user ? <Redirect to={`/`} /> :children}
-    </Route>
-  );
+  return <Route {...props}>{user ? <Redirect to={`/`} /> : children}</Route>;
 };
 
 export default GuestRoute;

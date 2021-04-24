@@ -1,6 +1,5 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import { getCarts, saveCart } from "../services/cart-service";
 import {
   saveCheckoutUser,
   updateOrderPaymentStatus,

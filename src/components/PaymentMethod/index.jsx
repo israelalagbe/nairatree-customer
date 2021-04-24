@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FormGroup, Input, Label } from "reactstrap";
+import { Form } from "reactstrap";
 import AppButton from "../AppButton";
 import lock from "../../img/lock.png";
 import "./index.scss";

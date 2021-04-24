@@ -4,14 +4,11 @@ import { Row, Col } from "reactstrap";
 import SearchInputs from "../../components/SearchInputs";
 import ProductItem from "../../components/ProductItem";
 import "./index.scss";
-import { Link, useLocation } from "react-router-dom";
-import AppPagination from "../../components/AppPagination";
+import { useLocation } from "react-router-dom";
 import useProductStore from "../../stores/useProductStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
 import getQueryParams from "../../util/getQueryParams";
 import removeNullItems from "../../util/removeNullItem";
-
-
 
 function ProductSearch() {
   const location = useLocation();
@@ -23,19 +20,26 @@ function ProductSearch() {
 
   const [filters, setFilters] = useState({});
 
-  const { productsLoading, products, totalProducts, fetchProducts } = useProductStore();
+  const {
+    productsLoading,
+    products,
+    totalProducts,
+    fetchProducts,
+  } = useProductStore();
 
   useEffect(() => {
-    fetchProducts(removeNullItems({
-      search: query.search,
-      ...filters
-    }));
+    fetchProducts(
+      removeNullItems({
+        search: query.search,
+        ...filters,
+      })
+    );
   }, [query.search, filters, fetchProducts]);
 
   const applyFilter = (filter) => {
-    setFilters(filter)
-  }
-  
+    setFilters(filter);
+  };
+
   return (
     <div className="product-search-page">
       <Header />
@@ -51,7 +55,10 @@ function ProductSearch() {
           <Col md="9">
             <div className="main mr-4">
               <div className="heading">
-                <span className="heading-text">{totalProducts} Search result found {query.search? `for '${query.search}'` : null}</span>
+                <span className="heading-text">
+                  {totalProducts} Search result found{" "}
+                  {query.search ? `for '${query.search}'` : null}
+                </span>
               </div>
               <section className="product-list">
                 <LoadingTrigger isLoading={productsLoading}>
@@ -61,9 +68,7 @@ function ProductSearch() {
                 </LoadingTrigger>
               </section>
             </div>
-            <div className="float-right">
-              {/* <AppPagination /> */}
-            </div>
+            <div className="float-right">{/* <AppPagination /> */}</div>
           </Col>
         </Row>
       </div>

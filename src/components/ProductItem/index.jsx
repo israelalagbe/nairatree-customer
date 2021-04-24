@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.scss";
-import productImageSample from "../../img/ProductSampleImage.png";
 import formatMoney from "../../util/formatMoney";
 import { Link } from "react-router-dom";
 import clipText from "../../util/clipText";
