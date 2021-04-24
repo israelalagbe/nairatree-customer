@@ -45,7 +45,7 @@ export default function Home() {
     if (user) {
       fetchRecentlyViewed();
     }
-  }, [user]);
+  }, [fetchRecentlyViewed, user]);
 
   return (
     <div className="home-page">
