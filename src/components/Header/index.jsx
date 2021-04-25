@@ -103,7 +103,7 @@ export default function Header() {
                 </DropdownToggle>
                 <DropdownMenu right>
                   {popularBrands.map((brand) => (
-                    <DropdownItem key={brand.id}>{brand.name}</DropdownItem>
+                    <DropdownItem key={brand.id} onClick={()=>history.push(`/products?search=${brand.name}`)} >{brand.name}</DropdownItem>
                   ))}
                 </DropdownMenu>
               </UncontrolledDropdown>
