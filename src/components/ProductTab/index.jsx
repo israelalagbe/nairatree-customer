@@ -3,6 +3,8 @@ import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import classnames from "classnames";
 import SingleProductDetails from "../SingleProductDetails";
 import "./index.scss";
+import ProductRating from "../ProductRating";
+import ProductReview from "../Product Reviews";
 
 /**
  *
@@ -35,6 +37,16 @@ const ProductTab = ({ product, variant }) => {
               toggle("2");
             }}
           >
+            Product Rating
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            className={classnames({ active: activeTab === "3" })}
+            onClick={() => {
+              toggle("3");
+            }}
+          >
             Product Reviews
           </NavLink>
         </NavItem>
@@ -45,7 +57,10 @@ const ProductTab = ({ product, variant }) => {
           <SingleProductDetails variant={variant} product={product} />
         </TabPane>
         <TabPane tabId="2">
-          <SingleProductDetails variant={variant} product={product} />
+          <ProductRating />
+        </TabPane>
+        <TabPane tabId="3">
+          <ProductReview />
         </TabPane>
       </TabContent>
     </div>

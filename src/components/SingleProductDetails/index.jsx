@@ -1,15 +1,12 @@
+import React from "react";
 import { format } from "date-fns";
-import React, { useEffect } from "react";
 import "./index.scss";
-import { useParams } from "react-router-dom";
-import useProductStore from "../../stores/useProductStore";
 
 /**
  *
  * @param {{product: Product, variant: ProductVariant}} props
  */
 function SingleProductDetails({ product, variant }) {
-
   const items = [
     { key: "Name", value: product.name },
     {

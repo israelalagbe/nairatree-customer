@@ -33,7 +33,8 @@ const AddressBookModal = ({ show, onClose }) => {
       ],
     };
 
-    updateUser(payload, () => history.push("/profile"));
+    updateUser(payload, () => history.push("/checkout-details"));
+    onClose();
   };
 
   const removeAddress = (id) => {

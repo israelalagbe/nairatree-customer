@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import AppLogo from "../../../components/AppLogo";
+
 import "./index.scss";
-import { Link, useHistory } from "react-router-dom";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { useHistory } from "react-router-dom";
+
 import {
   Form,
   FormGroup,
@@ -13,15 +13,13 @@ import {
   Input,
 } from "reactstrap";
 import AppButton from "../../../components/AppButton";
-import Copyright from "../../../components/Copyright";
-import Footer from "../../../components/Footer";
 import useAuthentication from "../../../stores/useAuthentication";
 import { Select } from "@material-ui/core";
 import useLocationStore from "../../../stores/useLocation";
 
 function AddressInfo() {
   const history = useHistory();
-  const { user, updateUser, updateUserLoading } = useAuthentication();
+  const { user, updateUser } = useAuthentication();
   const { fetchStates, states } = useLocationStore();
   const [address, updateAddress] = React.useState({
     name: "",

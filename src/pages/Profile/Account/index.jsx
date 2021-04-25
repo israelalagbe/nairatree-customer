@@ -6,9 +6,9 @@ import useAuthentication from "../../../stores/useAuthentication";
 
 function Account() {
   const { user } = useAuthentication();
-  const defaultAddress = user.address_book.find(
-    (item) => item.is_default === true
-  );
+  // const defaultAddress = user.address_book.find(
+  //   (item) => item.is_default === true
+  // );
 
   return (
     <div className="account">

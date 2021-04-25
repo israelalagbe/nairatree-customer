@@ -1,0 +1,13 @@
+@import "/src/config/variables.scss";
+
+.appRating {
+  display: flex;
+  fieldset {
+    margin-bottom: 0px !important;
+  }
+  h6 {
+    color: #828282;
+    font-family: $font-roboto-regular;
+    font-size: 12px;
+  }
+}
