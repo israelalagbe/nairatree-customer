@@ -9,6 +9,7 @@ import useProductStore from "../../stores/useProductStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
 import getQueryParams from "../../util/getQueryParams";
 import removeNullItems from "../../util/removeNullItem";
+import HomeFooter from "../../components/HomeFooter";
 
 function ProductSearch() {
   const location = useLocation();
@@ -72,6 +73,7 @@ function ProductSearch() {
           </Col>
         </Row>
       </div>
+      <HomeFooter />
     </div>
   );
 }

@@ -39,13 +39,13 @@ function GuestCheckout() {
   const [expansionIndex, setExpansionIndex] = useState(0);
   const { user } = useAuthentication();
 
-  const { carts } = useCartStore();
+  const { carts, setLocalCarts} = useCartStore();
 
   const history = useHistory();
 
 
   const { updateOrderPaymentStatus, saveCheckoutGuest } = useOrderStore();
-  console.log(location.state?.address)
+
   // @ts-ignore
   // @ts-ignore
   const checkout = async (payload) => {
@@ -102,7 +102,13 @@ function GuestCheckout() {
             payment_reference: response.reference,
             status: "success",
           },
-          () => history.push("/")
+          () => {
+            setTimeout(() =>{
+              setLocalCarts([])
+              history.push("/")
+            }, 3000)
+            
+          }
         );
       },
       onClose: function () {

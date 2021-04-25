@@ -77,11 +77,18 @@ function UserCheckout() {
       ref: paymentInfo.payment_reference,
       amount: amountInKobo,
       callback: function (response) {
-        updateOrderPaymentStatus({
-          payment_reference: response.reference,
-          status: "success",
-        });
-        history.push("/");
+        updateOrderPaymentStatus(
+          {
+            payment_reference: response.reference,
+            status: "success",
+          },
+          () => {
+            setTimeout(() =>{
+              history.push("/");
+            }, 3000)
+            
+          }
+        );
       },
       onClose: function () {
         Notify.warning("You cancelled your payment!");
