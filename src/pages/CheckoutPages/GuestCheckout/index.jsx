@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Copyright from "../../../components/Copyright";
 import Footer from "../../../components/Footer";
 import AppLogo from "../../../components/AppLogo";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 // @ts-ignore
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import "./index.scss";
 import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
@@ -12,6 +12,7 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+// @ts-ignore
 import DeliveryDetails from "../../../components/DeliveryDetails";
 import PaymentMethod from "../../../components/PaymentMethod";
 import useOrderStore from "../../../stores/useOrderStore";
@@ -19,6 +20,7 @@ import useAuthentication from "../../../stores/useAuthentication";
 import useCartStore from "../../../stores/useCartStore";
 import env from "../../../config/env";
 import Notify from "../../../util/Notify";
+import GuestDeliveryDetails from "../../../components/DeliveryDetails/GuestDeliveryDetails";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,22 +32,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CheckoutDetails() {
+function GuestCheckout() {
+  const location = useLocation();
+
   const classes = useStyles();
   const [expansionIndex, setExpansionIndex] = useState(0);
   const { user } = useAuthentication();
 
-  const { carts } = useCartStore();
-
-  const defaultAddress = user.address_book.find(
-    (item) => item.is_default === true
-  );
+  const { carts, setLocalCarts} = useCartStore();
 
   const history = useHistory();
 
-  // @ts-ignore
-  const { updateOrderPaymentStatus, saveCheckout } = useOrderStore();
 
+  const { updateOrderPaymentStatus, saveCheckoutGuest } = useOrderStore();
+
+  // @ts-ignore
   // @ts-ignore
   const checkout = async (payload) => {
     const cartPayload = carts.map((cart) => ({
@@ -54,10 +55,28 @@ function CheckoutDetails() {
       variant: cart.variant,
     }));
 
-    saveCheckout(
+    // @ts-ignore
+    const address = {...location.state?.address};
+
+    if(address.phone.startsWith('0')){
+      address.phone = address.phone.replace('0','')
+    }
+    address.phone = "+234" + address.phone;
+
+    // const defaultAddress = {
+    //   name: address.name,
+    //   phone: address.,
+    //   alternate_phone: "+2349090909091",
+    //   address: "Yetunde Brown, Gbagada",
+    //   region: "Lagos",
+    //   city: "Lagos",
+    //   additional_info: "White house with a green gate",
+    // };
+
+    saveCheckoutGuest(
       {
         products: cartPayload,
-        delivery_address: defaultAddress,
+        delivery_address: address,
       },
       openPaymentPopup
     );
@@ -73,15 +92,24 @@ function CheckoutDetails() {
 
     const handler = PaystackPop.setup({
       key: env.paystackKey,
-      email: user.email,
+      // @ts-ignore
+      email: location.state.address.email,
       ref: paymentInfo.payment_reference,
       amount: amountInKobo,
       callback: function (response) {
-        updateOrderPaymentStatus({
-          payment_reference: response.reference,
-          status: "success",
-        });
-        history.push("/");
+        updateOrderPaymentStatus(
+          {
+            payment_reference: response.reference,
+            status: "success",
+          },
+          () => {
+            setTimeout(() =>{
+              setLocalCarts([])
+              history.push("/")
+            }, 3000)
+            
+          }
+        );
       },
       onClose: function () {
         Notify.warning("You cancelled your payment!");
@@ -90,11 +118,20 @@ function CheckoutDetails() {
     handler.openIframe();
   };
 
+  useEffect(() => {
+    // @ts-ignore
+    if (!location.state?.address) {
+      history.push("/guest-checkout-address");
+    }
+
+    // @ts-ignore
+  }, [history, location.state?.address]);
+
   return (
     <>
-      <div className="checkout-details">
+      <div className="guest-checkout">
         <AppLogo />
-        <div className="go-back" onClick={history.goBack}>
+        <div className="go-back" onClick={() => history.push("/guest-checkout-address")}>
           <ArrowBackIcon />
           <h6>Back</h6>
         </div>
@@ -112,7 +149,7 @@ function CheckoutDetails() {
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
-                  <DeliveryDetails onNext={() => setExpansionIndex(1)} />
+                  <GuestDeliveryDetails onNext={() => setExpansionIndex(1)} />
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -123,9 +160,7 @@ function CheckoutDetails() {
                 aria-controls="panel2a-content"
                 id="panel2a-header"
               >
-                <Typography className={classes.heading}>
-                  Payment Method
-                </Typography>
+                <Typography className={classes.heading}>Payment Method</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
@@ -145,4 +180,4 @@ function CheckoutDetails() {
   );
 }
 
-export default CheckoutDetails;
+export default GuestCheckout;

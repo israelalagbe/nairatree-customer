@@ -4,6 +4,7 @@ import {
   saveCheckoutUser,
   updateOrderPaymentStatus,
   getOrders,
+  saveCheckoutGuest,
 } from "../services/order-service";
 import Notify from "../util/Notify";
 
@@ -20,7 +21,8 @@ import Notify from "../util/Notify";
  * @typedef {Object} MethodsType
  * @prop {()=>void} fetchOrders
  * @prop {(payload:any, onSuccess)=>void} saveCheckout
- * @prop {(payload:any)=>void} updateOrderPaymentStatus
+* @prop {(payload:any, onSuccess)=>void} saveCheckoutGuest
+ * @prop {(payload:any, callback)=>void} updateOrderPaymentStatus
  */
 
 /**
@@ -67,11 +69,24 @@ const useOrderStore = create(
           set((state) => ({ ...state, saveCheckoutLoading: false }));
         }
       },
-      updateOrderPaymentStatus: async (payload) => {
-        try {
-          const paymentInfo = await updateOrderPaymentStatus(payload);
+      saveCheckoutGuest: async (cartsPayload, onSuccess) => {
+        set((state) => ({ ...state, saveCheckoutLoading: true }));
 
-          Notify.success("Your payment was successfully!");
+        try {
+          const paymentInfo = await saveCheckoutGuest(cartsPayload);
+          onSuccess(paymentInfo);
+        } catch (e) {
+          Notify.error(e.message);
+        } finally {
+          set((state) => ({ ...state, saveCheckoutLoading: false }));
+        }
+      },
+      updateOrderPaymentStatus: async (payload, callback) => {
+        try {
+          await updateOrderPaymentStatus(payload);
+
+          Notify.success("Your payment was successful! Please check your mail for delivery timelines");
+          callback();
         } catch (e) {
           Notify.error(e.message);
         }

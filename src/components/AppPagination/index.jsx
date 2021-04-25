@@ -12,11 +12,14 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-function AppPagination() {
+function AppPagination({ limit, total, page, onPageChange }) {
   const classes = useStyles();
+
+  const totalPages = Math.ceil(total/limit);
+
   return (
     <div className={classes.root}>
-      <Pagination count={10} variant="outlined" shape="rounded" />
+      <Pagination page={page}  count={totalPages} onChange={(e, page) =>onPageChange(page)} variant="outlined" shape="rounded" />
     </div>
   );
 }

@@ -224,4 +224,7 @@ interface Deal {
 
 interface SearchQuery {
   search?: string
+  page?: string;
+  category?: string;
+  sub_category?: string;
 }

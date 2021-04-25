@@ -2,7 +2,8 @@ import React from 'react';
 import {
   useHistory
 } from "react-router-dom";
-import getQueryParams from './getQueryParams';
+import getQueryParams from '../util/getQueryParams';
+
 
 
 

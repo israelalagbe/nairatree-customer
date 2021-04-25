@@ -10,7 +10,7 @@ import ProductSearch from "../pages/ProductSearch";
 import CartSuccess from "../pages/ProductDetails/CartSuccess";
 import ProductDetails from "../pages/ProductDetails";
 import ShoppingCart from "../pages/ShoppingCart";
-import CheckoutDetails from "../pages/CheckoutPages/CheckoutDetails";
+import UserCheckout from "../pages/CheckoutPages/UserCheckout";
 import Profile from "../pages/Profile";
 import Otp from "../pages/Otp";
 import PaymentPolicy from "../pages/PaymentPolicy";
@@ -19,6 +19,9 @@ import Blog from "../pages/Blog";
 import AboutUs from "../pages/AboutUs";
 import AuthRoute from "./AuthRoute";
 import GuestRoute from "./GuestRoute";
+import GuestCheckout from "../pages/CheckoutPages/GuestCheckout";
+import GuestAddressInfo from "../pages/GuestAddressInfo";
+
 
 export function Routes() {
   return (
@@ -54,11 +57,17 @@ export function Routes() {
         <ProductDetails />
       </Route>
       <AuthRoute path="/checkout-details" exact>
-        <CheckoutDetails />
+        <UserCheckout />
       </AuthRoute>
       <AuthRoute path="/profile">
         <Profile />
       </AuthRoute>
+      <GuestRoute path="/guest-checkout" exact>
+        <GuestCheckout />
+      </GuestRoute>
+      <GuestRoute path="/guest-checkout-address">
+        <GuestAddressInfo />
+      </GuestRoute>
       <Route path="/confirm-otp">
         <Otp />
       </Route>

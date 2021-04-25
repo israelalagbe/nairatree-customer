@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import useProductStore from "../../stores/useProductStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
 import useAuthentication from "../../stores/useAuthentication";
+import HomeFooter from "../../components/HomeFooter";
 
 function ProductDetails() {
   /**
@@ -66,6 +67,7 @@ function ProductDetails() {
           </div>
         </LoadingTrigger>
       </div>
+      <HomeFooter />
     </div>
   );
 }
