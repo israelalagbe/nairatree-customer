@@ -41,7 +41,13 @@ function ProductDetails() {
     if(selectedProduct) {
       addLocalRecentlyViewed(selectedProduct);
     }
-  }, [updateRecentView, addLocalRecentlyViewed, selectedProduct, user, productId]);
+  }, [
+    updateRecentView,
+    addLocalRecentlyViewed,
+    selectedProduct,
+    user,
+    productId,
+  ]);
 
   return (
     <div className="product-details">
@@ -58,7 +64,6 @@ function ProductDetails() {
               setVariant={setVariant}
               product={selectedProduct}
             />
-            <ProductTab variant={selectedVariant} product={selectedProduct} />
           </div>
         </LoadingTrigger>
       </div>

@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 import useAuthentication from "../../stores/useAuthentication";
 import useProductStore from "../../stores/useProductStore";
 import AppRating from "../AppRating";
+import ProductTab from "../ProductTab";
 
 /**
  *
@@ -33,7 +34,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
   const { carts, setLocalCarts, saveCarts, saveCartsLoading } = useCartStore();
 
   const { user } = useAuthentication();
-  const { products, fetchProducts } = useProductStore();
+  const { products, selectedProduct, fetchProducts } = useProductStore();
 
   useEffect(() => {
     fetchProducts();
@@ -172,6 +173,10 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                     ))}
                   </div>
                 </div>
+                <ProductTab
+                  variant={selectedVariant}
+                  product={selectedProduct}
+                />
               </Col>
               <Col md="6">
                 <div className="main-2">
@@ -180,7 +185,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                     {/* <h6>
                         Sold by:<span>Veral Stores</span>
                       </h6> */}
-                    <h4>20% off on shipping for Abeokuta and Lagos</h4>
+                    {/* <h4>20% off on shipping for Abeokuta and Lagos</h4> */}
                     <AppRating value={4} />
                     <p className="amount">{formatMoney(product.price)}</p>
                     {product.variants.map((variant) => (
@@ -229,16 +234,6 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                         <span>FREE Shipping on order within Lagos</span>
                       </p>
                     </div>
-                  </div>
-                  <div className="quantity">
-                    <p>
-                      Quantity available: <span>{availableQuantity}</span>
-                    </p>
-                    <h5>Short description</h5>
-                    <p
-                      className="down"
-                      dangerouslySetInnerHTML={{ __html: product.description }}
-                    ></p>
                   </div>
                 </div>
               </Col>

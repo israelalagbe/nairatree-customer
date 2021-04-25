@@ -6,7 +6,10 @@ import "./index.scss";
  *
  * @param {{product: Product, variant: ProductVariant}} props
  */
-function SingleProductDetails({ product, variant }) {
+function SingleProductDetails({ product, variant, selectedVariant }) {
+  const availableQuantity =
+    selectedVariant?.quantity ?? product.quantity_available;
+
   const items = [
     { key: "Name", value: product.name },
     {
@@ -54,6 +57,16 @@ function SingleProductDetails({ product, variant }) {
           ))}
         </tbody>
       </table>
+      <div className="quantity">
+        <p>
+          Quantity available: <span>{availableQuantity}</span>
+        </p>
+        <h5>Short description</h5>
+        <p
+          className="down"
+          dangerouslySetInnerHTML={{ __html: product.description }}
+        ></p>
+      </div>
     </div>
   );
 }

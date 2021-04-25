@@ -37,7 +37,7 @@ function OrdersDetails() {
         <h3>ITEMS IN YOUR ORDER</h3>
 
         <div className="orderItem1">
-          <h5>{selectedOrder.status}</h5>
+          <h5>{selectedOrder.delivery_status}</h5>
           <h4>On {format(new Date(selectedOrder.createdAt), "LLL d, yyyy")}</h4>
           <div className="orderItem2">
             <div className="orderItemsImg">
