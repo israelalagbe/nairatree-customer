@@ -1,0 +1,14 @@
+@import "/src/config/variables.scss";
+
+.productReview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  h6 {
+    color: #4f4f4f;
+    font-family: $font-roboto-regular;
+    font-size: 16px;
+  }
+}

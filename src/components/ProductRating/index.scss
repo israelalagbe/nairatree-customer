@@ -1,0 +1,28 @@
+@import "/src/config/variables.scss";
+
+.productRating {
+  margin-top: 2rem;
+  background-color: #f5f5f5;
+  padding: 2rem;
+  width: 20rem;
+  height: 10rem;
+  border-radius: 5px;
+  text-align: center;
+  h5 {
+    color: #f3ca3e;
+    font-family: $font-roboto-bold;
+    font-size: 15px;
+  }
+  .appRating {
+    display: flex;
+
+    justify-content: center;
+    h6 {
+      margin: 0 !important;
+    }
+  }
+  p {
+    font-size: 14px;
+    font-family: $font-roboto-regular;
+  }
+}

@@ -9,6 +9,7 @@ import useCartStore from "../../stores/useCartStore";
 import { useHistory } from "react-router-dom";
 import useAuthentication from "../../stores/useAuthentication";
 import useProductStore from "../../stores/useProductStore";
+import AppRating from "../AppRating";
 
 /**
  *
@@ -185,6 +186,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                         Sold by:<span>Veral Stores</span>
                       </h6> */}
                     <h4>20% off on shipping for Abeokuta and Lagos</h4>
+                    <AppRating value={4} />
                     <p className="amount">{formatMoney(product.price)}</p>
 
                     <div className="colors">
