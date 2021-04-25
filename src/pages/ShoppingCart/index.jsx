@@ -75,9 +75,6 @@ function ShoppingCart() {
         <div className="products-bottom">
           <div className="heading">
             <span className="heading-text">RECENT VIEWED</span>
-            <Link to="/products" className="view-all">
-              View all +
-            </Link>
           </div>
           <section className="product-list">
             <LoadingTrigger
