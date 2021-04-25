@@ -4,7 +4,6 @@ import classnames from "classnames";
 import SingleProductDetails from "../SingleProductDetails";
 import "./index.scss";
 import ProductRating from "../ProductRating";
-import ProductReview from "../Product Reviews";
 
 /**
  *
@@ -40,16 +39,6 @@ const ProductTab = ({ product, variant }) => {
             Product Rating
           </NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === "3" })}
-            onClick={() => {
-              toggle("3");
-            }}
-          >
-            Product Reviews
-          </NavLink>
-        </NavItem>
       </Nav>
 
       <TabContent activeTab={activeTab}>
@@ -58,9 +47,6 @@ const ProductTab = ({ product, variant }) => {
         </TabPane>
         <TabPane tabId="2">
           <ProductRating />
-        </TabPane>
-        <TabPane tabId="3">
-          <ProductReview />
         </TabPane>
       </TabContent>
     </div>
