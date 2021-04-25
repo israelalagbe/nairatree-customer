@@ -3,16 +3,19 @@ import AppRating from "../AppRating";
 import "./index.scss";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 
-function ProductRating() {
-  const ratingValue = 4;
+/**
+ *
+ * @param {{product: Product}} props
+ */
+function ProductRating({product}) {
   return (
     <div className="tabRating">
       <div className="productRating">
         <h4>Product Rating</h4>
         <div className="productRating2">
-          <h5>{ratingValue}/5</h5>
-          <AppRating value={ratingValue} />
-          <p>{ratingValue} rating</p>
+          <h5>{product.avg_rating}/5</h5>
+          <AppRating rating={product.avg_rating} totalRatings={product.no_of_ratings} />
+          <p>{product.no_of_ratings} rating</p>
         </div>
       </div>
       <div className="productReview">

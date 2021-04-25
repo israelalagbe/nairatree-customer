@@ -46,7 +46,7 @@ const ProductTab = ({ product, variant }) => {
           <SingleProductDetails variant={variant} product={product} />
         </TabPane>
         <TabPane tabId="2">
-          <ProductRating />
+          <ProductRating product={product} />
         </TabPane>
       </TabContent>
     </div>

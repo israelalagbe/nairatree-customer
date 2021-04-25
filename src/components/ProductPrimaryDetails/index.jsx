@@ -34,11 +34,8 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
   const { carts, setLocalCarts, saveCarts, saveCartsLoading } = useCartStore();
 
   const { user } = useAuthentication();
-  const { products, selectedProduct, fetchProducts } = useProductStore();
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+
 
   useEffect(() => {
     if (product) {
@@ -48,7 +45,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
 
       setRelatedProduct(randomItems);
     }
-  }, [fetchProducts, products]);
+  }, [ product]);
 
   const viewProduct = (id) => {
     history.push(`/product-details/${id}`);
@@ -156,7 +153,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
         <Col md={9}>
           <div className="details-main">
             <Row>
-              <Col md="6">
+              <Col md="7">
                 <div className="images-box">
                   <div className="big">
                     <img src={productImages[currentImageIndex]} alt="iphone" />
@@ -175,10 +172,11 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                 </div>
                 <ProductTab
                   variant={selectedVariant}
-                  product={selectedProduct}
+                  product={product}
                 />
+                <div className="mt-5" />
               </Col>
-              <Col md="6">
+              <Col md="5">
                 <div className="main-2">
                   <div className="more-details">
                     <p className="type">{product.name}</p>
@@ -186,7 +184,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                         Sold by:<span>Veral Stores</span>
                       </h6> */}
                     {/* <h4>20% off on shipping for Abeokuta and Lagos</h4> */}
-                    <AppRating value={4} />
+                    <AppRating rating={product.avg_rating} totalRatings={product.no_of_ratings} />
                     <p className="amount">{formatMoney(product.price)}</p>
                     {product.variants.map((variant) => (
                       <div className="colors">
@@ -224,7 +222,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                         counter === 0 || saveCartsLoading ? "btn-disabled" : ""
                       }`}
                     />
-                    <div className="shipping">
+                    {/* <div className="shipping">
                       <div>
                         <img src={Car} alt="#" />
                       </div>
@@ -233,7 +231,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                         <br />
                         <span>FREE Shipping on order within Lagos</span>
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </Col>
