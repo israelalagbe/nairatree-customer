@@ -21,8 +21,7 @@ import AppRating from "../AppRating";
 function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
   const history = useHistory();
 
-  const availableQuantity =
-    selectedVariant?.quantity ?? product.quantity_available;
+  const availableQuantity = selectedVariant?.quantity ?? product.quantity_available;
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [relatedProduct, setRelatedProduct] = useState([]);
@@ -115,9 +114,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
       const newCart = {
         product: { ...product },
         quantity: counter,
-        ...(selectedVariant?.variant_id
-          ? { variant: String(selectedVariant?.variant_id) }
-          : null),
+        ...(selectedVariant?.variant_id ? { variant: String(selectedVariant?.variant_id) } : null),
       };
       setLocalCarts([...existingCarts, newCart]);
       history.push("/cart-success");
@@ -146,9 +143,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
       {
         product: product.id,
         quantity: counter,
-        ...(selectedVariant?.variant_id
-          ? { variant: String(selectedVariant?.variant_id) }
-          : null),
+        ...(selectedVariant?.variant_id ? { variant: String(selectedVariant?.variant_id) } : null),
       },
     ];
     saveCarts(payload, () => history.push("/cart-success"));
@@ -188,11 +183,10 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                     <h4>20% off on shipping for Abeokuta and Lagos</h4>
                     <AppRating value={4} />
                     <p className="amount">{formatMoney(product.price)}</p>
-
-                    <div className="colors">
-                      <h6>Select Other Colors</h6>
-                      <div className="diff pointer mb-2">
-                        {product.variants.map((variant) => (
+                    {product.variants.map((variant) => (
+                      <div className="colors">
+                        <h6>Select Other Colors</h6>
+                        <div className="diff pointer mb-2">
                           <h6
                             key={variant.variant_id}
                             className={classnames({
@@ -204,9 +198,9 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                           >
                             {variant.color}
                           </h6>
-                        ))}
+                        </div>
                       </div>
-                    </div>
+                    ))}
                   </div>
                   <div className="second-details">
                     <div className="maintain">
@@ -281,10 +275,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
           <div className="vendor">
             <h6>Wanna be a vendor?</h6>
             <h6>Click here to register your account!</h6>
-            <AppButton
-              buttonText="Register as a Vendor"
-              classname="register-as-vendor"
-            />
+            <AppButton buttonText="Register as a Vendor" classname="register-as-vendor" />
           </div>
         </Col>
       </Row>
