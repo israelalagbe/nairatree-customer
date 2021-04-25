@@ -10,9 +10,14 @@ import LoadingTrigger from "../../components/LoadingTrigger";
 import getQueryParams from "../../util/getQueryParams";
 import removeNullItems from "../../util/removeNullItem";
 import HomeFooter from "../../components/HomeFooter";
+import AppPagination from "../../components/AppPagination";
+import useRouterQuery from "../../hooks/useRouterQuery";
 
 function ProductSearch() {
   const location = useLocation();
+
+  const limit = 20;
+  const { addQuery } = useRouterQuery();
 
   /**
    * @type {SearchQuery}
@@ -21,24 +26,27 @@ function ProductSearch() {
 
   const [filters, setFilters] = useState({});
 
-  const {
-    productsLoading,
-    products,
-    totalProducts,
-    fetchProducts,
-  } = useProductStore();
+  const { productsLoading, products, totalProducts, fetchProducts } = useProductStore();
 
   useEffect(() => {
     fetchProducts(
       removeNullItems({
+        limit,
         search: query.search,
+        page: query.page,
+        category: query.category,
+        sub_category: query.sub_category,
         ...filters,
       })
     );
-  }, [query.search, filters, fetchProducts]);
+  }, [query.search, query.page, query.category, query.sub_category, filters, fetchProducts]);
 
   const applyFilter = (filter) => {
     setFilters(filter);
+  };
+
+  const onPageChange = (page) => {
+    addQuery({ page });
   };
 
   return (
@@ -69,7 +77,14 @@ function ProductSearch() {
                 </LoadingTrigger>
               </section>
             </div>
-            <div className="float-right">{/* <AppPagination /> */}</div>
+            <div className="float-right">
+              <AppPagination
+                onPageChange={onPageChange}
+                total={totalProducts}
+                limit={limit}
+                page={query.page ?? 1}
+              />
+            </div>
           </Col>
         </Row>
       </div>
