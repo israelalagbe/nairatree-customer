@@ -6,14 +6,15 @@ import useModal from "../../hooks/useModal";
 import useAuthentication from "../../stores/useAuthentication";
 import useCartStore from "../../stores/useCartStore";
 import formatMoney from "../../util/formatMoney";
+import { useHistory, useLocation } from "react-router-dom";
 
 /**
  * @param {object} props
  * @param {()=>void} props.onNext
  */
 function GuestDeliveryDetails({ onNext }) {
-  const addressModal = useModal(false);
-  const { user } = useAuthentication();
+  const location = useLocation();
+  const history = useHistory();
 
   const { carts } = useCartStore();
 
@@ -34,7 +35,8 @@ function GuestDeliveryDetails({ onNext }) {
 
   const total = totalShippingFee + subTotal;
 
-  const defaultAddress = {};
+  // @ts-ignore
+  const defaultAddress = location.state?.address ?? {};
 
   return (
     <>
@@ -46,7 +48,7 @@ function GuestDeliveryDetails({ onNext }) {
         <div className="delivery-details-first">
           <div className="delivery-details-head">
             <h5>ADDRESS</h5>
-            <h6 onClick={addressModal.open}>CHANGE ADDRESS</h6>
+            <h6 onClick={() => history.push('/guest-checkout-address')}>CHANGE ADDRESS</h6>
           </div>
           {defaultAddress ? (
             <div className="details">

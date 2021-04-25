@@ -41,30 +41,10 @@ function GuestAddressInfo() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = {
-      address_book: [
-        ...user.address_book.map((item) => ({
-          name: item.name,
-          region: item.region,
-          city: item.city,
-          phone: item.phone,
-          address: item.address,
-          label: item.label,
-          is_default: false,
-        })),
-        {
-          name: address.name,
-          region: address.region,
-          city: address.city,
-          phone: `+234${address.phone}`,
-          address: address.address,
-          label: address.label,
-          is_default: true,
-        },
-      ],
-    };
 
-    updateUser(payload, () => history.goBack());
+    history.push('/guest-checkout', {address})
+
+    // updateUser(payload, () => history.goBack());
   };
 
   useEffect(() => {
@@ -100,6 +80,7 @@ function GuestAddressInfo() {
                 <InputGroupText>+234</InputGroupText>
               </InputGroupAddon>
               <Input
+                pattern="[1-9]{1}[0-9]+"
                 placeholder="8082269035"
                 type="number"
                 id="phone"

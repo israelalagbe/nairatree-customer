@@ -1,6 +1,6 @@
 @import "/src/config/variables.scss";
 
-.checkout-details {
+.guest-checkout {
   padding: 1rem;
   background-color: #f7f7f7;
   min-height: 90%;
@@ -52,10 +52,13 @@
         }
       }
 
-      .MuiTypography-body1 {
+      .MuiTypography-body1, .MuiTypography-root {
         width: 100%;
       }
     }
+  }
+  .MuiTypography-root{
+    width: 100%;
   }
 }
 

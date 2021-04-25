@@ -13,6 +13,13 @@ export function saveCheckoutUser(payload) {
 /**
  * @return {any}
  */
+export function saveCheckoutGuest(payload) {
+  return api.post(`${baseUrl}/customers/checkout/guest`, payload);
+}
+
+/**
+ * @return {any}
+ */
 export function updateOrderPaymentStatus(payload) {
   return api.put(`${baseUrl}/customers/checkout/payment/status`, payload);
 }

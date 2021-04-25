@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Copyright from "../../../components/Copyright";
 import Footer from "../../../components/Footer";
 import AppLogo from "../../../components/AppLogo";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 // @ts-ignore
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import "./index.scss";
 import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
@@ -12,6 +12,7 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+// @ts-ignore
 import DeliveryDetails from "../../../components/DeliveryDetails";
 import PaymentMethod from "../../../components/PaymentMethod";
 import useOrderStore from "../../../stores/useOrderStore";
@@ -32,21 +33,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function GuestCheckout() {
+  const location = useLocation();
+
   const classes = useStyles();
   const [expansionIndex, setExpansionIndex] = useState(0);
   const { user } = useAuthentication();
 
   const { carts } = useCartStore();
 
-  const defaultAddress = user?.address_book?.find?.(
-    (item) => item.is_default === true
-  );
-
   const history = useHistory();
 
-  // @ts-ignore
-  const { updateOrderPaymentStatus, saveCheckout } = useOrderStore();
 
+  const { updateOrderPaymentStatus, saveCheckoutGuest } = useOrderStore();
+  console.log(location.state?.address)
+  // @ts-ignore
   // @ts-ignore
   const checkout = async (payload) => {
     const cartPayload = carts.map((cart) => ({
@@ -55,10 +55,28 @@ function GuestCheckout() {
       variant: cart.variant,
     }));
 
-    saveCheckout(
+    // @ts-ignore
+    const address = {...location.state?.address};
+
+    if(address.phone.startsWith('0')){
+      address.phone = address.phone.replace('0','')
+    }
+    address.phone = "+234" + address.phone;
+
+    // const defaultAddress = {
+    //   name: address.name,
+    //   phone: address.,
+    //   alternate_phone: "+2349090909091",
+    //   address: "Yetunde Brown, Gbagada",
+    //   region: "Lagos",
+    //   city: "Lagos",
+    //   additional_info: "White house with a green gate",
+    // };
+
+    saveCheckoutGuest(
       {
         products: cartPayload,
-        delivery_address: defaultAddress,
+        delivery_address: address,
       },
       openPaymentPopup
     );
@@ -74,15 +92,18 @@ function GuestCheckout() {
 
     const handler = PaystackPop.setup({
       key: env.paystackKey,
-      email: user.email,
+      // @ts-ignore
+      email: location.state.address.email,
       ref: paymentInfo.payment_reference,
       amount: amountInKobo,
       callback: function (response) {
-        updateOrderPaymentStatus({
-          payment_reference: response.reference,
-          status: "success",
-        });
-        history.push("/");
+        updateOrderPaymentStatus(
+          {
+            payment_reference: response.reference,
+            status: "success",
+          },
+          () => history.push("/")
+        );
       },
       onClose: function () {
         Notify.warning("You cancelled your payment!");
@@ -91,11 +112,20 @@ function GuestCheckout() {
     handler.openIframe();
   };
 
+  useEffect(() => {
+    // @ts-ignore
+    if (!location.state?.address) {
+      history.push("/guest-checkout-address");
+    }
+
+    // @ts-ignore
+  }, [history, location.state?.address]);
+
   return (
     <>
-      <div className="checkout-details">
+      <div className="guest-checkout">
         <AppLogo />
-        <div className="go-back" onClick={history.goBack}>
+        <div className="go-back" onClick={() => history.push("/guest-checkout-address")}>
           <ArrowBackIcon />
           <h6>Back</h6>
         </div>
@@ -124,9 +154,7 @@ function GuestCheckout() {
                 aria-controls="panel2a-content"
                 id="panel2a-header"
               >
-                <Typography className={classes.heading}>
-                  Payment Method
-                </Typography>
+                <Typography className={classes.heading}>Payment Method</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
