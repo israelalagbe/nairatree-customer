@@ -84,7 +84,7 @@ function UserCheckout() {
           },
           () => {
             setTimeout(() =>{
-              history.push("/");
+              history.push("/profile/orders");
             }, 3000)
             
           }
