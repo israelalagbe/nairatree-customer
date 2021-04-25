@@ -52,10 +52,13 @@
         }
       }
 
-      .MuiTypography-body1 {
+      .MuiTypography-body1, .MuiTypography-root {
         width: 100%;
       }
     }
+  }
+  .MuiTypography-root{
+    width: 100%;
   }
 }
 

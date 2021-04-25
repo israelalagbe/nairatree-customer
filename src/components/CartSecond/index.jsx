@@ -4,6 +4,7 @@ import "./index.scss";
 import { useHistory } from "react-router-dom";
 import formatMoney from "../../util/formatMoney";
 import useCartStore from "../../stores/useCartStore";
+import useAuthentication from "../../stores/useAuthentication";
 
 /**
  *
@@ -17,15 +18,14 @@ function CartSecond({ carts }) {
 
   const numberOfItems = carts.reduce((count, cart) => cart.quantity + count, 0);
 
-  const subTotal = carts.reduce(
-    (price, cart) => cart.product.price * cart.quantity + price,
-    0
-  );
+  const subTotal = carts.reduce((price, cart) => cart.product.price * cart.quantity + price, 0);
 
   const totalShippingFee = carts.reduce(
     (price, cart) => cart.product.shipment_fees[0].fee * cart.quantity + price,
     0
   );
+
+  const { user } = useAuthentication();
 
   const total = totalShippingFee + subTotal;
 
@@ -40,7 +40,7 @@ function CartSecond({ carts }) {
   };
 
   const guestCheckout = (e) => {
-    history.push("/guest-checkout")
+    history.push("/guest-checkout");
   };
 
   return (
@@ -71,11 +71,19 @@ function CartSecond({ carts }) {
         </div>
         <div className="all-button">
           <AppButton
+            disabled={!carts.length}
             buttonText="PROCEED TO CHECKOUT"
             classname="check"
             onClick={checkoutPage}
           />
-          <AppButton onClick={guestCheckout} buttonText="CHECKOUT AS GUEST" classname="check" />
+          {!user ? (
+            <AppButton
+              disabled={!carts.length}
+              onClick={guestCheckout}
+              buttonText="CHECKOUT AS GUEST"
+              classname="check"
+            />
+          ) : null}
         </div>
       </div>
     </div>
