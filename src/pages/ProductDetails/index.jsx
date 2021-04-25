@@ -34,7 +34,10 @@ function ProductDetails() {
   useEffect(() => {
     if (user) {
       updateRecentView(productId);
-    } else {
+      return;
+    }
+    
+    if(selectedProduct) {
       addLocalRecentlyViewed(selectedProduct);
     }
   }, [updateRecentView, addLocalRecentlyViewed, selectedProduct, user, productId]);

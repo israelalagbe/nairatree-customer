@@ -1,5 +1,9 @@
 import create from "zustand";
 import {
+  devtools,
+  persist
+} from "zustand/middleware";
+import {
   getProducts,
   getDealOfTheDay,
   getTrendingProducts,
@@ -59,7 +63,7 @@ const initialState = {
 /**
  * @type {UseStore<InitialStateType & MethodsType>}
  */
-const useProductStore = create((set, get) => ({
+const useProductStore = create(persist((set, get) => ({
   ...initialState,
 
   fetchProducts: async (query) => {
@@ -69,7 +73,12 @@ const useProductStore = create((set, get) => ({
     }));
 
     try {
-      const { products, total_records } = await getProducts({ ...query });
+      const {
+        products,
+        total_records
+      } = await getProducts({
+        ...query
+      });
 
       set((state) => ({
         ...state,
@@ -137,7 +146,9 @@ const useProductStore = create((set, get) => ({
     }));
 
     try {
-      const { products } = await getRecentlyViewed();
+      const {
+        products
+      } = await getRecentlyViewed();
 
       set((state) => ({
         ...state,
@@ -159,9 +170,18 @@ const useProductStore = create((set, get) => ({
     } catch (e) {}
   },
   addLocalRecentlyViewed: (product) => {
+
+    let recentlyViewed = get().recentlyViewed.filter((item) => (item.id !== product.id));
+
+    recentlyViewed = [product, ...recentlyViewed];
+
+    //Don't save more than 10 local recently viewed items
+    recentlyViewed = recentlyViewed.slice(0, 10);
+
+
     set((state) => ({
       ...state,
-      recentlyViewed: [...state.recentlyViewed, product],
+      recentlyViewed,
     }));
   },
   fetchSelectedProduct: async (id) => {
@@ -171,7 +191,10 @@ const useProductStore = create((set, get) => ({
     }));
 
     try {
-      const { product, related_items } = await getProduct(id);
+      const {
+        product,
+        related_items
+      } = await getProduct(id);
       product.related_items = related_items;
 
       set((state) => ({
@@ -187,6 +210,9 @@ const useProductStore = create((set, get) => ({
       }));
     }
   },
+}), {
+  name: 'products',
+  whitelist: ['recentlyViewed']
 }));
 
 export default useProductStore;

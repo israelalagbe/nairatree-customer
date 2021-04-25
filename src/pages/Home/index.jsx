@@ -75,7 +75,7 @@ export default function Home() {
               <br />
               <HomePopularBands />
               <br />
-              {user && recentlyViewed.length ? (
+              {recentlyViewed.length ? (
                 <ProductList
                   topSpacing="1.5rem"
                   products={recentlyViewed}
