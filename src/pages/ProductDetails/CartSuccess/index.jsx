@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../../../components/Header";
-import SingleProductDetails from "../../../components/SingleProductDetails";
 import { useHistory } from "react-router-dom";
 import AppButton from "../../../components/AppButton";
 import "./index.scss";

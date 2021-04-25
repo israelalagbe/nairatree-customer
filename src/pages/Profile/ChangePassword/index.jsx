@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import AppLogo from "../../../components/AppLogo";
+import React, { useState } from "react";
 import "./index.scss";
-import { Link, useHistory } from "react-router-dom";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { useHistory } from "react-router-dom";
 import {
   Form,
   FormGroup,
@@ -13,17 +11,14 @@ import {
   Input,
 } from "reactstrap";
 import AppButton from "../../../components/AppButton";
-import Copyright from "../../../components/Copyright";
-import Footer from "../../../components/Footer";
 import useAuthentication from "../../../stores/useAuthentication";
-import { Select } from "@material-ui/core";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import Notify from "../../../util/Notify";
 
 function ChangePassword() {
   const history = useHistory();
-  const { updateUserPassword, updateUserPasswordLoading } = useAuthentication();
+  const { updateUserPassword } = useAuthentication();
   const [passwordVisible, setpasswordVisible] = useState(false);
   const [passwordVisible2, setpasswordVisible2] = useState(false);
   const [passwordVisible3, setpasswordVisible3] = useState(false);

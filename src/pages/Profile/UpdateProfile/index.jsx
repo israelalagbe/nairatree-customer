@@ -1,8 +1,6 @@
 import React from "react";
-
 import "./index.scss";
-import { Link, useHistory } from "react-router-dom";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { useHistory } from "react-router-dom";
 import {
   Form,
   FormGroup,

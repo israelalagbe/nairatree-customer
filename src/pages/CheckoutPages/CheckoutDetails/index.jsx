@@ -4,7 +4,7 @@ import Footer from "../../../components/Footer";
 import AppLogo from "../../../components/AppLogo";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 // @ts-ignore
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./index.scss";
 import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
@@ -44,11 +44,7 @@ function CheckoutDetails() {
   const history = useHistory();
 
   // @ts-ignore
-  const {
-    updateOrderPaymentStatus,
-    saveCheckout,
-    saveCheckoutLoading,
-  } = useOrderStore();
+  const { updateOrderPaymentStatus, saveCheckout } = useOrderStore();
 
   // @ts-ignore
   const checkout = async (payload) => {

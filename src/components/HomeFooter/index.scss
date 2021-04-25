@@ -1,0 +1,106 @@
+@import "/src/config/variables.scss";
+
+.allFooter {
+  .homeFooter1 {
+    background-color: #282828;
+    padding: 1rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    .homeFooter1Img {
+      width: 60%;
+      margin-top: 2rem;
+    }
+    .homeFooter1Form {
+      label {
+        color: #ffffff;
+        font-family: $font-roboto-regular;
+        font-size: 12px;
+      }
+      width: 40%;
+      .homeFooter1FormGroup {
+        display: flex;
+        .homeFooterInput {
+          &::placeholder {
+            font-family: $font-roboto-regular;
+            font-size: 12px;
+          }
+        }
+        .homeFooterButton {
+          margin-left: 1rem;
+          border: none;
+          background-color: #8ec140;
+          color: #ffffff;
+          font-family: $font-roboto-regular;
+          font-size: 12px;
+          height: 2.5rem;
+          width: 8rem;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+  .homeFooter2 {
+    background-color: #282424;
+    padding: 3rem 4rem;
+    h3 {
+      color: #ffffff;
+      font-family: $font-roboto-bold;
+      font-size: 13px;
+    }
+    a {
+      text-decoration: none;
+      color: #ffffff !important;
+      h6 {
+        font-family: $font-roboto-regular;
+        font-size: 13px;
+      }
+    }
+    .stores {
+      img {
+        width: 100%;
+        margin: 0 !important;
+      }
+    }
+
+    img {
+      margin-left: 3px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1289px) {
+  .allFooter {
+    .homeFooter1 {
+      padding: 1rem;
+    }
+    .homeFooter2 {
+      padding: 2rem 1rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 765px) {
+  .allFooter {
+    .homeFooter1 {
+      flex-direction: column;
+      .homeFooter1Img {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .homeFooter1Form {
+        margin-top: 2rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .homeFooter2 {
+      h3 {
+        margin-top: 2rem;
+      }
+    }
+  }
+}
