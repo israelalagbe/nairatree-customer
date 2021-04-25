@@ -19,6 +19,7 @@ import useAuthentication from "../../../stores/useAuthentication";
 import useCartStore from "../../../stores/useCartStore";
 import env from "../../../config/env";
 import Notify from "../../../util/Notify";
+import GuestDeliveryDetails from "../../../components/DeliveryDetails/GuestDeliveryDetails";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,14 +31,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CheckoutDetails() {
+function GuestCheckout() {
   const classes = useStyles();
   const [expansionIndex, setExpansionIndex] = useState(0);
   const { user } = useAuthentication();
 
   const { carts } = useCartStore();
 
-  const defaultAddress = user.address_book.find(
+  const defaultAddress = user?.address_book?.find?.(
     (item) => item.is_default === true
   );
 
@@ -112,7 +113,7 @@ function CheckoutDetails() {
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
-                  <DeliveryDetails onNext={() => setExpansionIndex(1)} />
+                  <GuestDeliveryDetails onNext={() => setExpansionIndex(1)} />
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -145,4 +146,4 @@ function CheckoutDetails() {
   );
 }
 
-export default CheckoutDetails;
+export default GuestCheckout;

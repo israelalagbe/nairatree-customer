@@ -38,6 +38,11 @@ function CartSecond({ carts }) {
 
     saveCarts(payload, () => history.push("/checkout-details"));
   };
+
+  const guestCheckout = (e) => {
+    history.push("/guest-checkout")
+  };
+
   return (
     <div className="cart-second">
       {/* <div className="error">
@@ -70,7 +75,7 @@ function CartSecond({ carts }) {
             classname="check"
             onClick={checkoutPage}
           />
-          {/* <AppButton buttonText="CHECKOUT AS GUEST" classname="check" /> */}
+          <AppButton onClick={guestCheckout} buttonText="CHECKOUT AS GUEST" classname="check" />
         </div>
       </div>
     </div>
