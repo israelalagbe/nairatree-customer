@@ -168,7 +168,7 @@ function ProductList({
     ) {
       setShowScrollRightButton(true);
     }
-  }, []);
+  }, [products, isLoading]);
 
   if (!isLoading && !products.length) {
     return null;
