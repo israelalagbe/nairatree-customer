@@ -21,7 +21,7 @@ import AuthRoute from "./AuthRoute";
 import GuestRoute from "./GuestRoute";
 import GuestCheckout from "../pages/CheckoutPages/GuestCheckout";
 import GuestAddressInfo from "../pages/GuestAddressInfo";
-
+import OrdersDetails from "../pages/Profile/Orders/OrdersDetails";
 
 export function Routes() {
   return (
@@ -59,6 +59,9 @@ export function Routes() {
       <AuthRoute path="/checkout-details" exact>
         <UserCheckout />
       </AuthRoute>
+      <Route exact path="/guest/orders/order-details/:id">
+        <OrdersDetails />
+      </Route>
       <AuthRoute path="/profile">
         <Profile />
       </AuthRoute>

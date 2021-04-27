@@ -82,10 +82,10 @@ function UserCheckout() {
             payment_reference: response.reference,
             status: "success",
           },
-          () => {
+          (orderId) => {
             setTimeout(() =>{
-              history.push("/profile/orders");
-            }, 3000)
+              history.push(`/profile/orders/order-details/${orderId}`);
+            }, 2000)
             
           }
         );

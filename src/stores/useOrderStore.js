@@ -103,12 +103,12 @@ const useOrderStore = create(
       },
       updateOrderPaymentStatus: async (payload, callback) => {
         try {
-          await updateOrderPaymentStatus(payload);
+          const response = await updateOrderPaymentStatus(payload);
 
           Notify.success(
             "Your payment was successful! Please check your mail for delivery timelines"
           );
-          callback();
+          callback(response.id);
         } catch (e) {
           Notify.error(e.message);
         }
