@@ -5,9 +5,11 @@ import useOrderStore from "../../../stores/useOrderStore";
 import formatMoney from "../../../util/formatMoney";
 import { format } from "date-fns";
 
-function Orders() {
+function Reviews() {
   const { orders, fetchOrders } = useOrderStore();
   const product = orders;
+
+  console.log(product);
 
   useEffect(() => {
     fetchOrders();
@@ -15,9 +17,7 @@ function Orders() {
 
   return (
     <div className="profile-orders-main">
-      {product.length === 0 ? (
-        <h2>You have no order to display </h2>
-      ) : (
+      {!product.is_reviewed ? (
         orders.map((order) => {
           return order.products.map((product) => (
             <div className="orders mb-3">
@@ -42,18 +42,16 @@ function Orders() {
               </div>
 
               <div className="details">
-                <Link
-                  to={`/profile/orders/order-details/${product.product._id}`}
-                >
-                  See details
-                </Link>
+                <Link to={`/profile/reviews/details`}>RATE THIS PRODUCT</Link>
               </div>
             </div>
           ));
         })
+      ) : (
+        <h2>You have no order to review </h2>
       )}
     </div>
   );
 }
 
-export default Orders;
+export default Reviews;

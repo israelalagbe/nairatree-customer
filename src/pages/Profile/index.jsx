@@ -13,6 +13,8 @@ import ChangePassword from "./ChangePassword";
 import UpdateProfile from "./UpdateProfile";
 import AddressInfo from "./AddressInfo";
 import OrdersDetails from "./Orders/OrdersDetails";
+import ReviewDetails from "./Reviews/ReviewsDetail";
+import Reviews from "./Reviews";
 
 function Profile() {
   return (
@@ -48,6 +50,12 @@ function Profile() {
                   exact
                   path="/profile/orders/order-details/:id"
                   component={OrdersDetails}
+                />
+                <Route exact path="/profile/reviews" component={Reviews} />
+                <Route
+                  exact
+                  path="/profile/reviews/details"
+                  component={ReviewDetails}
                 />
                 <Route
                   path="/profile/change-password"

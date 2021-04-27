@@ -1,10 +1,11 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
-import StorefrontIcon from '@material-ui/icons/Storefront';
+import StorefrontIcon from "@material-ui/icons/Storefront";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import LockIcon from "@material-ui/icons/Lock";
 import CreateIcon from "@material-ui/icons/Create";
+import RateReviewIcon from "@material-ui/icons/RateReview";
 import "./index.scss";
 
 const linkList = [
@@ -21,12 +22,13 @@ const linkList = [
     icon: <StorefrontIcon />,
     sublinks: ["/profile/orders/order-details"],
   },
-
-  // {
-  //   id: "myprofile",
-  //   name: "MY PROFILE",
-  //   link: "/profile/myprofile",
-  // },
+  {
+    id: "reviews",
+    name: "PENDING REVIEWS",
+    link: "/profile/reviews",
+    icon: <RateReviewIcon />,
+    sublinks: ["/profile/reviews/details"],
+  },
   {
     id: "shippingaddress",
     name: "ADDRESS BOOK",

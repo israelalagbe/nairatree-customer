@@ -14,8 +14,8 @@ function OrdersDetails() {
   const [selectedOrder, setSelectedOrder] = useState(
     orders.find((item) => item.id)
   );
-  const total = selectedOrder.total_amount_to_pay + selectedOrder.shipping_fee;
-  console.log(selectedOrder);
+  const total =
+    selectedOrder?.total_amount_to_pay + selectedOrder?.shipping_fee;
 
   return (
     <div className="orderDetails">
@@ -25,7 +25,7 @@ function OrdersDetails() {
       </div>
       <div className="orderNumber">
         <h3>Order NO: {selectedOrder.id}</h3>
-        <h6>1 Items</h6>
+        <h6>1 Item</h6>
         <h6>
           Placed on {format(new Date(selectedOrder.createdAt), "LLL d, yyyy")}
         </h6>
@@ -62,10 +62,14 @@ function OrdersDetails() {
               <h3 className="mainH3">PAYMENT INFORMATION</h3>
               <div>
                 <h3>Payment Method</h3>
-                <h6>Pay Now to enjoy Instant Discount up to N1,000.</h6>
+                <h6>Card Only</h6>
+                <h1>
+                  Payment Status: <span>{selectedOrder.status}</span>
+                </h1>
               </div>
               <div>
                 <h3>Payment Details</h3>
+
                 <h6>
                   Items total: {formatMoney(selectedOrder.total_amount_to_pay)}
                 </h6>
@@ -83,11 +87,16 @@ function OrdersDetails() {
               <div>
                 <h3>Delivery Method</h3>
                 <h6>Standard Door Delivery</h6>
+                <h1>
+                  Delivery Status: <span>{selectedOrder.delivery_status}</span>
+                </h1>
               </div>
               <div>
                 <h3>Shipping Address</h3>
                 <h6>{selectedOrder.delivery_address.name}</h6>
+                <h6>{selectedOrder.delivery_address.phone}</h6>
                 <h6>{selectedOrder.delivery_address.address}</h6>
+
                 <h6>
                   {selectedOrder.delivery_address.region},
                   {selectedOrder.delivery_address.city}
