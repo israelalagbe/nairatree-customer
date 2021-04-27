@@ -84,15 +84,17 @@ const AddressBookModal = ({ show, onClose }) => {
                 </div>
                 <div className="addressGroupEdit">
                   <h6 className="pointer">
+                  <EditIcon />
                     Edit
-                    <EditIcon />
+                    
                   </h6>
                   <h6
                     className="pointer"
                     onClick={() => removeAddress(item._id)}
                   >
-                    Remove
                     <DeleteOutlineIcon />
+                    Remove
+                    
                   </h6>
                 </div>
               </div>
