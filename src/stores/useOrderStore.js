@@ -5,6 +5,7 @@ import {
   updateOrderPaymentStatus,
   getOrders,
   saveCheckoutGuest,
+  userReviews,
 } from "../services/order-service";
 import Notify from "../util/Notify";
 
@@ -15,14 +16,17 @@ import Notify from "../util/Notify";
  * @prop {boolean} saveCheckoutLoading
  * @prop {Order[]} orders
  * @prop {boolean} ordersLoading
+ * @prop {boolean} reviewsLoading
  */
 
 /**
  * @typedef {Object} MethodsType
  * @prop {()=>void} fetchOrders
  * @prop {(payload:any, onSuccess)=>void} saveCheckout
-* @prop {(payload:any, onSuccess)=>void} saveCheckoutGuest
+ * @prop {(payload:any, onSuccess)=>void} saveCheckoutGuest
  * @prop {(payload:any, callback)=>void} updateOrderPaymentStatus
+ * @prop {(payload:any, callback)=>void} updateOrderPaymentStatus
+ * @prop {(payload:any, callback)=>void} postReviews
  */
 
 /**
@@ -34,6 +38,7 @@ const initialState = {
   ordersLoading: false,
   cartsLoading: false,
   saveCheckoutLoading: false,
+  reviewsLoading: false,
 };
 
 /**
@@ -81,11 +86,28 @@ const useOrderStore = create(
           set((state) => ({ ...state, saveCheckoutLoading: false }));
         }
       },
+      userReviews: async (payload, callback) => {
+        set((state) => ({ ...state, reviewsLoading: true }));
+
+        try {
+          const orders = await userReviews(payload);
+          set((state) => ({
+            ...state,
+            userReviews: orders,
+          }));
+        } catch (e) {
+          Notify.error(e.message);
+        } finally {
+          set((state) => ({ ...state, reviewsLoading: false }));
+        }
+      },
       updateOrderPaymentStatus: async (payload, callback) => {
         try {
           await updateOrderPaymentStatus(payload);
 
-          Notify.success("Your payment was successful! Please check your mail for delivery timelines");
+          Notify.success(
+            "Your payment was successful! Please check your mail for delivery timelines"
+          );
           callback();
         } catch (e) {
           Notify.error(e.message);

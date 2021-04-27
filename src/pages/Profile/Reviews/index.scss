@@ -1,0 +1,65 @@
+@import "/src/config/variables.scss";
+
+.profile-orders-main {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  height: 100%;
+  .orders {
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 5px;
+    filter: drop-shadow(2px 2px 2px rgba(0.25, 0.25, 0.25, 0.25));
+
+    .main-order {
+      display: flex;
+      .order-img {
+        margin-right: 10px;
+        img {
+          height: 94px;
+          width: 80px;
+        }
+      }
+      .order-details {
+        h6 {
+          color: #828282;
+          font-family: $font-roboto-regular;
+          font-size: 14px;
+        }
+
+        h5 {
+          background: #f0fff2;
+          color: #124f36;
+          font-family: $font-roboto-regular;
+          font-size: 9px;
+          height: 16px;
+          width: 61px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 5px;
+        }
+        h2 {
+          font-size: 15px;
+          color: #000000;
+
+          font-family: $font-aller-regular;
+          padding: 0rem;
+        }
+      }
+    }
+    .details {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a {
+        color: #f3ca3e;
+        font-family: $font-aller-regular;
+        font-size: 14px;
+        text-decoration: none;
+      }
+    }
+  }
+}
