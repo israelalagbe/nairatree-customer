@@ -26,7 +26,7 @@ import Notify from "../util/Notify";
  * @prop {(payload:any, onSuccess)=>void} saveCheckoutGuest
  * @prop {(payload:any, callback)=>void} updateOrderPaymentStatus
  * @prop {(payload:any, callback)=>void} updateOrderPaymentStatus
- * @prop {(payload:any, callback)=>void} postReviews
+ * @prop {(payload:any, callback)=>void} userReviews
  */
 
 /**

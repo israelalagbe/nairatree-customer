@@ -9,7 +9,9 @@ import {
   updatePassword,
 } from "../services/authentication";
 
-import { persist } from "zustand/middleware";
+import {
+  persist
+} from "zustand/middleware";
 
 import Notify from "../util/Notify";
 import api from "../util/api";
@@ -87,7 +89,10 @@ const useAuthentication = create(
           loginLoading: true,
         }));
         try {
-          const { user, token } = await login(payload);
+          const {
+            user,
+            token
+          } = await login(payload);
 
           set((state) => ({
             ...state,
@@ -172,6 +177,15 @@ const useAuthentication = create(
         }));
 
         try {
+          const addresses = payload.address_book;
+          if (
+            addresses &&
+            addresses.length &&
+            addresses.find((address) => !address.is_default)
+            ) {
+            payload.address_book[0].is_default = true;
+          }
+
           const data = await updateProfile(payload);
           const user = data;
           set((state) => ({
@@ -215,8 +229,7 @@ const useAuthentication = create(
           }));
         }
       },
-    }),
-    {
+    }), {
       name: "auth",
       whitelist: ["user", "accessToken"],
       getStorage: () => localStorage,

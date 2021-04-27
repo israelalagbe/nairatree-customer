@@ -17,7 +17,7 @@ const AddressBookModal = ({ show, onClose }) => {
     addresses.find((item) => item.is_default)
   );
 
-  const handleSubmit = async (e) => {
+  const updateDefaultAddress = async (e) => {
     e.preventDefault();
     const payload = {
       address_book: [
@@ -107,7 +107,7 @@ const AddressBookModal = ({ show, onClose }) => {
           <div className="addressModalButton">
             <AppButton
               buttonText="Use This Address"
-              onClick={handleSubmit}
+              onClick={updateDefaultAddress}
               classname="useAddressButton"
             />
           </div>
