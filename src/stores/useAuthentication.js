@@ -56,7 +56,7 @@ const initialState = {
 };
 
 /**
- * @type {import('zustand').UseStore<InitialStateType & MethodsType>}
+ * @type {UseStore<InitialStateType & MethodsType>}
  */
 const useAuthentication = create(
   persist(
@@ -181,7 +181,7 @@ const useAuthentication = create(
           if (
             addresses &&
             addresses.length &&
-            addresses.find((address) => !address.is_default)
+            !addresses.find((address) => address.is_default)
             ) {
             payload.address_book[0].is_default = true;
           }

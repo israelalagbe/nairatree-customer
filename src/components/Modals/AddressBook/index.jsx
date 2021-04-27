@@ -7,7 +7,7 @@ import AppButton from "../../AppButton";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import useAuthentication from "../../../stores/useAuthentication";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useLocation } from "react-router-dom";
 
 const AddressBookModal = ({ show, onClose }) => {
   const history = useHistory();
@@ -73,7 +73,7 @@ const AddressBookModal = ({ show, onClose }) => {
           </Link>
           <div className="addressBookDefault">
             <h5>DEFAULT ADDRESS</h5>
-            {addresses.map((item) => (
+            {addresses.sort((b,a) => (a.is_default === b.is_default)? 0 : a.is_default? 1 : -1).map((item) => (
               <div className="addressBookForm">
                 <div className="addressFormGroup">
                   <FormGroup check>
@@ -92,7 +92,7 @@ const AddressBookModal = ({ show, onClose }) => {
                   </FormGroup>
                 </div>
                 <div className="addressGroupEdit">
-                  <h6 className="pointer">
+                  <h6 className="pointer" onClick={() => history.push(`/profile/addressbook/new-address`, {address_id: item._id})}>
                     <EditIcon />
                     Edit
                   </h6>
