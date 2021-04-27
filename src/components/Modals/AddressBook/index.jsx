@@ -38,10 +38,25 @@ const AddressBookModal = ({ show, onClose }) => {
   };
 
   const removeAddress = (id) => {
-    const newAddress = addresses.filter((address) => {
+    const newAddresses = addresses.filter((address) => {
       return address._id !== id;
     });
-    updateUser(newAddress, () => {});
+
+    const payload = {
+      address_book: [
+        ...newAddresses.map((item) => ({
+          name: item.name,
+          region: item.region,
+          city: item.city,
+          phone: item.phone,
+          address: item.address,
+          label: item.label,
+          is_default: item._id === selectedAddress?._id,
+        })),
+      ],
+    };
+    
+    updateUser(payload, () => {});
   };
 
   return (
@@ -50,15 +65,9 @@ const AddressBookModal = ({ show, onClose }) => {
         <div className="addressBookModal">
           <div className="addressBookContainer">
             <h2> Address Book</h2>
-            <CloseIcon
-              className="cursor-pointer close-image"
-              onClick={onClose}
-            />
+            <CloseIcon className="cursor-pointer close-image" onClick={onClose} />
           </div>
-          <Link
-            to="/profile/addressbook/new-address"
-            className="add-new-address"
-          >
+          <Link to="/profile/addressbook/new-address" className="add-new-address">
             <CancelIcon />
             <h6> ADD A NEW ADDRESS</h6>
           </Link>
@@ -84,17 +93,12 @@ const AddressBookModal = ({ show, onClose }) => {
                 </div>
                 <div className="addressGroupEdit">
                   <h6 className="pointer">
-                  <EditIcon />
+                    <EditIcon />
                     Edit
-                    
                   </h6>
-                  <h6
-                    className="pointer"
-                    onClick={() => removeAddress(item._id)}
-                  >
+                  <h6 className="pointer" onClick={() => removeAddress(item._id)}>
                     <DeleteOutlineIcon />
                     Remove
-                    
                   </h6>
                 </div>
               </div>
