@@ -38,7 +38,7 @@
       margin-bottom: 1rem;
     }
     h6 {
-      color: #929292;
+      color: #000000;
       font-size: 16px;
       font-family: $font-roboto-regular;
     }
@@ -89,7 +89,7 @@
         font-size: 16px;
       }
       h6 {
-        color: #929292;
+        color: #000000;
         font-size: 16px;
         font-family: $font-roboto-regular;
       }
@@ -101,6 +101,7 @@
       padding: 1rem;
       background-color: white;
       filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
+
       h3 {
         color: #6171aa;
         font-family: $font-aller-regular;
@@ -112,9 +113,27 @@
         }
       }
       h6 {
-        color: #929292;
+        color: #000000;
         font-size: 16px;
         font-family: $font-roboto-regular;
+      }
+      h1 {
+        color: #000000;
+        font-size: 13px;
+        font-family: $font-roboto-regular;
+        display: flex;
+        span {
+          background: #f0fff2;
+          color: #124f36;
+          font-family: $font-roboto-regular;
+          font-size: 9px;
+          height: 16px;
+          width: 41px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 5px;
+        }
       }
     }
   }

@@ -30,3 +30,10 @@ export function updateOrderPaymentStatus(payload) {
 export function getOrders() {
   return api.get(`${baseUrl}/customers/orders/user?page=1&limit=2`);
 }
+
+/**
+ * @return {any}
+ */
+export function userReviews(payload) {
+  return api.post(`${baseUrl}/customers/orders/review`, payload);
+}

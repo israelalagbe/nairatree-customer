@@ -47,14 +47,30 @@
       font-size: 16px;
       margin-top: 5px;
     }
-    h6 {
-      font-size: 14px;
-      color: #333333;
-      font-family: $font-roboto-regular;
+    .no-review {
+      h6 {
+        font-size: 14px;
+        color: #333333;
+        font-family: $font-roboto-regular;
+      }
+      svg {
+        margin-top: 2rem;
+        margin-left: 6rem;
+      }
     }
-    svg {
+    .review {
       margin-top: 2rem;
-      margin-left: 6rem;
+
+      p {
+        font-size: 16px;
+        color: #333333;
+        font-family: $font-roboto-regular;
+      }
+      h6 {
+        font-size: 14px;
+        color: grey;
+        font-family: $font-roboto-regular;
+      }
     }
   }
 }
