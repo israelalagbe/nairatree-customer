@@ -55,7 +55,7 @@ function HeaderCategory({ close }) {
                       <p
                         className="pointer"
                         onClick={() =>
-                          history.push(`/products?sub_category=${item.name}`)
+                          history.push(`/products?search=${item.name}`)
                         }
                       >
                         {item.name}

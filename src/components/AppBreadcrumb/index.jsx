@@ -13,36 +13,32 @@ const useStyles = makeStyles((theme) => ({
       display: "flex",
     },
   },
+  arrowContainer: {
+    display: "inline",
+    float: "left",
+    marginRight: "10px",
+    marginTop: "-1px",
+  },
 }));
 
-function handleClick(event) {
-  event.preventDefault();
-  console.info("You clicked a breadcrumb.");
-}
-
 /**
- * 
- * @param {{product: Product}} param0 
+ *
+ * @param {{product: Product}} param0
  */
-function AppBreadcrumb({product}) {
+function AppBreadcrumb({ product }) {
   const classes = useStyles();
   const history = useHistory();
 
-
   return (
     <div className={classes.root}>
-      <div>
-        <img src={ArrowBack} alt="arrow-back" onClick={history.goBack} className='pointer' />
+      <div className={classes.arrowContainer}>
+        <img src={ArrowBack} alt="arrow-back" onClick={history.goBack} className="pointer" />
       </div>
       <Breadcrumbs separator="›" aria-label="breadcrumb">
-        <Link color="inherit" href="/" onClick={handleClick}>
+        <Link color="inherit" href={`/products?category=${product.category}`}>
           {product.category}
         </Link>
-        <Link
-          color="inherit"
-          href="/getting-started/installation/"
-          onClick={handleClick}
-        >
+        <Link color="inherit" href={`/products?search=${product.subcategory}`}>
           {product.subcategory}
         </Link>
         <Typography color="textPrimary">{product.name}</Typography>
