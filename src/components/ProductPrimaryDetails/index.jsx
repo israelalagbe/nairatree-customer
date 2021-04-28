@@ -35,8 +35,6 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
 
   const { user } = useAuthentication();
 
-
-
   useEffect(() => {
     if (product) {
       const randomItems = product.related_items
@@ -45,7 +43,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
 
       setRelatedProduct(randomItems);
     }
-  }, [ product]);
+  }, [product]);
 
   const viewProduct = (id) => {
     history.push(`/product-details/${id}`);
@@ -170,10 +168,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                     ))}
                   </div>
                 </div>
-                <ProductTab
-                  variant={selectedVariant}
-                  product={product}
-                />
+                <ProductTab variant={selectedVariant} product={product} />
                 <div className="mt-5" />
               </Col>
               <Col md="5">
@@ -186,13 +181,15 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                     {/* <h4>20% off on shipping for Abeokuta and Lagos</h4> */}
                     <AppRating rating={product.avg_rating} totalRatings={product.no_of_ratings} />
                     <p className="amount">{formatMoney(product.price)}</p>
-                    {product.variants.map((variant) => (
-                      <div className="colors">
-                        <h6>Select Other Colors</h6>
-                        <div className="diff pointer mb-2">
+
+                    <div className="colors">
+                      {product.variants.length ? <h6>Select Other Colors</h6> : ""}
+                      
+                        <div className="diff  mb-2">
+                        {product.variants.map((variant) => (
                           <h6
                             key={variant.variant_id}
-                            className={classnames({
+                            className={classnames("pointer",{
                               active: selectedVariant?.color === variant.color,
                             })}
                             onClick={() => {
@@ -201,9 +198,10 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                           >
                             {variant.color}
                           </h6>
+                          ))}
                         </div>
-                      </div>
-                    ))}
+                      
+                    </div>
                   </div>
                   <div className="second-details">
                     <div className="maintain">
