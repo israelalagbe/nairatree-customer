@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
@@ -40,11 +40,16 @@ const useStyles2 = makeStyles((theme) => ({
 
 function ReviewDetails() {
   const history = useHistory();
-  const { orders } = useOrderStore();
+  const { id } = useParams();
+  const { orders, fetchOrders } = useOrderStore();
 
   const [selectedOrder, setSelectedOrder] = useState(
     orders.find((item) => item.id)
   );
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
 
   const [value, setValue] = React.useState("");
   const [hover, setHover] = React.useState(-1);

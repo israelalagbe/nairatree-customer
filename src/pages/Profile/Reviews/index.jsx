@@ -39,7 +39,9 @@ function Reviews() {
               </div>
 
               <div className="details">
-                <Link to={`/profile/reviews/details`}>RATE THIS PRODUCT</Link>
+                <Link to={`/profile/reviews/details/${order.id}`}>
+                  RATE THIS PRODUCT
+                </Link>
               </div>
             </div>
           ));
