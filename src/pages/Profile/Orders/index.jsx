@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import useOrderStore from "../../../stores/useOrderStore";
 import formatMoney from "../../../util/formatMoney";
 import { format } from "date-fns";
+import LoadingTrigger from "../../../components/LoadingTrigger";
 
 function Orders() {
-  const { orders, fetchOrders } = useOrderStore();
+  const { orders, fetchOrders, ordersLoading } = useOrderStore();
   const product = orders;
 
   useEffect(() => {
@@ -15,6 +16,7 @@ function Orders() {
 
   return (
     <div className="profile-orders-main">
+      <LoadingTrigger isLoading={ordersLoading && product.length === 0}>
       {product.length === 0 ? (
         <h2>You have no order to display </h2>
       ) : (
@@ -43,7 +45,7 @@ function Orders() {
 
               <div className="details">
                 <Link
-                  to={`/profile/orders/order-details/${product.product._id}`}
+                  to={`/profile/orders/order-details/${order.id}`}
                 >
                   See details
                 </Link>
@@ -52,6 +54,7 @@ function Orders() {
           ));
         })
       )}
+      </LoadingTrigger>
     </div>
   );
 }

@@ -19,6 +19,15 @@ import useLocationStore from "../../../stores/useLocation";
 
 function AddressInfo() {
   const history = useHistory();
+
+  /**
+   * @type {{address_id:string?}}
+   */
+  // @ts-ignore
+  const locationState = history.location.state;
+
+  
+  
   const { user, updateUser } = useAuthentication();
   const { fetchStates, states } = useLocationStore();
   const [address, updateAddress] = React.useState({
@@ -30,15 +39,24 @@ function AddressInfo() {
     label: "",
   });
 
+  
+
   const handleChange = async (e) => {
     updateAddress({ ...address, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let addressBook = user.address_book;
+
+    //For edit purpose
+    if(locationState?.address_id) {
+      addressBook = addressBook.filter((address) => address._id !== locationState.address_id )
+    }
+
     const payload = {
       address_book: [
-        ...user.address_book.map((item) => ({
+        ...addressBook.map((item) => ({
           name: item.name,
           region: item.region,
           city: item.city,
@@ -65,6 +83,22 @@ function AddressInfo() {
   useEffect(() => {
     fetchStates();
   }, [fetchStates]);
+
+  useEffect(() => {
+
+    const selectedAddress = user.address_book?.find?.(address => address._id ===locationState?.address_id);
+    if(selectedAddress) {
+      updateAddress({
+        name: selectedAddress.name,
+        region: selectedAddress.region,
+        city: selectedAddress.city,
+        phone: selectedAddress.phone.replace('+234', ''),
+        address: selectedAddress.address,
+        label: selectedAddress.label,
+      });
+    }
+
+  }, []);
 
   return (
     <div className="address-info">

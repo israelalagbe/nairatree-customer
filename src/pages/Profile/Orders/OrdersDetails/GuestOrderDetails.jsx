@@ -8,21 +8,27 @@ import { format } from "date-fns";
 import formatMoney from "../../../../util/formatMoney";
 import LoadingTrigger from "../../../../components/LoadingTrigger";
 
-function OrdersDetails() {
+function GuestOrderDetails() {
   const history = useHistory();
+  /**
+   * @type {{id:string}}
+   */
   const { id } = useParams();
-  const { orders, fetchOrders } = useOrderStore();
 
-  const selectedOrder = orders.find((item) => item.id === id);
+  const { selectedOrder, fetchOrderByRef } = useOrderStore();
+
 
   const total = selectedOrder?.total_amount_to_pay + selectedOrder?.shipping_fee;
   
   useEffect(() => {
-    fetchOrders();
-  }, []);
+
+    fetchOrderByRef(id);
+
+  }, [fetchOrderByRef, id]);
   
   return (
-    <div className="orderDetails">
+    
+    <div className="orderDetails guestOrderDetails" >
       <div className="orderArrow" onClick={history.goBack}>
         <ArrowBackIcon />
         <h3>Order Details</h3>
@@ -111,4 +117,4 @@ function OrdersDetails() {
   );
 }
 
-export default OrdersDetails;
+export default GuestOrderDetails;

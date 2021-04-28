@@ -102,7 +102,7 @@ function GuestCheckout() {
             payment_reference: response.reference,
             status: "success",
           },
-          () => {
+          (orderId) => {
             setTimeout(() =>{
               setLocalCarts([])
               history.push("/")
