@@ -1,12 +1,13 @@
 import React from "react";
 import "./index.scss";
 import logo from "../../img/logo-coloured.svg";
+import { Link } from "react-router-dom";
 
 function AppLogo() {
   return (
-    <div className="app-auth-navbar">
+    <Link to="/" className="app-auth-navbar">
       <img src={logo} alt="logo" />
-    </div>
+    </Link>
   );
 }
 

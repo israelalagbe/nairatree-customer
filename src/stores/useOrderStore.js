@@ -25,7 +25,7 @@ import Notify from "../util/Notify";
 /**
  * @typedef {Object} MethodsType
  * @prop {()=>void} fetchOrders
- * @prop {(ref: string)=>void} fetchOrderByRef
+ * @prop {(ref: string, callback)=>void} fetchOrderByRef
  * @prop {(payload:any, onSuccess)=>void} saveCheckout
  * @prop {(payload:any, onSuccess)=>void} saveCheckoutGuest
  * @prop {(payload:any, callback)=>void} updateOrderPaymentStatus
@@ -68,13 +68,13 @@ const useOrderStore = create(
           set((state) => ({ ...state, ordersLoading: false }));
         }
       },
-      fetchOrderByRef: async (ref) => {
+      fetchOrderByRef: async (ref, cb) => {
         set((state) => ({ ...state, selectedOrderLoading: true }));
 
         try {
           const order = await getOrderByRef(ref);
-          console.log("order", order)
           set((state) => ({ ...state, selectedOrder: order }));
+          cb?.()
         } catch (e) {
           Notify.error(e.message);
         } finally {
