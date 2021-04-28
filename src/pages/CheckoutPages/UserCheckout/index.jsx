@@ -82,11 +82,8 @@ function UserCheckout() {
             payment_reference: response.reference,
             status: "success",
           },
-          (orderId) => {
-            setTimeout(() =>{
-              history.push(`/profile/orders/order-details/${orderId}`);
-            }, 2000)
-            
+          (order) => {
+            history.push(`/profile/orders/order-details/${order.id}`);
           }
         );
       },

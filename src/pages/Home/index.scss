@@ -60,9 +60,7 @@
         white-space: nowrap;
 
         &:hover{
-          img{
-            width: 6.4rem;
-          }
+          transform: scale(1.02);
         }
 
         img {
