@@ -32,6 +32,16 @@ export function getOrders() {
 }
 
 /**
+ * @param {string} ref
+ * @return {any}
+ */
+export function getOrderByRef(ref) {
+  return api.post(`${baseUrl}/customers/orders/ref`, {
+    ref
+  });
+}
+
+/**
  * @return {any}
  */
 export function userReviews(payload) {

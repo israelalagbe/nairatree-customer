@@ -58,11 +58,16 @@
         }
         .addressGroupEdit {
           h6 {
-            color: #f3ca3e;
             font-family: $font-barlow-bold;
             svg {
               width: 1rem;
               height: 1rem;
+            }
+            &:first-child{
+              color: #f3ca3e;
+            }
+            &:last-child{
+              color: rgb(255, 123, 0);
             }
           }
         }

@@ -102,12 +102,9 @@ function GuestCheckout() {
             payment_reference: response.reference,
             status: "success",
           },
-          () => {
-            setTimeout(() =>{
-              setLocalCarts([])
-              history.push("/")
-            }, 3000)
-            
+          (order) => {
+            setLocalCarts([])
+            history.push(`/guest/orders/order-details/${order.payment_reference}`)
           }
         );
       },

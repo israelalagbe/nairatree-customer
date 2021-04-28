@@ -6,6 +6,7 @@ import {
   getOrders,
   saveCheckoutGuest,
   userReviews,
+  getOrderByRef,
 } from "../services/order-service";
 import Notify from "../util/Notify";
 
@@ -17,16 +18,19 @@ import Notify from "../util/Notify";
  * @prop {Order[]} orders
  * @prop {boolean} ordersLoading
  * @prop {boolean} reviewsLoading
+ * @prop {Order} selectedOrder
+ * @prop {boolean} selectedOrderLoading
  */
 
 /**
  * @typedef {Object} MethodsType
  * @prop {()=>void} fetchOrders
+ * @prop {(ref: string, callback)=>void} fetchOrderByRef
  * @prop {(payload:any, onSuccess)=>void} saveCheckout
  * @prop {(payload:any, onSuccess)=>void} saveCheckoutGuest
  * @prop {(payload:any, callback)=>void} updateOrderPaymentStatus
  * @prop {(payload:any, callback)=>void} updateOrderPaymentStatus
- * @prop {(payload:any, callback)=>void} postReviews
+ * @prop {(payload:any, callback)=>void} userReviews
  */
 
 /**
@@ -39,6 +43,8 @@ const initialState = {
   cartsLoading: false,
   saveCheckoutLoading: false,
   reviewsLoading: false,
+  selectedOrder: null,
+  selectedOrderLoading: false
 };
 
 /**
@@ -60,6 +66,19 @@ const useOrderStore = create(
           Notify.error(e.message);
         } finally {
           set((state) => ({ ...state, ordersLoading: false }));
+        }
+      },
+      fetchOrderByRef: async (ref, cb) => {
+        set((state) => ({ ...state, selectedOrderLoading: true }));
+
+        try {
+          const order = await getOrderByRef(ref);
+          set((state) => ({ ...state, selectedOrder: order }));
+          cb?.()
+        } catch (e) {
+          Notify.error(e.message);
+        } finally {
+          set((state) => ({ ...state, selectedOrderLoading: false }));
         }
       },
       saveCheckout: async (cartsPayload, onSuccess) => {
@@ -103,12 +122,12 @@ const useOrderStore = create(
       },
       updateOrderPaymentStatus: async (payload, callback) => {
         try {
-          await updateOrderPaymentStatus(payload);
+          const response = await updateOrderPaymentStatus(payload);
 
           Notify.success(
             "Your payment was successful! Please check your mail for delivery timelines"
           );
-          callback();
+          callback(response);
         } catch (e) {
           Notify.error(e.message);
         }

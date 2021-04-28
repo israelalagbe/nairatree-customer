@@ -214,6 +214,9 @@ function AccountNav() {
               <Link to="/registration-decision">
                 <DropdownItem>Register</DropdownItem>
               </Link>
+              <Link to="/guest-order-preference">
+                <DropdownItem>Guest Delivery Timelines</DropdownItem>
+              </Link>
             </>
           )}
         </div>

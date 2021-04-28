@@ -24,11 +24,18 @@ function ProductSearch() {
    */
   const query = getQueryParams(location.search);
 
-  const [filters, setFilters] = useState({});
+ 
+  const [filters, setFilters] = useState({
+    prices: [],
+    colors: [],
+    brands: [],
+    conditions: [],
+  });
 
   const { productsLoading, products, totalProducts, fetchProducts } = useProductStore();
 
   useEffect(() => {
+    console.log('filters',filters)
     fetchProducts(
       removeNullItems({
         limit,
@@ -36,7 +43,9 @@ function ProductSearch() {
         page: query.page,
         category: query.category,
         sub_category: query.sub_category,
-        ...filters,
+        min_price: filters.prices[0],
+        max_price: filters.prices[1],
+
       })
     );
   }, [query.search, query.page, query.category, query.sub_category, filters, fetchProducts]);

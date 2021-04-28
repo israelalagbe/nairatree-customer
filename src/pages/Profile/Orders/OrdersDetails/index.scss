@@ -1,6 +1,13 @@
 @import "/src/config/variables.scss";
 
+
 .orderDetails {
+  &.guestOrderDetails{
+    max-width: 60rem;
+    margin: auto;
+    margin-bottom: 5rem;
+  }
+
   background-color: white;
   padding: 2rem;
   height: 100%;
@@ -123,12 +130,13 @@
         font-family: $font-roboto-regular;
         display: flex;
         span {
+          margin-left: 0.3rem;
+          padding: 5px 10px;
           background: #f0fff2;
           color: #124f36;
           font-family: $font-roboto-regular;
           font-size: 9px;
           height: 16px;
-          width: 41px;
           display: flex;
           justify-content: center;
           align-items: center;
