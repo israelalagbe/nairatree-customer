@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-
 import "./index.scss";
 import { useHistory } from "react-router-dom";
-
 import {
   Form,
   FormGroup,

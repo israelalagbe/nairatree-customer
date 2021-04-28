@@ -1,0 +1,73 @@
+@import "/src/config/variables.scss";
+
+.guest-order-preference {
+  padding: 1rem;
+  background-color: #f7f7f7 !important;
+  height: 100vh;
+  .go-back {
+    display: flex;
+    padding: 3rem 5rem 0rem 8rem;
+    cursor: pointer;
+    svg {
+      height: 1rem;
+      width: 1rem;
+      margin-top: 2px;
+    }
+    h6 {
+      text-decoration: none;
+      font-family: $font-roboto-light;
+      color: #bdbdbd;
+      font-size: 15px;
+      margin-left: 3px;
+    }
+  }
+  .guest-order-preference-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .main-guest-order-preference {
+      padding: 2rem;
+      background-color: white;
+      border-radius: 5px;
+      width: 600px;
+      h3 {
+        color: #000000;
+        font-family: $font-roboto-regular;
+        font-size: 20px;
+      }
+      .form-group {
+        margin-top: 2rem;
+        input {
+          &::placeholder {
+            color: #e0e0e0;
+            font-family: $font-barlow-regular;
+            font-size: 14px;
+          }
+        }
+        .input-group {
+          .input-group-prepend {
+            margin-right: 5px !important;
+            span {
+              background-color: #ffffff;
+              color: #828282;
+              font-family: $font-barlow-regular;
+            }
+          }
+        }
+      }
+      .guest-order-preference-button {
+        width: 100%;
+        background-color: #f3ca3e;
+        color: white;
+        font-size: 15px;
+        font-family: $font-roboto-regular;
+        border: none;
+        margin-bottom: 1rem;
+        height: 37px;
+        border-radius: 5px;
+      }
+    }
+  }
+}

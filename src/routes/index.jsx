@@ -21,7 +21,7 @@ import AuthRoute from "./AuthRoute";
 import GuestRoute from "./GuestRoute";
 import GuestCheckout from "../pages/CheckoutPages/GuestCheckout";
 import GuestAddressInfo from "../pages/GuestAddressInfo";
-
+import GuestOrderPreference from "../pages/GuestOrderPreference";
 
 export function Routes() {
   return (
@@ -67,6 +67,9 @@ export function Routes() {
       </GuestRoute>
       <GuestRoute path="/guest-checkout-address">
         <GuestAddressInfo />
+      </GuestRoute>
+      <GuestRoute path="/guest-order-preference">
+        <GuestOrderPreference />
       </GuestRoute>
       <Route path="/confirm-otp">
         <Otp />
