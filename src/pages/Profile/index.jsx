@@ -54,7 +54,7 @@ function Profile() {
                 <Route exact path="/profile/reviews" component={Reviews} />
                 <Route
                   exact
-                  path="/profile/reviews/details/:id"
+                  path="/profile/reviews/details/:id/product/:product_id"
                   component={ReviewDetails}
                 />
                 <Route
