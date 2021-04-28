@@ -46,8 +46,6 @@ function ReviewDetails() {
     orders.find((item) => item.id)
   );
 
-  console.log(selectedOrder);
-
   const [value, setValue] = React.useState("");
   const [hover, setHover] = React.useState(-1);
   const { userReviews, reviewsLoading } = useOrderStore();

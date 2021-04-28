@@ -13,6 +13,8 @@ function Orders() {
     fetchOrders();
   }, [fetchOrders]);
 
+  console.log(product);
+
   return (
     <div className="profile-orders-main">
       {product.length === 0 ? (

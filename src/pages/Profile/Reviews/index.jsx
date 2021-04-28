@@ -8,9 +8,6 @@ import { format } from "date-fns";
 function Reviews() {
   const { orders, fetchOrders } = useOrderStore();
   const product = orders;
-
-  console.log(product);
-
   useEffect(() => {
     fetchOrders();
   }, [fetchOrders]);
