@@ -11,9 +11,9 @@ function SearchInputs({ applyFilter }) {
 
   const [priceRange, setPriceRange] = React.useState([100, 1000000]);
 
-  const [colorFilter, setColorFilter] = useState([]);
-  const [conditionsFilter, setConditionsFilter] = useState([]);
-  const [brandsFilter, setBrandsFilter] = useState([]);
+  const [colorFilter, setColorFilter] = useState(null);
+  const [conditionsFilter, setConditionsFilter] = useState(null);
+  const [brandsFilter, setBrandsFilter] = useState(null);
 
 
 
@@ -22,9 +22,9 @@ function SearchInputs({ applyFilter }) {
     
     applyFilter({
       prices : priceRange,
-      colors : colorFilter,
-      brands : brandsFilter,
-      conditions: conditionsFilter
+      color : colorFilter,
+      brand : brandsFilter,
+      condition: conditionsFilter
     })
   }
   return (
@@ -49,8 +49,8 @@ function SearchInputs({ applyFilter }) {
           <div className="mt-4 category-check">
             <h6> Color</h6>
             <CheckBoxItems
-              selectedItems={colorFilter}
-              setSelectedItems={setColorFilter}
+              selectedItem={colorFilter}
+              setSelectedItem={setColorFilter}
               items={["Red", "Crimson", "Green", "Yellow"]}
             />
           </div>
@@ -58,8 +58,8 @@ function SearchInputs({ applyFilter }) {
           <div className="mt-4 category-check">
             <h6> Condition</h6>
             <CheckBoxItems
-              selectedItems={conditionsFilter}
-              setSelectedItems={setConditionsFilter}
+              selectedItem={conditionsFilter}
+              setSelectedItem={setConditionsFilter}
               items={["New", "Refurbished", "Used", "Open Box"]}
             />
           </div>
@@ -67,8 +67,8 @@ function SearchInputs({ applyFilter }) {
           <div className="mt-4 category-check">
             <h6> Brand</h6>
             <CheckBoxItems
-              selectedItems={brandsFilter}
-              setSelectedItems={setBrandsFilter}
+              selectedItem={brandsFilter}
+              setSelectedItem={setBrandsFilter}
               items={popularBrands.map((brand) => brand.name)}
             />
           </div>
@@ -81,20 +81,20 @@ function SearchInputs({ applyFilter }) {
   );
 }
 
-function CheckBoxItems({ items, setSelectedItems, selectedItems }) {
+function CheckBoxItems({ items, setSelectedItem, selectedItem }) {
   const updateChecked = (item, checked) => {
-    if (checked) {
-      selectedItems = [...selectedItems, item];
-    } else {
-      selectedItems = selectedItems.filter((i) => i !== item);
+    
+    if(selectedItem === item){
+      return setSelectedItem(null);
     }
-
-    setSelectedItems(selectedItems);
+    
+    setSelectedItem(item);
   };
+  console.log(selectedItem)
   return items.map((item) => (
     <AppCheck
       setChecked={(checked) => updateChecked(item, checked)}
-      isChecked={selectedItems.includes(item)}
+      isChecked={selectedItem === item}
       checkText={item}
     />
   ));

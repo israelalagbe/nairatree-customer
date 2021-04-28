@@ -27,9 +27,9 @@ function ProductSearch() {
  
   const [filters, setFilters] = useState({
     prices: [],
-    colors: [],
-    brands: [],
-    conditions: [],
+    color: null,
+    brand: null,
+    condition: null,
   });
 
   const { productsLoading, products, totalProducts, fetchProducts } = useProductStore();
@@ -45,7 +45,9 @@ function ProductSearch() {
         sub_category: query.sub_category,
         min_price: filters.prices[0],
         max_price: filters.prices[1],
-
+        condition: filters.condition && filters.condition.toLowerCase(),
+        brand: filters.brand,
+        color: filters.color && filters.color.toLowerCase(),
       })
     );
   }, [query.search, query.page, query.category, query.sub_category, filters, fetchProducts]);
