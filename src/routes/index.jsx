@@ -22,6 +22,8 @@ import GuestRoute from "./GuestRoute";
 import GuestCheckout from "../pages/CheckoutPages/GuestCheckout";
 import GuestAddressInfo from "../pages/GuestAddressInfo";
 import GuestOrderPreference from "../pages/GuestOrderPreference";
+import OrdersDetails from "../pages/Profile/Orders/OrdersDetails";
+import GuestOrderDetails from "../pages/Profile/Orders/OrdersDetails/GuestOrderDetails";
 
 export function Routes() {
   return (
@@ -59,6 +61,9 @@ export function Routes() {
       <AuthRoute path="/checkout-details" exact>
         <UserCheckout />
       </AuthRoute>
+      <Route exact path="/guest/orders/order-details/:id">
+        <GuestOrderDetails />
+      </Route>
       <AuthRoute path="/profile">
         <Profile />
       </AuthRoute>
