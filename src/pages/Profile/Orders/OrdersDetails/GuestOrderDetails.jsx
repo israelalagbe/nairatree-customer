@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Row, Col } from "reactstrap";
 import "./index.scss";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import useOrderStore from "../../../../stores/useOrderStore";
 import { format } from "date-fns";
 import formatMoney from "../../../../util/formatMoney";
@@ -29,10 +29,10 @@ function GuestOrderDetails() {
   return (
     
     <div className="orderDetails guestOrderDetails" >
-      <div className="orderArrow" onClick={history.goBack}>
+      <Link className="orderArrow" to='/'>
         <ArrowBackIcon />
         <h3>Order Details</h3>
-      </div>
+      </Link>
       <LoadingTrigger isLoading={!selectedOrder}>
         {selectedOrder ? (
           <>

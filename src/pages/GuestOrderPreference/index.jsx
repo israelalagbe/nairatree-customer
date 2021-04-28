@@ -11,7 +11,7 @@ function GuestOrderPreference() {
   const history = useHistory();
   const [reference, setOrderReference] = useState('');
 
-  const {  fetchOrderByRef } = useOrderStore();
+  const {  selectedOrderLoading, fetchOrderByRef } = useOrderStore();
   
 
   const handleSubmit = async (e) => {
@@ -43,6 +43,7 @@ function GuestOrderPreference() {
               />
             </FormGroup>
             <AppButton
+              disabled={selectedOrderLoading}
               buttonText="Submit"
               classname="guest-order-preference-button"
             />

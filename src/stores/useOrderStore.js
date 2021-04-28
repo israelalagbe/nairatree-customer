@@ -127,7 +127,7 @@ const useOrderStore = create(
           Notify.success(
             "Your payment was successful! Please check your mail for delivery timelines"
           );
-          callback(response.id);
+          callback(response);
         } catch (e) {
           Notify.error(e.message);
         }

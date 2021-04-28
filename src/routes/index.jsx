@@ -60,9 +60,7 @@ export function Routes() {
       <AuthRoute path="/checkout-details" exact>
         <UserCheckout />
       </AuthRoute>
-      <Route exact path="/guest/orders/order-details/:id">
-        <GuestOrderDetails />
-      </Route>
+      
       <AuthRoute path="/profile">
         <Profile />
       </AuthRoute>
@@ -75,6 +73,9 @@ export function Routes() {
       <GuestRoute path="/guest-order-preference">
         <GuestOrderPreference />
       </GuestRoute>
+      <Route exact path="/guest/orders/order-details/:id">
+        <GuestOrderDetails />
+      </Route>
       <Route path="/confirm-otp">
         <Otp />
       </Route>
