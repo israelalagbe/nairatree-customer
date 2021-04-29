@@ -67,6 +67,11 @@ function ProductDetails() {
           </div>
         </LoadingTrigger>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      
       <HomeFooter />
     </div>
   );
