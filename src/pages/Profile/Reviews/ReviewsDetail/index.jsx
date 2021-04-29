@@ -77,7 +77,7 @@ function ReviewDetails() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!value) {
+    if (!value) {
       return Notify.error("Please add your star rating first!");
     }
     const payload = {
@@ -90,7 +90,7 @@ function ReviewDetails() {
         description: review.description,
       },
     };
-    userReviews(payload, () => history.push("/"));
+    userReviews(payload, () => history.push("/profile"));
   };
 
   return (
@@ -111,8 +111,8 @@ function ReviewDetails() {
             <div>
               <h4>{selectedProduct.name}</h4>
               <div className={classes.root}>
-              <br />
-              <br />
+                <br />
+                <br />
                 <Rating
                   size="large"
                   name="hover-feedback"
@@ -125,8 +125,10 @@ function ReviewDetails() {
                     setHover(newHover);
                   }}
                 />
-                
-                {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
+
+                {value !== null && (
+                  <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>
+                )}
               </div>
             </div>
           </div>
@@ -134,7 +136,12 @@ function ReviewDetails() {
       </div>
       <div className="reviewsDetailsLeave">
         <h4>LEAVE A REVIEW</h4>
-        <form className={classes2.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
+        <form
+          className={classes2.root}
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
           <TextField
             required
             id="title"
@@ -153,7 +160,7 @@ function ReviewDetails() {
             onChange={handleChange}
           />
           <TextField
-          required
+            required
             id="description"
             name="description"
             value={review.description}

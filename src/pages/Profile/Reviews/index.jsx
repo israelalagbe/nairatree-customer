@@ -7,10 +7,11 @@ import { format } from "date-fns";
 
 function Reviews() {
   const { orders, fetchOrders } = useOrderStore();
-  const hasPendingReviews =
-    orders.filter((order) => {
-      return order.products.find((product) => !product.is_reviewed);
-    }).length > 0;
+  const hasPendingReviews = orders.filter((order) => {
+    return order.find((product) => !product.delivery_status);
+  });
+
+  console.log(orders);
 
   useEffect(() => {
     fetchOrders();
@@ -38,12 +39,18 @@ function Reviews() {
                     <h6>{formatMoney(product.product.price)}</h6>
                     <h5>{order.delivery_status}</h5>
 
-                    <h2 className="mt-3">On {format(new Date(order.createdAt), "LLL d, yyyy")}</h2>
+                    <h2 className="mt-3">
+                      On {format(new Date(order.createdAt), "LLL d, yyyy")}
+                    </h2>
                   </div>
                 </div>
 
                 <div className="details">
-                  <Link to={`/profile/reviews/details/${order.id}/product/${product.product._id}`}>RATE THIS PRODUCT</Link>
+                  <Link
+                    to={`/profile/reviews/details/${order.id}/product/${product.product._id}`}
+                  >
+                    RATE THIS PRODUCT
+                  </Link>
                 </div>
               </div>
             ));
