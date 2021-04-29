@@ -201,6 +201,7 @@ interface Order {
   updatedAt: Date;
   id: string;
   colors: string;
+  delivery_status: string;
 }
 
 
@@ -211,7 +212,6 @@ interface ProductElement {
   quantity: number;
   product: Product;
   variant?: Variant;
-  delivery_status: string;
 }
 
 
