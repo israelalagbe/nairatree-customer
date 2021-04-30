@@ -50,6 +50,10 @@ function ReviewDetails() {
     (product) => product.product._id === product_id
   ).product;
 
+  const viewProduct = (id) => {
+    history.push(`/product-details/${id}`);
+  };
+
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -58,7 +62,7 @@ function ReviewDetails() {
   const [hover, setHover] = React.useState(-1);
   const { userReviews, reviewsLoading } = useOrderStore();
 
-  const [review, setUserReview] = React.useState({
+  const [review, setReview] = React.useState({
     name: user.first_name,
     title: "",
     description: "",
@@ -68,7 +72,7 @@ function ReviewDetails() {
   const classes2 = useStyles2();
 
   const handleChange = async (e) => {
-    setUserReview({ ...review, [e.target.name]: e.target.value });
+    setReview({ ...review, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -101,7 +105,10 @@ function ReviewDetails() {
         <h4>SELECT THE STARS TO RATE THE PRODUCT</h4>
         {selectedOrder && selectedProduct ? (
           <div className="reviewsDetailsSelectImg">
-            <div className="reviewsDetailsSelectImgMain">
+            <div
+              className="reviewsDetailsSelectImgMain pointer"
+              onClick={() => viewProduct(selectedProduct._id)}
+            >
               <img src={selectedProduct.images[0]} alt="Selected Order" />
             </div>
             <div>

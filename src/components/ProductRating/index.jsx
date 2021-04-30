@@ -3,6 +3,7 @@ import AppRating from "../AppRating";
 import "./index.scss";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import { format } from "date-fns";
+import ReviewDetails from "../../pages/Profile/Reviews/ReviewsDetail";
 
 /**
  *
@@ -12,7 +13,7 @@ function ProductRating({ product }) {
   return (
     <div className="tabRating">
       <div className="productRating">
-        <h4>Product Rating</h4>
+        <h4>Product Rating({product.no_of_ratings})</h4>
         <div className="productRating2">
           <h5>{product.avg_rating}/5</h5>
           <AppRating
@@ -23,22 +24,30 @@ function ProductRating({ product }) {
         </div>
       </div>
       <div className="productReview">
-        <h4>Product Reviews</h4>
+        <h4>Product Reviews({product.reviews.length})</h4>
 
-        {!product ? (
+        {!product.reviews.length ? (
           <div className="no-review">
             <QuestionAnswerIcon />
             <h6>This product has no reviews yet.</h6>
           </div>
         ) : (
-          <div className="review">
+          <>
             <AppRating
               rating={product.avg_rating}
               totalRatings={product.no_of_ratings}
             />
-            <p>Comment</p>
-            <h6>{format(new Date(product.createdAt), "LLL d, yyyy")}</h6>
-          </div>
+            {product.reviews.map((review) => (
+              <div className="review">
+                <p>{review.title}</p>
+                <p>{review.description}</p>
+                <h6>
+                  {format(new Date(review.date), "LLL d, yyyy")} by{" "}
+                  {review.name}
+                </h6>
+              </div>
+            ))}
+          </>
         )}
       </div>
     </div>

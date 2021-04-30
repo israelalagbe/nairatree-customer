@@ -22,7 +22,8 @@ import ProductTab from "../ProductTab";
 function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
   const history = useHistory();
 
-  const availableQuantity = selectedVariant?.quantity ?? product.quantity_available;
+  const availableQuantity =
+    selectedVariant?.quantity ?? product.quantity_available;
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [relatedProduct, setRelatedProduct] = useState([]);
@@ -110,7 +111,9 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
       const newCart = {
         product: { ...product },
         quantity: counter,
-        ...(selectedVariant?.variant_id ? { variant: String(selectedVariant?.variant_id) } : null),
+        ...(selectedVariant?.variant_id
+          ? { variant: String(selectedVariant?.variant_id) }
+          : null),
       };
       setLocalCarts([...existingCarts, newCart]);
       history.push("/cart-success");
@@ -139,7 +142,9 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
       {
         product: product.id,
         quantity: counter,
-        ...(selectedVariant?.variant_id ? { variant: String(selectedVariant?.variant_id) } : null),
+        ...(selectedVariant?.variant_id
+          ? { variant: String(selectedVariant?.variant_id) }
+          : null),
       },
     ];
     saveCarts(payload, () => history.push("/cart-success"));
@@ -179,17 +184,24 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                         Sold by:<span>Veral Stores</span>
                       </h6> */}
                     {/* <h4>20% off on shipping for Abeokuta and Lagos</h4> */}
-                    <AppRating rating={product.avg_rating} totalRatings={product.no_of_ratings} />
+                    <AppRating
+                      rating={product.avg_rating}
+                      totalRatings={product.no_of_ratings}
+                    />
                     <p className="amount">{formatMoney(product.price)}</p>
 
                     <div className="colors">
-                      {product.variants.length ? <h6>Select Other Colors</h6> : ""}
-                      
-                        <div className="diff  mb-2">
+                      {product.variants.length ? (
+                        <h6>Select Other Colors</h6>
+                      ) : (
+                        ""
+                      )}
+
+                      <div className="diff  mb-2">
                         {product.variants.map((variant) => (
                           <h6
                             key={variant.variant_id}
-                            className={classnames("pointer",{
+                            className={classnames("pointer", {
                               active: selectedVariant?.color === variant.color,
                             })}
                             onClick={() => {
@@ -198,9 +210,8 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                           >
                             {variant.color}
                           </h6>
-                          ))}
-                        </div>
-                      
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <div className="second-details">
@@ -266,7 +277,10 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
           <div className="vendor">
             <h6>Wanna be a vendor?</h6>
             <h6>Click here to register your account!</h6>
-            <AppButton buttonText="Register as a Vendor" classname="register-as-vendor" />
+            <AppButton
+              buttonText="Register as a Vendor"
+              classname="register-as-vendor"
+            />
           </div>
         </Col>
       </Row>

@@ -37,8 +37,8 @@ function ProductDetails() {
       updateRecentView(productId);
       return;
     }
-    
-    if(selectedProduct) {
+
+    if (selectedProduct) {
       addLocalRecentlyViewed(selectedProduct);
     }
   }, [
@@ -71,7 +71,7 @@ function ProductDetails() {
       <br />
       <br />
       <br />
-      
+
       <HomeFooter />
     </div>
   );
