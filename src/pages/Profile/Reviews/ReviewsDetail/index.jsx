@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Rating from "@material-ui/lab/Rating";
@@ -13,13 +13,9 @@ import Notify from "../../../../util/Notify";
 
 const labels = {
   1: "I hate it",
-
   2: "I dont like it",
-
   3: "I have mixed feeling",
-
   4: "I like it",
-
   5: "I love it",
 };
 

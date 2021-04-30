@@ -44,7 +44,7 @@ const initialState = {
   saveCheckoutLoading: false,
   reviewsLoading: false,
   selectedOrder: null,
-  selectedOrderLoading: false
+  selectedOrderLoading: false,
 };
 
 /**
@@ -74,7 +74,7 @@ const useOrderStore = create(
         try {
           const order = await getOrderByRef(ref);
           set((state) => ({ ...state, selectedOrder: order }));
-          cb?.()
+          cb?.();
         } catch (e) {
           Notify.error(e.message);
         } finally {
@@ -114,6 +114,8 @@ const useOrderStore = create(
             ...state,
             userReviews: orders,
           }));
+          Notify.success("Successful");
+          callback();
         } catch (e) {
           Notify.error(e.message);
         } finally {
