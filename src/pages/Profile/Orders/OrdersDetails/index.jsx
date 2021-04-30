@@ -23,7 +23,7 @@ function OrdersDetails() {
   
   return (
     <div className="orderDetails">
-      <div className="orderArrow" onClick={history.goBack}>
+      <div className="orderArrow" onClick={() => history.push('/profile/orders')}>
         <ArrowBackIcon />
         <h3>Order Details</h3>
       </div>

@@ -110,10 +110,13 @@ const useOrderStore = create(
 
         try {
           const orders = await userReviews(payload);
-          set((state) => ({
-            ...state,
-            userReviews: orders,
-          }));
+          // set((state) => ({
+          //   ...state,
+          //   userReviews: orders,
+          // }));
+
+          callback();
+
         } catch (e) {
           Notify.error(e.message);
         } finally {

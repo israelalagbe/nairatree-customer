@@ -23,6 +23,7 @@ function Reviews() {
       {pendingReviewOrders.length ? (
         pendingReviewOrders.map((order) => {
           return order.products
+            .filter((product) => !product.is_reviewed)
             .map((product) => (
               <div className="orders mb-3">
                 <div className="main-order">
@@ -32,10 +33,9 @@ function Reviews() {
 
                   <div className="order-details">
                     <h2>{product.product.name}</h2>
-                    <h6>
-                      Color:
-                      {product.product.variants[0]?.color}
-                    </h6>
+                    {product.product.variants[0]?.color ? (
+                      <h6>Color: {product.product.variants[0]?.color}</h6>
+                    ) : null}
                     <h6>{formatMoney(product.product.price)}</h6>
                     <h5>{order.delivery_status}</h5>
 
