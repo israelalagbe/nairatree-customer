@@ -8,8 +8,10 @@ import { format } from "date-fns";
 function Reviews() {
   const { orders, fetchOrders } = useOrderStore();
   const pendingReviewOrders = orders.filter((order) => {
-    return order.delivery_status === 'CONFIRMED';
+    return order.delivery_status === "CONFIRMED";
   });
+
+  console.log(pendingReviewOrders);
 
   useEffect(() => {
     fetchOrders();
@@ -19,7 +21,6 @@ function Reviews() {
     <div className="profile-orders-main">
       {pendingReviewOrders.length ? (
         pendingReviewOrders.map((order) => {
-
           return order.products
             .filter((product) => !product.is_reviewed)
             .map((product) => (
