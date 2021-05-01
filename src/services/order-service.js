@@ -28,7 +28,7 @@ export function updateOrderPaymentStatus(payload) {
  * @return {any}
  */
 export function getOrders() {
-  return api.get(`${baseUrl}/customers/orders/user?page=1&limit=2`);
+  return api.get(`${baseUrl}/customers/orders/user?page=1&limit=1000`);
 }
 
 /**

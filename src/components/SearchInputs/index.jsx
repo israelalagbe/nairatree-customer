@@ -15,18 +15,16 @@ function SearchInputs({ applyFilter }) {
   const [conditionsFilter, setConditionsFilter] = useState(null);
   const [brandsFilter, setBrandsFilter] = useState(null);
 
-
-
   const onApplyFilterClicked = (e) => {
     e.preventDefault();
-    
+
     applyFilter({
-      prices : priceRange,
-      color : colorFilter,
-      brand : brandsFilter,
-      condition: conditionsFilter
-    })
-  }
+      prices: priceRange,
+      color: colorFilter,
+      brand: brandsFilter,
+      condition: conditionsFilter,
+    });
+  };
   return (
     <div className="search-inputs">
       <div className="first-part">
@@ -72,7 +70,7 @@ function SearchInputs({ applyFilter }) {
               items={popularBrands.map((brand) => brand.name)}
             />
           </div>
-          <div className='mt-3'>
+          <div className="mt-3">
             <AppButton classname="btn btn-warning" buttonText="Apply Filter" />
           </div>
         </div>
@@ -83,14 +81,13 @@ function SearchInputs({ applyFilter }) {
 
 function CheckBoxItems({ items, setSelectedItem, selectedItem }) {
   const updateChecked = (item, checked) => {
-    
-    if(selectedItem === item){
+    if (selectedItem === item) {
       return setSelectedItem(null);
     }
-    
+
     setSelectedItem(item);
   };
-  console.log(selectedItem)
+
   return items.map((item) => (
     <AppCheck
       setChecked={(checked) => updateChecked(item, checked)}
