@@ -39,7 +39,7 @@ function ProductRating({ product }) {
             />
             {product.reviews.map((review) => (
               <div className="review">
-                <p>{review.title}</p>
+                <h5>{review.title}</h5>
                 <p>{review.description}</p>
                 <h6>
                   {format(new Date(review.date), "LLL d, yyyy")} by{" "}
