@@ -138,10 +138,25 @@ function HomeFooter() {
             <Col md="4">
               <h3>JOIN OUR SOCIAL MEDIA</h3>
               <div>
-                <img src={twitter} alt="twitter" />
+                <a
+                  href="http://twitter.com/nairatreestores"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={twitter} alt="twitter" />
+                </a>
+
                 <img src={facebook} alt="facebook" />
+
                 <img src={linkedin} alt="linkedin" />
-                <img src={instagram} alt="instgram" />
+                <a
+                  href="http://instagram.com/nairatreestores"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={instagram} alt="instgram" />
+                </a>
+
                 <img src={snapchat} alt="snapchat" />
                 <img src={youtube} alt="youtube" />
               </div>
