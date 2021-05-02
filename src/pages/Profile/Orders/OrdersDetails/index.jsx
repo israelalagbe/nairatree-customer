@@ -22,7 +22,6 @@ function OrdersDetails() {
     history.push(`/product-details/${id}`);
   };
 
-  console.log(selectedOrder);
   useEffect(() => {
     fetchOrders();
   }, []);

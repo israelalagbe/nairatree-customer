@@ -59,3 +59,14 @@ export function updateProfile(payload) {
 export function updatePassword(payload) {
   return api.put(`${baseUrl}/customers/profile/password/update`, payload);
 }
+
+/**
+ * @return {any}
+ */
+export function registerSubscriber(payload) {
+  return api.post(
+    `${baseUrl}/customers/subscribers/add
+  `,
+    payload
+  );
+}

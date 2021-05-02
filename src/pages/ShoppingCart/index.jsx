@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import CartFirst from "../../components/CartFirst";
 import CartSecond from "../../components/CartSecond";
 import "./index.scss";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ProductItem from "../../components/ProductItem";
 import useCartStore from "../../stores/useCartStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
@@ -12,7 +12,8 @@ import useAuthentication from "../../stores/useAuthentication";
 import useProductStore from "../../stores/useProductStore";
 
 function ShoppingCart() {
-  const { carts, setLocalCarts } = useCartStore();
+  const history = useHistory();
+  const { carts, saveCarts, setLocalCarts } = useCartStore();
   const [selectedCartsIndexes, setSelectedCartsIndexes] = useState([]);
   const { user } = useAuthentication();
   const {
@@ -35,7 +36,17 @@ function ShoppingCart() {
       })
       //This deletes null cart
       .filter((cart) => cart);
-    setLocalCarts(updatedCarts);
+    if (user) {
+      const payload = updatedCarts.map((cart) => ({
+        product: cart.product.id,
+        quantity: cart.quantity,
+        ...(cart.variant ? { variant: String(cart.variant) } : null),
+      }));
+
+      saveCarts(payload, () => {});
+    } else {
+      setLocalCarts(updatedCarts);
+    }
   };
 
   const deleteSelectedCarts = () => {

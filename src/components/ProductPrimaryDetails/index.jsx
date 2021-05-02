@@ -192,7 +192,7 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
 
                     <div className="colors">
                       {product.variants.length ? (
-                        <h6>Select Other Colors</h6>
+                        <h6>Select Other Variants</h6>
                       ) : (
                         ""
                       )}
@@ -214,24 +214,30 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                       </div>
                     </div>
                   </div>
-                  <div className="second-details">
-                    <div className="maintain">
-                      <h6 className="pointer" onClick={decrementCounter}>
-                        -
-                      </h6>
-                      <p>{counter}</p>
-                      <h6 className="pointer" onClick={incrementCounter}>
-                        +
-                      </h6>
-                    </div>
-                    <AppButton
-                      onClick={addToCart}
-                      buttonText="Add to Cart"
-                      classname={`add-to-cart ${
-                        counter === 0 || saveCartsLoading ? "btn-disabled" : ""
-                      }`}
-                    />
-                    {/* <div className="shipping">
+
+                  {!product.quantity_available ? (
+                    <h2 className="out-of-stock">Out Of Stock</h2>
+                  ) : (
+                    <div className="second-details">
+                      <div className="maintain">
+                        <h6 className="pointer" onClick={decrementCounter}>
+                          -
+                        </h6>
+                        <p>{counter}</p>
+                        <h6 className="pointer" onClick={incrementCounter}>
+                          +
+                        </h6>
+                      </div>
+                      <AppButton
+                        onClick={addToCart}
+                        buttonText="Add to Cart"
+                        classname={`add-to-cart ${
+                          counter === 0 || saveCartsLoading
+                            ? "btn-disabled"
+                            : ""
+                        }`}
+                      />
+                      {/* <div className="shipping">
                       <div>
                         <img src={Car} alt="#" />
                       </div>
@@ -241,7 +247,8 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
                         <span>FREE Shipping on order within Lagos</span>
                       </p>
                     </div> */}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </Col>
             </Row>
@@ -277,10 +284,12 @@ function ProductPrimaryDetails({ product, setVariant, selectedVariant }) {
           <div className="vendor">
             <h6>Wanna be a vendor?</h6>
             <h6>Click here to register your account!</h6>
-            <AppButton
-              buttonText="Register as a Vendor"
-              classname="register-as-vendor"
-            />
+            <a href="https://vendor.nairatree.com/account/register">
+              <AppButton
+                buttonText="Register as a Vendor"
+                classname="register-as-vendor"
+              />
+            </a>
           </div>
         </Col>
       </Row>
