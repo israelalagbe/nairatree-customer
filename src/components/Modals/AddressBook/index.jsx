@@ -8,6 +8,7 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import useAuthentication from "../../../stores/useAuthentication";
 import { useHistory, Link, useLocation } from "react-router-dom";
+import Notify from "../../../util/Notify";
 
 const AddressBookModal = ({ show, onClose }) => {
   const history = useHistory();
@@ -34,6 +35,7 @@ const AddressBookModal = ({ show, onClose }) => {
     };
 
     updateUser(payload, () => history.push("/checkout-details"));
+    Notify.success("Shipping Address Updated");
     onClose();
   };
 
@@ -55,8 +57,9 @@ const AddressBookModal = ({ show, onClose }) => {
         })),
       ],
     };
-    
+
     updateUser(payload, () => {});
+    Notify.success("Address Book Removed ");
   };
 
   return (
@@ -65,44 +68,64 @@ const AddressBookModal = ({ show, onClose }) => {
         <div className="addressBookModal">
           <div className="addressBookContainer">
             <h2> Address Book</h2>
-            <CloseIcon className="cursor-pointer close-image" onClick={onClose} />
+            <CloseIcon
+              className="cursor-pointer close-image"
+              onClick={onClose}
+            />
           </div>
-          <Link to="/profile/addressbook/new-address" className="add-new-address">
+          <Link
+            to="/profile/addressbook/new-address"
+            className="add-new-address"
+          >
             <CancelIcon />
             <h6> ADD A NEW ADDRESS</h6>
           </Link>
           <div className="addressBookDefault">
             <h5>DEFAULT ADDRESS</h5>
-            {addresses.sort((b,a) => (a.is_default === b.is_default)? 0 : a.is_default? 1 : -1).map((item) => (
-              <div className="addressBookForm">
-                <div className="addressFormGroup">
-                  <FormGroup check>
-                    <Label check>
-                      <Input
-                        onClick={() => setSelectedAddress(item)}
-                        type="checkbox"
-                        checked={item._id === selectedAddress?._id}
-                      />
-                      <div>
-                        <h4>{item.name}</h4>
-                        <h6>{item.address}</h6>
-                        <h6>{item.phone}</h6>
-                      </div>
-                    </Label>
-                  </FormGroup>
+            {addresses
+              .sort((b, a) =>
+                a.is_default === b.is_default ? 0 : a.is_default ? 1 : -1
+              )
+              .map((item) => (
+                <div className="addressBookForm">
+                  <div className="addressFormGroup">
+                    <FormGroup check>
+                      <Label check>
+                        <Input
+                          onClick={() => setSelectedAddress(item)}
+                          type="checkbox"
+                          checked={item._id === selectedAddress?._id}
+                        />
+                        <div>
+                          <h4>{item.name}</h4>
+                          <h6>{item.address}</h6>
+                          <h6>{item.phone}</h6>
+                        </div>
+                      </Label>
+                    </FormGroup>
+                  </div>
+                  <div className="addressGroupEdit">
+                    <h6
+                      className="pointer"
+                      onClick={() =>
+                        history.push(`/profile/addressbook/new-address`, {
+                          address_id: item._id,
+                        })
+                      }
+                    >
+                      <EditIcon />
+                      Edit
+                    </h6>
+                    <h6
+                      className="pointer"
+                      onClick={() => removeAddress(item._id)}
+                    >
+                      <DeleteOutlineIcon />
+                      Remove
+                    </h6>
+                  </div>
                 </div>
-                <div className="addressGroupEdit">
-                  <h6 className="pointer" onClick={() => history.push(`/profile/addressbook/new-address`, {address_id: item._id})}>
-                    <EditIcon />
-                    Edit
-                  </h6>
-                  <h6 className="pointer" onClick={() => removeAddress(item._id)}>
-                    <DeleteOutlineIcon />
-                    Remove
-                  </h6>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
           <div className="addressModalButton">
             <AppButton

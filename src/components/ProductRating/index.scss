@@ -2,8 +2,10 @@
 
 .tabRating {
   display: flex;
+  width: 100%;
 
   .productRating {
+    width: 50%;
     margin-right: 2rem;
     h4 {
       color: #333333;
@@ -41,6 +43,7 @@
     }
   }
   .productReview {
+    width: 50%;
     h4 {
       color: #333333;
       font-family: $font-roboto-bold;
@@ -60,6 +63,12 @@
     }
     .review {
       margin-top: 2rem;
+      border-bottom: 1px solid #333333;
+      h5 {
+        font-size: 16px;
+        color: #333333;
+        font-family: $font-roboto-bold;
+      }
 
       p {
         font-size: 16px;
@@ -70,6 +79,7 @@
         font-size: 14px;
         color: grey;
         font-family: $font-roboto-regular;
+        margin-bottom: 1rem;
       }
     }
   }

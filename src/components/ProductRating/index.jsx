@@ -4,6 +4,8 @@ import "./index.scss";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import { format } from "date-fns";
 import ReviewDetails from "../../pages/Profile/Reviews/ReviewsDetail";
+import Rating from "@material-ui/lab/Rating";
+import Box from "@material-ui/core/Box";
 
 /**
  *
@@ -32,22 +34,19 @@ function ProductRating({ product }) {
             <h6>This product has no reviews yet.</h6>
           </div>
         ) : (
-          <>
-            <AppRating
-              rating={product.avg_rating}
-              totalRatings={product.no_of_ratings}
-            />
-            {product.reviews.map((review) => (
-              <div className="review">
-                <p>{review.title}</p>
-                <p>{review.description}</p>
-                <h6>
-                  {format(new Date(review.date), "LLL d, yyyy")} by{" "}
-                  {review.name}
-                </h6>
+          product.reviews.map((review) => (
+            <div className="review">
+              <div>
+                <Rating name="read-only" value={review.rating} readOnly />
               </div>
-            ))}
-          </>
+
+              <h5>{review.title}</h5>
+              <p>{review.description}</p>
+              <h6>
+                {format(new Date(review.date), "LLL d, yyyy")} by {review.name}
+              </h6>
+            </div>
+          ))
         )}
       </div>
     </div>

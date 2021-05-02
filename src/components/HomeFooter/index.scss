@@ -20,6 +20,8 @@
       .homeFooter1FormGroup {
         display: flex;
         .homeFooterInput {
+          font-size: 16px;
+          font-family: $font-roboto-regular;
           &::placeholder {
             font-family: $font-roboto-regular;
             font-size: 12px;

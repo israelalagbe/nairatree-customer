@@ -91,6 +91,7 @@ function ReviewDetails() {
       },
     };
     userReviews(payload, () => history.push("/profile"));
+    Notify.success("Order Reviewed Successfully");
   };
 
   return (

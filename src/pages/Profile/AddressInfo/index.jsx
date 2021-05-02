@@ -14,6 +14,7 @@ import AppButton from "../../../components/AppButton";
 import useAuthentication from "../../../stores/useAuthentication";
 import { Select } from "@material-ui/core";
 import useLocationStore from "../../../stores/useLocation";
+import Notify from "../../../util/Notify";
 
 function AddressInfo() {
   const history = useHistory();
@@ -24,8 +25,6 @@ function AddressInfo() {
   // @ts-ignore
   const locationState = history.location.state;
 
-  
-  
   const { user, updateUser } = useAuthentication();
   const { fetchStates, states } = useLocationStore();
   const [address, updateAddress] = React.useState({
@@ -37,8 +36,6 @@ function AddressInfo() {
     label: "",
   });
 
-  
-
   const handleChange = async (e) => {
     updateAddress({ ...address, [e.target.name]: e.target.value });
   };
@@ -48,8 +45,10 @@ function AddressInfo() {
     let addressBook = user.address_book;
 
     //For edit purpose
-    if(locationState?.address_id) {
-      addressBook = addressBook.filter((address) => address._id !== locationState.address_id )
+    if (locationState?.address_id) {
+      addressBook = addressBook.filter(
+        (address) => address._id !== locationState.address_id
+      );
     }
 
     const payload = {
@@ -76,6 +75,7 @@ function AddressInfo() {
     };
 
     updateUser(payload, () => history.goBack());
+    Notify.success("Address Updated Successfully");
   };
 
   useEffect(() => {
@@ -83,19 +83,19 @@ function AddressInfo() {
   }, [fetchStates]);
 
   useEffect(() => {
-
-    const selectedAddress = user.address_book?.find?.(address => address._id ===locationState?.address_id);
-    if(selectedAddress) {
+    const selectedAddress = user.address_book?.find?.(
+      (address) => address._id === locationState?.address_id
+    );
+    if (selectedAddress) {
       updateAddress({
         name: selectedAddress.name,
         region: selectedAddress.region,
         city: selectedAddress.city,
-        phone: selectedAddress.phone.replace('+234', ''),
+        phone: selectedAddress.phone.replace("+234", ""),
         address: selectedAddress.address,
         label: selectedAddress.label,
       });
     }
-
   }, []);
 
   return (

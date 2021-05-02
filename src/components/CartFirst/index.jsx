@@ -6,6 +6,8 @@ import formatMoney from "../../util/formatMoney";
 import Notify from "../../util/Notify";
 import AppButton from "../AppButton";
 import "./index.scss";
+import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
+import { useHistory } from "react-router-dom";
 // import { ray } from 'js-ray';
 /**
  *
@@ -23,6 +25,7 @@ function CartFirst({
   setSelectedCartsIndexes,
   deleteSelectedCarts,
 }) {
+  const history = useHistory();
   const saveCarts = useCartStore((store) => store.saveCarts);
 
   const user = useAuthentication((state) => state.user);
@@ -115,78 +118,93 @@ function CartFirst({
           />
         </div>
       </div>
+      {!carts.length ? (
+        <div className="empty-cart">
+          <h2>Cart is currently empty!</h2>
+          <RemoveShoppingCartIcon />
+          <AppButton
+            buttonText="Click Here To Shop"
+            classname="empty-button"
+            onClick={() => history.push("/")}
+          />
+        </div>
+      ) : (
+        carts.map((cart, index) => {
+          const isChecked =
+            selectedCartsIndexes.filter((item) => item === index).length > 0;
 
-      {carts.map((cart, index) => {
-        const isChecked =
-          selectedCartsIndexes.filter((item) => item === index).length > 0;
-
-        const product = cart.product;
-        const variant = product.variants.find(
-          (variant) => String(variant.variant_id) === String(cart.variant)
-        );
-        const productImage = variant?.images[0] ?? cart.product.images[0];
-        return (
-          <div className="wishlist">
-            <div className="main">
-              <div className="wish-check">
-                <FormGroup>
-                  <div>
-                    <Input
-                      type="checkbox"
-                      checked={isChecked}
-                      onClick={() => toggleSelected(index)}
-                    />
-                    <div className="content">
-                      <div className="content-img">
-                        <img src={productImage} alt={product.name} />
-                      </div>
-                      <div className="content-2">
-                        <h5>{cart.product.name}</h5>
-
-                        {variant ? (
-                          <h6>
-                            Color:{" "}
-                            <span className="capitalize">{variant.color}</span>
-                          </h6>
-                        ) : null}
-                        <h4>
-                          {formatMoney(product.price * cart.quantity)}{" "}
-                          &nbsp;&nbsp;{" "}
-                          {product.deal ? (
-                            <span>{formatMoney(product.deal.new_price)}</span>
-                          ) : null}
-                        </h4>
-                        <div className="maintain">
-                          <h6
-                            className="pointer"
-                            onClick={() => decreaseCart(index, cart)}
-                          >
-                            -
-                          </h6>
-                          <p>{cart.quantity}</p>
-                          <h6
-                            className="pointer"
-                            onClick={() => incrementCart(index, cart, variant)}
-                          >
-                            +
-                          </h6>
+          const product = cart.product;
+          const variant = product.variants.find(
+            (variant) => String(variant.variant_id) === String(cart.variant)
+          );
+          const productImage = variant?.images[0] ?? cart.product.images[0];
+          return (
+            <div className="wishlist">
+              <div className="main">
+                <div className="wish-check">
+                  <FormGroup>
+                    <div>
+                      <Input
+                        type="checkbox"
+                        checked={isChecked}
+                        onClick={() => toggleSelected(index)}
+                      />
+                      <div className="content">
+                        <div className="content-img">
+                          <img src={productImage} alt={product.name} />
                         </div>
-                        <h6>Free Shipping: Within Lagos</h6>
+                        <div className="content-2">
+                          <h5>{cart.product.name}</h5>
+
+                          {variant ? (
+                            <h6>
+                              Color:{" "}
+                              <span className="capitalize">
+                                {variant.color}
+                              </span>
+                            </h6>
+                          ) : null}
+                          <h4>
+                            {formatMoney(product.price * cart.quantity)}{" "}
+                            &nbsp;&nbsp;{" "}
+                            {product.deal ? (
+                              <span>{formatMoney(product.deal.new_price)}</span>
+                            ) : null}
+                          </h4>
+                          <div className="maintain">
+                            <h6
+                              className="pointer"
+                              onClick={() => decreaseCart(index, cart)}
+                            >
+                              -
+                            </h6>
+                            <p>{cart.quantity}</p>
+                            <h6
+                              className="pointer"
+                              onClick={() =>
+                                incrementCart(index, cart, variant)
+                              }
+                            >
+                              +
+                            </h6>
+                          </div>
+                          <h6>Free Shipping: Within Lagos</h6>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </FormGroup>
-              </div>
-              <div className="del-add">
-                {/* <h6>ADD TO WISHLIST </h6> */}
-                <h5 className="pointer" onClick={() => deleteCart(index)}>
-                  DELETE{" "}
-                </h5>
+                  </FormGroup>
+                </div>
+                <div className="del-add">
+                  {/* <h6>ADD TO WISHLIST </h6> */}
+                  <h5 className="pointer" onClick={() => deleteCart(index)}>
+                    DELETE{" "}
+                  </h5>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })
+      )}
     </div>
   );
 }

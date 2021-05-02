@@ -44,14 +44,14 @@ function SearchInputs({ applyFilter }) {
             </div>
           </div>
 
-          <div className="mt-4 category-check">
+          {/* <div className="mt-4 category-check">
             <h6> Color</h6>
             <CheckBoxItems
               selectedItem={colorFilter}
               setSelectedItem={setColorFilter}
               items={["Red", "Crimson", "Green", "Yellow"]}
             />
-          </div>
+          </div> */}
 
           <div className="mt-4 category-check">
             <h6> Condition</h6>
