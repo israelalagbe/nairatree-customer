@@ -1,9 +1,9 @@
 @import "/src/config/variables.scss";
 
-.about-us {
+.customer-support {
   padding: 2rem 4rem;
   height: 100%;
-  .about-first {
+  .customer-first {
     padding: 3rem 5rem 2rem 8rem;
     .go-back {
       display: flex;
@@ -21,7 +21,7 @@
         margin-left: 3px;
       }
     }
-    .main-about {
+    .main-customer {
       h3 {
         text-align: center;
         color: #000000;
@@ -31,7 +31,7 @@
       }
       p {
         text-align: center;
-        padding-top: 1rem;
+
         color: #000000;
         font-family: $font-roboto-regular;
       }
@@ -40,9 +40,9 @@
 }
 
 @media only screen and (max-width: 1289px) {
-  .about-us {
+  .customer-support {
     padding: 1rem;
-    .about-first {
+    .customer-first {
       padding: 2rem;
     }
   }

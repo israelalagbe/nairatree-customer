@@ -7,7 +7,7 @@ import AppButton from "../../AppButton";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import useAuthentication from "../../../stores/useAuthentication";
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Notify from "../../../util/Notify";
 
 const AddressBookModal = ({ show, onClose }) => {

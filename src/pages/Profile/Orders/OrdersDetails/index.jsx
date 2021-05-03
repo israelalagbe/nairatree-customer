@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Row, Col } from "reactstrap";
 import "./index.scss";

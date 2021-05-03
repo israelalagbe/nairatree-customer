@@ -60,7 +60,7 @@ function ReviewDetails() {
 
   const [value, setValue] = React.useState(0);
   const [hover, setHover] = React.useState(-1);
-  const { userReviews, reviewsLoading } = useOrderStore();
+  const { userReviews } = useOrderStore();
 
   const [review, setReview] = React.useState({
     name: user.first_name,

@@ -3,21 +3,19 @@ import { Form, Label, FormGroup, Input, Col, Row } from "reactstrap";
 import logo from "../../img/greenlogo.png";
 import AppButton from "../AppButton";
 import { Link, useHistory } from "react-router-dom";
-import stores from "../../img/stores.png";
 import visa from "../../img/visa.png";
 import mastercard from "../../img/mastercard.png";
-import instagram from "../../img/instagram.png";
-import linkedin from "../../img/linkedin.png";
-import snapchat from "../../img/snapchat.png";
-import twitter from "../../img/twitter.png";
-import facebook from "../../img/facebook.png";
-import youtube from "../../img/youtube.png";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import FacebookIcon from "@material-ui/icons/Facebook";
 import "./index.scss";
 import useAuthentication from "../../stores/useAuthentication";
+import WhatsAppIcon from "@material-ui/icons/WhatsApp";
+import PhoneIcon from "@material-ui/icons/Phone";
 
 function HomeFooter() {
   const history = useHistory();
-  const { postSubscriber, postSubscriberLoading } = useAuthentication();
+  const { postSubscriber } = useAuthentication();
 
   const [subscriber, setSubscriber] = React.useState({
     email: "",
@@ -71,81 +69,38 @@ function HomeFooter() {
             <Col md="2">
               <h3>ABOUT NAIRATREE</h3>
 
-              <Link to="/">
+              <Link to="/about-us">
                 <h6>About Us</h6>
               </Link>
-              <Link to="/">
-                <h6>Terms and Conditions</h6>
-              </Link>
-              <Link to="/">
-                <h6>Privacy Policy</h6>
-              </Link>
-            </Col>
-            {/* <Col md="2">
-              <h3>SERVICES</h3>
-
-              <Link to="/">
-                <h6>Buying and Selling</h6>
-              </Link>
-              <Link to="/">
-                <h6>International Address</h6>
-              </Link>
-              <Link to="/">
-                <h6>Privacy Policy</h6>
-              </Link>
-              <Link to="/">
-                <h6>e-Shopping Global</h6>
-              </Link>
-              <Link to="/">
-                <h6>Top International Stores</h6>
+              <Link to="/our-services">
+                <h6>Our Services</h6>
               </Link>
             </Col>
             <Col md="2">
-              <h3>SHOPS</h3>
+              <h3>Contact Us</h3>
 
-              <Link to="/">
-                <h6>Ebay</h6>
-              </Link>
-              <Link to="/">
-                <h6>Target</h6>
-              </Link>
-              <Link to="/">
-                <h6>Macy</h6>
-              </Link>
-              <Link to="/">
-                <h6>Etsy</h6>
-              </Link>
-              <Link to="/">
-                <h6>Others +</h6>
-              </Link>
+              <h5>Whatsapp: +2347038678269, +2349095678447</h5>
+
+              <h5>Mobile Phone : +2347038678269</h5>
             </Col>
-            <Col md="2">
-              <h3> GET THE NAIRATREE APP</h3>
-              <Link to="/">
-                {" "}
-                <h6>Get access to unlimited discounts</h6>
-              </Link>
-              <div className="stores">
-                <img src={stores} alt="stores" />
-              </div>
-            </Col> */}
+
             <Col md="4">
               <h3>HELP CENTER</h3>
-              {/* <Link to="/">
+              <Link to="/customer-support">
                 <h6> Customer Support</h6>
-              </Link> */}
-              <Link to="/">
-                <h6>FAQs</h6>
               </Link>
               {/* <Link to="/">
-                <h6>Purchase Information</h6>
+                <h6>FAQs</h6>
               </Link> */}
-              <Link to="/">
+              <Link to="/purchase-information">
+                <h6>Purchase Information</h6>
+              </Link>
+              <Link to="/vendor-guide">
                 <h6>Vendor Guide</h6>
               </Link>
-              <Link to="/">
+              {/* <Link to="/">
                 <h6>Report</h6>
-              </Link>
+              </Link> */}
             </Col>
           </Row>
         </div>
@@ -166,22 +121,34 @@ function HomeFooter() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img src={twitter} alt="twitter" />
+                  <TwitterIcon />
                 </a>
 
-                <img src={facebook} alt="facebook" />
-
-                {/* <img src={linkedin} alt="linkedin" /> */}
+                <a
+                  href="http://facebook.com/nairatreestores"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FacebookIcon />
+                </a>
+                <a
+                  href="http://api.whatsapp.com/send?phone=+2347038678269&text=Welcome To Nairatree"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <WhatsAppIcon />
+                </a>
                 <a
                   href="http://instagram.com/nairatreestores"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img src={instagram} alt="instgram" />
+                  <InstagramIcon />
                 </a>
 
-                {/* <img src={snapchat} alt="snapchat" /> */}
-                <img src={youtube} alt="youtube" />
+                <a href="tel:+2347038678269">
+                  <PhoneIcon />
+                </a>
               </div>
             </Col>
           </Row>
