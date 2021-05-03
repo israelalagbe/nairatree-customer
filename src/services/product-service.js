@@ -15,6 +15,15 @@ export function getProducts(query) {
 /**
  * @return {any}
  */
+export function searchProducts(query) {
+  return api.get(`${baseUrl}/customers/products/search`, {
+    params: query
+  });
+}
+
+/**
+ * @return {any}
+ */
 export function getTrendingProducts() {
   return api.get(`${baseUrl}/customers/products/trending`, {});
 }

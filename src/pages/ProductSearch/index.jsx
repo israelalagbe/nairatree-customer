@@ -31,18 +31,13 @@ function ProductSearch() {
     condition: null,
   });
 
-  const {
-    productsLoading,
-    products,
-    totalProducts,
-    fetchProducts,
-  } = useProductStore();
+  const { productsLoading, products, totalProducts, searchProducts } = useProductStore();
 
   useEffect(() => {
-    fetchProducts(
+    searchProducts(
       removeNullItems({
         limit,
-        search: query.search,
+        keyword: query.search,
         page: query.page,
         category: query.category,
         sub_category: query.sub_category,
@@ -53,14 +48,7 @@ function ProductSearch() {
         color: filters.color && filters.color.toLowerCase(),
       })
     );
-  }, [
-    query.search,
-    query.page,
-    query.category,
-    query.sub_category,
-    filters,
-    fetchProducts,
-  ]);
+  }, [query.search, query.page, query.category, query.sub_category, filters, searchProducts]);
 
   const applyFilter = (filter) => {
     setFilters(filter);
