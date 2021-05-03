@@ -3,9 +3,7 @@ import AppRating from "../AppRating";
 import "./index.scss";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import { format } from "date-fns";
-import ReviewDetails from "../../pages/Profile/Reviews/ReviewsDetail";
 import Rating from "@material-ui/lab/Rating";
-import Box from "@material-ui/core/Box";
 
 /**
  *

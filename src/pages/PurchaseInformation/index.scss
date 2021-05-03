@@ -1,9 +1,9 @@
 @import "/src/config/variables.scss";
 
-.about-us {
+.purchase-information {
   padding: 2rem 4rem;
   height: 100%;
-  .about-first {
+  .purchase-first {
     padding: 3rem 5rem 2rem 8rem;
     .go-back {
       display: flex;
@@ -21,7 +21,7 @@
         margin-left: 3px;
       }
     }
-    .main-about {
+    .main-purchase {
       h3 {
         text-align: center;
         color: #000000;
@@ -29,9 +29,16 @@
         font-size: 30px;
         margin-bottom: 3rem;
       }
+      h4 {
+        text-align: center;
+        color: #000000;
+        font-family: $font-roboto-bold;
+        font-size: 20px;
+        margin-top: 3rem;
+      }
       p {
         text-align: center;
-        padding-top: 1rem;
+
         color: #000000;
         font-family: $font-roboto-regular;
       }
@@ -40,9 +47,9 @@
 }
 
 @media only screen and (max-width: 1289px) {
-  .about-us {
+  .purchase-information {
     padding: 1rem;
-    .about-first {
+    .purchase-first {
       padding: 2rem;
     }
   }

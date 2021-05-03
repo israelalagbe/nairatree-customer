@@ -1,9 +1,6 @@
 import React from "react";
 import AppButton from "../AppButton";
 import "./index.scss";
-import AddressBookModal from "../Modals/AddressBook";
-import useModal from "../../hooks/useModal";
-import useAuthentication from "../../stores/useAuthentication";
 import useCartStore from "../../stores/useCartStore";
 import formatMoney from "../../util/formatMoney";
 import { useHistory, useLocation } from "react-router-dom";
@@ -48,7 +45,9 @@ function GuestDeliveryDetails({ onNext }) {
         <div className="delivery-details-first">
           <div className="delivery-details-head">
             <h5>ADDRESS</h5>
-            <h6 onClick={() => history.push('/guest-checkout-address')}>CHANGE ADDRESS</h6>
+            <h6 onClick={() => history.push("/guest-checkout-address")}>
+              CHANGE ADDRESS
+            </h6>
           </div>
           {defaultAddress ? (
             <div className="details">

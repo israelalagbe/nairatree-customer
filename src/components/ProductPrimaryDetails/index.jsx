@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Row, Col } from "reactstrap";
 import "./index.scss";
 import AppButton from "../AppButton";
-import Car from "../../img/car.png";
 import classnames from "classnames";
 import formatMoney from "../../util/formatMoney";
 import useCartStore from "../../stores/useCartStore";
 import { useHistory } from "react-router-dom";
 import useAuthentication from "../../stores/useAuthentication";
-import useProductStore from "../../stores/useProductStore";
 import AppRating from "../AppRating";
 import ProductTab from "../ProductTab";
 

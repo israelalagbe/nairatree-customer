@@ -7,7 +7,7 @@ import AppButton from "../../AppButton";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import useAuthentication from "../../../stores/useAuthentication";
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Notify from "../../../util/Notify";
 
 const AddressBookModal = ({ show, onClose }) => {
@@ -34,9 +34,11 @@ const AddressBookModal = ({ show, onClose }) => {
       ],
     };
 
-    updateUser(payload, () => history.push("/checkout-details"));
-    Notify.success("Shipping Address Updated");
-    onClose();
+    updateUser(payload, () => {
+      Notify.success("Shipping Address Updated");
+      onClose();
+      history.push("/checkout-details");
+    });
   };
 
   const removeAddress = (id) => {

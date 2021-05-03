@@ -23,6 +23,10 @@ import GuestCheckout from "../pages/CheckoutPages/GuestCheckout";
 import GuestAddressInfo from "../pages/GuestAddressInfo";
 import GuestOrderPreference from "../pages/GuestOrderPreference";
 import GuestOrderDetails from "../pages/Profile/Orders/OrdersDetails/GuestOrderDetails";
+import OurServices from "../pages/OurServices";
+import CustomerSupport from "../pages/CustomerSupport";
+import PurchaseInformation from "../pages/PurchaseInformation";
+import VendorGuide from "../pages/VendorGuide";
 
 export function Routes() {
   return (
@@ -60,7 +64,7 @@ export function Routes() {
       <AuthRoute path="/checkout-details" exact>
         <UserCheckout />
       </AuthRoute>
-      
+
       <AuthRoute path="/profile">
         <Profile />
       </AuthRoute>
@@ -90,6 +94,18 @@ export function Routes() {
       </Route>
       <Route path="/about-us">
         <AboutUs />
+      </Route>
+      <Route path="/our-services">
+        <OurServices />
+      </Route>
+      <Route path="/customer-support">
+        <CustomerSupport />
+      </Route>
+      <Route path="/vendor-guide">
+        <VendorGuide />
+      </Route>
+      <Route path="/purchase-information">
+        <PurchaseInformation />
       </Route>
     </Switch>
   );
