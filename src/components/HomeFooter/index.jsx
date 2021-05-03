@@ -132,7 +132,7 @@ function HomeFooter() {
                   <FacebookIcon />
                 </a>
                 <a
-                  href="http://api.whatsapp.com/send?phone=+2347038678269&text=Welcome To Nairatree"
+                  href="http://api.whatsapp.com/send?phone=+2347038678269"
                   target="_blank"
                   rel="noreferrer"
                 >
