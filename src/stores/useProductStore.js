@@ -10,6 +10,7 @@ import {
   getProduct,
   getRecentlyViewed,
   updateRecentlyViewed,
+  searchProducts,
 } from "../services/product-service";
 import Notify from "../util/Notify";
 
@@ -31,6 +32,7 @@ import Notify from "../util/Notify";
 /**
  * @typedef {Object} MethodsType
  * @prop {(query?:SearchQuery)=>void} fetchProducts
+ * @prop {(query?:SearchQuery)=>void} searchProducts
  * @prop {()=>void} fetchDealOfTheDay
  * @prop {()=>void} fetchTrendingProducts
  * @prop {(id:string)=>void} fetchSelectedProduct
@@ -77,6 +79,35 @@ const useProductStore = create(persist((set, get) => ({
         products,
         total_records
       } = await getProducts({
+        ...query
+      });
+
+      set((state) => ({
+        ...state,
+        products,
+        totalProducts: total_records,
+      }));
+    } catch (e) {
+      Notify.error(e.message);
+    } finally {
+      set((state) => ({
+        ...state,
+        productsLoading: false,
+      }));
+    }
+  },
+
+  searchProducts: async (query) => {
+    set((state) => ({
+      ...state,
+      productsLoading: true,
+    }));
+
+    try {
+      const {
+        products,
+        total_records
+      } = await searchProducts({
         ...query
       });
 
