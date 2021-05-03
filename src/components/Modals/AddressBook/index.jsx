@@ -34,9 +34,11 @@ const AddressBookModal = ({ show, onClose }) => {
       ],
     };
 
-    updateUser(payload, () => history.push("/checkout-details"));
-    Notify.success("Shipping Address Updated");
-    onClose();
+    updateUser(payload, () => {
+      Notify.success("Shipping Address Updated");
+      onClose();
+      history.push("/checkout-details");
+    });
   };
 
   const removeAddress = (id) => {
