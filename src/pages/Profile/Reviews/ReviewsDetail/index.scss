@@ -59,3 +59,20 @@
     }
   }
 }
+
+@media only screen and (max-width: 504px) {
+  .reviewsDetails {
+    .reviewsDetailsSelect {
+      .reviewsDetailsSelectImg {
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        .reviewsDetailsSelectImgMain {
+          margin-bottom: 2rem;
+        }
+      }
+    }
+  }
+}

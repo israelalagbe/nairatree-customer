@@ -24,7 +24,6 @@ function ProductSearch() {
    */
   const query = getQueryParams(location.search);
 
- 
   const [filters, setFilters] = useState({
     prices: [],
     color: null,
@@ -35,7 +34,6 @@ function ProductSearch() {
   const { productsLoading, products, totalProducts, searchProducts } = useProductStore();
 
   useEffect(() => {
-    console.log('filters',filters)
     searchProducts(
       removeNullItems({
         limit,

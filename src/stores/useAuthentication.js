@@ -7,11 +7,10 @@ import {
   resetPassword,
   updateProfile,
   updatePassword,
+  registerSubscriber,
 } from "../services/authentication";
 
-import {
-  persist
-} from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 import Notify from "../util/Notify";
 import api from "../util/api";
@@ -25,6 +24,7 @@ import api from "../util/api";
  * @prop {boolean} resetPasswordLoading
  * @prop {boolean} updateUserLoading
  * @prop {boolean} updateUserPasswordLoading
+ * @prop {boolean} postSubscriberLoading
  * @prop {User} user
  * @prop {string} accessToken
  */
@@ -38,6 +38,7 @@ import api from "../util/api";
  * @prop {(payload, callback)=>void} resetPassword
  * @prop {(payload, callback)=>void} updateUser
  * @prop {(payload, callback)=>void} updateUserPassword
+ * @prop {(payload, callback)=>void} postSubscriber
  */
 
 /**
@@ -53,6 +54,7 @@ const initialState = {
   verifyOtpLoading: false,
   updateUserLoading: false,
   updateUserPasswordLoading: false,
+  postSubscriberLoading: false,
 };
 
 /**
@@ -89,10 +91,7 @@ const useAuthentication = create(
           loginLoading: true,
         }));
         try {
-          const {
-            user,
-            token
-          } = await login(payload);
+          const { user, token } = await login(payload);
 
           set((state) => ({
             ...state,
@@ -182,7 +181,7 @@ const useAuthentication = create(
             addresses &&
             addresses.length &&
             !addresses.find((address) => address.is_default)
-            ) {
+          ) {
             payload.address_book[0].is_default = true;
           }
 
@@ -193,7 +192,6 @@ const useAuthentication = create(
             user,
           }));
 
-          Notify.success("Profile Updated");
           callback();
         } catch (e) {
           Notify.error(e.message);
@@ -229,7 +227,26 @@ const useAuthentication = create(
           }));
         }
       },
-    }), {
+      postSubscriber: async (payload, callback) => {
+        set((state) => ({
+          ...state,
+          postSubscriberLoading: true,
+        }));
+        try {
+          await registerSubscriber(payload);
+          Notify.success("Email Added To Newsletter Subscribers");
+          callback();
+        } catch (e) {
+          Notify.error(e.message);
+        } finally {
+          set((state) => ({
+            ...state,
+            postSubscriberLoading: false,
+          }));
+        }
+      },
+    }),
+    {
       name: "auth",
       whitelist: ["user", "accessToken"],
       getStorage: () => localStorage,

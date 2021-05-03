@@ -60,11 +60,13 @@ export default function Home() {
           <Col md={8}>
             <div className="products-content">
               <section>
-                <img
-                  src={bannerPromo}
-                  alt="Banner Promotion"
-                  className="banner-promo"
-                />
+                <Link to="/products?category=Smartphone">
+                  <img
+                    src={bannerPromo}
+                    alt="Banner Promotion"
+                    className="banner-promo"
+                  />
+                </Link>
                 <div className="banner-toggle">
                   <span className="ball"></span>
                   <span className="ball active"></span>
@@ -98,11 +100,13 @@ export default function Home() {
                 allProductsLink="/products"
                 title="Deal of the Day"
               />
-              <img
-                src={bannerPromo2}
-                alt="Banner Promotion 2"
-                className="banner-promo mb-4 mt-4"
-              />
+              <Link to="/products?category=Smartphone">
+                <img
+                  src={bannerPromo2}
+                  alt="Banner Promotion 2"
+                  className="banner-promo mb-4 mt-4"
+                />
+              </Link>
               <ProductList
                 topSpacing="1.5rem"
                 isLoading={productsLoading}
@@ -113,27 +117,33 @@ export default function Home() {
             </div>
           </Col>
           <Col md={3} className="sidebar-container">
-            <div className="sidebar-promo">
-              <img
-                className="fill-container"
-                src={promoImage1}
-                alt="Promotion 1"
-              />
-            </div>
-            <div className="sidebar-promo mt-3">
-              <img
-                className="fill-container"
-                src={promoImage2}
-                alt="Promotion 2"
-              />
-            </div>
-            <div className="sidebar-promo mt-3">
-              <img
-                className="fill-container"
-                src={promoImage3}
-                alt="Promotion 3"
-              />
-            </div>
+            <Link to="/products?category=Smartphone">
+              <div className="sidebar-promo">
+                <img
+                  className="fill-container"
+                  src={promoImage1}
+                  alt="Promotion 1"
+                />
+              </div>
+            </Link>
+            <a href="https://vendor.nairatree.com/account/register">
+              <div className="sidebar-promo mt-3">
+                <img
+                  className="fill-container"
+                  src={promoImage2}
+                  alt="Promotion 2"
+                />
+              </div>
+            </a>
+            <Link to="/products?category=Smartphone">
+              <div className="sidebar-promo mt-3">
+                <img
+                  className="fill-container"
+                  src={promoImage3}
+                  alt="Promotion 3"
+                />
+              </div>
+            </Link>
           </Col>
         </Row>
       </div>

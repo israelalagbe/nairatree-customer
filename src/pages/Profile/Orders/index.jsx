@@ -1,18 +1,23 @@
 import React, { useEffect } from "react";
 import "./index.scss";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import useOrderStore from "../../../stores/useOrderStore";
 import formatMoney from "../../../util/formatMoney";
 import { format } from "date-fns";
 import LoadingTrigger from "../../../components/LoadingTrigger";
 
 function Orders() {
+  const history = useHistory();
   const { orders, fetchOrders, ordersLoading } = useOrderStore();
   const product = orders;
 
   useEffect(() => {
     fetchOrders();
   }, [fetchOrders]);
+
+  const viewProduct = (id) => {
+    history.push(`/product-details/${id}`);
+  };
 
   return (
     <div className="profile-orders-main">
@@ -24,7 +29,10 @@ function Orders() {
             return order.products.map((product) => (
               <div className="orders mb-3">
                 <div className="main-order">
-                  <div className="order-img mr-3">
+                  <div
+                    className="order-img mr-3 pointer"
+                    onClick={() => viewProduct(product.product._id)}
+                  >
                     <img src={product.product.images[0]} alt="#" />
                   </div>
 

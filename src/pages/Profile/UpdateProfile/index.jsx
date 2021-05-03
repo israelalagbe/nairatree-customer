@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 import AppButton from "../../../components/AppButton";
 import useAuthentication from "../../../stores/useAuthentication";
+import Notify from "../../../util/Notify";
 
 function UpdateProfile() {
   const { user } = useAuthentication();
@@ -35,6 +36,7 @@ function UpdateProfile() {
       surname: userDetails.surname,
     };
     updateUser(payload, () => history.push("/profile"));
+    Notify.success("Profile Updated Successfully");
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Rating from "@material-ui/lab/Rating";
@@ -13,13 +13,9 @@ import Notify from "../../../../util/Notify";
 
 const labels = {
   1: "I hate it",
-
   2: "I dont like it",
-
   3: "I have mixed feeling",
-
   4: "I like it",
-
   5: "I love it",
 };
 
@@ -53,6 +49,10 @@ function ReviewDetails() {
   const selectedProduct = selectedOrder?.products?.find?.(
     (product) => product.product._id === product_id
   ).product;
+
+  const viewProduct = (id) => {
+    history.push(`/product-details/${id}`);
+  };
 
   useEffect(() => {
     fetchOrders();
@@ -91,6 +91,7 @@ function ReviewDetails() {
       },
     };
     userReviews(payload, () => history.push("/profile"));
+    Notify.success("Order Reviewed Successfully");
   };
 
   return (
@@ -105,7 +106,10 @@ function ReviewDetails() {
         <h4>SELECT THE STARS TO RATE THE PRODUCT</h4>
         {selectedOrder && selectedProduct ? (
           <div className="reviewsDetailsSelectImg">
-            <div className="reviewsDetailsSelectImgMain">
+            <div
+              className="reviewsDetailsSelectImgMain pointer"
+              onClick={() => viewProduct(selectedProduct._id)}
+            >
               <img src={selectedProduct.images[0]} alt="Selected Order" />
             </div>
             <div>
