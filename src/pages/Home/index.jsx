@@ -7,6 +7,9 @@ import promoImage2 from "../../img/promotion-image2.png";
 import promoImage3 from "../../img/promotion-image3.png";
 import bannerPromo from "../../img/banner-promo.png";
 import bannerPromo2 from "../../img/banner-promo-2.png";
+import bannerPromo3 from "../../img/banner-promo-3.png";
+import bannerPromo4 from "../../img/banner-promo-4.png";
+import bannerPromo5 from "../../img/banner-promo-5.png";
 import HomeFooter from "../../components/HomeFooter";
 
 import ProductItem from "../../components/ProductItem";
@@ -17,6 +20,7 @@ import useProductStore from "../../stores/useProductStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
 import useAuthentication from "../../stores/useAuthentication";
 import SliderButton from "../../components/HorizontalSlider/SliderButton/SliderButton";
+import AppCarousel from "../../components/AppCarousel";
 
 export default function Home() {
   const { user } = useAuthentication();
@@ -59,23 +63,20 @@ export default function Home() {
           <Col md={1}></Col>
           <Col md={8}>
             <div className="products-content">
-              <section>
-                <Link to="/products?category=Smartphone">
-                  <img
-                    src={bannerPromo}
-                    alt="Banner Promotion"
-                    className="banner-promo"
-                  />
-                </Link>
-                <div className="banner-toggle">
-                  <span className="ball"></span>
-                  <span className="ball active"></span>
-                  <span className="ball"></span>
-                </div>
+              <section className="mb-3">
+                <AppCarousel />
               </section>
               <HomeCategoryListComponent />
               <br />
               <HomePopularBands />
+              <br />
+              <Link to="/products?category=all">
+                <img
+                  src={bannerPromo4}
+                  alt="Banner Promotion 4"
+                  className="banner-promo mb-4 mt-4"
+                />
+              </Link>
               <br />
               {recentlyViewed.length ? (
                 <ProductList
@@ -86,6 +87,7 @@ export default function Home() {
                   title="Recently Viewed"
                 />
               ) : null}
+
               <ProductList
                 topSpacing="1.5rem"
                 isLoading={trendingProductsLoading}
@@ -100,13 +102,7 @@ export default function Home() {
                 allProductsLink="/products"
                 title="Deal of the Day"
               />
-              <Link to="/products?category=Smartphone">
-                <img
-                  src={bannerPromo2}
-                  alt="Banner Promotion 2"
-                  className="banner-promo mb-4 mt-4"
-                />
-              </Link>
+
               <ProductList
                 topSpacing="1.5rem"
                 isLoading={productsLoading}
@@ -114,6 +110,13 @@ export default function Home() {
                 allProductsLink="/products"
                 title="Items you may like"
               />
+              <Link to="/products?category=Smartphone">
+                <img
+                  src={bannerPromo2}
+                  alt="Banner Promotion 2"
+                  className="banner-promo mb-4 mt-4"
+                />
+              </Link>
             </div>
           </Col>
           <Col md={3} className="sidebar-container">

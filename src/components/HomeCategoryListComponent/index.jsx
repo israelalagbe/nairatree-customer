@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useCategoryStore from "../../stores/useCategoryStore";
 import clipText from "../../util/clipText";
 import LoadingTrigger from "../LoadingTrigger";
+import "./index.scss";
 
 export const HomeCategoryListComponent = () => {
   const { categories, categoriesLoading } = useCategoryStore();

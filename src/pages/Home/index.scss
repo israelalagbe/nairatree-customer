@@ -59,7 +59,7 @@
         margin-right: 0.4rem;
         white-space: nowrap;
 
-        &:hover{
+        &:hover {
           transform: scale(1.02);
         }
 
@@ -109,6 +109,9 @@
       align-items: center;
       overflow-x: auto;
       scroll-behavior: smooth;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       .no-product-message {
         margin: auto;
         font-family: $font-aller-regular;
