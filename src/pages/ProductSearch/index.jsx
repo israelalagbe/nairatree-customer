@@ -34,20 +34,19 @@ function ProductSearch() {
   const { productsLoading, products, totalProducts, searchProducts } = useProductStore();
 
   useEffect(() => {
-    searchProducts(
-      removeNullItems({
-        limit,
-        keyword: query.search,
-        page: query.page,
-        category: query.category,
-        sub_category: query.sub_category,
-        min_price: filters.prices[0],
-        max_price: filters.prices[1],
-        condition: filters.condition && filters.condition.toLowerCase(),
-        brand: filters.brand,
-        color: filters.color && filters.color.toLowerCase(),
-      })
-    );
+    const searchQuery = removeNullItems({
+      limit,
+      keyword: query.search,
+      page: query.page,
+      category: query.category,
+      sub_category: query.sub_category,
+      min_price: filters.prices[0],
+      max_price: filters.prices[1],
+      condition: filters.condition && filters.condition.toLowerCase(),
+      brand: filters.brand,
+      color: filters.color && filters.color.toLowerCase(),
+    });
+    searchProducts(searchQuery);
   }, [query.search, query.page, query.category, query.sub_category, filters, searchProducts]);
 
   const applyFilter = (filter) => {

@@ -5,6 +5,7 @@ import "./index.scss";
 import AppSlider from "../AppSlider";
 import useBrandStore from "../../stores/useBrandStore";
 import AppButton from "../AppButton";
+import formatMoney from "../../util/formatMoney";
 
 function SearchInputs({ applyFilter }) {
   const { popularBrands } = useBrandStore();
@@ -38,9 +39,9 @@ function SearchInputs({ applyFilter }) {
             <h6>Price (#)</h6>
             <AppSlider value={priceRange} setValue={setPriceRange} />
             <div className="box">
-              <h6>{priceRange[0]}</h6>
+              <h6>{formatMoney(priceRange[0])}</h6>
               <p>-</p>
-              <h6>{priceRange[1]}</h6>
+              <h6>{formatMoney(priceRange[1])}</h6>
             </div>
           </div>
 
