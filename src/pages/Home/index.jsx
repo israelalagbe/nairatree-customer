@@ -7,6 +7,9 @@ import promoImage2 from "../../img/promotion-image2.png";
 import promoImage3 from "../../img/promotion-image3.png";
 import bannerPromo from "../../img/banner-promo.png";
 import bannerPromo2 from "../../img/banner-promo-2.png";
+import bannerPromo3 from "../../img/banner-promo-3.png";
+import bannerPromo4 from "../../img/banner-promo-4.png";
+import bannerPromo5 from "../../img/banner-promo-5.png";
 import HomeFooter from "../../components/HomeFooter";
 
 import ProductItem from "../../components/ProductItem";
@@ -77,6 +80,14 @@ export default function Home() {
               <br />
               <HomePopularBands />
               <br />
+              <Link to="/products?category=all">
+                <img
+                  src={bannerPromo5}
+                  alt="Banner Promotion 5"
+                  className="banner-promo mb-4 mt-4"
+                />
+              </Link>
+              <br />
               {recentlyViewed.length ? (
                 <ProductList
                   topSpacing="1.5rem"
@@ -86,6 +97,22 @@ export default function Home() {
                   title="Recently Viewed"
                 />
               ) : null}
+              <div className="align-banner">
+                <Link to="/products?category=Smartphone">
+                  <img
+                    src={bannerPromo3}
+                    alt="Banner Promotion 3"
+                    className="banner-promo-align mb-2 mt-2"
+                  />
+                </Link>
+                <Link to="/products?category=Smartphone">
+                  <img
+                    src={bannerPromo4}
+                    alt="Banner Promotion 4"
+                    className="banner-promo-align-2 mb-2 mt-2"
+                  />
+                </Link>
+              </div>
               <ProductList
                 topSpacing="1.5rem"
                 isLoading={trendingProductsLoading}
@@ -100,13 +127,7 @@ export default function Home() {
                 allProductsLink="/products"
                 title="Deal of the Day"
               />
-              <Link to="/products?category=Smartphone">
-                <img
-                  src={bannerPromo2}
-                  alt="Banner Promotion 2"
-                  className="banner-promo mb-4 mt-4"
-                />
-              </Link>
+
               <ProductList
                 topSpacing="1.5rem"
                 isLoading={productsLoading}
@@ -114,6 +135,13 @@ export default function Home() {
                 allProductsLink="/products"
                 title="Items you may like"
               />
+              <Link to="/products?category=Smartphone">
+                <img
+                  src={bannerPromo2}
+                  alt="Banner Promotion 2"
+                  className="banner-promo mb-4 mt-4"
+                />
+              </Link>
             </div>
           </Col>
           <Col md={3} className="sidebar-container">
