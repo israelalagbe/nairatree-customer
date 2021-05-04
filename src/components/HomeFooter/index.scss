@@ -57,15 +57,16 @@
         font-size: 13px;
       }
     }
+    h5 {
+      color: #ffffff;
+      font-family: $font-roboto-regular;
+      font-size: 13px;
+    }
     .stores {
       img {
         width: 100%;
         margin: 0 !important;
       }
-    }
-
-    img {
-      margin-left: 3px;
     }
   }
 }

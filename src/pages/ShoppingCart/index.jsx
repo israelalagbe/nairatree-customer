@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import CartFirst from "../../components/CartFirst";
 import CartSecond from "../../components/CartSecond";
 import "./index.scss";
-import { Link, useHistory } from "react-router-dom";
+
 import ProductItem from "../../components/ProductItem";
 import useCartStore from "../../stores/useCartStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
@@ -12,7 +12,6 @@ import useAuthentication from "../../stores/useAuthentication";
 import useProductStore from "../../stores/useProductStore";
 
 function ShoppingCart() {
-  const history = useHistory();
   const { carts, saveCarts, setLocalCarts } = useCartStore();
   const [selectedCartsIndexes, setSelectedCartsIndexes] = useState([]);
   const { user } = useAuthentication();

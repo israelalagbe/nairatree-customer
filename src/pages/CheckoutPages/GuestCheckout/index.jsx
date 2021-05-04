@@ -13,7 +13,6 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // @ts-ignore
-import DeliveryDetails from "../../../components/DeliveryDetails";
 import PaymentMethod from "../../../components/PaymentMethod";
 import useOrderStore from "../../../stores/useOrderStore";
 import useAuthentication from "../../../stores/useAuthentication";
@@ -39,10 +38,9 @@ function GuestCheckout() {
   const [expansionIndex, setExpansionIndex] = useState(0);
   const { user } = useAuthentication();
 
-  const { carts, setLocalCarts} = useCartStore();
+  const { carts, setLocalCarts } = useCartStore();
 
   const history = useHistory();
-
 
   const { updateOrderPaymentStatus, saveCheckoutGuest } = useOrderStore();
 
@@ -56,10 +54,10 @@ function GuestCheckout() {
     }));
 
     // @ts-ignore
-    const address = {...location.state?.address};
+    const address = { ...location.state?.address };
 
-    if(address.phone.startsWith('0')){
-      address.phone = address.phone.replace('0','')
+    if (address.phone.startsWith("0")) {
+      address.phone = address.phone.replace("0", "");
     }
     address.phone = "+234" + address.phone;
 
@@ -103,8 +101,10 @@ function GuestCheckout() {
             status: "success",
           },
           (order) => {
-            setLocalCarts([])
-            history.push(`/guest/orders/order-details/${order.payment_reference}`)
+            setLocalCarts([]);
+            history.push(
+              `/guest/orders/order-details/${order.payment_reference}`
+            );
           }
         );
       },
@@ -128,7 +128,10 @@ function GuestCheckout() {
     <>
       <div className="guest-checkout">
         <AppLogo />
-        <div className="go-back" onClick={() => history.push("/guest-checkout-address")}>
+        <div
+          className="go-back"
+          onClick={() => history.push("/guest-checkout-address")}
+        >
           <ArrowBackIcon />
           <h6>Back</h6>
         </div>
@@ -157,7 +160,9 @@ function GuestCheckout() {
                 aria-controls="panel2a-content"
                 id="panel2a-header"
               >
-                <Typography className={classes.heading}>Payment Method</Typography>
+                <Typography className={classes.heading}>
+                  Payment Method
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>

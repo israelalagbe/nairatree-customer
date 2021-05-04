@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import AppBreadcrumb from "../../components/AppBreadcrumb";
 import Header from "../../components/Header";
 import ProductPrimaryDetails from "../../components/ProductPrimaryDetails";
-import ProductTab from "../../components/ProductTab";
 import "./index.scss";
 import { useParams } from "react-router-dom";
 import useProductStore from "../../stores/useProductStore";
