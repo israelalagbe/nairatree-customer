@@ -1,65 +1,64 @@
 @import "/src/config/variables.scss";
 
 .home-popular-bands-component {
-    background: white;
-    padding: 1rem;
-    border-radius: 5px;
+  background: white;
+  padding: 1rem;
+  border-radius: 5px;
+  position: relative;
 
-    .heading {
-        padding: 0rem 1rem 2rem 0rem;
-        height: 1rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+  .heading {
+    padding: 0rem 1rem 2rem 0rem;
+    height: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-        .show-all {
-            font-family: $font-aller-regular;
-            color: #698875;
-            font-size: 0.7rem;
-        }
-
-        .heading-text {
-            color: 000000;
-            font-family: $font-aller-regular;
-        }
+    .show-all {
+      font-family: $font-aller-regular;
+      color: #698875;
+      font-size: 0.7rem;
     }
 
-    .brands-list-card {
-        height: 10rem;
-
-
-
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        overflow-x: auto;
-
-        .brand-item {
-            height: 9rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            // background: red;
-
-            &:hover{
-                transform: scale(1.02);
-            }
-
-            img {
-                object-fit: contain;
-                width: 8rem;
-                height: 8rem;
-                border-radius: 20%;
-            }
-
-            span {
-                font-family: $font-roboto-bold;
-                color: #124F36;
-            }
-
-           
-        }
+    .heading-text {
+      color: 000000;
+      font-family: $font-aller-regular;
     }
+  }
+
+  .brands-list-card {
+    height: 10rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    .brand-item {
+      height: 9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      // background: red;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      img {
+        object-fit: contain;
+        width: 8rem;
+        height: 8rem;
+        border-radius: 20%;
+      }
+
+      span {
+        font-family: $font-roboto-bold;
+        color: #124f36;
+      }
+    }
+  }
 }

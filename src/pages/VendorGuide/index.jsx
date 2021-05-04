@@ -1,29 +1,27 @@
 import React from "react";
-import AppLogo from "../../components/AppLogo";
-import { useHistory } from "react-router-dom";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import "./index.scss";
+import HomeFooter from "../../components/HomeFooter";
+import Header from "../../components/Header";
 
 function VendorGuide() {
-  const history = useHistory();
   return (
-    <div className="vendor-guide">
-      <AppLogo />
-      <div className="vendor-first">
-        <div className="go-back" onClick={history.goBack}>
-          <ArrowBackIcon />
-          <h6>Back</h6>
-        </div>
-        <div className="mt-5 main-vendor">
-          <h3>Vendor Guide</h3>
+    <>
+      <Header />
+      <div className="vendor-guide">
+        <div className="vendor-first">
+          <div className="mt-5 main-vendor">
+            <h3>Vendor Guide</h3>
 
-          <p>
-            You can become a vendor on NairaTree. To know more, contact our
-            customer care service through any of the above listed channels.
-          </p>
+            <p>You can become a vendor on NairaTree.</p>
+            <p>
+              To know more, contact our customer care service through any of the
+              above listed channels.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+      <HomeFooter />
+    </>
   );
 }
 

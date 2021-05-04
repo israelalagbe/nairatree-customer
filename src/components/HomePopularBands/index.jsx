@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useBrandStore from "../../stores/useBrandStore";
 import clipText from "../../util/clipText";
 import LoadingTrigger from "../LoadingTrigger";
 import "./index.scss";
+import SliderButton from "../HorizontalSlider/SliderButton/SliderButton";
 
 export const HomePopularBands = () => {
   const { popularBrands, popularBrandsLoading } = useBrandStore();
+  const [showScrollLeftButton, setShowScrollLeftButton] = useState(false);
+  const [showScrollRightButton, setShowScrollRightButton] = useState(false);
+  const sliderContent = React.createRef();
+
+  useEffect(() => {
+    if (
+      sliderContent.current?.scrollWidth > sliderContent.current?.clientWidth
+    ) {
+      setShowScrollRightButton(true);
+    }
+  }, []);
+
+  const onScroll = (e) => {
+    const isScrolledLeft = sliderContent.current.scrollLeft <= 0;
+    setShowScrollLeftButton(!isScrolledLeft);
+
+    const isScrolledRight =
+      sliderContent.current?.scrollWidth -
+        sliderContent.current?.offsetWidth ===
+      sliderContent.current.scrollLeft;
+    setShowScrollRightButton(!isScrolledRight);
+  };
+
   return (
     <section className="home-popular-bands-component">
       <div className="heading">
@@ -15,7 +39,23 @@ export const HomePopularBands = () => {
           Show all +
         </Link> */}
       </div>
-      <div className="brands-list-card">
+      {showScrollRightButton ? (
+        <SliderButton
+          click={() => {
+            sliderContent.current.scrollBy(30, 0);
+          }}
+          position="right"
+        />
+      ) : null}
+      {showScrollLeftButton ? (
+        <SliderButton
+          click={() => {
+            sliderContent.current.scrollBy(-30, 0);
+          }}
+          position="left"
+        />
+      ) : null}
+      <div className="brands-list-card" ref={sliderContent} onScroll={onScroll}>
         <LoadingTrigger isLoading={popularBrandsLoading}>
           {popularBrands.map((brand) => (
             <BrandItem key={brand.id} brand={brand} />

@@ -75,17 +75,6 @@
         }
       }
     }
-    .align-banner {
-      display: flex;
-      width: 100%;
-      .banner-promo-align {
-        width: 100%;
-      }
-      .banner-promo-align-2 {
-        width: 100%;
-        height: 9.2rem;
-      }
-    }
   }
 
   .product-list-container {
@@ -120,6 +109,9 @@
       align-items: center;
       overflow-x: auto;
       scroll-behavior: smooth;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       .no-product-message {
         margin: auto;
         font-family: $font-aller-regular;

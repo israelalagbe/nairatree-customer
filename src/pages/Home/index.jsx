@@ -20,6 +20,7 @@ import useProductStore from "../../stores/useProductStore";
 import LoadingTrigger from "../../components/LoadingTrigger";
 import useAuthentication from "../../stores/useAuthentication";
 import SliderButton from "../../components/HorizontalSlider/SliderButton/SliderButton";
+import AppCarousel from "../../components/AppCarousel";
 
 export default function Home() {
   const { user } = useAuthentication();
@@ -62,19 +63,8 @@ export default function Home() {
           <Col md={1}></Col>
           <Col md={8}>
             <div className="products-content">
-              <section>
-                <Link to="/products?category=Smartphone">
-                  <img
-                    src={bannerPromo}
-                    alt="Banner Promotion"
-                    className="banner-promo"
-                  />
-                </Link>
-                <div className="banner-toggle">
-                  <span className="ball"></span>
-                  <span className="ball active"></span>
-                  <span className="ball"></span>
-                </div>
+              <section className="mb-3">
+                <AppCarousel />
               </section>
               <HomeCategoryListComponent />
               <br />
@@ -82,8 +72,8 @@ export default function Home() {
               <br />
               <Link to="/products?category=all">
                 <img
-                  src={bannerPromo5}
-                  alt="Banner Promotion 5"
+                  src={bannerPromo4}
+                  alt="Banner Promotion 4"
                   className="banner-promo mb-4 mt-4"
                 />
               </Link>
@@ -97,22 +87,7 @@ export default function Home() {
                   title="Recently Viewed"
                 />
               ) : null}
-              <div className="align-banner">
-                <Link to="/products?category=Smartphone">
-                  <img
-                    src={bannerPromo3}
-                    alt="Banner Promotion 3"
-                    className="banner-promo-align mb-2 mt-2"
-                  />
-                </Link>
-                <Link to="/products?category=Smartphone">
-                  <img
-                    src={bannerPromo4}
-                    alt="Banner Promotion 4"
-                    className="banner-promo-align-2 mb-2 mt-2"
-                  />
-                </Link>
-              </div>
+
               <ProductList
                 topSpacing="1.5rem"
                 isLoading={trendingProductsLoading}
