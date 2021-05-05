@@ -1,3 +1,9 @@
-.categories-list-card::-webkit-scrollbar {
-  display: none !important;
+.categories-list-card {
+  position: relative;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+  .categories-list-main {
+    display: flex;
+  }
 }
