@@ -3,7 +3,6 @@ import { UncontrolledCarousel } from "reactstrap";
 import bannerPromo from "../../img/banner-promo.png";
 import bannerPromo3 from "../../img/banner-promo-3.png";
 import bannerPromo5 from "../../img/banner-promo-5.png";
-import "./index.scss";
 
 const items = [
   {
