@@ -28,7 +28,9 @@ function ForgotPassword() {
       email: password.email,
     };
 
-    forgotPassword(payload, () => history.push("/confirm-otp"));
+    forgotPassword(payload, () =>
+      history.push(`/confirm-otp/${password.email}`)
+    );
   };
 
   return (

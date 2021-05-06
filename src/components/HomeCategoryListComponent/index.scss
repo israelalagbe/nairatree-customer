@@ -1,4 +1,3 @@
-
 @import "/src/config/variables.scss";
 .categories-list-card {
   height: 8rem;
@@ -7,16 +6,16 @@
   padding: 0.5rem;
   display: flex;
   flex-direction: row;
-  
   position: relative;
 
-  &::-webkit-scrollbar {
-    display: none !important;
-  }
   .categories-list-main {
     display: flex;
     overflow: auto;
     scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      display: none !important;
+    }
   }
 
   .category-item {

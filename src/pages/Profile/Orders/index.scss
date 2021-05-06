@@ -63,3 +63,23 @@
     }
   }
 }
+
+@media only screen and (max-width: 450px) {
+  .profile-orders-main {
+    .orders {
+      .main-order {
+        flex-direction: column;
+        width: 100% !important;
+        .order-img {
+          img {
+            width: 6rem !important;
+          }
+        }
+        .order-details {
+          width: 100% !important;
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}
