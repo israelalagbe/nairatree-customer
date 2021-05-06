@@ -70,7 +70,7 @@ export default function Home() {
               <br />
               <HomePopularBands />
               <br />
-              <Link to="/products?category=all">
+              <Link to="/products">
                 <img
                   src={bannerPromo4}
                   alt="Banner Promotion 4"
@@ -110,7 +110,7 @@ export default function Home() {
                 allProductsLink="/products"
                 title="Items you may like"
               />
-              <Link to="/products?category=Smartphone">
+              <Link to="/products">
                 <img
                   src={bannerPromo2}
                   alt="Banner Promotion 2"
@@ -120,7 +120,7 @@ export default function Home() {
             </div>
           </Col>
           <Col md={3} className="sidebar-container">
-            <Link to="/products?category=Smartphone">
+            <Link to="/products">
               <div className="sidebar-promo">
                 <img
                   className="fill-container"
@@ -138,7 +138,7 @@ export default function Home() {
                 />
               </div>
             </a>
-            <Link to="/products?category=Smartphone">
+            <Link to="/products">
               <div className="sidebar-promo mt-3">
                 <img
                   className="fill-container"

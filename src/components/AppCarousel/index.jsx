@@ -3,6 +3,7 @@ import { UncontrolledCarousel } from "reactstrap";
 import bannerPromo from "../../img/banner-promo.png";
 import bannerPromo3 from "../../img/banner-promo-3.png";
 import bannerPromo5 from "../../img/banner-promo-5.png";
+import { Link } from "react-router-dom";
 
 const items = [
   {
@@ -19,6 +20,10 @@ const items = [
   },
 ];
 
-const AppCarousel = () => <UncontrolledCarousel items={items} />;
+const AppCarousel = () => (
+  <Link to="/products">
+    <UncontrolledCarousel items={items} />
+  </Link>
+);
 
 export default AppCarousel;
