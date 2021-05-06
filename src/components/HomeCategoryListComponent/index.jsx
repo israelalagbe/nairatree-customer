@@ -18,7 +18,7 @@ export const HomeCategoryListComponent = () => {
     ) {
       setShowScrollRightButton(true);
     }
-  }, []);
+  }, [categories, categoriesLoading]);
 
   const onScroll = (e) => {
     const isScrolledLeft = sliderContent.current.scrollLeft <= 0;
@@ -36,7 +36,7 @@ export const HomeCategoryListComponent = () => {
       {showScrollRightButton ? (
         <SliderButton
           click={() => {
-            sliderContent.current.scrollBy(30, 0);
+            sliderContent.current.scrollBy(50, 0);
           }}
           position="right"
         />
@@ -44,7 +44,7 @@ export const HomeCategoryListComponent = () => {
       {showScrollLeftButton ? (
         <SliderButton
           click={() => {
-            sliderContent.current.scrollBy(-30, 0);
+            sliderContent.current.scrollBy(-50, 0);
           }}
           position="left"
         />

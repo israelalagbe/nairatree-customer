@@ -212,7 +212,7 @@ function ProductList({
       {showScrollRightButton ? (
         <SliderButton
           click={() => {
-            sliderContent.current.scrollBy(30, 0);
+            sliderContent.current.scrollBy(50, 0);
           }}
           position="right"
         />
@@ -220,7 +220,7 @@ function ProductList({
       {showScrollLeftButton ? (
         <SliderButton
           click={() => {
-            sliderContent.current.scrollBy(-30, 0);
+            sliderContent.current.scrollBy(-50, 0);
           }}
           position="left"
         />
