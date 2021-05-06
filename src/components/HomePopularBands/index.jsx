@@ -18,7 +18,7 @@ export const HomePopularBands = () => {
     ) {
       setShowScrollRightButton(true);
     }
-  }, []);
+  }, [popularBrands, popularBrandsLoading]);
 
   const onScroll = (e) => {
     const isScrolledLeft = sliderContent.current.scrollLeft <= 0;
