@@ -18,7 +18,7 @@ export const HomePopularBands = () => {
     ) {
       setShowScrollRightButton(true);
     }
-  }, []);
+  }, [popularBrands, popularBrandsLoading]);
 
   const onScroll = (e) => {
     const isScrolledLeft = sliderContent.current.scrollLeft <= 0;
@@ -42,7 +42,7 @@ export const HomePopularBands = () => {
       {showScrollRightButton ? (
         <SliderButton
           click={() => {
-            sliderContent.current.scrollBy(30, 0);
+            sliderContent.current.scrollBy(50, 0);
           }}
           position="right"
         />
@@ -50,7 +50,7 @@ export const HomePopularBands = () => {
       {showScrollLeftButton ? (
         <SliderButton
           click={() => {
-            sliderContent.current.scrollBy(-30, 0);
+            sliderContent.current.scrollBy(-50, 0);
           }}
           position="left"
         />

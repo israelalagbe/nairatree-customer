@@ -1,9 +1,48 @@
+
+@import "/src/config/variables.scss";
 .categories-list-card {
+  height: 8rem;
+  background: white;
+  border-radius: 5px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  
   position: relative;
+
   &::-webkit-scrollbar {
     display: none !important;
   }
   .categories-list-main {
     display: flex;
+    overflow: auto;
+    scroll-behavior: smooth;
+  }
+
+  .category-item {
+    width: 8rem;
+    height: 8rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.4rem;
+    white-space: nowrap;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    img {
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+    }
+
+    span {
+      font-family: $font-medium;
+      font-size: 0.7rem;
+    }
   }
 }
