@@ -25,12 +25,12 @@ function AppSlider({value, setValue}) {
         className='app-slider'
         value={value}
         onChange={handleChange}
-        valueLabelDisplay="auto"
+        valueLabelDisplay="off"
         aria-labelledby="range-slider"
         getAriaValueText={valuetext}
         min={100}
         max={1000000}
-
+        
       />
     </div>
   );

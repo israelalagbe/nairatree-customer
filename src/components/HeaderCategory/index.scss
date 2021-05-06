@@ -40,6 +40,10 @@
       }
     }
     .headerCategoriesRow {
+      .row{
+        height: 80vh;
+        overflow-y: scroll;
+      }
       .categoryCol {
         border-right: 1px solid #f2f2f2;
         padding-top: 1rem;

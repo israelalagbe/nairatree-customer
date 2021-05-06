@@ -62,7 +62,11 @@ export default function Header() {
   }, [user, fetchCarts]);
 
   const onSearch = (e) => {
-    history.push(`/products?search=${keyword}${selectedCategory? `&category=${selectedCategory}`:""}`);
+    history.push(
+      `/products?search=${keyword}${
+        selectedCategory ? `&category=${selectedCategory}` : ""
+      }`
+    );
   };
 
   const handleSearchInput = (e) => {
@@ -84,7 +88,8 @@ export default function Header() {
           <Collapse isOpen={navbarIsOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink className="pointer"
+                <NavLink
+                  className="pointer"
                   onClick={(e) => {
                     setHeaderCategoriesShown(!showHeaderCategories);
                   }}
@@ -103,7 +108,14 @@ export default function Header() {
                 </DropdownToggle>
                 <DropdownMenu right>
                   {popularBrands.map((brand) => (
-                    <DropdownItem key={brand.id} onClick={()=>history.push(`/products?search=${brand.name}`)} >{brand.name}</DropdownItem>
+                    <DropdownItem
+                      key={brand.id}
+                      onClick={() =>
+                        history.push(`/products?search=${brand.name}`)
+                      }
+                    >
+                      {brand.name}
+                    </DropdownItem>
                   ))}
                 </DropdownMenu>
               </UncontrolledDropdown>
@@ -111,9 +123,16 @@ export default function Header() {
                 <NavLink href="/faqs/">FAQ</NavLink>
               </NavItem>
               <div className="form-group category-form pointer">
-                <select className="form-control category pointer" onChange={(e) => setSelectedCategory(e.target.value)}>
-                  <option selected disabled>Categories</option>
-                  {categories.map(category => <option>{category.name}</option>)}
+                <select
+                  className="form-control category pointer"
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                >
+                  <option selected disabled>
+                    Categories
+                  </option>
+                  {categories.map((category) => (
+                    <option>{category.name}</option>
+                  ))}
                 </select>
               </div>
               <div className="form-group search-form ml-lg-2">
@@ -124,7 +143,11 @@ export default function Header() {
                     value={keyword}
                     placeholder="Search Items..."
                   />
-                  <InputGroupAddon addonType="append" className="search-btn" onClick={onSearch}>
+                  <InputGroupAddon
+                    addonType="append"
+                    className="search-btn"
+                    onClick={onSearch}
+                  >
                     <InputGroupText>
                       <img src={search} alt="Search" />
                     </InputGroupText>

@@ -80,7 +80,7 @@ export function Routes() {
       <Route exact path="/guest/orders/order-details/:id">
         <GuestOrderDetails />
       </Route>
-      <Route path="/confirm-otp">
+      <Route path="/confirm-otp/:email">
         <Otp />
       </Route>
       <Route path="/payment-policy">

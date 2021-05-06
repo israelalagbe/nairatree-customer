@@ -1,26 +1,12 @@
 @import "/src/config/variables.scss";
 
 .about-us {
-  padding: 2rem 4rem;
-  height: 100%;
+  height: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .about-first {
-    padding: 3rem 5rem 2rem 8rem;
-    .go-back {
-      display: flex;
-      cursor: pointer;
-      svg {
-        height: 1rem;
-        width: 1rem;
-        margin-top: 2px;
-      }
-      h6 {
-        text-decoration: none;
-        font-family: $font-roboto-light;
-        color: #bdbdbd;
-        font-size: 15px;
-        margin-left: 3px;
-      }
-    }
     .main-about {
       h3 {
         text-align: center;
@@ -35,15 +21,6 @@
         color: #000000;
         font-family: $font-roboto-regular;
       }
-    }
-  }
-}
-
-@media only screen and (max-width: 1289px) {
-  .about-us {
-    padding: 1rem;
-    .about-first {
-      padding: 2rem;
     }
   }
 }

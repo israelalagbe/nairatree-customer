@@ -84,6 +84,12 @@ function HomeFooter() {
               <h5>Mobile Phone : +2347038678269</h5>
             </Col>
 
+            <Col md="2">
+              <h3>Complaints and Enquiries</h3>
+
+              <h5>customercare@nairatree.com</h5>
+            </Col>
+
             <Col md="4">
               <h3>HELP CENTER</h3>
               <Link to="/customer-support">

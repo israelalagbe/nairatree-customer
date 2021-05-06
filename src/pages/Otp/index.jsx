@@ -6,11 +6,16 @@ import AppButton from "../../components/AppButton";
 import AppLogo from "../../components/AppLogo";
 import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
+import { useParams } from "react-router-dom";
 import "./index.scss";
 import { useHistory } from "react-router-dom";
 import useAuthentication from "../../stores/useAuthentication";
 
 function Otp() {
+  /**
+   * @type {{email:string}}
+   */
+  const { email } = useParams();
   const history = useHistory();
   const { verifyOtp, verifyOtpLoading } = useAuthentication();
 
@@ -26,6 +31,7 @@ function Otp() {
     e.preventDefault();
     const payload = {
       code: otp.code,
+      email,
     };
 
     verifyOtp(payload, (id) => history.push(`/reset-password/${id}`));

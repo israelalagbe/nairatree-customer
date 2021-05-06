@@ -53,7 +53,7 @@ const initialState = {
   trendingProductsLoading: false,
 
   dealsOfTheDay: [],
-  dealsOfTheDayLoading: true,
+  dealsOfTheDayLoading: false,
 
   selectedProduct: null,
   selectedProductLoading: false,
