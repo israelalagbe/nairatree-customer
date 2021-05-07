@@ -51,6 +51,10 @@ function AddressInfo() {
       );
     }
 
+    const sameLabel = user.address_book.find(
+      (item) => item.label === item.label
+    );
+
     const payload = {
       address_book: [
         ...addressBook.map((item) => ({
@@ -73,9 +77,18 @@ function AddressInfo() {
         },
       ],
     };
-
-    updateUser(payload, () => history.goBack());
-    Notify.success("Address Updated Successfully");
+    if (address.phone.length !== 10) {
+      Notify.error("Phone Length must be 14 characters long");
+      return;
+    }
+    if (sameLabel) {
+      Notify.error(`Duplicate ${address.label} Label Provided`);
+      return;
+    }
+    updateUser(payload, () => {
+      Notify.success("Address Updated Successfully");
+      history.goBack();
+    });
   };
 
   useEffect(() => {
@@ -145,12 +158,12 @@ function AddressInfo() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="label">Home/Office</Label>
+            <Label for="label">Label(Home/Office)</Label>
             <Input
               type="text"
               name="label"
               id="label"
-              placeholder="Home"
+              placeholder="Home/Office"
               value={address.label}
               onChange={handleChange}
               required
