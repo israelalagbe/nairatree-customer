@@ -115,12 +115,12 @@ function GuestAddressInfo() {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="label">Home/Office</Label>
+              <Label for="label">Label(Home/Office)</Label>
               <Input
                 type="text"
                 name="label"
                 id="label"
-                placeholder="Home"
+                placeholder="Home/Office"
                 value={address.label}
                 onChange={handleChange}
                 required

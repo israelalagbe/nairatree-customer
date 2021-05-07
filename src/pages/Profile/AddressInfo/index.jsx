@@ -74,7 +74,14 @@ function AddressInfo() {
       ],
     };
 
-    updateUser(payload, () => history.goBack());
+    updateUser(payload, () => {
+      if (address.phone.length !== "14") {
+        Notify.error("Phone Length must be 14 characters long");
+      } else {
+        history.goBack();
+      }
+    });
+
     Notify.success("Address Updated Successfully");
   };
 
@@ -145,12 +152,12 @@ function AddressInfo() {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="label">Home/Office</Label>
+            <Label for="label">Label(Home/Office)</Label>
             <Input
               type="text"
               name="label"
               id="label"
-              placeholder="Home"
+              placeholder="Home/Office"
               value={address.label}
               onChange={handleChange}
               required
