@@ -13,7 +13,7 @@ import useAuthentication from "../../stores/useAuthentication";
 
 function Otp() {
   /**
-   * @type {{emaild:string}}
+   * @type {{email:string}}
    */
   const { email } = useParams();
   const history = useHistory();

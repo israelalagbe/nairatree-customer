@@ -51,6 +51,10 @@ function AddressInfo() {
       );
     }
 
+    const sameLabel = user.address_book.find(
+      (item) => item.label === item.label
+    );
+
     const payload = {
       address_book: [
         ...addressBook.map((item) => ({
@@ -73,16 +77,18 @@ function AddressInfo() {
         },
       ],
     };
-
+    if (address.phone.length !== 10) {
+      Notify.error("Phone Length must be 14 characters long");
+      return;
+    }
+    if (sameLabel) {
+      Notify.error(`Duplicate ${address.label} Label Provided`);
+      return;
+    }
     updateUser(payload, () => {
-      if (address.phone.length !== "14") {
-        Notify.error("Phone Length must be 14 characters long");
-      } else {
-        history.goBack();
-      }
+      Notify.success("Address Updated Successfully");
+      history.push("");
     });
-
-    Notify.success("Address Updated Successfully");
   };
 
   useEffect(() => {

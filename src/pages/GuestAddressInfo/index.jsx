@@ -19,6 +19,7 @@ import AppLogo from "../../components/AppLogo";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
+import Notify from "../../util/Notify";
 
 function GuestAddressInfo() {
   const history = useHistory();
@@ -40,6 +41,11 @@ function GuestAddressInfo() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (address.phone.length !== 10) {
+      Notify.error("Phone Length must be 14 characters long");
+      return;
+    }
 
     history.push("/guest-checkout", { address });
 
