@@ -87,7 +87,7 @@ function AddressInfo() {
     }
     updateUser(payload, () => {
       Notify.success("Address Updated Successfully");
-      history.push("");
+      history.goBack();
     });
   };
 
