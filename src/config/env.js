@@ -1,6 +1,6 @@
 const env = {
-    baseUrl: "https://staging.api.nairatree.com/api/v1",
-    paystackKey: "pk_test_fb1efe12f17939bd79597c2a630676a25dbb9ec5"
+    baseUrl: process.env.REACT_APP_BASE_URL,
+    paystackKey: process.env.REACT_APP_PAYSTACK_KEY
 };
 
 export default env;
