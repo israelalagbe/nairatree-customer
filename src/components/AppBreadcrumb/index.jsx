@@ -4,6 +4,7 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import ArrowBack from "../../img/arrow-back.png";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,32 +13,35 @@ const useStyles = makeStyles((theme) => ({
       display: "flex",
     },
   },
+  arrowContainer: {
+    display: "inline",
+    float: "left",
+    marginRight: "10px",
+    marginTop: "-1px",
+  },
 }));
 
-function handleClick(event) {
-  event.preventDefault();
-  console.info("You clicked a breadcrumb.");
-}
-
-function AppBreadcrumb() {
+/**
+ *
+ * @param {{product: Product}} param0
+ */
+function AppBreadcrumb({ product }) {
   const classes = useStyles();
+  const history = useHistory();
+
   return (
     <div className={classes.root}>
-      <div>
-        <img src={ArrowBack} alt="arrow-back" />
+      <div className={classes.arrowContainer}>
+        <img src={ArrowBack} alt="arrow-back" onClick={history.goBack} className="pointer" />
       </div>
       <Breadcrumbs separator="›" aria-label="breadcrumb">
-        <Link color="inherit" href="/" onClick={handleClick}>
-          Material-UI
+        <Link color="inherit" href={`/products?category=${product.category}`}>
+          {product.category}
         </Link>
-        <Link
-          color="inherit"
-          href="/getting-started/installation/"
-          onClick={handleClick}
-        >
-          Core
+        <Link color="inherit" href={`/products?search=${product.subcategory}`}>
+          {product.subcategory}
         </Link>
-        <Typography color="textPrimary">Breadcrumb</Typography>
+        <Typography color="textPrimary">{product.name}</Typography>
       </Breadcrumbs>
     </div>
   );

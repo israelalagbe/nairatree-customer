@@ -1,15 +1,17 @@
 import React from "react";
 
 /**
- * 
- * @param {object} props 
+ *
+ * @param {object} props
  * @param {string} props.buttonText
- * @param {string} props.classname
+ * @param {'button'|'submit'|'reset'} [props.type]
+ * @param {string} [props.classname]
+ * @param {boolean} [props.disabled]
  * @param {(any)=>any} [props.onClick]
  */
-function AppButton({ buttonText, classname, onClick }) {
+function AppButton({ buttonText, classname, onClick, disabled, type }) {
   return (
-    <button className={classname} onClick={onClick}>
+    <button type={type} className={`${classname} ${disabled? 'btn-disabled': ''}`} onClick={onClick} disabled={disabled}>
       {buttonText}
     </button>
   );

@@ -1,11 +1,22 @@
 @import "/src/config/variables.scss";
 
 .delivery-details {
-  .first {
-    h5 {
-      color: #828282;
-      font-size: 13px;
-      font-family: $font-barlow-regular;
+  .delivery-details-first {
+    .delivery-details-head {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      h5 {
+        color: #828282;
+        font-size: 13px;
+        font-family: $font-barlow-regular;
+      }
+      h6 {
+        color: #f3ca3e;
+        cursor: pointer;
+        font-size: 13px;
+        font-family: $font-barlow-regular;
+      }
     }
     .details {
       color: #333333;
@@ -71,18 +82,14 @@
       }
     }
   }
-  .second {
-    color: #fa9917;
-    color: #828282;
-    font-size: 13px;
-    font-family: $font-barlow-regular;
-  }
+
   .next-button {
     width: 100%;
+    padding: 0.5rem 1rem;
     background-color: #f3ca3e;
     border: none;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 16px;
     font-family: $font-roboto-regular;
   }
 }

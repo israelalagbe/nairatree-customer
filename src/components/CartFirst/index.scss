@@ -39,6 +39,31 @@
       }
     }
   }
+  .empty-cart {
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      color: #f3ca3e;
+      font-family: $font-roboto-bold;
+      font-size: 20px;
+    }
+    svg {
+      padding-top: 1rem;
+      color: #f3ca3e;
+      height: 5rem;
+      width: 5rem;
+    }
+    .empty-button {
+      margin-top: 1rem;
+      border: none;
+      background-color: #f3ca3e;
+      color: white;
+      font-family: $font-roboto-regular;
+    }
+  }
   .wishlist {
     margin-top: 1rem;
     background-color: white;
@@ -57,9 +82,11 @@
           display: flex;
 
           .content-img {
+            margin-right: 1rem;
             img {
-              height: 175px;
+              height: 150px;
               width: 137px;
+              border-radius: 2px;
             }
           }
           .content-2 {
@@ -113,7 +140,7 @@
       .del-add {
         display: flex;
         align-self: flex-end;
-        
+
         h6 {
           color: #4f4f4f;
           font-family: $font-roboto-regular;

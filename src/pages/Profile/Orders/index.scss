@@ -1,59 +1,85 @@
 @import "/src/config/variables.scss";
 
-.orders {
-  display: flex;
+.profile-orders-main {
   background-color: white;
-  justify-content: space-between;
-  height: 100%;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 5px;
-
-  .main-order {
+  height: 100%;
+  .orders {
     display: flex;
-    .order-img {
-      img {
-        height: 94px;
-        width: 80px;
+    background-color: white;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 5px;
+    filter: drop-shadow(2px 2px 2px rgba(0.25, 0.25, 0.25, 0.25));
+
+    .main-order {
+      display: flex;
+      .order-img {
+        margin-right: 10px;
+        img {
+          height: 94px;
+          width: 80px;
+        }
+      }
+      .order-details {
+        h6 {
+          color: #828282;
+          font-family: $font-roboto-regular;
+          font-size: 14px;
+        }
+
+        h5 {
+          background: #f0fff2;
+          color: #124f36;
+          font-family: $font-roboto-regular;
+          font-size: 9px;
+          height: 16px;
+          width: 61px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 5px;
+        }
+        h2 {
+          font-size: 15px;
+          color: #000000;
+
+          font-family: $font-aller-regular;
+          padding: 0rem;
+        }
       }
     }
-    .order-details {
-      h3 {
-        color: #000000;
-        font-family: $font-roboto-regular;
+    .details {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a {
+        color: #f3ca3e;
+        font-family: $font-aller-regular;
         font-size: 14px;
-      }
-      h6 {
-        color: #828282;
-        font-family: $font-roboto-regular;
-        font-size: 10px;
-      }
-      h4 {
-        color: #fa9917;
-        font-family: $font-roboto-regular;
-        font-size: 12px;
-      }
-      h5 {
-        background: #f0fff2;
-        color: #124f36;
-        font-family: $font-roboto-regular;
-        font-size: 9px;
-        height: 16px;
-        width: 61px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 5px;
+        text-decoration: none;
       }
     }
   }
-  .details {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    a {
-      color: #4e7b8d;
-      font-family: $font-aller-regular;
-      font-size: 12px;
+}
+
+@media only screen and (max-width: 450px) {
+  .profile-orders-main {
+    .orders {
+      .main-order {
+        flex-direction: column;
+        width: 100% !important;
+        .order-img {
+          img {
+            width: 6rem !important;
+          }
+        }
+        .order-details {
+          width: 100% !important;
+          margin-top: 1rem;
+        }
+      }
     }
   }
 }

@@ -1,12 +1,46 @@
 @import "/src/config/variables.scss";
 
 .single-product-details {
-  h5 {
-    color: #333333;
-    font-family: $font-roboto-bold;
-    font-size: 15px;
-    padding-bottom: 5px;
-    span {
+  table {
+    width: 100%;
+    max-width: 40rem;
+
+    .key,
+    .value {
+      color: #333333;
+      font-family: $font-roboto-bold;
+      font-size: 15px;
+      padding-bottom: 5px;
+    }
+    .value {
+      text-transform: capitalize;
+      font-family: $font-roboto-regular;
+    }
+    td {
+      padding-bottom: 0.7rem;
+    }
+  }
+  .quantity {
+    padding-top: 1rem;
+    p {
+      color: #806300;
+      font-family: $font-roboto-regular;
+      font-size: 14px;
+      span {
+        color: #333333;
+        font-size: 14px;
+        font-family: $font-roboto-bold;
+        padding-left: 1rem;
+      }
+    }
+    h5 {
+      color: #333333;
+      font-size: 18px;
+      font-family: $font-roboto-bold;
+    }
+    .down {
+      color: #333333;
+      font-size: 14px;
       font-family: $font-roboto-regular;
     }
   }

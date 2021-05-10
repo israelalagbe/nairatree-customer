@@ -1,0 +1,33 @@
+@import "/src/config/variables.scss";
+
+.vendor-guide {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .vendor-first {
+    .main-vendor {
+      h3 {
+        text-align: center;
+        color: #000000;
+        font-family: $font-roboto-bold;
+        font-size: 30px;
+        margin-bottom: 3rem;
+      }
+      h4 {
+        text-align: center;
+        color: #000000;
+        font-family: $font-roboto-bold;
+        font-size: 20px;
+        margin-top: 3rem;
+      }
+      p {
+        text-align: center;
+
+        color: #000000;
+        font-family: $font-roboto-regular;
+      }
+    }
+  }
+}

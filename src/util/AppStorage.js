@@ -9,7 +9,7 @@ export default class AppStorage{
     /**
      * 
      * @param {string} key 
-     * @param {*} value 
+     * @param {any} value 
      */
     static set(key, value) {
         localStorage.setItem(key, JSON.stringify(value));

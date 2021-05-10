@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../../../components/Header";
-import SingleProductDetails from "../../../components/SingleProductDetails";
 import { useHistory } from "react-router-dom";
 import AppButton from "../../../components/AppButton";
 import "./index.scss";
@@ -17,18 +16,18 @@ function CartSuccess() {
           <AppButton
             buttonText="VIEW CART AND CHECKOUT"
             classname="checkout-button"
-            onClick={() => history.push("/")}
+            onClick={() => history.push("/cart")}
           />
           <AppButton
             buttonText="CONTINUE SHOPPING"
             classname="continue-button"
-            onClick={() => history.push("/")}
+            onClick={() => history.goBack()}
           />
         </div>
       </div>
-      <div className="single">
+      {/* <div className="single">
         <SingleProductDetails />
-      </div>
+      </div> */}
     </div>
   );
 }

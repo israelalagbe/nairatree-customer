@@ -13,6 +13,10 @@
       span {
         background-color: white;
         border: none !important;
+        svg {
+          width: 1rem;
+          height: 1rem;
+        }
       }
       img {
         width: 1rem;
@@ -21,8 +25,10 @@
 
     input {
       border: none !important;
-
-      line-height: 3rem;
+      color: #828282;
+      font-size: 16px;
+      font-family: $font-barlow-regular;
+      background-color: none !important;
       &::placeholder {
         color: #828282;
         font-size: 14px;

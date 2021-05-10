@@ -1,0 +1,241 @@
+@import "/src/config/variables.scss";
+
+.details {
+  .details-main {
+    background-color: white;
+    border-radius: 8px;
+
+    .images-box {
+      .big {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: 328px;
+          width: 280px;
+        }
+      }
+      .small {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+
+        img {
+          height: 40px;
+          width: 40px;
+          margin: 0.3rem;
+        }
+      }
+    }
+    .main-2 {
+      padding: 1.5rem 3rem;
+      .more-details {
+        border-bottom: 1px solid #e0e0e0;
+        .type {
+          color: black;
+          font-family: $font-roboto-bold;
+          font-size: 18px;
+        }
+        h6 {
+          color: #828282;
+          font-family: $font-roboto-regular;
+          font-size: 12px;
+          span {
+            padding-left: 1rem;
+            color: #806300;
+          }
+        }
+        h4 {
+          color: #4f4f4f;
+          font-family: $font-roboto-regular;
+          font-size: 11px;
+        }
+        .amount {
+          color: #824040;
+          font-family: $font-roboto-regular;
+          font-size: 20px;
+          padding: 1rem 0rem;
+        }
+        .colors {
+          h6 {
+            color: #828282;
+            font-family: $font-roboto-regular;
+            font-size: 12px;
+          }
+          .diff {
+            display: flex;
+            h6 {
+              text-transform: capitalize;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 25px;
+              width: 40px;
+              border: 2px solid #aeaeae;
+              margin-right: 0.5rem;
+
+              border-radius: 5px;
+              &.active {
+                border: 2px solid #ff4c4c;
+                color: #ff4c4c;
+              }
+            }
+          }
+        }
+      }
+      .out-of-stock {
+        color: #ff4c4c;
+        font-family: $font-roboto-bold;
+        margin-top: 1rem;
+        font-size: 20px;
+      }
+      .second-details {
+        margin-top: 1rem;
+        .maintain {
+          display: flex;
+          margin-bottom: 1rem;
+          p {
+            background: #f2f2f2;
+            color: #000000;
+            text-align: center;
+            height: 23px;
+            width: 23px;
+            border-radius: 5px;
+            margin: 0px 5px;
+            font-size: 14px;
+          }
+          h6 {
+            text-align: center;
+            background: #f3ca3e;
+            color: #ffffff;
+            height: 21px;
+            width: 21px;
+            border-radius: 10px;
+          }
+        }
+        .add-to-cart {
+          height: 40px;
+          width: 100%;
+          background: #f3ca3e;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          font-size: 14px;
+          font-family: $font-roboto-regular;
+        }
+        .shipping {
+          display: flex;
+          margin-top: 1rem;
+          border-bottom: 1px solid #e0e0e0;
+          border-top: 2px solid #e0e0e0;
+          padding: 1rem 0rem;
+          p {
+            padding-left: 15px;
+            color: #333333;
+            font-family: $font-roboto-regular;
+            font-size: 15px;
+            span {
+              font-family: $font-roboto-bold;
+            }
+          }
+        }
+      }
+    }
+  }
+  .other-offer {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    p {
+      color: #806300;
+      font-family: $font-roboto-regular;
+      font-size: 14px;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #808080;
+    }
+    h2 {
+      font-size: 18px;
+      font-family: $font-barlow-bold;
+      color: #000000;
+    }
+    .offers {
+      display: flex;
+      height: 120px;
+      width: 100%;
+      background-color: white;
+      filter: drop-shadow(2px 2px 2px rgba(0.25, 0.25, 0.25, 0.25));
+      border-radius: 5px;
+      margin-bottom: 2rem;
+      padding: 1rem;
+
+      .offers-img {
+        img {
+          height: 85px;
+          width: 85px;
+          margin-right: 1rem;
+        }
+      }
+      .offers-content {
+        h4 {
+          color: #824040;
+          font-family: $font-roboto-regular;
+          font-size: 13px;
+        }
+        h6 {
+          color: #595959;
+          font-family: $font-roboto-regular;
+          font-size: 10px;
+        }
+        .view-product {
+          margin-top: 1.2rem;
+          background-color: #f3ca3e;
+          color: white;
+          height: 22px;
+          width: 100px;
+          font-size: 9px;
+          border: none;
+          font-family: $font-roboto-regular;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+  .border {
+    border-bottom: 1px solid #e0e0e0;
+    margin: 1rem 0rem;
+  }
+  .vendor {
+    background-color: #ffffff;
+    padding: 2rem 1rem;
+    border-radius: 5px;
+    h6 {
+      font-family: $font-roboto-regular;
+      color: #595959;
+      font-size: 14px;
+    }
+    .register-as-vendor {
+      height: 35px;
+      width: 151px;
+      border: none;
+      background-color: #ff5f58;
+      color: #ffffff;
+      font-family: $font-roboto-regular;
+      font-size: 12px;
+      border-radius: 5px;
+    }
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .details {
+    .details-main {
+      background-color: white;
+      border-radius: 8px;
+
+      .main-2 {
+        padding: 1rem;
+      }
+    }
+  }
+}

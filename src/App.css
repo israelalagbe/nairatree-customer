@@ -19,6 +19,17 @@
   text-decoration: none;
 }
 
+.btn-disabled{
+  border-color: gray !important;
+  background-color: gray !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.capitalize{
+  text-transform: capitalize;
+}
+
 a{
   color: inherit;
 }

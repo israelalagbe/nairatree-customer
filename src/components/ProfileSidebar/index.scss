@@ -1,22 +1,51 @@
 @import "/src/config/variables.scss";
 
 .profile-sidebar {
-  .profile-sidebar-link {
-    a {
-      text-decoration: none;
-      h1 {
-        padding: 15px;
-        background-color: #ffffff;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  height: 100vh;
+  a {
+    text-decoration: none;
+    &:hover {
+      color: #f3ca3e;
+    }
+    .profile-sidebar-link {
+      display: flex;
+      margin-bottom: 1rem;
 
-        color: #4d5971;
+      .iconStyle.activeMenu svg {
+        color: #f3ca3e;
+      }
+
+      &:hover {
+        .iconStyle svg {
+          color: #f3ca3e !important;
+        }
+      }
+
+      .iconStyle {
+        svg {
+          width: 1rem;
+          height: 1rem;
+          color: #4d5971;
+        }
+      }
+
+
+      h5 {
+        padding: 7px;
+        color: #4d5971 !important;
         font-family: $font-opensans-regular;
-        height: 40px;
-        width: 320px;
+
         font-size: 14px;
-        border-radius: 5px;
+
         $font-aller-bold: "Aller Bold";
+        &:hover {
+          color: #f3ca3e !important;
+        }
         &.activeMenuText {
-          color: #ca9e2f;
+          color: #f3ca3e !important;
         }
       }
     }
@@ -25,6 +54,7 @@
 
 @media only screen and (max-width: 754px) {
   .profile-sidebar {
+    height: 100%;
     margin-bottom: 3rem;
     .profile-sidebar-link {
       a {

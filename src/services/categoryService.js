@@ -6,7 +6,7 @@ const {
 } = env;
 
 /**
- * @return {*}
+ * @return {any}
  */
 export function getCategories() {
     return api.get(`${baseUrl}/customers/categories/all`, {

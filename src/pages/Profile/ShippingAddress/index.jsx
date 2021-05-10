@@ -1,39 +1,64 @@
 import React from "react";
 import "./index.scss";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import CreateIcon from "@material-ui/icons/Create";
+import { Link } from "react-router-dom";
+import useAuthentication from "../../../stores/useAuthentication";
 
 function ShippingAddress() {
+  const { user } = useAuthentication();
+  const addresses = user?.address_book.sort((b,a) => (a.is_default === b.is_default)? 0 : a.is_default? 1 : -1);
+
   return (
     <div className="shipping-address">
       <div className="main-shipping">
-        <div className="ship-1">
-          <h5>Shipping Address</h5>
-          <div>
-            <h6>ADEYEMO QUDUS</h6>
-            <h6>Yetunde Brown, Gbagada</h6>
-            <h6>Lagos, Nigeria</h6>
-            <h6>+2348100571955</h6>
+        <div className="mainShippingContent">
+          <div className="ship-1">
+            <h5>Address Book</h5>
+          </div>
+          <Link to="/profile/addressbook/new-address" className="ship-2">
+            <h5>Add New Address Book</h5>
+            <CreateIcon />
+          </Link>
+        </div>
+
+        {addresses.map((item) => (
+          <div className="allBelow">
+            <div>
+              <h3>{item.name}</h3>
+
+              <h6>{item.address}</h6>
+              <h6>
+                {item.city},{item.country}
+              </h6>
+              <h6 className="mt-3">{item.phone}</h6>
+            </div>
+            <div>
+              {item.is_default === true ? <h5>Default Address</h5> : ""}
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* <div className="main-shipping">
+        <div className="mainShippingContent">
+          <div className="ship-1">
+            <h5>Payment Details</h5>
+          </div>
+          <div className="ship-2">
+            <h5>Add New Payment</h5>
+            <AddCircleOutlineIcon />
           </div>
         </div>
-        <div className="ship-2">
-          <h5>Shipping Address</h5>
-          <AddCircleOutlineIcon />
-        </div>
-      </div>
-      <div className="main-shipping">
-        <div className="ship-1">
-          <h5>Payment Details</h5>
+        <div className="allBelow">
           <div>
             <h6>Olanlekan Ayomide</h6>
             <h6>03234*****</h6>
             <h6>GT BANK</h6>
           </div>
+          <div>
+            <h5>Default</h5>
+          </div>
         </div>
-        <div className="ship-2">
-          <h5>Add New Payment</h5>
-          <AddCircleOutlineIcon />
-        </div>
-      </div>
+      </div> */}
     </div>
   );
 }

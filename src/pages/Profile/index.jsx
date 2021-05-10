@@ -9,6 +9,12 @@ import Header from "../../components/Header";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import Orders from "./Orders";
 import { Row, Col } from "reactstrap";
+import ChangePassword from "./ChangePassword";
+import UpdateProfile from "./UpdateProfile";
+import AddressInfo from "./AddressInfo";
+import OrdersDetails from "./Orders/OrdersDetails";
+import ReviewDetails from "./Reviews/ReviewsDetail";
+import Reviews from "./Reviews";
 
 function Profile() {
   return (
@@ -27,10 +33,38 @@ function Profile() {
             <div className="right">
               <Switch>
                 <Route exact path="/profile" component={Account} />
-                <Route path="/profile/shippingaddress" component={ShippingAddress} />
+                <Route
+                  exact
+                  path="/profile/addressbook"
+                  component={ShippingAddress}
+                />
+                <Route
+                  exact
+                  path="/profile/addressbook/new-address"
+                  component={AddressInfo}
+                />
                 <Route path="/profile/myprofile" component={MyProfile} />
                 <Route path="/profile/wishlist" component={WishList} />
-                <Route path="/profile/orders" component={Orders} />
+                <Route exact path="/profile/orders" component={Orders} />
+                <Route
+                  exact
+                  path="/profile/orders/order-details/:id"
+                  component={OrdersDetails}
+                />
+                <Route exact path="/profile/reviews" component={Reviews} />
+                <Route
+                  exact
+                  path="/profile/reviews/details/:id/product/:product_id"
+                  component={ReviewDetails}
+                />
+                <Route
+                  path="/profile/change-password"
+                  component={ChangePassword}
+                />
+                <Route
+                  path="/profile/update-profile"
+                  component={UpdateProfile}
+                />
               </Switch>
             </div>
           </Col>

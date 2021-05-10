@@ -29,18 +29,19 @@ function RegistrationDecision() {
               />
             </div>
             <div className="second">
-              <AppButton
-                buttonText="I want to become a vendor"
-                classname="buyButton"
-                onClick={() => history.push("/vendor")}
-              />
+              <a href="https://vendor.nairatree.com/account/register">
+                <AppButton
+                  buttonText="I want to become a vendor"
+                  classname="buyButton"
+                />
+              </a>
             </div>
           </div>
           <p>
             I have an account already,<Link to="/login"> Login Here</Link>
           </p>
         </div>
-        <div className="bottom">
+        <div className="registration-decision-bottom">
           <Copyright />
           <Footer />
         </div>
