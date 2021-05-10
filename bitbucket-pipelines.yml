@@ -1,0 +1,36 @@
+# This is a sample build configuration for PHP.
+# Check our guides at https://confluence.atlassian.com/x/e8YWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:14.15.3
+pipelines:
+  # default - contains the steps that will run on every push.
+  # default:
+  branches:
+    # You can include your custom branches and the steps you'd like to undertake e.g. testing
+    #staging:
+    development:
+      - step:
+          name: Installation
+          caches:
+            - node
+          script:
+            - npm i
+          artifacts:
+            - node_modules/** # Save modules for next steps
+      - step:
+          name: Build
+          script:
+            - npm run build
+          artifacts:
+            - dist/** # Save build for next steps
+      - step:
+          name: Deploy to staging
+          deployment: staging
+          script:
+            - pipe: atlassian/ssh-run:0.2.2
+              variables:
+                SSH_USER: $SERVER_USER
+                SERVER: $SERVER_IP
+                COMMAND: $STAGING_DEPLOYMENT_SCRIPT
