@@ -22,7 +22,7 @@
       padding: 1rem;
       border-bottom: 1px solid #f2f2f2;
       display: flex;
-      color: #f3ca3e;
+      color: #008952;
       svg {
         width: 1rem;
         height: 1rem;
@@ -63,10 +63,10 @@
               width: 1rem;
               height: 1rem;
             }
-            &:first-child{
-              color: #f3ca3e;
+            &:first-child {
+              color: #008952;
             }
-            &:last-child{
+            &:last-child {
               color: rgb(255, 123, 0);
             }
           }
@@ -78,7 +78,7 @@
       .useAddressButton {
         width: 100%;
         height: 2rem;
-        background-color: #f3ca3e;
+        background-color: #008952;
         border: none;
         border-radius: 5px;
         color: #ffffff;

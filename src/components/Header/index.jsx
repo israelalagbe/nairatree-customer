@@ -22,7 +22,7 @@ import AccountCircle from "@material-ui/icons/AccountCircleOutlined";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingCartOutlined";
 import Badge from "@material-ui/core/Badge";
 import logo from "../../img/logo.svg";
-import search from "../../img/search.svg";
+import SearchIcon from "@material-ui/icons/Search";
 import useCategoryStore from "../../stores/useCategoryStore";
 import { Popover } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
@@ -149,7 +149,7 @@ export default function Header() {
                     onClick={onSearch}
                   >
                     <InputGroupText>
-                      <img src={search} alt="Search" />
+                      <SearchIcon />
                     </InputGroupText>
                   </InputGroupAddon>
                 </InputGroup>

@@ -63,7 +63,7 @@
       .info-button {
         .continue {
           width: 100%;
-          background-color: #f3ca3e;
+          background-color: #008952;
           color: white;
           font-size: 15px;
           font-family: $font-roboto-regular;
@@ -101,7 +101,6 @@
     padding-bottom: 1rem;
   }
   .footer {
-    
     justify-content: space-around;
     width: 50%;
     display: flex;
@@ -117,7 +116,7 @@
   }
 }
 
-@media only screen and (max-width:700px) {
+@media only screen and (max-width: 700px) {
   .bottom {
     display: block;
     padding: 1rem;
@@ -125,7 +124,7 @@
       width: 100%;
     }
     .footer {
-      flex-wrap: wrap;;
+      flex-wrap: wrap;
       width: 100%;
     }
   }
