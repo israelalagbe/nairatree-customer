@@ -72,7 +72,7 @@ function SearchInputs({ applyFilter }) {
             />
           </div>
           <div className="mt-3">
-            <AppButton classname="btn btn-warning" buttonText="Apply Filter" />
+            <AppButton classname="btn btn-filter" buttonText="Apply Filter" />
           </div>
         </div>
       </Form>

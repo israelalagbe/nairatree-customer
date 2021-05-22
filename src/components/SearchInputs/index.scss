@@ -21,21 +21,25 @@
     background-color: #ffffff;
     padding: 1rem;
     border-radius: 5px;
+    .btn-filter {
+      background-color: #008952;
+      color: white;
+    }
     .price {
       h6 {
         color: #333333;
         font-family: $font-barlow-regular;
         font-size: 18px;
       }
-      
-        .app-slider {
-          color: #f3ca3e;
-        }
-        .MuiSlider-thumb{
-          border-radius: 2px;
-          width: 7px;
-        }
-      
+
+      .app-slider {
+        color: #008952;
+      }
+      .MuiSlider-thumb {
+        border-radius: 2px;
+        width: 7px;
+      }
+
       .box {
         display: flex;
         justify-content: space-between;
