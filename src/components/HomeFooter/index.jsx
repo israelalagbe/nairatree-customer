@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Label, FormGroup, Input, Col, Row } from "reactstrap";
-import logo from "../../img/greenlogo.png";
+import logo from "../../img/logo.svg";
 import AppButton from "../AppButton";
 import { Link, useHistory } from "react-router-dom";
 import visa from "../../img/visa.png";

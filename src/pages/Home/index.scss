@@ -85,6 +85,12 @@
       }
     }
   }
+
+  h2 {
+    font-family: $font-roboto-bold;
+    font-size: 20px;
+    color: white;
+  }
   @media (max-width: 767px) {
     .sidebar-container {
       margin-top: 2em;
